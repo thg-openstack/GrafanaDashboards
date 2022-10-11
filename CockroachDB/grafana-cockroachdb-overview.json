@@ -23,8 +23,18 @@
   "graphTooltip": 0,
   "id": 36,
   "iteration": 1665482282285,
-  "links": [],
-  "liveNow": false,
+  "links": [
+    {
+      "asDropdown": true,
+      "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": ["CockroachDB"],
+      "targetBlank": true,
+      "title": "Dashboards",
+      "type": "dashboards"
+    }
+  ],
   "panels": [
     {
       "description": "A ten-second moving average of the # of SELECT, INSERT, UPDATE, and DELETE statements successfully executed per second across all nodes.",
@@ -569,7 +579,7 @@
   "timepicker": {},
   "timezone": "",
   "title": "CockroachDB: Overview",
-  "uid": "crdb-console",
+  "uid": "cockroachdb-overview",
   "version": 1,
   "weekStart": ""
 }

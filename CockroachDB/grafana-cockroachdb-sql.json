@@ -23,8 +23,18 @@
   "graphTooltip": 0,
   "id": 27,
   "iteration": 1665480265018,
-  "links": [],
-  "liveNow": false,
+  "links": [
+    {
+      "asDropdown": true,
+      "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": ["CockroachDB"],
+      "targetBlank": true,
+      "title": "Dashboards",
+      "type": "dashboards"
+    }
+  ],
   "panels": [
     {
       "description": "The total number of open SQL Sessions.",
