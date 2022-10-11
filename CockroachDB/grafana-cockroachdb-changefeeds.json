@@ -651,8 +651,8 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "CRDB Console: Changefeeds",
-  "uid": "crdb-console-changefeeds",
-  "version": 3,
+  "title": "CockroachDB: Changefeeds",
+  "uid": "cockroachdb-changefeeds",
+  "version": 1,
   "weekStart": ""
 }

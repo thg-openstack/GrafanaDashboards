@@ -1050,8 +1050,8 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "CRDB Console: Distributed",
-  "uid": "crdb-console-distributed",
-  "version": 2,
+  "title": "CockroachDB: Distributed",
+  "uid": "cockroachdb-distributed",
+  "version": 1,
   "weekStart": ""
 }

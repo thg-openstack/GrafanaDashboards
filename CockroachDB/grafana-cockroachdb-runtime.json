@@ -922,8 +922,8 @@
   },
   "timepicker": {},
   "timezone": "utc",
-  "title": "CRDB Console: Runtime",
-  "uid": "crdb-console-runtime",
-  "version": 2,
+  "title": "CockroachDB: Runtime",
+  "uid": "cockroachdb-runtime",
+  "version": 1,
   "weekStart": ""
 }

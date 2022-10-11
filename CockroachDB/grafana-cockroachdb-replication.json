@@ -1043,8 +1043,8 @@
   },
   "timepicker": {},
   "timezone": "utc",
-  "title": "CRDB Console: Replication",
-  "uid": "crdb-console-replications",
+  "title": "CockroachDB: Replication",
+  "uid": "cockroachdb-replications",
   "version": 1,
   "weekStart": ""
 }

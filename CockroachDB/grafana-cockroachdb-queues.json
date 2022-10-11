@@ -1347,8 +1347,8 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "CRDB Console: Queues",
-  "uid": "crdb-console-queues",
+  "title": "CockroachDB: Queues",
+  "uid": "cockroachdb-queues",
   "version": 1,
   "weekStart": ""
 }

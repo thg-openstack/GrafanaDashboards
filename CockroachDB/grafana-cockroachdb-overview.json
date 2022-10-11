@@ -568,7 +568,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "CRDB Console: Overview",
+  "title": "CockroachDB: Overview",
   "uid": "crdb-console",
   "version": 1,
   "weekStart": ""

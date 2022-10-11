@@ -525,8 +525,8 @@
   },
   "timepicker": {},
   "timezone": "utc",
-  "title": "CRDB Console: Slow Requests",
-  "uid": "crdb-console-slow-request",
+  "title": "CockroachDB: Slow Requests",
+  "uid": "cockroachdb-slow-request",
   "version": 1,
   "weekStart": ""
 }

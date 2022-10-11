@@ -21,8 +21,8 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 24,
-  "iteration": 1665474881685,
+  "id": 35,
+  "iteration": 1665500691321,
   "links": [
     {
       "asDropdown": true,
@@ -522,7 +522,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum by (pod, cluster) (txn_durations:rate1m:quantile_99{cluster=\"$cluster\",pod=~\"$node\"})",
+          "expr": "sum by (cluster, pod) (histogram_quantile(0.99,rate(sql_txn_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -615,7 +615,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum by (pod, cluster) (sql_exec_latency:rate1m:quantile_99{cluster=\"$cluster\",pod=~\"$node\"})",
+          "expr": "sum by (cluster, pod) (histogram_quantile(0.99,rate(exec_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -708,7 +708,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum by (pod, cluster) (txn_durations:rate1m:quantile_95{cluster=\"$cluster\",pod=~\"$node\"})",
+          "expr": "sum by (cluster, pod) (histogram_quantile(0.95,rate(sql_txn_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -801,7 +801,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum by (pod, cluster) (sql_exec_latency:rate1m:quantile_95{cluster=\"$cluster\",pod=~\"$node\"})",
+          "expr": "sum by (cluster, pod) (histogram_quantile(0.95,rate(exec_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -894,7 +894,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum by (pod, cluster) (txn_durations:rate1m:quantile_90{cluster=\"$cluster\",pod=~\"$node\"})",
+          "expr": "sum by (cluster, pod) (histogram_quantile(0.90,rate(sql_txn_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -987,7 +987,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum by (pod, cluster) (sql_exec_latency:rate1m:quantile_90{cluster=\"$cluster\",pod=~\"$node\"})",
+          "expr": "sum by (cluster, pod) (histogram_quantile(0.90,rate(exec_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1080,7 +1080,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum by (pod, cluster) (txn_durations:rate1m:quantile_50{cluster=\"$cluster\",pod=~\"$node\"})",
+          "expr": "sum by (cluster, pod) (histogram_quantile(0.50,rate(sql_txn_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1173,7 +1173,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum by (pod, cluster) (sql_exec_latency:rate1m:quantile_50{cluster=\"$cluster\",pod=~\"$node\"})",
+          "expr": "sum by (cluster, pod) (histogram_quantile(0.50,rate(exec_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2545,9 +2545,9 @@
         "auto_count": 30,
         "auto_min": "10s",
         "current": {
-          "selected": false,
-          "text": "30s",
-          "value": "30s"
+          "selected": true,
+          "text": "1m",
+          "value": "1m"
         },
         "hide": 0,
         "includeAll": false,
@@ -2556,12 +2556,12 @@
         "name": "rate_interval",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "30s",
             "value": "30s"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "1m",
             "value": "1m"
           },

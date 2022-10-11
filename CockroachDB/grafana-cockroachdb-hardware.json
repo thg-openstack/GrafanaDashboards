@@ -1042,8 +1042,8 @@
   },
   "timepicker": {},
   "timezone": "utc",
-  "title": "CRDB Console: Hardware",
-  "uid": "crdb-console-hardware",
+  "title": "CockroachDB: Hardware",
+  "uid": "cockroachdb-hardware",
   "version": 1,
   "weekStart": ""
 }
