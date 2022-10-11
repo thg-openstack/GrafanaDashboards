@@ -29,7 +29,7 @@
       "icon": "external link",
       "includeVars": true,
       "keepTime": true,
-      "tags": ["cockroach"],
+      "tags": ["CockroachDB"],
       "targetBlank": true,
       "title": "Dashboards",
       "type": "dashboards"
@@ -2484,7 +2484,7 @@
   "refresh": false,
   "schemaVersion": 35,
   "style": "dark",
-  "tags": [],
+  "tags": ["CockroachDB"],
   "templating": {
     "list": [
       {
@@ -2630,7 +2630,7 @@
     "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
   },
   "timezone": "",
-  "title": "DBA Cockroach Central Dashboard",
+  "title": "CockroachDB: Central",
   "uid": "MKCLvPfnz",
   "version": 1,
   "weekStart": ""

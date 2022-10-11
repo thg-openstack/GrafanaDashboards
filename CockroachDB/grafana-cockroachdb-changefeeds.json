@@ -497,7 +497,7 @@
   ],
   "schemaVersion": 35,
   "style": "dark",
-  "tags": [],
+  "tags": ["CockroachDB"],
   "templating": {
     "list": [
       {
