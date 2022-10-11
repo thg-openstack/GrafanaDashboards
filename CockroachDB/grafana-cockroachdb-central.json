@@ -2611,7 +2611,7 @@
     ]
   },
   "time": {
-    "from": "now-2d",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
