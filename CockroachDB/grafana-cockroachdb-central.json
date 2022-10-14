@@ -123,7 +123,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "count(up{cluster=\"$cluster\",pod=~\"$node\"})",
+          "expr": "count(up{cluster=~\"$cluster\",pod=~\"$node\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -139,7 +139,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "count(up{cluster=\"$cluster\",pod=~\"$node\"} == 1)",
+          "expr": "count(up{cluster=~\"$cluster\",pod=~\"$node\"} == 1)",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -155,7 +155,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "min(liveness_livenodes{cluster=\"$cluster\",pod=~\"$node\"})",
+          "expr": "min(liveness_livenodes{cluster=~\"$cluster\",pod=~\"$node\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -236,7 +236,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum by (pod, cluster) (sys_uptime{cluster=\"$cluster\",pod=~\"$node\"})",
+          "expr": "sum by (pod, cluster) (sys_uptime{cluster=~\"$cluster\",pod=~\"$node\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -339,7 +339,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum by (pod,cluster) (clock_offset_meannanos{cluster=\"$cluster\", pod=~\"$node\"})",
+          "expr": "sum by (pod,cluster) (clock_offset_meannanos{cluster=~\"$cluster\", pod=~\"$node\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -420,7 +420,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum by (pod, cluster) (clock_offset_meannanos{cluster=\"$cluster\", pod=~\"$node\"})",
+          "expr": "sum by (pod, cluster) (clock_offset_meannanos{cluster=~\"$cluster\", pod=~\"$node\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1266,7 +1266,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum by (pod, cluster) (replicas_leaseholders{cluster=\"$cluster\",pod=~\"$node\"})",
+          "expr": "sum by (pod, cluster) (replicas_leaseholders{cluster=~\"$cluster\",pod=~\"$node\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1359,7 +1359,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum by (pod, cluster) (replicas{cluster=\"$cluster\",pod=~\"$node\"})",
+          "expr": "sum by (pod, cluster) (replicas{cluster=~\"$cluster\",pod=~\"$node\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1441,7 +1441,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum by (pod, cluster) (replicas_leaseholders{cluster=\"$cluster\",pod=~\"$node\"})",
+          "expr": "sum by (pod, cluster) (replicas_leaseholders{cluster=~\"$cluster\",pod=~\"$node\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1543,7 +1543,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_select_count{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1558,7 +1558,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_insert_count{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
           "interval": "",
           "legendFormat": "insert",
           "refId": "B"
@@ -1569,7 +1569,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_update_count{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
           "interval": "",
           "legendFormat": "update",
           "refId": "C"
@@ -1580,7 +1580,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_delete_count{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_delete_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
           "interval": "",
           "legendFormat": "delete",
           "refId": "D"
@@ -1755,7 +1755,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum by (pod,cluster) (sys_cpu_combined_percent_normalized{job='cockroachdb',cluster=\"$cluster\",pod=~\"$node\"})",
+          "expr": "sum by (pod,cluster) (sys_cpu_combined_percent_normalized{job='cockroachdb',cluster=~\"$cluster\",pod=~\"$node\"})",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -2216,7 +2216,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_select_count{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2231,7 +2231,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_insert_count{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Inserts",
@@ -2243,7 +2243,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_delete_count{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_delete_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Deletes",
@@ -2255,7 +2255,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_update_count{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Updates",
@@ -2267,7 +2267,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_update_count{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval])+rate(sql_select_count{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval])+rate(sql_delete_count{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval])+rate(sql_insert_count{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])+rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])+rate(sql_delete_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])+rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Combined",
@@ -2422,7 +2422,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_select_count{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2437,7 +2437,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_insert_count{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Inserts",
@@ -2449,7 +2449,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_update_count{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Updates",
@@ -2461,7 +2461,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_update_count{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval])+rate(sql_select_count{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval])+rate(sql_insert_count{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])+rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])+rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Combined",
@@ -2520,7 +2520,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "definition": "label_values(sys_uptime{cluster=\"$cluster\"},pod)",
+        "definition": "label_values(sys_uptime{cluster=~\"$cluster\"},pod)",
         "hide": 0,
         "includeAll": true,
         "label": "Node",
@@ -2528,7 +2528,7 @@
         "name": "node",
         "options": [],
         "query": {
-          "query": "label_values(sys_uptime{cluster=\"$cluster\"},pod)",
+          "query": "label_values(sys_uptime{cluster=~\"$cluster\"},pod)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -2631,7 +2631,7 @@
   },
   "timezone": "",
   "title": "CockroachDB: Central",
-  "uid": "MKCLvPfnz",
+  "uid": "cockroachdb-central",
   "version": 1,
   "weekStart": ""
 }

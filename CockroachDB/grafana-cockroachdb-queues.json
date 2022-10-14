@@ -35,6 +35,7 @@
       "type": "dashboards"
     }
   ],
+  "liveNow": false,
   "panels": [
     {
       "fieldConfig": {
@@ -112,7 +113,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_gc_process_failure{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_gc_process_failure{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "hide": false,
           "interval": "",
           "legendFormat": "GC",
@@ -120,7 +121,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_replicagc_process_failure{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_replicagc_process_failure{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Replica GC",
@@ -128,7 +129,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_replicate_process_failure{ cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_replicate_process_failure{ cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Replication",
@@ -136,7 +137,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_split_process_failure{ cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_split_process_failure{ cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Split",
@@ -144,7 +145,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_consistency_process_failure{ cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_consistency_process_failure{ cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Consistency",
@@ -152,7 +153,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_raftlog_process_failure{ cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_raftlog_process_failure{ cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Raft Log",
@@ -160,7 +161,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_raftsnapshot_process_failure{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_raftsnapshot_process_failure{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Raft Snapshot",
@@ -168,7 +169,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_tsmaintenance_process_failure{ cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_tsmaintenance_process_failure{ cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Time Series Maintenance",
@@ -256,56 +257,56 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_gc_processingnanos{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_gc_processingnanos{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "GC",
           "refId": "G"
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_replicagc_processingnanos{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_replicagc_processingnanos{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "Replica GC",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_replicate_processingnanos{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_replicate_processingnanos{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "Replication",
           "refId": "C"
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_split_processingnanos{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_split_processingnanos{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "Split",
           "refId": "B"
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_consistency_processingnanos{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_consistency_processingnanos{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "Consistency",
           "refId": "D"
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_raftlog_processingnanos{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_raftlog_processingnanos{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "Raft Log",
           "refId": "E"
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_raftsnapshot_processingnanos{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_raftsnapshot_processingnanos{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "Raft Snapshot",
           "refId": "F"
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_tsmaintenance_processingnanos{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_tsmaintenance_processingnanos{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "Time Series Maintenance",
           "refId": "H"
@@ -389,7 +390,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_gc_info_transactionspangccommitted{ cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_gc_info_transactionspangccommitted{ cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Successful Actions / sec",
@@ -397,7 +398,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_gc_info_transactionspangcpending{ cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_gc_info_transactionspangcpending{ cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Pending Actions",
@@ -405,7 +406,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_replicate_removedeadreplica{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_replicate_removedeadreplica{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "Replicas Removed / sec",
           "refId": "C"
@@ -637,14 +638,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_split_process_success{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_split_process_success{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "Successful Actions / sec",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_split_pending{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_split_pending{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "Pending Actions",
           "refId": "B"
@@ -728,14 +729,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_merge_process_success{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_merge_process_success{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "Successful Actions / sec",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_merge_pending{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_merge_pending{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "Pending Actions",
           "refId": "B"
@@ -819,14 +820,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_gc_process_success{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_gc_process_success{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "Successful Actions / sec",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_gc_pending{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_gc_pending{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "Pending Actions",
           "refId": "B"
@@ -910,14 +911,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_raftlog_process_success{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_raftlog_process_success{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "Successful Actions / sec",
           "refId": "B"
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_raftlog_pending{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_raftlog_pending{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "Pending Actions",
           "refId": "A"
@@ -1001,14 +1002,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_raftsnapshot_process_success{cluster=\"$cluster\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_raftsnapshot_process_success{cluster=~\"$cluster\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "Successful Actions / sec",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_raftsnapshot_pending{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_raftsnapshot_pending{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "Pending Actions",
           "refId": "B"
@@ -1092,14 +1093,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_consistency_process_success{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_consistency_process_success{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "Successful Actions / sec",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "sum(queue_consistency_pending{cluster=\"$cluster\",pod=~\"$node\"})",
+          "expr": "sum(queue_consistency_pending{cluster=~\"$cluster\",pod=~\"$node\"})",
           "interval": "",
           "legendFormat": "Pending Actions",
           "refId": "B"
@@ -1183,14 +1184,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_tsmaintenance_process_success{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_tsmaintenance_process_success{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "Successful Actions / sec",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(queue_tsmaintenance_pending{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(queue_tsmaintenance_pending{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "Pending Actions",
           "refId": "B"
@@ -1265,7 +1266,7 @@
           "type": "prometheus",
           "uid": "${DS_PROMETHEUS}"
         },
-        "definition": "label_values(sys_uptime{cluster=\"$cluster\"},pod)",
+        "definition": "label_values(sys_uptime{cluster=~\"$cluster\"},pod)",
         "hide": 0,
         "includeAll": true,
         "label": "Node",
@@ -1273,7 +1274,7 @@
         "name": "node",
         "options": [],
         "query": {
-          "query": "label_values(sys_uptime{cluster=\"$cluster\"},pod)",
+          "query": "label_values(sys_uptime{cluster=~\"$cluster\"},pod)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,

@@ -35,6 +35,7 @@
       "type": "dashboards"
     }
   ],
+  "liveNow": false,
   "panels": [
     {
       "datasource": {
@@ -960,7 +961,7 @@
           "type": "prometheus",
           "uid": "${DS_PROMETHEUS}"
         },
-        "definition": "label_values(sys_uptime{cluster=\"$cluster\"},pod)",
+        "definition": "label_values(sys_uptime{cluster=~\"$cluster\"},pod)",
         "hide": 0,
         "includeAll": true,
         "label": "Node",
@@ -968,7 +969,7 @@
         "name": "node",
         "options": [],
         "query": {
-          "query": "label_values(sys_uptime{cluster=\"$cluster\"},pod)",
+          "query": "label_values(sys_uptime{cluster=~\"$cluster\"},pod)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,

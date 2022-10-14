@@ -35,6 +35,7 @@
       "type": "dashboards"
     }
   ],
+  "liveNow": false,
   "panels": [
     {
       "description": "The total number of open SQL Sessions.",
@@ -1105,7 +1106,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "histogram_quantile(0.99, rate(sql_service_latency_bucket{job=\"cockroachdb\",instance=~\"$node\",cluster=\"$cluster\"}[$__rate_interval]))",
+          "expr": "histogram_quantile(0.99, rate(sql_service_latency_bucket{job=\"cockroachdb\",instance=~\"$node\",cluster=~\"$cluster\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -1193,7 +1194,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "histogram_quantile(0.90, rate(sql_service_latency_bucket{job=\"cockroachdb\",instance=~\"$node\",cluster=\"$cluster\"}[$__rate_interval]))",
+          "expr": "histogram_quantile(0.90, rate(sql_service_latency_bucket{job=\"cockroachdb\",instance=~\"$node\",cluster=~\"$cluster\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -1361,7 +1362,7 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
-          "expr": "histogram_quantile(0.90, rate(exec_latency_bucket{job=\"cockroachdb\",instance=~\"$node\",cluster=\"$cluster\"}[$rate_interval]))",
+          "expr": "histogram_quantile(0.90, rate(exec_latency_bucket{job=\"cockroachdb\",instance=~\"$node\",cluster=~\"$cluster\"}[$rate_interval]))",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -1507,7 +1508,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum by (cluster, pod) (histogram_quantile(0.99,rate(sql_txn_latency_bucket{job=\"cockroachdb\",cluster=\"$cluster\"}[5m])))",
+          "expr": "sum by (cluster, pod) (histogram_quantile(0.99,rate(sql_txn_latency_bucket{job=\"cockroachdb\",cluster=~\"$cluster\"}[5m])))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{pod}}",
@@ -1792,7 +1793,7 @@
           "type": "prometheus",
           "uid": "${DS_PROMETHEUS}"
         },
-        "definition": "label_values(sys_uptime{job=\"cockroachdb\",cluster=\"$cluster\"},instance)",
+        "definition": "label_values(sys_uptime{job=\"cockroachdb\",cluster=~\"$cluster\"},instance)",
         "hide": 0,
         "includeAll": true,
         "label": "Node",

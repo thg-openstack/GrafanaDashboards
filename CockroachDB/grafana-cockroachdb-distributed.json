@@ -35,6 +35,7 @@
       "type": "dashboards"
     }
   ],
+  "liveNow": false,
   "panels": [
     {
       "description": "",
@@ -297,7 +298,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(distsender_rpc_sent_nextreplicaerror{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(distsender_rpc_sent_nextreplicaerror{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
@@ -306,7 +307,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(distsender_errors_notleaseholder{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(distsender_errors_notleaseholder{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "Not Lease Holder Errors",
@@ -391,7 +392,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(txn_commits{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(txn_commits{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "Commited",
@@ -399,7 +400,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(txn_commits1PC{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(txn_commits1PC{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
@@ -492,14 +493,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(txn_restarts_writetooold{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(txn_restarts_writetooold{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "Write Too Old",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(txn_restarts_writetoooldmulti{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(txn_restarts_writetoooldmulti{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Write Too Old (multiple)",
@@ -507,7 +508,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(txn_restarts_serializable{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(txn_restarts_serializable{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Forwarded Timestamp (iso=serializable)",
@@ -515,7 +516,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(txn_restarts_asyncwritefailure{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(txn_restarts_asyncwritefailure{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Async Consensus Failure",
@@ -523,7 +524,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(txn_restarts_readwithinuncertainty{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(txn_restarts_readwithinuncertainty{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Read Within Uncertainty Interval",
@@ -531,7 +532,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(txn_restarts_txnaborted{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(txn_restarts_txnaborted{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Aborted",
@@ -539,7 +540,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(txn_restarts_txnpush{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(txn_restarts_txnpush{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Push Failure",
@@ -547,7 +548,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(txn_restarts_unknown{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(txn_restarts_unknown{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Unknown",
@@ -806,7 +807,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "histogram_quantile(0.99,rate(liveness_heartbeatlatency_bucket{ cluster=\"$cluster\",pod=~\"$node\"}[1m]))",
+          "expr": "histogram_quantile(0.99,rate(liveness_heartbeatlatency_bucket{ cluster=~\"$cluster\",pod=~\"$node\"}[1m]))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{instance}}",
@@ -892,7 +893,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "histogram_quantile(0.90,rate(liveness_heartbeatlatency_bucket{ cluster=\"$cluster\",pod=~\"$node\"}[1m]))",
+          "expr": "histogram_quantile(0.90,rate(liveness_heartbeatlatency_bucket{ cluster=~\"$cluster\",pod=~\"$node\"}[1m]))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{instance}}",
@@ -967,7 +968,7 @@
           "type": "prometheus",
           "uid": "${DS_PROMETHEUS}"
         },
-        "definition": "label_values(sys_uptime{cluster=\"$cluster\"},pod)",
+        "definition": "label_values(sys_uptime{cluster=~\"$cluster\"},pod)",
         "hide": 0,
         "includeAll": true,
         "label": "Node",
@@ -975,7 +976,7 @@
         "name": "node",
         "options": [],
         "query": {
-          "query": "label_values(sys_uptime{cluster=\"$cluster\"},pod)",
+          "query": "label_values(sys_uptime{cluster=~\"$cluster\"},pod)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,

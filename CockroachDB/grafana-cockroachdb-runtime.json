@@ -35,6 +35,7 @@
       "type": "dashboards"
     }
   ],
+  "liveNow": false,
   "panels": [
     {
       "datasource": {
@@ -114,7 +115,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "min(liveness_livenodes{cluster=\"$cluster\",pod=~\"$node\"})",
+          "expr": "min(liveness_livenodes{cluster=~\"$cluster\",pod=~\"$node\"})",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Live Nodes",
@@ -202,35 +203,35 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(sys_rss{cluster=\"$cluster\",pod=~\"$node\"})",
+          "expr": "sum(sys_rss{cluster=~\"$cluster\",pod=~\"$node\"})",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Total memory (RSS)",
           "refId": "A"
         },
         {
-          "expr": "sum(sys_cgo_allocbytes{cluster=\"$cluster\",pod=~\"$node\"})",
+          "expr": "sum(sys_cgo_allocbytes{cluster=~\"$cluster\",pod=~\"$node\"})",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Go Allocated",
           "refId": "B"
         },
         {
-          "expr": "sum(sys_go_totalbytes{cluster=\"$cluster\",pod=~\"$node\"})",
+          "expr": "sum(sys_go_totalbytes{cluster=~\"$cluster\",pod=~\"$node\"})",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Go Total",
           "refId": "D"
         },
         {
-          "expr": "sum(sys_go_allocbytes{cluster=\"$cluster\",pod=~\"$node\"})",
+          "expr": "sum(sys_go_allocbytes{cluster=~\"$cluster\",pod=~\"$node\"})",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "CGo Allocated",
           "refId": "C"
         },
         {
-          "expr": "sum(sys_cgo_totalbytes{cluster=\"$cluster\",pod=~\"$node\"})",
+          "expr": "sum(sys_cgo_totalbytes{cluster=~\"$cluster\",pod=~\"$node\"})",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "CGo Total",
@@ -318,7 +319,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(sys_goroutines{cluster=\"$cluster\",pod=~\"$node\"})",
+          "expr": "sum(sys_goroutines{cluster=~\"$cluster\",pod=~\"$node\"})",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Goroutine Count",
@@ -492,7 +493,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(rate(sys_gc_count{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sys_gc_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "GC Runs",
@@ -581,7 +582,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(rate(sys_gc_pause_ns{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sys_gc_pause_ns{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "GC Pause Time",
@@ -668,7 +669,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(sys_cpu_user_ns{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(sys_cpu_user_ns{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "instant": false,
           "interval": "",
           "intervalFactor": 2,
@@ -677,7 +678,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(sys_cpu_sys_ns{cluster=\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(sys_cpu_sys_ns{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "instant": false,
           "interval": "",
           "intervalFactor": 2,
@@ -840,7 +841,7 @@
           "type": "prometheus",
           "uid": "${DS_PROMETHEUS}"
         },
-        "definition": "label_values(sys_uptime{cluster=\"$cluster\"},pod)",
+        "definition": "label_values(sys_uptime{cluster=~\"$cluster\"},pod)",
         "hide": 0,
         "includeAll": true,
         "label": "Node",
@@ -848,7 +849,7 @@
         "name": "node",
         "options": [],
         "query": {
-          "query": "label_values(sys_uptime{cluster=\"$cluster\"},pod)",
+          "query": "label_values(sys_uptime{cluster=~\"$cluster\"},pod)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,

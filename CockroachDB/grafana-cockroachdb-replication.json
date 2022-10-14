@@ -35,6 +35,7 @@
       "type": "dashboards"
     }
   ],
+  "liveNow": false,
   "panels": [
     {
       "fieldConfig": {
@@ -110,7 +111,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(sum(ranges{cluster=\"$cluster\",pod=~\"$node\"})) by (pod)",
+          "expr": "sum(sum(ranges{cluster=~\"$cluster\",pod=~\"$node\"})) by (pod)",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -118,28 +119,28 @@
           "refId": "A"
         },
         {
-          "expr": "sum(sum(replicas_leaders{cluster=\"$cluster\",pod=~\"$node\"}) by (pod))",
+          "expr": "sum(sum(replicas_leaders{cluster=~\"$cluster\",pod=~\"$node\"}) by (pod))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Leaders",
           "refId": "B"
         },
         {
-          "expr": "sum(sum(replicas_leaseholders{cluster=\"$cluster\",pod=~\"$node\"}) by (pod))",
+          "expr": "sum(sum(replicas_leaseholders{cluster=~\"$cluster\",pod=~\"$node\"}) by (pod))",
           "interval": "",
           "legendFormat": "Lease Holders",
           "refId": "G"
         },
         {
           "exemplar": true,
-          "expr": "sum(sum(replicas_leaders_not_leaseholders{cluster=\"$cluster\",pod=~\"$node\"}) by (pod))",
+          "expr": "sum(sum(replicas_leaders_not_leaseholders{cluster=~\"$cluster\",pod=~\"$node\"}) by (pod))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Leaders w/o Lease",
           "refId": "C"
         },
         {
-          "expr": "sum(sum(ranges_unavailable{cluster=\"$cluster\",pod=~\"$node\"}) by (pod))",
+          "expr": "sum(sum(ranges_unavailable{cluster=~\"$cluster\",pod=~\"$node\"}) by (pod))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Unavailable",
@@ -147,14 +148,14 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(sum(ranges_underreplicated{cluster=\"$cluster\",pod=~\"$node\"}) by (pod))",
+          "expr": "sum(sum(ranges_underreplicated{cluster=~\"$cluster\",pod=~\"$node\"}) by (pod))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Under-replicated",
           "refId": "E"
         },
         {
-          "expr": "sum(sum(ranges_overreplicated{cluster=\"$cluster\",pod=~\"$node\"}) by (pod))",
+          "expr": "sum(sum(ranges_overreplicated{cluster=~\"$cluster\",pod=~\"$node\"}) by (pod))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Over-replicated",
@@ -243,7 +244,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(sum(rate(range_splits{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
+          "expr": "sum(sum(rate(range_splits{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Splits",
@@ -255,7 +256,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(sum(rate(range_merges{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
+          "expr": "sum(sum(rate(range_merges{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Merges",
@@ -267,7 +268,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(sum(rate(range_adds{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
+          "expr": "sum(sum(rate(range_adds{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Adds",
@@ -279,7 +280,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(sum(rate(range_removes{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
+          "expr": "sum(sum(rate(range_removes{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Removes",
@@ -291,7 +292,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(sum(rate(leases_transfers_success{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
+          "expr": "sum(sum(rate(leases_transfers_success{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Lease Transfers",
@@ -303,7 +304,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(sum(rate(rebalancing_lease_transfers{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
+          "expr": "sum(sum(rate(rebalancing_lease_transfers{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Load-based Lease Transfers",
@@ -315,7 +316,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(sum(rate(rebalancing_range_rebalances{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
+          "expr": "sum(sum(rate(rebalancing_range_rebalances{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Load-based Range Rebalances",
@@ -400,7 +401,7 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
-          "expr": "sum(replicas{cluster=\"$cluster\",pod=~\"$node\"}) by (pod)",
+          "expr": "sum(replicas{cluster=~\"$cluster\",pod=~\"$node\"}) by (pod)",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{pod}}",
@@ -485,7 +486,7 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
-          "expr": "sum(replicas_leaseholders{cluster=\"$cluster\",pod=~\"$node\"}) by (pod)",
+          "expr": "sum(replicas_leaseholders{cluster=~\"$cluster\",pod=~\"$node\"}) by (pod)",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{pod}}",
@@ -571,7 +572,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "rebalancing_queriespersecond{cluster=\"$cluster\",pod=~\"$node\"}",
+          "expr": "rebalancing_queriespersecond{cluster=~\"$cluster\",pod=~\"$node\"}",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -656,7 +657,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "totalbytes{cluster=\"$cluster\",pod=~\"$node\"}",
+          "expr": "totalbytes{cluster=~\"$cluster\",pod=~\"$node\"}",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -740,14 +741,14 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
-          "expr": "sum(sum(replicas{cluster=\"$cluster\",pod=~\"$node\"}) by (pod))  ",
+          "expr": "sum(sum(replicas{cluster=~\"$cluster\",pod=~\"$node\"}) by (pod))  ",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Replicas",
           "refId": "A"
         },
         {
-          "expr": "sum(sum(replicas_quiescent{cluster=\"$cluster\",pod=~\"$node\"}) by (pod))",
+          "expr": "sum(sum(replicas_quiescent{cluster=~\"$cluster\",pod=~\"$node\"}) by (pod))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Quiescent",
@@ -836,7 +837,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(rate(range_snapshots_generated{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(range_snapshots_generated{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Generated",
@@ -848,7 +849,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(rate(range_snapshots_applied_voter{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(range_snapshots_applied_voter{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Applied (Voters)",
@@ -860,7 +861,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(rate(range_snapshots_applied_initial{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(range_snapshots_applied_initial{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Applied (Initial Upreplication)",
@@ -872,7 +873,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(rate(range_snapshots_applied_initial{cluster=\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(range_snapshots_applied_initial{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -961,7 +962,7 @@
           "type": "prometheus",
           "uid": "${DS_PROMETHEUS}"
         },
-        "definition": "label_values(sys_uptime{cluster=\"$cluster\"},pod)",
+        "definition": "label_values(sys_uptime{cluster=~\"$cluster\"},pod)",
         "hide": 0,
         "includeAll": true,
         "label": "Node",
@@ -969,7 +970,7 @@
         "name": "node",
         "options": [],
         "query": {
-          "query": "label_values(sys_uptime{cluster=\"$cluster\"},pod)",
+          "query": "label_values(sys_uptime{cluster=~\"$cluster\"},pod)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -1054,7 +1055,7 @@
   "timepicker": {},
   "timezone": "utc",
   "title": "CockroachDB: Replication",
-  "uid": "cockroachdb-replications",
+  "uid": "cockroachdb-replication",
   "version": 1,
   "weekStart": ""
 }
