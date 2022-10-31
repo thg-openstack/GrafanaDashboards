@@ -639,7 +639,7 @@
           "exemplar": true,
           "expr": "histogram_quantile(0.99, rate(txn_durations_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[1m]))",
           "interval": "",
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{pod}}",
           "refId": "B"
         }
       ],
@@ -724,7 +724,7 @@
           "exemplar": true,
           "expr": "histogram_quantile(0.90, rate(txn_durations_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[1m]))",
           "interval": "",
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{pod}}",
           "refId": "A"
         }
       ],
@@ -810,7 +810,7 @@
           "expr": "histogram_quantile(0.99,rate(liveness_heartbeatlatency_bucket{ cluster=~\"$cluster\",pod=~\"$node\"}[1m]))",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{pod}}",
           "refId": "A"
         }
       ],
@@ -896,7 +896,7 @@
           "expr": "histogram_quantile(0.90,rate(liveness_heartbeatlatency_bucket{ cluster=~\"$cluster\",pod=~\"$node\"}[1m]))",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "{{instance}}",
+          "legendFormat": "{{pod}}",
           "refId": "A"
         }
       ],
