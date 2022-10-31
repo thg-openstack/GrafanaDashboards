@@ -38,64 +38,30 @@
   "liveNow": false,
   "panels": [
     {
+      "description": "",
       "fieldConfig": {
         "defaults": {
-          "color": {
-            "mode": "continuous-GrYlRd"
-          },
-          "links": [],
           "mappings": [],
           "thresholds": {
-            "mode": "percentage",
+            "mode": "absolute",
             "steps": [
               {
-                "color": "super-light-green",
+                "color": "green",
                 "value": null
               },
               {
-                "color": "dark-red",
-                "value": 60
-              },
-              {
-                "color": "semi-dark-red",
-                "value": 65
-              },
-              {
-                "color": "dark-orange",
-                "value": 70
-              },
-              {
-                "color": "semi-dark-orange",
-                "value": 75
-              },
-              {
-                "color": "orange",
+                "color": "red",
                 "value": 80
-              },
-              {
-                "color": "dark-yellow",
-                "value": 85
-              },
-              {
-                "color": "semi-dark-yellow",
-                "value": 90
-              },
-              {
-                "color": "yellow",
-                "value": 95
-              },
-              {
-                "color": "green",
-                "value": 100
               }
             ]
-          }
+          },
+          "unit": "short"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 7,
-        "w": 16,
+        "w": 5,
         "x": 0,
         "y": 0
       },
@@ -105,14 +71,13 @@
       "options": {
         "colorMode": "background",
         "graphMode": "none",
-        "justifyMode": "center",
+        "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["mean"],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
-        "text": {},
         "textMode": "auto"
       },
       "pluginVersion": "8.4.11",
@@ -125,7 +90,7 @@
           "exemplar": true,
           "expr": "count(up{cluster=~\"$cluster\",pod=~\"$node\"})",
           "format": "time_series",
-          "hide": false,
+          "hide": true,
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "All nodes",
@@ -141,7 +106,7 @@
           "exemplar": true,
           "expr": "count(up{cluster=~\"$cluster\",pod=~\"$node\"} == 1)",
           "format": "time_series",
-          "hide": false,
+          "hide": true,
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Running nodes (prometheus)",
@@ -165,8 +130,93 @@
           "step": 120
         }
       ],
-      "title": "Nodes: $cluster",
+      "title": "Live Nodes: $cluster",
       "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 11,
+        "x": 5,
+        "y": 0
+      },
+      "id": 55,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "min(liveness_livenodes{cluster=~\"$cluster\",pod=~\"$node\"})",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Live Nodes Over Time: $cluster",
+      "type": "timeseries"
     },
     {
       "fieldConfig": {
