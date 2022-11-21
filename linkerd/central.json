@@ -21,14 +21,26 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 56,
-  "iteration": 1668794692844,
-  "links": [],
+  "iteration": 1669027006993,
+  "links": [
+    {
+      "asDropdown": true,
+      "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": ["linkerd"],
+      "targetBlank": false,
+      "title": "Linkerd Links",
+      "tooltip": "",
+      "type": "dashboards",
+      "url": ""
+    }
+  ],
   "liveNow": false,
   "panels": [
     {
       "gridPos": {
-        "h": 3,
+        "h": 2,
         "w": 24,
         "x": 0,
         "y": 0
@@ -92,7 +104,7 @@
         "h": 6,
         "w": 3,
         "x": 0,
-        "y": 3
+        "y": 2
       },
       "id": 28,
       "links": [],
@@ -163,7 +175,7 @@
         "h": 6,
         "w": 15,
         "x": 3,
-        "y": 3
+        "y": 2
       },
       "id": 29,
       "links": [],
@@ -235,7 +247,7 @@
         "h": 6,
         "w": 3,
         "x": 18,
-        "y": 3
+        "y": 2
       },
       "id": 30,
       "links": [],
@@ -307,7 +319,7 @@
         "h": 6,
         "w": 3,
         "x": 21,
-        "y": 3
+        "y": 2
       },
       "id": 86,
       "links": [],
@@ -398,7 +410,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 9
+        "y": 8
       },
       "id": 21,
       "links": [],
@@ -487,7 +499,7 @@
         "h": 7,
         "w": 8,
         "x": 8,
-        "y": 9
+        "y": 8
       },
       "id": 22,
       "links": [],
@@ -582,7 +594,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 9
+        "y": 8
       },
       "id": 23,
       "links": [],
@@ -612,10 +624,10 @@
     },
     {
       "gridPos": {
-        "h": 2,
+        "h": 1,
         "w": 24,
         "x": 0,
-        "y": 16
+        "y": 15
       },
       "height": "1px",
       "id": 20,
@@ -635,7 +647,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 18
+        "y": 16
       },
       "id": 40,
       "panels": [],
@@ -704,7 +716,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 19
+        "y": 17
       },
       "id": 6,
       "links": [],
@@ -793,7 +805,7 @@
         "h": 7,
         "w": 8,
         "x": 8,
-        "y": 19
+        "y": 17
       },
       "id": 8,
       "links": [],
@@ -888,7 +900,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 19
+        "y": 17
       },
       "id": 9,
       "links": [],
@@ -1008,6 +1020,6 @@
   "timezone": "",
   "title": "Linkerd Central",
   "uid": "linkerd-central",
-  "version": 2,
+  "version": 1,
   "weekStart": ""
 }

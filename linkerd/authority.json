@@ -21,9 +21,21 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 42,
-  "iteration": 1668788088037,
-  "links": [],
+  "iteration": 1669026730010,
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": ["linkerd"],
+      "targetBlank": false,
+      "title": "Linkerd Links",
+      "tooltip": "",
+      "type": "dashboards",
+      "url": ""
+    }
+  ],
   "liveNow": false,
   "panels": [
     {
@@ -270,7 +282,7 @@
     },
     {
       "gridPos": {
-        "h": 2,
+        "h": 1,
         "w": 24,
         "x": 0,
         "y": 8
@@ -278,10 +290,11 @@
       "id": 10,
       "links": [],
       "options": {
-        "content": "<div class=\"text-center dashboard-header\">\n  <span>TOP-LINE TRAFFIC</span>\n</div>",
+        "content": "",
         "mode": "html"
       },
       "pluginVersion": "8.4.11",
+      "title": "TOP-LINE TRAFFIC",
       "transparent": true,
       "type": "text"
     },
@@ -346,7 +359,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 10
+        "y": 9
       },
       "id": 12,
       "links": [],
@@ -435,7 +448,7 @@
         "h": 7,
         "w": 8,
         "x": 8,
-        "y": 10
+        "y": 9
       },
       "id": 14,
       "links": [],
@@ -530,7 +543,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 10
+        "y": 9
       },
       "id": 16,
       "links": [],
@@ -575,18 +588,19 @@
     },
     {
       "gridPos": {
-        "h": 2,
+        "h": 1,
         "w": 24,
         "x": 0,
-        "y": 17
+        "y": 16
       },
       "id": 18,
       "links": [],
       "options": {
-        "content": "<div class=\"text-center dashboard-header\">\n  <span>INBOUND TRAFFIC BY DEPLOYMENT</span>\n</div>",
+        "content": "",
         "mode": "html"
       },
       "pluginVersion": "8.4.11",
+      "title": "INBOUND TRAFFIC BY DEPLOYMENT",
       "transparent": true,
       "type": "text"
     },
@@ -651,7 +665,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 19
+        "y": 17
       },
       "id": 20,
       "links": [],
@@ -740,7 +754,7 @@
         "h": 7,
         "w": 8,
         "x": 8,
-        "y": 19
+        "y": 17
       },
       "id": 22,
       "links": [],
@@ -835,7 +849,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 19
+        "y": 17
       },
       "id": 24,
       "links": [],
@@ -865,18 +879,19 @@
     },
     {
       "gridPos": {
-        "h": 2,
+        "h": 1,
         "w": 24,
         "x": 0,
-        "y": 26
+        "y": 24
       },
       "id": 26,
       "links": [],
       "options": {
-        "content": "<div class=\"text-center dashboard-header\">\n  <span>INBOUND TRAFFIC BY POD</span>\n</div>",
+        "content": "",
         "mode": "html"
       },
       "pluginVersion": "8.4.11",
+      "title": "INBOUND TRAFFIC BY POD",
       "transparent": true,
       "type": "text"
     },
@@ -937,7 +952,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 28
+        "y": 25
       },
       "id": 28,
       "links": [],
@@ -1032,7 +1047,7 @@
         "h": 7,
         "w": 8,
         "x": 8,
-        "y": 28
+        "y": 25
       },
       "id": 30,
       "links": [],
@@ -1127,7 +1142,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 28
+        "y": 25
       },
       "id": 32,
       "links": [],
@@ -1166,8 +1181,8 @@
         "allValue": ".*",
         "current": {
           "selected": false,
-          "text": "linkerd",
-          "value": "linkerd"
+          "text": "database",
+          "value": "database"
         },
         "datasource": {
           "type": "prometheus",
@@ -1196,9 +1211,10 @@
       {
         "allValue": ".*",
         "current": {
+          "isNone": true,
           "selected": false,
-          "text": "linkerd-dst-headless.linkerd.svc.cluster.local:8086",
-          "value": "linkerd-dst-headless.linkerd.svc.cluster.local:8086"
+          "text": "None",
+          "value": ""
         },
         "datasource": {
           "type": "prometheus",
