@@ -21,8 +21,8 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 36,
-  "iteration": 1665482282285,
+  "id": 7,
+  "iteration": 1669131009132,
   "links": [
     {
       "asDropdown": true,
@@ -218,8 +218,12 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "histogram_quantile(0.99, rate(sql_service_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum by (cluster, pod) (histogram_quantile(0.99, rate(sql_service_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -230,6 +234,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
       "description": "The number of range replicas stored on this node. Ranges are subsets of your data, which are replicated to ensure survivability.",
@@ -306,8 +311,12 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "replicas{cluster=~\"$cluster\",pod=~\"$node\"}",
+          "expr": "sum by (cluster, pod) (replicas{cluster=~\"$cluster\",pod=~\"$node\"})",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{pod}}",
@@ -449,8 +458,8 @@
       {
         "current": {
           "selected": false,
-          "text": "dre-cockroachdb",
-          "value": "dre-cockroachdb"
+          "text": "dre-test-cockroachdb",
+          "value": "dre-test-cockroachdb"
         },
         "datasource": {
           "type": "prometheus",
@@ -513,20 +522,20 @@
         "auto_min": "10s",
         "current": {
           "selected": false,
-          "text": "30s",
-          "value": "30s"
+          "text": "1m",
+          "value": "1m"
         },
         "hide": 0,
         "label": "Rate Interval",
         "name": "rate_interval",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "30s",
             "value": "30s"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "1m",
             "value": "1m"
           },

@@ -21,8 +21,8 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 30,
-  "iteration": 1665480850298,
+  "id": 6,
+  "iteration": 1669130792417,
   "links": [
     {
       "asDropdown": true,
@@ -117,10 +117,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sys_cpu_combined_percent_normalized{cluster=~\"$cluster\",pod=~\"$node\"}",
+          "expr": "sum by (cluster, pod) (sys_cpu_combined_percent_normalized{cluster=~\"$cluster\",pod=~\"$node\"})",
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{pod}}",
@@ -132,6 +132,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
       "description": "Memory in use across all nodes",
@@ -208,18 +209,16 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "sys_rss{cluster=~\"$cluster\",pod=~\"$node\"}",
+          "expr": "sum by (cluster, pod) (sys_rss{cluster=~\"$cluster\",pod=~\"$node\"})",
           "hide": false,
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
-        },
-        {
-          "expr": "",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "C"
         }
       ],
       "title": "Memory Usage",
@@ -298,8 +297,12 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "rate(sys_host_disk_read_bytes{pod=~\"$node\",cluster=~\"$cluster\"}[$__rate_interval])",
+          "expr": "sum by (cluster, pod) (rate(sys_host_disk_read_bytes{pod=~\"$node\",cluster=~\"$cluster\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -382,7 +385,12 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
-          "expr": "rate(sys_host_disk_write_bytes{pod=~\"$node\",cluster=~\"$cluster\"}[$__rate_interval])",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "sum by (cluster, pod) (rate(sys_host_disk_write_bytes{pod=~\"$node\",cluster=~\"$cluster\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -465,8 +473,12 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "rate(sys_host_disk_read_count{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])",
+          "expr": "sum by (cluster, pod) (rate(sys_host_disk_read_count{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{pod}}",
@@ -550,8 +562,12 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "rate(sys_host_disk_write_count{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])",
+          "expr": "sum by (cluster, pod) (rate(sys_host_disk_write_count{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -633,8 +649,12 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "rate(sys_host_disk_iopsinprogress{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])",
+          "expr": "sum by (cluster, pod) (rate(sys_host_disk_iopsinprogress{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -718,8 +738,12 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "capacity_available{cluster=~\"$cluster\",pod=~\"$node\"}",
+          "expr": "sum by (cluster, pod) (capacity_available{cluster=~\"$cluster\",pod=~\"$node\"})",
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{pod}}",
@@ -803,7 +827,12 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
-          "expr": "rate(sys_host_net_recv_bytes{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "sum by (cluster, pod) (rate(sys_host_net_recv_bytes{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -885,8 +914,12 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "rate(sys_host_net_send_bytes{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])",
+          "expr": "sum by (cluster, pod) (rate(sys_host_net_send_bytes{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -923,8 +956,8 @@
       {
         "current": {
           "selected": false,
-          "text": "dre-cockroachdb",
-          "value": "dre-cockroachdb"
+          "text": "dre-test-cockroachdb",
+          "value": "dre-test-cockroachdb"
         },
         "datasource": {
           "type": "prometheus",
@@ -987,20 +1020,20 @@
         "auto_min": "10s",
         "current": {
           "selected": false,
-          "text": "30s",
-          "value": "30s"
+          "text": "1m",
+          "value": "1m"
         },
         "hide": 0,
         "label": "Rate Interval",
         "name": "rate_interval",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "30s",
             "value": "30s"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "1m",
             "value": "1m"
           },

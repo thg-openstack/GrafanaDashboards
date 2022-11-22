@@ -85,7 +85,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "count(up{cluster=~\"$cluster\",pod=~\"$node\"})",
@@ -101,7 +101,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "count(up{cluster=~\"$cluster\",pod=~\"$node\"} == 1)",
@@ -117,7 +117,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "min(liveness_livenodes{cluster=~\"$cluster\",pod=~\"$node\"})",
@@ -202,7 +202,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "min(liveness_livenodes{cluster=~\"$cluster\",pod=~\"$node\"})",
@@ -279,7 +279,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum by (pod, cluster) (sys_uptime{cluster=~\"$cluster\",pod=~\"$node\"})",
@@ -382,7 +382,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum by (pod,cluster) (clock_offset_meannanos{cluster=~\"$cluster\", pod=~\"$node\"})",
@@ -463,7 +463,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum by (pod, cluster) (clock_offset_meannanos{cluster=~\"$cluster\", pod=~\"$node\"})",
@@ -565,7 +565,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum by (cluster, pod) (histogram_quantile(0.99,rate(sql_txn_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
@@ -658,7 +658,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum by (cluster, pod) (histogram_quantile(0.99,rate(exec_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
@@ -751,7 +751,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum by (cluster, pod) (histogram_quantile(0.95,rate(sql_txn_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
@@ -844,7 +844,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum by (cluster, pod) (histogram_quantile(0.95,rate(exec_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
@@ -937,7 +937,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum by (cluster, pod) (histogram_quantile(0.90,rate(sql_txn_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
@@ -1030,7 +1030,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum by (cluster, pod) (histogram_quantile(0.90,rate(exec_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
@@ -1123,7 +1123,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum by (cluster, pod) (histogram_quantile(0.50,rate(sql_txn_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
@@ -1216,7 +1216,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum by (cluster, pod) (histogram_quantile(0.50,rate(exec_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
@@ -1309,7 +1309,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum by (pod, cluster) (replicas_leaseholders{cluster=~\"$cluster\",pod=~\"$node\"})",
@@ -1402,7 +1402,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum by (pod, cluster) (replicas{cluster=~\"$cluster\",pod=~\"$node\"})",
@@ -1484,7 +1484,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum by (pod, cluster) (replicas_leaseholders{cluster=~\"$cluster\",pod=~\"$node\"})",
@@ -1586,7 +1586,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
@@ -1601,7 +1601,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
@@ -1612,7 +1612,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
@@ -1623,7 +1623,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(sql_delete_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
@@ -1711,7 +1711,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum by (pod,cluster) (sys_rss{cluster=~\"$cluster\",pod=~\"$node\"})",
@@ -1798,7 +1798,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum by (pod,cluster) (sys_cpu_combined_percent_normalized{job='cockroachdb',cluster=~\"$cluster\",pod=~\"$node\"})",
@@ -1943,7 +1943,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum by (pod, cluster) (sys_cpu_combined_percent_normalized{cluster=~\"$cluster\",pod=~\"$node\"})",
@@ -2101,7 +2101,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum by (pod, cluster) (sys_rss{cluster=~\"$cluster\",pod=~\"$node\"})",
@@ -2259,7 +2259,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
@@ -2274,7 +2274,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
@@ -2286,7 +2286,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(sql_delete_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
@@ -2298,7 +2298,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
@@ -2310,7 +2310,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])+rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])+rate(sql_delete_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])+rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
@@ -2465,7 +2465,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
@@ -2480,7 +2480,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
@@ -2492,7 +2492,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
@@ -2504,7 +2504,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])+rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])+rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",

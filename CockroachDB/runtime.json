@@ -21,8 +21,8 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 33,
-  "iteration": 1665481788977,
+  "id": 2,
+  "iteration": 1669131475072,
   "links": [
     {
       "asDropdown": true,
@@ -81,7 +81,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -169,7 +170,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -285,7 +287,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -370,7 +373,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -403,8 +407,12 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "sys_runnable_goroutines_per_cpu{cluster=~\"$cluster\",pod=~\"$node\"}",
+          "expr": "sum by (cluster, pod) (sys_runnable_goroutines_per_cpu{cluster=~\"$cluster\",pod=~\"$node\"})",
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{pod}}",
@@ -455,7 +463,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -490,7 +499,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(sys_gc_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
@@ -544,7 +553,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -579,7 +589,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(sys_gc_pause_ns{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
@@ -635,7 +645,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -691,6 +702,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
       "description": "Mean clock offset of each node against the rest of the cluster.",
@@ -732,7 +744,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -765,8 +778,12 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "clock_offset_meannanos{pod=~\"$node\",cluster=~\"$cluster\"}",
+          "expr": "sum by (cluster, pod) (clock_offset_meannanos{pod=~\"$node\",cluster=~\"$cluster\"})",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{pod}}",
@@ -803,8 +820,8 @@
       {
         "current": {
           "selected": false,
-          "text": "dre-cockroachdb",
-          "value": "dre-cockroachdb"
+          "text": "dre-test-cockroachdb",
+          "value": "dre-test-cockroachdb"
         },
         "datasource": {
           "type": "prometheus",
@@ -867,20 +884,20 @@
         "auto_min": "10s",
         "current": {
           "selected": false,
-          "text": "30s",
-          "value": "30s"
+          "text": "1m",
+          "value": "1m"
         },
         "hide": 0,
         "label": "Rate Interval",
         "name": "rate_interval",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "30s",
             "value": "30s"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "1m",
             "value": "1m"
           },
@@ -928,7 +945,7 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {},

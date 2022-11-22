@@ -21,8 +21,8 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 34,
-  "iteration": 1665481848883,
+  "id": 8,
+  "iteration": 1669131344363,
   "links": [
     {
       "asDropdown": true,
@@ -241,7 +241,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(sum(rate(range_splits{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
@@ -253,7 +253,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(sum(rate(range_merges{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
@@ -265,7 +265,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(sum(rate(range_adds{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
@@ -277,7 +277,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(sum(rate(range_removes{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
@@ -289,7 +289,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(sum(rate(leases_transfers_success{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
@@ -301,7 +301,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(sum(rate(rebalancing_lease_transfers{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
@@ -313,7 +313,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(sum(rate(rebalancing_range_rebalances{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
@@ -401,6 +401,11 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
           "expr": "sum(replicas{cluster=~\"$cluster\",pod=~\"$node\"}) by (pod)",
           "interval": "",
           "intervalFactor": 2,
@@ -571,8 +576,12 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "rebalancing_queriespersecond{cluster=~\"$cluster\",pod=~\"$node\"}",
+          "expr": "sum by (cluster,pod) (rebalancing_queriespersecond{cluster=~\"$cluster\",pod=~\"$node\"})",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -656,8 +665,12 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "totalbytes{cluster=~\"$cluster\",pod=~\"$node\"}",
+          "expr": "sum by (cluster,pod) (totalbytes{cluster=~\"$cluster\",pod=~\"$node\"})",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -834,7 +847,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(range_snapshots_generated{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
@@ -846,7 +859,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(range_snapshots_applied_voter{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
@@ -858,7 +871,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(range_snapshots_applied_initial{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
@@ -870,7 +883,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(range_snapshots_applied_initial{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
@@ -883,7 +896,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(replicas_reserved{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
@@ -924,8 +937,8 @@
       {
         "current": {
           "selected": false,
-          "text": "dre-cockroachdb",
-          "value": "dre-cockroachdb"
+          "text": "dre-test-cockroachdb",
+          "value": "dre-test-cockroachdb"
         },
         "datasource": {
           "type": "prometheus",
@@ -988,20 +1001,20 @@
         "auto_min": "10s",
         "current": {
           "selected": false,
-          "text": "30s",
-          "value": "30s"
+          "text": "1m",
+          "value": "1m"
         },
         "hide": 0,
         "label": "Rate Interval",
         "name": "rate_interval",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "30s",
             "value": "30s"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "1m",
             "value": "1m"
           },

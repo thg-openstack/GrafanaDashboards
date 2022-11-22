@@ -21,8 +21,8 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 29,
-  "iteration": 1665480745663,
+  "id": 1,
+  "iteration": 1669130555836,
   "links": [
     {
       "asDropdown": true,
@@ -560,6 +560,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
       "description": "The 99th percentile of transaction durations over a 1 minute period.",
@@ -636,8 +637,12 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "histogram_quantile(0.99, rate(txn_durations_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[1m]))",
+          "expr": "sum by (cluster, pod) (histogram_quantile(0.99, rate(txn_durations_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[1m])))",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "B"
@@ -721,8 +726,12 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "histogram_quantile(0.90, rate(txn_durations_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[1m]))",
+          "expr": "sum by (cluster, pod) (histogram_quantile(0.90, rate(txn_durations_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[1m])))",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -806,8 +815,12 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "histogram_quantile(0.99,rate(liveness_heartbeatlatency_bucket{ cluster=~\"$cluster\",pod=~\"$node\"}[1m]))",
+          "expr": "sum by (cluster, pod) (histogram_quantile(0.99,rate(liveness_heartbeatlatency_bucket{ cluster=~\"$cluster\",pod=~\"$node\"}[1m])))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{pod}}",
@@ -892,8 +905,12 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
-          "expr": "histogram_quantile(0.90,rate(liveness_heartbeatlatency_bucket{ cluster=~\"$cluster\",pod=~\"$node\"}[1m]))",
+          "expr": "sum by (cluster, pod) (histogram_quantile(0.90,rate(liveness_heartbeatlatency_bucket{ cluster=~\"$cluster\",pod=~\"$node\"}[1m])))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{pod}}",
@@ -930,8 +947,8 @@
       {
         "current": {
           "selected": false,
-          "text": "dre-cockroachdb",
-          "value": "dre-cockroachdb"
+          "text": "dre-test-cockroachdb",
+          "value": "dre-test-cockroachdb"
         },
         "datasource": {
           "type": "prometheus",
@@ -994,20 +1011,20 @@
         "auto_min": "10s",
         "current": {
           "selected": false,
-          "text": "30s",
-          "value": "30s"
+          "text": "1m",
+          "value": "1m"
         },
         "hide": 0,
         "label": "Rate Interval",
         "name": "rate_interval",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "30s",
             "value": "30s"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "1m",
             "value": "1m"
           },

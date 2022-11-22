@@ -117,7 +117,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(changefeed_max_behind_nanos{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
@@ -206,7 +206,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(changefeed_emitted_bytes{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
@@ -295,7 +295,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(jobs_changefeed_resume_retry_error{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
@@ -383,7 +383,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(changefeed_emitted_messages{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
@@ -394,7 +394,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(changefeed_flushes{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
@@ -482,7 +482,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(changefeed_emitted_messages{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
@@ -493,7 +493,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
           "expr": "sum(rate(changefeed_flush_nanos{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",

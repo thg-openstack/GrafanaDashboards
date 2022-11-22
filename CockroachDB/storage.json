@@ -21,8 +21,8 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 31,
-  "iteration": 1665481254802,
+  "id": 16,
+  "iteration": 1669131600134,
   "links": [
     {
       "asDropdown": true,
@@ -230,6 +230,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
       "description": "The 99th %ile latency for commits to the Raft Log. This measures essentially an fdatasync to the storage engine's write-ahead log.",
@@ -306,7 +307,12 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
-          "expr": "histogram_quantile(0.99,rate(raft_process_logcommit_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "sum by (cluster, pod) (histogram_quantile(0.99,rate(raft_process_logcommit_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{pod}}",
@@ -318,6 +324,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
       "description": "The 50th %ile latency for commits to the Raft Log. This measures essentially an fdatasync to the storage engine's write-ahead log.",
@@ -394,7 +401,12 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
-          "expr": "histogram_quantile(0.50,rate(raft_process_logcommit_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "sum by (cluster, pod) (histogram_quantile(0.50,rate(raft_process_logcommit_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{pod}}",
@@ -406,6 +418,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
       },
       "description": "The 99th %ile latency for commits of Raft commands. This measures applying a batch to the storage engine (including writes to the write-ahead log), but no fsync.",
@@ -482,7 +495,12 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
-          "expr": "histogram_quantile(0.99,rate(raft_process_commandcommit_latency_bucket{ pod=~\"$node\", cluster=~\"$cluster\"}[$__rate_interval]))",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "sum by (cluster, pod) (histogram_quantile(0.99,rate(raft_process_commandcommit_latency_bucket{ pod=~\"$node\", cluster=~\"$cluster\"}[$__rate_interval])))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{pod}}",
@@ -567,7 +585,12 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
-          "expr": "histogram_quantile(0.50,rate(raft_process_commandcommit_latency_bucket{ pod=~\"$node\", cluster=~\"$cluster\"}[$__rate_interval]))",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "sum by (cluster, pod) (histogram_quantile(0.50,rate(raft_process_commandcommit_latency_bucket{ pod=~\"$node\", cluster=~\"$cluster\"}[$__rate_interval])))",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"
@@ -1129,8 +1152,8 @@
       {
         "current": {
           "selected": false,
-          "text": "dre-cockroachdb",
-          "value": "dre-cockroachdb"
+          "text": "dre-test-cockroachdb",
+          "value": "dre-test-cockroachdb"
         },
         "datasource": {
           "type": "prometheus",
@@ -1193,20 +1216,20 @@
         "auto_min": "10s",
         "current": {
           "selected": false,
-          "text": "30s",
-          "value": "30s"
+          "text": "1m",
+          "value": "1m"
         },
         "hide": 0,
         "label": "Rate Interval",
         "name": "rate_interval",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "30s",
             "value": "30s"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "1m",
             "value": "1m"
           },

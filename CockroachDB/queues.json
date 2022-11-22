@@ -21,8 +21,8 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 35,
-  "iteration": 1665482082919,
+  "id": 15,
+  "iteration": 1669131214243,
   "links": [
     {
       "asDropdown": true,
@@ -72,7 +72,6 @@
             }
           },
           "mappings": [],
-          "max": 1,
           "min": 0,
           "thresholds": {
             "mode": "absolute",
@@ -112,6 +111,10 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
           "expr": "sum(rate(queue_gc_process_failure{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "hide": false,
@@ -120,6 +123,10 @@
           "refId": "H"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
           "expr": "sum(rate(queue_replicagc_process_failure{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
@@ -128,6 +135,10 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
           "expr": "sum(rate(queue_replicate_process_failure{ cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
@@ -136,6 +147,10 @@
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
           "expr": "sum(rate(queue_split_process_failure{ cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
@@ -144,6 +159,10 @@
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
           "expr": "sum(rate(queue_consistency_process_failure{ cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
@@ -152,6 +171,10 @@
           "refId": "D"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
           "expr": "sum(rate(queue_raftlog_process_failure{ cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
@@ -160,6 +183,10 @@
           "refId": "E"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
           "expr": "sum(rate(queue_raftsnapshot_process_failure{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
@@ -168,6 +195,10 @@
           "refId": "F"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
           "expr": "sum(rate(queue_tsmaintenance_process_failure{ cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
@@ -1228,8 +1259,8 @@
       {
         "current": {
           "selected": false,
-          "text": "dre-cockroachdb",
-          "value": "dre-cockroachdb"
+          "text": "dre-test-cockroachdb",
+          "value": "dre-test-cockroachdb"
         },
         "datasource": {
           "type": "prometheus",
@@ -1292,20 +1323,20 @@
         "auto_min": "10s",
         "current": {
           "selected": false,
-          "text": "30s",
-          "value": "30s"
+          "text": "1m",
+          "value": "1m"
         },
         "hide": 0,
         "label": "Rate Interval",
         "name": "rate_interval",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "30s",
             "value": "30s"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "1m",
             "value": "1m"
           },
