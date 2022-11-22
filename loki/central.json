@@ -903,7 +903,7 @@
     ]
   },
   "timezone": "",
-  "title": "Logging Dashboard via Lokib",
+  "title": "Logging Dashboard via Loki",
   "uid": "Loki-logging",
   "version": 2,
   "weekStart": ""
