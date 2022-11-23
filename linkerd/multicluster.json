@@ -21,7 +21,8 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "iteration": 1669026730010,
+  "id": 14,
+  "iteration": 1669202327996,
   "links": [
     {
       "asDropdown": false,
@@ -39,11 +40,24 @@
   "liveNow": false,
   "panels": [
     {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 83,
+      "panels": [],
+      "repeat": "cluster",
+      "type": "row"
+    },
+    {
       "gridPos": {
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 0
+        "y": 1
       },
       "id": 20,
       "links": [],
@@ -103,7 +117,7 @@
         "h": 7,
         "w": 4,
         "x": 0,
-        "y": 2
+        "y": 3
       },
       "id": 5,
       "links": [],
@@ -175,7 +189,7 @@
         "h": 7,
         "w": 10,
         "x": 4,
-        "y": 2
+        "y": 3
       },
       "id": 4,
       "links": [],
@@ -249,7 +263,7 @@
         "h": 7,
         "w": 10,
         "x": 14,
-        "y": 2
+        "y": 3
       },
       "id": 81,
       "links": [],
@@ -285,7 +299,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 9
+        "y": 10
       },
       "id": 17,
       "links": [],
@@ -359,7 +373,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 10
+        "y": 11
       },
       "id": 67,
       "links": [],
@@ -448,7 +462,7 @@
         "h": 7,
         "w": 8,
         "x": 8,
-        "y": 10
+        "y": 11
       },
       "id": 2,
       "links": [],
@@ -543,7 +557,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 10
+        "y": 11
       },
       "id": 68,
       "links": [],
@@ -591,7 +605,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 17
+        "y": 18
       },
       "id": 32,
       "links": [],
@@ -665,7 +679,7 @@
         "h": 7,
         "w": 8,
         "x": 0,
-        "y": 18
+        "y": 19
       },
       "id": 77,
       "links": [],
@@ -754,7 +768,7 @@
         "h": 7,
         "w": 8,
         "x": 8,
-        "y": 18
+        "y": 19
       },
       "id": 78,
       "links": [],
@@ -849,7 +863,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 18
+        "y": 19
       },
       "id": 79,
       "links": [],
@@ -878,7 +892,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "1m",
+  "refresh": "",
   "schemaVersion": 35,
   "style": "dark",
   "tags": ["linkerd"],
@@ -888,8 +902,8 @@
         "allValue": ".*",
         "current": {
           "selected": true,
-          "text": "ajfmb",
-          "value": "ajfmb"
+          "text": "All",
+          "value": "$__all"
         },
         "datasource": {
           "type": "prometheus",
@@ -897,7 +911,7 @@
         },
         "definition": "",
         "hide": 0,
-        "includeAll": false,
+        "includeAll": true,
         "label": "Cluster",
         "multi": false,
         "name": "cluster",
