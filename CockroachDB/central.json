@@ -92,44 +92,12 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "count(up{cluster=~\"$cluster\",pod=~\"$node\"})",
-          "format": "time_series",
-          "hide": true,
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "All nodes",
-          "metric": "",
-          "refId": "A",
-          "step": 120
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "exemplar": true,
-          "expr": "count(up{cluster=~\"$cluster\",pod=~\"$node\"} == 1)",
-          "format": "time_series",
-          "hide": true,
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "Running nodes (prometheus)",
-          "metric": "",
-          "refId": "B",
-          "step": 120
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          },
-          "exemplar": true,
           "expr": "min(liveness_livenodes{cluster=~\"$cluster\",pod=~\"$node\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "Live nodes (node liveness heartbeats)",
+          "legendFormat": "Live Nodes",
           "refId": "C",
           "step": 120
         }
@@ -198,7 +166,7 @@
       "options": {
         "legend": {
           "calcs": [],
-          "displayMode": "list",
+          "displayMode": "hidden",
           "placement": "bottom"
         },
         "tooltip": {
@@ -215,11 +183,11 @@
           "exemplar": true,
           "expr": "min(liveness_livenodes{cluster=~\"$cluster\",pod=~\"$node\"})",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "Live Nodes",
           "refId": "A"
         }
       ],
-      "title": "Live Nodes Over Time: $cluster",
+      "title": "Live Nodes: $cluster",
       "type": "timeseries"
     },
     {
