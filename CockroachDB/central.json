@@ -21,8 +21,8 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 5,
-  "iteration": 1669137923971,
+  "id": 8,
+  "iteration": 1670253395942,
   "links": [
     {
       "asDropdown": true,
@@ -92,12 +92,44 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
+          "expr": "count(up{cluster=~\"$cluster\",pod=~\"$node\"})",
+          "format": "time_series",
+          "hide": true,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "All nodes",
+          "metric": "",
+          "refId": "A",
+          "step": 120
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "count(up{cluster=~\"$cluster\",pod=~\"$node\"} == 1)",
+          "format": "time_series",
+          "hide": true,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "Running nodes (prometheus)",
+          "metric": "",
+          "refId": "B",
+          "step": 120
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "exemplar": true,
           "expr": "min(liveness_livenodes{cluster=~\"$cluster\",pod=~\"$node\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "Live Nodes",
+          "legendFormat": "Live nodes (node liveness heartbeats)",
           "refId": "C",
           "step": 120
         }
@@ -166,7 +198,7 @@
       "options": {
         "legend": {
           "calcs": [],
-          "displayMode": "hidden",
+          "displayMode": "list",
           "placement": "bottom"
         },
         "tooltip": {
@@ -183,7 +215,7 @@
           "exemplar": true,
           "expr": "min(liveness_livenodes{cluster=~\"$cluster\",pod=~\"$node\"})",
           "interval": "",
-          "legendFormat": "Live Nodes",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
@@ -2599,6 +2631,10 @@
           "text": "dre-test-cockroachdb",
           "value": "dre-test-cockroachdb"
         },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DS_PROMETHEUS}"
+        },
         "definition": "sys_uptime{}",
         "hide": 0,
         "includeAll": false,
@@ -2625,6 +2661,10 @@
           "selected": false,
           "text": "All",
           "value": "$__all"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DS_PROMETHEUS}"
         },
         "definition": "label_values(sys_uptime{cluster=~\"$cluster\"},pod)",
         "hide": 0,
