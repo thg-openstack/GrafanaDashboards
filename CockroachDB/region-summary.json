@@ -31,7 +31,7 @@
       "icon": "external link",
       "includeVars": true,
       "keepTime": true,
-      "tags": ["cockroach"],
+      "tags": ["CockroachDB"],
       "targetBlank": true,
       "title": "Dashboards",
       "type": "dashboards"
@@ -522,7 +522,7 @@
   "refresh": "1m",
   "schemaVersion": 37,
   "style": "dark",
-  "tags": ["Cockroach", "DataCentre", "DC"],
+  "tags": ["CockroachDB"],
   "templating": {
     "list": [
       {
