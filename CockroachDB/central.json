@@ -22,7 +22,7 @@
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
   "id": 8,
-  "iteration": 1670253395942,
+  "iteration": 1670262358308,
   "links": [
     {
       "asDropdown": true,
@@ -198,7 +198,7 @@
       "options": {
         "legend": {
           "calcs": [],
-          "displayMode": "list",
+          "displayMode": "hidden",
           "placement": "bottom"
         },
         "tooltip": {
@@ -215,7 +215,7 @@
           "exemplar": true,
           "expr": "min(liveness_livenodes{cluster=~\"$cluster\",pod=~\"$node\"})",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "Live Nodes",
           "refId": "A"
         }
       ],
@@ -2631,10 +2631,6 @@
           "text": "dre-test-cockroachdb",
           "value": "dre-test-cockroachdb"
         },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
-        },
         "definition": "sys_uptime{}",
         "hide": 0,
         "includeAll": false,
@@ -2661,10 +2657,6 @@
           "selected": false,
           "text": "All",
           "value": "$__all"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
         },
         "definition": "label_values(sys_uptime{cluster=~\"$cluster\"},pod)",
         "hide": 0,
