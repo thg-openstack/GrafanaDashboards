@@ -2631,6 +2631,10 @@
           "text": "dre-test-cockroachdb",
           "value": "dre-test-cockroachdb"
         },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DS_PROMETHEUS}"
+        },
         "definition": "sys_uptime{}",
         "hide": 0,
         "includeAll": false,
@@ -2657,6 +2661,10 @@
           "selected": false,
           "text": "All",
           "value": "$__all"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DS_PROMETHEUS}"
         },
         "definition": "label_values(sys_uptime{cluster=~\"$cluster\"},pod)",
         "hide": 0,
@@ -2748,9 +2756,7 @@
       },
       {
         "current": {
-          "selected": false,
-          "text": "Prometheus",
-          "value": "Prometheus"
+          "selected": false
         },
         "hide": 2,
         "includeAll": false,
