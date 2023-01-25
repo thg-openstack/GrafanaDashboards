@@ -786,7 +786,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "10s",
+  "refresh": "",
   "schemaVersion": 35,
   "style": "dark",
   "tags": ["Loki", "logging"],
@@ -886,7 +886,7 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {
@@ -903,8 +903,8 @@
     ]
   },
   "timezone": "",
-  "title": "Logging Dashboard via Loki",
-  "uid": "Loki-logging",
-  "version": 2,
+  "title": "Loki: Central",
+  "uid": "Loki-central",
+  "version": 1,
   "weekStart": ""
 }
