@@ -124,7 +124,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "min(liveness_livenodes{cluster=~\"$cluster\",pod=~\"$node\"})",
+          "expr": "max(liveness_livenodes{cluster=~\"$cluster\",pod=~\"$node\"})",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -213,7 +213,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "min(liveness_livenodes{cluster=~\"$cluster\",pod=~\"$node\"})",
+          "expr": "max(liveness_livenodes{cluster=~\"$cluster\",pod=~\"$node\"})",
           "interval": "",
           "legendFormat": "Live Nodes",
           "refId": "A"
