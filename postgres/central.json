@@ -21,8 +21,8 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 27,
-  "iteration": 1678203641143,
+  "id": 24,
+  "iteration": 1678270121514,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -48,7 +48,7 @@
       },
       "gridPos": {
         "h": 1,
-        "w": 3,
+        "w": 4,
         "x": 0,
         "y": 1
       },
@@ -79,38 +79,8 @@
       },
       "gridPos": {
         "h": 1,
-        "w": 2,
-        "x": 3,
-        "y": 1
-      },
-      "id": 192,
-      "options": {
-        "content": "",
-        "mode": "html"
-      },
-      "pluginVersion": "8.4.11",
-      "repeatDirection": "v",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "kube_pod_container_status_ready{container=\"postgres\",pod=~\"$pod\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "{{pod}}",
-          "refId": "A"
-        }
-      ],
-      "title": "Status",
-      "type": "text"
-    },
-    {
-      "datasource": {
-        "uid": "${DataSource}"
-      },
-      "gridPos": {
-        "h": 1,
-        "w": 4,
-        "x": 5,
+        "w": 5,
+        "x": 4,
         "y": 1
       },
       "id": 193,
@@ -290,7 +260,7 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 3,
+        "w": 4,
         "x": 0,
         "y": 2
       },
@@ -313,86 +283,6 @@
         }
       ],
       "type": "text"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DataSource}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "index": 0,
-                  "text": "Down"
-                },
-                "1": {
-                  "index": 1,
-                  "text": "Up"
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "dark-red",
-                "value": null
-              },
-              {
-                "color": "green",
-                "value": 1
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 2,
-        "x": 3,
-        "y": 2
-      },
-      "id": 33,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "value"
-      },
-      "pluginVersion": "8.4.11",
-      "repeat": "pod",
-      "repeatDirection": "v",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "exemplar": false,
-          "expr": "kube_pod_container_status_ready{container=\"postgres\",pod=~\"$pod\"}",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "type": "stat"
     },
     {
       "datasource": {
@@ -440,8 +330,8 @@
       },
       "gridPos": {
         "h": 3,
-        "w": 2,
-        "x": 5,
+        "w": 3,
+        "x": 4,
         "y": 2
       },
       "id": 60,
@@ -931,7 +821,7 @@
             "h": 1,
             "w": 3,
             "x": 0,
-            "y": 12
+            "y": 2
           },
           "id": 187,
           "options": {
@@ -962,7 +852,7 @@
             "h": 1,
             "w": 3,
             "x": 3,
-            "y": 12
+            "y": 2
           },
           "id": 183,
           "options": {
@@ -992,7 +882,7 @@
             "h": 1,
             "w": 3,
             "x": 6,
-            "y": 12
+            "y": 2
           },
           "id": 184,
           "options": {
@@ -1022,7 +912,7 @@
             "h": 1,
             "w": 3,
             "x": 9,
-            "y": 12
+            "y": 2
           },
           "id": 185,
           "options": {
@@ -1052,7 +942,7 @@
             "h": 1,
             "w": 3,
             "x": 12,
-            "y": 12
+            "y": 2
           },
           "id": 186,
           "options": {
@@ -1082,7 +972,7 @@
             "h": 1,
             "w": 3,
             "x": 15,
-            "y": 12
+            "y": 2
           },
           "id": 188,
           "options": {
@@ -1112,7 +1002,7 @@
             "h": 1,
             "w": 3,
             "x": 18,
-            "y": 12
+            "y": 2
           },
           "id": 189,
           "options": {
@@ -1142,7 +1032,7 @@
             "h": 1,
             "w": 3,
             "x": 21,
-            "y": 12
+            "y": 2
           },
           "id": 190,
           "options": {
@@ -1173,7 +1063,7 @@
             "h": 3,
             "w": 3,
             "x": 0,
-            "y": 13
+            "y": 3
           },
           "id": 86,
           "options": {
@@ -1210,7 +1100,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "dark-purple"
+                    "color": "dark-purple",
+                    "value": null
                   }
                 ]
               }
@@ -1221,7 +1112,7 @@
             "h": 3,
             "w": 3,
             "x": 3,
-            "y": 13
+            "y": 3
           },
           "id": 30,
           "options": {
@@ -1272,7 +1163,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "dark-purple"
+                    "color": "dark-purple",
+                    "value": null
                   }
                 ]
               },
@@ -1284,7 +1176,7 @@
             "h": 3,
             "w": 3,
             "x": 6,
-            "y": 13
+            "y": 3
           },
           "id": 24,
           "options": {
@@ -1335,7 +1227,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "dark-purple"
+                    "color": "dark-purple",
+                    "value": null
                   }
                 ]
               },
@@ -1347,7 +1240,7 @@
             "h": 3,
             "w": 3,
             "x": 9,
-            "y": 13
+            "y": 3
           },
           "id": 57,
           "options": {
@@ -1398,7 +1291,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "dark-purple"
+                    "color": "dark-purple",
+                    "value": null
                   }
                 ]
               },
@@ -1410,7 +1304,7 @@
             "h": 3,
             "w": 3,
             "x": 12,
-            "y": 13
+            "y": 3
           },
           "id": 26,
           "options": {
@@ -1460,7 +1354,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "dark-purple"
+                    "color": "dark-purple",
+                    "value": null
                   }
                 ]
               },
@@ -1472,7 +1367,7 @@
             "h": 3,
             "w": 3,
             "x": 15,
-            "y": 13
+            "y": 3
           },
           "id": 47,
           "options": {
@@ -1522,7 +1417,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "dark-purple"
+                    "color": "dark-purple",
+                    "value": null
                   }
                 ]
               },
@@ -1534,7 +1430,7 @@
             "h": 3,
             "w": 3,
             "x": 18,
-            "y": 13
+            "y": 3
           },
           "id": 48,
           "options": {
@@ -1583,7 +1479,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "dark-purple"
+                    "color": "dark-purple",
+                    "value": null
                   }
                 ]
               },
@@ -1595,7 +1492,7 @@
             "h": 3,
             "w": 3,
             "x": 21,
-            "y": 15
+            "y": 5
           },
           "id": 56,
           "options": {
@@ -1645,7 +1542,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "dark-purple"
+                    "color": "dark-purple",
+                    "value": null
                   }
                 ]
               }
@@ -1656,7 +1554,7 @@
             "h": 9,
             "w": 24,
             "x": 0,
-            "y": 22
+            "y": 12
           },
           "id": 150,
           "options": {
@@ -1784,7 +1682,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -1800,7 +1699,7 @@
             "h": 7,
             "w": 12,
             "x": 0,
-            "y": 13
+            "y": 3
           },
           "id": 273,
           "links": [],
@@ -1823,7 +1722,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "exemplar": true,
-              "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{pod=~\"$pod\"}) by (pod)",
+              "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{pod=~\"postgres.*\"}) by (pod)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -1837,7 +1736,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "exemplar": true,
-              "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{pod=~\"$pod\"})",
+              "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{pod=~\"postgres.*\"})",
               "hide": false,
               "interval": "",
               "legendFormat": "total",
@@ -1891,7 +1790,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -1982,7 +1882,7 @@
             "h": 7,
             "w": 12,
             "x": 12,
-            "y": 13
+            "y": 3
           },
           "id": 275,
           "links": [],
@@ -2005,7 +1905,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "exemplar": true,
-              "expr": "sum(container_memory_working_set_bytes{pod=~\"$pod\", container!=\"\", image!=\"\"}) by (pod)",
+              "expr": "sum(container_memory_working_set_bytes{pod=~\"postgres.*\", container!=\"\", image!=\"\"}) by (pod)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
@@ -2019,7 +1919,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "exemplar": true,
-              "expr": "sum(container_memory_working_set_bytes{pod=~\"$pod\", container!=\"\", image!=\"\"})",
+              "expr": "sum(container_memory_working_set_bytes{pod=~\"postgres.*\", container!=\"\", image!=\"\"})",
               "hide": false,
               "interval": "",
               "legendFormat": "total",
@@ -2031,6 +1931,7 @@
         },
         {
           "datasource": {
+            "type": "prometheus",
             "uid": "${DataSource}"
           },
           "description": "",
@@ -2072,7 +1973,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   }
                 ]
               }
@@ -2083,7 +1985,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 20
+            "y": 10
           },
           "id": 39,
           "options": {
@@ -2099,6 +2001,10 @@
           },
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "PBFA97CFB590B2093"
+              },
               "exemplar": true,
               "expr": "sum(cnpg_backends_total{pod=~\"$pod\"}) by (pod)",
               "hide": false,
@@ -2107,6 +2013,10 @@
               "refId": "B"
             },
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "PBFA97CFB590B2093"
+              },
               "exemplar": true,
               "expr": "sum(cnpg_backends_total{pod=~\"$pod\"}) by (state, pod)",
               "interval": "",
@@ -2159,7 +2069,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -2174,7 +2085,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 28
+            "y": 18
           },
           "id": 50,
           "options": {
@@ -2251,7 +2162,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -2267,7 +2179,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 28
+            "y": 18
           },
           "id": 4,
           "options": {
@@ -2337,7 +2249,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -2352,7 +2265,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 36
+            "y": 26
           },
           "id": 55,
           "options": {
@@ -2428,7 +2341,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -2443,7 +2357,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 36
+            "y": 26
           },
           "id": 54,
           "options": {
@@ -2533,7 +2447,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -2548,7 +2463,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 14
+            "y": 4
           },
           "id": 44,
           "options": {
@@ -2669,7 +2584,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -2684,7 +2600,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 14
+            "y": 4
           },
           "id": 46,
           "options": {
@@ -2769,7 +2685,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   }
                 ]
               },
@@ -2781,7 +2698,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 22
+            "y": 12
           },
           "id": 22,
           "options": {
@@ -2855,7 +2772,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -2871,7 +2789,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 22
+            "y": 12
           },
           "id": 2,
           "options": {
@@ -2962,7 +2880,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -2977,7 +2896,7 @@
             "h": 8,
             "w": 8,
             "x": 0,
-            "y": 15
+            "y": 5
           },
           "id": 6,
           "options": {
@@ -3062,7 +2981,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -3077,7 +2997,7 @@
             "h": 8,
             "w": 8,
             "x": 8,
-            "y": 15
+            "y": 5
           },
           "id": 52,
           "options": {
@@ -3163,7 +3083,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -3179,7 +3100,7 @@
             "h": 8,
             "w": 8,
             "x": 16,
-            "y": 15
+            "y": 5
           },
           "id": 53,
           "options": {
@@ -3269,7 +3190,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "#EAB839",
@@ -3289,7 +3211,7 @@
             "h": 8,
             "w": 6,
             "x": 0,
-            "y": 16
+            "y": 6
           },
           "id": 16,
           "options": {
@@ -3363,7 +3285,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -3379,7 +3302,7 @@
             "h": 8,
             "w": 6,
             "x": 6,
-            "y": 16
+            "y": 6
           },
           "id": 14,
           "options": {
@@ -3400,7 +3323,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "exemplar": true,
-              "expr": "cnpg_pg_stat_replication_write_lag_seconds{pod=~\"$cluster-.*\"}",
+              "expr": "cnpg_pg_stat_replication_write_lag_seconds{pod=~\"$pod\"}",
               "instant": false,
               "interval": "",
               "legendFormat": "{{pod}} -> {{application_name}}",
@@ -3453,7 +3376,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -3469,7 +3393,7 @@
             "h": 8,
             "w": 6,
             "x": 12,
-            "y": 16
+            "y": 6
           },
           "id": 59,
           "options": {
@@ -3490,7 +3414,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "exemplar": true,
-              "expr": "cnpg_pg_stat_replication_flush_lag_seconds{pod=~\"$cluster-.*\"}",
+              "expr": "cnpg_pg_stat_replication_flush_lag_seconds{pod=~\"$pod\"}",
               "instant": false,
               "interval": "",
               "legendFormat": "{{pod}} -> {{application_name}}",
@@ -3502,6 +3426,7 @@
         },
         {
           "datasource": {
+            "type": "prometheus",
             "uid": "${DataSource}"
           },
           "description": "",
@@ -3543,7 +3468,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -3559,7 +3485,7 @@
             "h": 8,
             "w": 6,
             "x": 18,
-            "y": 16
+            "y": 6
           },
           "id": 20,
           "options": {
@@ -3575,8 +3501,12 @@
           },
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "PBFA97CFB590B2093"
+              },
               "exemplar": true,
-              "expr": "cnpg_pg_stat_replication_replay_lag_seconds{pod=~\"$cluster-.*\"}",
+              "expr": "cnpg_pg_stat_replication_replay_lag_seconds{pod=~\"$pod\"}",
               "interval": "",
               "legendFormat": "{{pod}} -> {{application_name}}",
               "refId": "A"
@@ -3619,7 +3549,7 @@
             "h": 8,
             "w": 12,
             "x": 0,
-            "y": 17
+            "y": 7
           },
           "heatmap": {},
           "hideZeroBuckets": false,
@@ -3697,7 +3627,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -3712,7 +3643,7 @@
             "h": 8,
             "w": 12,
             "x": 12,
-            "y": 17
+            "y": 7
           },
           "id": 235,
           "options": {
@@ -3761,6 +3692,7 @@
       "panels": [
         {
           "datasource": {
+            "type": "prometheus",
             "uid": "${DataSource}"
           },
           "fieldConfig": {
@@ -3801,7 +3733,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -3817,7 +3750,7 @@
             "h": 8,
             "w": 24,
             "x": 0,
-            "y": 18
+            "y": 8
           },
           "id": 237,
           "options": {
@@ -3833,6 +3766,10 @@
           },
           "targets": [
             {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "PBFA97CFB590B2093"
+              },
               "exemplar": true,
               "expr": "cnpg_collector_first_recoverability_point{pod=~\"$pod\"}*1000 > 0",
               "format": "time_series",
@@ -3905,7 +3842,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -3921,7 +3859,7 @@
             "h": 9,
             "w": 12,
             "x": 0,
-            "y": 19
+            "y": 9
           },
           "id": 295,
           "options": {
@@ -4013,7 +3951,8 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -4029,7 +3968,7 @@
             "h": 9,
             "w": 12,
             "x": 12,
-            "y": 19
+            "y": 9
           },
           "id": 296,
           "options": {
@@ -4082,7 +4021,7 @@
       "type": "row"
     }
   ],
-  "refresh": "30s",
+  "refresh": "",
   "schemaVersion": 35,
   "style": "dark",
   "tags": ["postgres"],
@@ -4110,30 +4049,31 @@
       {
         "current": {
           "selected": false,
-          "text": "postgres",
-          "value": "postgres"
+          "text": "dre-test-postgres",
+          "value": "dre-test-postgres"
         },
         "datasource": {
           "type": "prometheus",
           "uid": "${DataSource}"
         },
-        "definition": "cnpg_collector_up{}",
+        "definition": "label_values(cnpg_collector_up{},cluster)",
         "hide": 0,
         "includeAll": false,
         "multi": false,
         "name": "cluster",
         "options": [],
         "query": {
-          "query": "cnpg_collector_up{}",
+          "query": "label_values(cnpg_collector_up{},cluster)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
-        "regex": "/cluster=\"(?<text>[^\"]+)/g",
+        "regex": "",
         "skipUrlSync": false,
         "sort": 1,
         "type": "query"
       },
       {
+        "allValue": ".*",
         "current": {
           "selected": true,
           "text": ["All"],
@@ -4143,7 +4083,7 @@
           "type": "prometheus",
           "uid": "${DataSource}"
         },
-        "definition": "cnpg_collector_up{pod=~\"$cluster-.*\"}",
+        "definition": "label_values(cnpg_collector_up{cluster=~\"$cluster\"},pod)",
         "hide": 0,
         "includeAll": true,
         "label": "Pod",
@@ -4151,11 +4091,11 @@
         "name": "pod",
         "options": [],
         "query": {
-          "query": "cnpg_collector_up{pod=~\"$cluster-.*\"}",
+          "query": "label_values(cnpg_collector_up{cluster=~\"$cluster\"},pod)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
-        "regex": "/pod=\"(?<text>[^\"]+)/g",
+        "regex": "",
         "skipUrlSync": false,
         "sort": 1,
         "type": "query"
@@ -4172,6 +4112,6 @@
   "timezone": "",
   "title": "Postgres: Central",
   "uid": "CloudNativePostgres",
-  "version": 9,
+  "version": 8,
   "weekStart": ""
 }
