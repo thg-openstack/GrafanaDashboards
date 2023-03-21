@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -21,8 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 24,
-  "iteration": 1678270121514,
+  "id": 39,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -39,6 +41,14 @@
       },
       "id": 12,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Server Health",
       "type": "row"
     },
@@ -54,13 +64,21 @@
       },
       "id": 191,
       "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
         "content": "",
         "mode": "html"
       },
-      "pluginVersion": "8.4.11",
+      "pluginVersion": "9.2.5",
       "repeatDirection": "v",
       "targets": [
         {
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": true,
           "expr": "kube_pod_container_status_ready{container=\"postgres\",pod=~\"$pod\"}",
           "instant": true,
@@ -85,13 +103,21 @@
       },
       "id": 193,
       "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
         "content": "",
         "mode": "html"
       },
-      "pluginVersion": "8.4.11",
+      "pluginVersion": "9.2.5",
       "repeatDirection": "v",
       "targets": [
         {
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": true,
           "expr": "kube_pod_container_status_ready{container=\"postgres\",pod=~\"$pod\"}",
           "instant": true,
@@ -115,13 +141,21 @@
       },
       "id": 195,
       "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
         "content": "",
         "mode": "html"
       },
-      "pluginVersion": "8.4.11",
+      "pluginVersion": "9.2.5",
       "repeatDirection": "v",
       "targets": [
         {
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": true,
           "expr": "kube_pod_container_status_ready{container=\"postgres\",pod=~\"$pod\"}",
           "instant": true,
@@ -145,13 +179,21 @@
       },
       "id": 196,
       "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
         "content": "",
         "mode": "html"
       },
-      "pluginVersion": "8.4.11",
+      "pluginVersion": "9.2.5",
       "repeatDirection": "v",
       "targets": [
         {
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": true,
           "expr": "kube_pod_container_status_ready{container=\"postgres\",pod=~\"$pod\"}",
           "instant": true,
@@ -176,13 +218,21 @@
       },
       "id": 197,
       "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
         "content": "",
         "mode": "html"
       },
-      "pluginVersion": "8.4.11",
+      "pluginVersion": "9.2.5",
       "repeatDirection": "v",
       "targets": [
         {
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": true,
           "expr": "kube_pod_container_status_ready{container=\"postgres\",pod=~\"$pod\"}",
           "instant": true,
@@ -206,13 +256,21 @@
       },
       "id": 313,
       "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
         "content": "",
         "mode": "html"
       },
-      "pluginVersion": "8.4.11",
+      "pluginVersion": "9.2.5",
       "repeatDirection": "v",
       "targets": [
         {
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": true,
           "expr": "kube_pod_container_status_ready{container=\"postgres\",pod=~\"$pod\"}",
           "instant": true,
@@ -236,13 +294,21 @@
       },
       "id": 198,
       "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
         "content": "",
         "mode": "html"
       },
-      "pluginVersion": "8.4.11",
+      "pluginVersion": "9.2.5",
       "repeatDirection": "v",
       "targets": [
         {
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": true,
           "expr": "kube_pod_container_status_ready{container=\"postgres\",pod=~\"$pod\"}",
           "instant": true,
@@ -266,14 +332,22 @@
       },
       "id": 61,
       "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
         "content": "<table style=\"width:100%; height:100%;border:0px solid black;\">\n  <td style=\"text-align: center;vertical-align: middle;border:0px solid black; \"><p style=\"font-weight: bold;\">$pod</p>\n  </td>\n</table>",
         "mode": "html"
       },
-      "pluginVersion": "8.4.11",
+      "pluginVersion": "9.2.5",
       "repeat": "pod",
       "repeatDirection": "v",
       "targets": [
         {
+          "datasource": {
+            "uid": "${DataSource}"
+          },
           "exemplar": true,
           "expr": "kube_pod_container_status_ready{container=\"postgres\",pod=~\"$pod\"}",
           "instant": true,
@@ -348,17 +422,18 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.4.11",
+      "pluginVersion": "9.2.5",
       "repeat": "pod",
       "repeatDirection": "v",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DataSource}"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "1 - cnpg_pg_replication_in_recovery{pod=~\"$pod\"} + cnpg_pg_replication_is_wal_receiver_up{pod=~\"$pod\"}",
+          "expr": "1 - cnpg_pg_replication_in_recovery{cluster=\"$cluster\",pod=~\"$pod\"} + cnpg_pg_replication_is_wal_receiver_up{cluster=\"$cluster\",pod=~\"$pod\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "{{pod}}",
@@ -416,17 +491,18 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.4.11",
+      "pluginVersion": "9.2.5",
       "repeat": "pod",
       "repeatDirection": "v",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DataSource}"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "cnpg_pg_replication_streaming_replicas{pod=~\"$pod\"}",
+          "expr": "cnpg_pg_replication_streaming_replicas{cluster=\"$cluster\",pod=~\"$pod\"}",
           "instant": true,
           "interval": "",
           "legendFormat": "{{pod}}",
@@ -438,6 +514,7 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
         "uid": "${DataSource}"
       },
       "fieldConfig": {
@@ -446,6 +523,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -498,7 +577,8 @@
         "legend": {
           "calcs": ["last", "mean"],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "single",
@@ -510,11 +590,15 @@
       "repeatDirection": "v",
       "targets": [
         {
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (pod) (cnpg_backends_total{pod=~\"$pod\"})",
+          "expr": "sum by (pod) (cnpg_backends_total{cluster=\"$cluster\",pod=~\"$pod\"})",
           "instant": false,
           "interval": "",
-          "legendFormat": "-",
+          "legendFormat": "{{pod}}",
           "refId": "A"
         }
       ],
@@ -574,17 +658,18 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.4.11",
+      "pluginVersion": "9.2.5",
       "repeat": "pod",
       "repeatDirection": "v",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DataSource}"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "100 * sum by (pod) (cnpg_backends_total{pod=~\"$pod\"}) / sum by (pod) (cnpg_pg_settings_setting{name=\"max_connections\",pod=~\"$pod\"})",
+          "expr": "100 * sum by (pod) (cnpg_backends_total{cluster=\"$cluster\",pod=~\"$pod\"}) / sum by (pod) (cnpg_pg_settings_setting{name=\"max_connections\",cluster=\"$cluster\",pod=~\"$pod\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "{{pod}}",
@@ -636,6 +721,8 @@
       "id": 8,
       "options": {
         "displayMode": "lcd",
+        "minVizHeight": 10,
+        "minVizWidth": 0,
         "orientation": "horizontal",
         "reduceOptions": {
           "calcs": ["lastNotNull"],
@@ -645,17 +732,18 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.4.11",
+      "pluginVersion": "9.2.5",
       "repeat": "pod",
       "repeatDirection": "v",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DataSource}"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "max by (pod) (cnpg_pg_database_xid_age{pod=~\"$pod\"})",
+          "expr": "max by (pod) (cnpg_pg_database_xid_age{cluster=\"$cluster\",pod=~\"$pod\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "{{pod}}",
@@ -709,17 +797,18 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.4.11",
+      "pluginVersion": "9.2.5",
       "repeat": "pod",
       "repeatDirection": "v",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DataSource}"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "cnpg_pg_postmaster_start_time{pod=~\"$pod\"}*1000",
+          "expr": "cnpg_pg_postmaster_start_time{cluster=\"$cluster\",pod=~\"$pod\"}*1000",
           "format": "time_series",
           "hide": false,
           "instant": true,
@@ -777,17 +866,18 @@
         "text": {},
         "textMode": "name"
       },
-      "pluginVersion": "8.4.11",
+      "pluginVersion": "9.2.5",
       "repeat": "pod",
       "repeatDirection": "v",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
+            "uid": "${DataSource}"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "cnpg_collector_postgres_version{pod=~\"$pod\"}",
+          "expr": "cnpg_collector_postgres_version{cluster=\"$cluster\",pod=~\"$pod\"}",
           "format": "time_series",
           "hide": false,
           "instant": true,
@@ -809,7 +899,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 11
+        "y": 20
       },
       "id": 41,
       "panels": [
@@ -821,17 +911,25 @@
             "h": 1,
             "w": 3,
             "x": 0,
-            "y": 2
+            "y": 21
           },
           "id": 187,
           "options": {
+            "code": {
+              "language": "plaintext",
+              "showLineNumbers": false,
+              "showMiniMap": false
+            },
             "content": "",
             "mode": "html"
           },
-          "pluginVersion": "8.4.11",
+          "pluginVersion": "9.2.5",
           "repeatDirection": "v",
           "targets": [
             {
+              "datasource": {
+                "uid": "${DataSource}"
+              },
               "exemplar": true,
               "expr": "kube_pod_container_status_ready{container=\"postgres\",pod=~\"$pod\"}",
               "instant": true,
@@ -852,17 +950,25 @@
             "h": 1,
             "w": 3,
             "x": 3,
-            "y": 2
+            "y": 21
           },
           "id": 183,
           "options": {
+            "code": {
+              "language": "plaintext",
+              "showLineNumbers": false,
+              "showMiniMap": false
+            },
             "content": "",
             "mode": "html"
           },
-          "pluginVersion": "8.4.11",
+          "pluginVersion": "9.2.5",
           "repeatDirection": "v",
           "targets": [
             {
+              "datasource": {
+                "uid": "${DataSource}"
+              },
               "exemplar": true,
               "expr": "kube_pod_container_status_ready{container=\"postgres\",pod=~\"$pod\"}",
               "instant": true,
@@ -882,17 +988,25 @@
             "h": 1,
             "w": 3,
             "x": 6,
-            "y": 2
+            "y": 21
           },
           "id": 184,
           "options": {
+            "code": {
+              "language": "plaintext",
+              "showLineNumbers": false,
+              "showMiniMap": false
+            },
             "content": "",
             "mode": "html"
           },
-          "pluginVersion": "8.4.11",
+          "pluginVersion": "9.2.5",
           "repeatDirection": "v",
           "targets": [
             {
+              "datasource": {
+                "uid": "${DataSource}"
+              },
               "exemplar": true,
               "expr": "kube_pod_container_status_ready{container=\"postgres\",pod=~\"$pod\"}",
               "instant": true,
@@ -912,17 +1026,25 @@
             "h": 1,
             "w": 3,
             "x": 9,
-            "y": 2
+            "y": 21
           },
           "id": 185,
           "options": {
+            "code": {
+              "language": "plaintext",
+              "showLineNumbers": false,
+              "showMiniMap": false
+            },
             "content": "",
             "mode": "html"
           },
-          "pluginVersion": "8.4.11",
+          "pluginVersion": "9.2.5",
           "repeatDirection": "v",
           "targets": [
             {
+              "datasource": {
+                "uid": "${DataSource}"
+              },
               "exemplar": true,
               "expr": "kube_pod_container_status_ready{container=\"postgres\",pod=~\"$pod\"}",
               "instant": true,
@@ -942,17 +1064,25 @@
             "h": 1,
             "w": 3,
             "x": 12,
-            "y": 2
+            "y": 21
           },
           "id": 186,
           "options": {
+            "code": {
+              "language": "plaintext",
+              "showLineNumbers": false,
+              "showMiniMap": false
+            },
             "content": "",
             "mode": "html"
           },
-          "pluginVersion": "8.4.11",
+          "pluginVersion": "9.2.5",
           "repeatDirection": "v",
           "targets": [
             {
+              "datasource": {
+                "uid": "${DataSource}"
+              },
               "exemplar": true,
               "expr": "kube_pod_container_status_ready{container=\"postgres\",pod=~\"$pod\"}",
               "instant": true,
@@ -972,17 +1102,25 @@
             "h": 1,
             "w": 3,
             "x": 15,
-            "y": 2
+            "y": 21
           },
           "id": 188,
           "options": {
+            "code": {
+              "language": "plaintext",
+              "showLineNumbers": false,
+              "showMiniMap": false
+            },
             "content": "",
             "mode": "html"
           },
-          "pluginVersion": "8.4.11",
+          "pluginVersion": "9.2.5",
           "repeatDirection": "v",
           "targets": [
             {
+              "datasource": {
+                "uid": "${DataSource}"
+              },
               "exemplar": true,
               "expr": "kube_pod_container_status_ready{container=\"postgres\",pod=~\"$pod\"}",
               "instant": true,
@@ -1002,17 +1140,25 @@
             "h": 1,
             "w": 3,
             "x": 18,
-            "y": 2
+            "y": 21
           },
           "id": 189,
           "options": {
+            "code": {
+              "language": "plaintext",
+              "showLineNumbers": false,
+              "showMiniMap": false
+            },
             "content": "",
             "mode": "html"
           },
-          "pluginVersion": "8.4.11",
+          "pluginVersion": "9.2.5",
           "repeatDirection": "v",
           "targets": [
             {
+              "datasource": {
+                "uid": "${DataSource}"
+              },
               "exemplar": true,
               "expr": "kube_pod_container_status_ready{container=\"postgres\",pod=~\"$pod\"}",
               "instant": true,
@@ -1032,18 +1178,24 @@
             "h": 1,
             "w": 3,
             "x": 21,
-            "y": 2
+            "y": 21
           },
           "id": 190,
           "options": {
+            "code": {
+              "language": "plaintext",
+              "showLineNumbers": false,
+              "showMiniMap": false
+            },
             "content": "",
             "mode": "html"
           },
-          "pluginVersion": "8.4.11",
-          "repeat": "pod",
-          "repeatDirection": "v",
+          "pluginVersion": "9.2.5",
           "targets": [
             {
+              "datasource": {
+                "uid": "${DataSource}"
+              },
               "exemplar": true,
               "expr": "kube_pod_container_status_ready{container=\"postgres\",pod=~\"$pod\"}",
               "instant": true,
@@ -1063,18 +1215,26 @@
             "h": 3,
             "w": 3,
             "x": 0,
-            "y": 3
+            "y": 22
           },
           "id": 86,
           "options": {
+            "code": {
+              "language": "plaintext",
+              "showLineNumbers": false,
+              "showMiniMap": false
+            },
             "content": "<table style=\"width:100%; height:100%;border:0px solid black;\">\n  <td style=\"text-align: center;vertical-align: middle;border:0px solid black; \"><p style=\"font-weight: bold;\">$pod</p>\n  </td>\n</table>",
             "mode": "html"
           },
-          "pluginVersion": "8.4.11",
+          "pluginVersion": "9.2.5",
           "repeat": "pod",
           "repeatDirection": "v",
           "targets": [
             {
+              "datasource": {
+                "uid": "${DataSource}"
+              },
               "exemplar": true,
               "expr": "kube_pod_container_status_ready{container=\"postgres\",pod=~\"$pod\"}",
               "instant": true,
@@ -1112,7 +1272,7 @@
             "h": 3,
             "w": 3,
             "x": 3,
-            "y": 3
+            "y": 22
           },
           "id": 30,
           "options": {
@@ -1128,17 +1288,18 @@
             "text": {},
             "textMode": "value"
           },
-          "pluginVersion": "8.4.11",
+          "pluginVersion": "9.2.5",
           "repeat": "pod",
           "repeatDirection": "v",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": false,
-              "expr": "cnpg_pg_settings_setting{name=\"max_connections\",pod=~\"$pod\"}",
+              "expr": "cnpg_pg_settings_setting{name=\"max_connections\",cluster=\"$cluster\",pod=~\"$pod\"}",
               "instant": true,
               "interval": "",
               "legendFormat": "{{pod}}",
@@ -1176,7 +1337,7 @@
             "h": 3,
             "w": 3,
             "x": 6,
-            "y": 3
+            "y": 22
           },
           "id": 24,
           "options": {
@@ -1192,17 +1353,18 @@
             "text": {},
             "textMode": "value"
           },
-          "pluginVersion": "8.4.11",
+          "pluginVersion": "9.2.5",
           "repeat": "pod",
           "repeatDirection": "v",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": false,
-              "expr": "max by (pod) (cnpg_pg_settings_setting{name=\"shared_buffers\",pod=~\"$pod\"}) * max by (pod) (cnpg_pg_settings_setting{name=\"block_size\",pod=~\"$pod\"})",
+              "expr": "max by (pod) (cnpg_pg_settings_setting{name=\"shared_buffers\",cluster=\"$cluster\",pod=~\"$pod\"}) * max by (pod) (cnpg_pg_settings_setting{name=\"block_size\",cluster=\"$cluster\",pod=~\"$pod\"})",
               "instant": true,
               "interval": "",
               "legendFormat": "{{pod}}",
@@ -1240,7 +1402,7 @@
             "h": 3,
             "w": 3,
             "x": 9,
-            "y": 3
+            "y": 22
           },
           "id": 57,
           "options": {
@@ -1256,17 +1418,18 @@
             "text": {},
             "textMode": "value"
           },
-          "pluginVersion": "8.4.11",
+          "pluginVersion": "9.2.5",
           "repeat": "pod",
           "repeatDirection": "v",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": false,
-              "expr": "cnpg_pg_settings_setting{name=\"effective_cache_size\",pod=~\"$pod\"}",
+              "expr": "cnpg_pg_settings_setting{name=\"effective_cache_size\",cluster=\"$cluster\",pod=~\"$pod\"}",
               "instant": true,
               "interval": "",
               "legendFormat": "{{pod}}",
@@ -1304,7 +1467,7 @@
             "h": 3,
             "w": 3,
             "x": 12,
-            "y": 3
+            "y": 22
           },
           "id": 26,
           "options": {
@@ -1320,17 +1483,18 @@
             "text": {},
             "textMode": "value"
           },
-          "pluginVersion": "8.4.11",
+          "pluginVersion": "9.2.5",
           "repeat": "pod",
           "repeatDirection": "v",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": false,
-              "expr": "cnpg_pg_settings_setting{name=\"work_mem\",pod=~\"$pod\"} * 1024",
+              "expr": "cnpg_pg_settings_setting{name=\"work_mem\",cluster=\"$cluster\",pod=~\"$pod\"} * 1024",
               "instant": true,
               "interval": "",
               "legendFormat": "{{pod}}",
@@ -1367,7 +1531,7 @@
             "h": 3,
             "w": 3,
             "x": 15,
-            "y": 3
+            "y": 22
           },
           "id": 47,
           "options": {
@@ -1383,17 +1547,18 @@
             "text": {},
             "textMode": "value"
           },
-          "pluginVersion": "8.4.11",
+          "pluginVersion": "9.2.5",
           "repeat": "pod",
           "repeatDirection": "v",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": false,
-              "expr": "cnpg_pg_settings_setting{name=\"maintenance_work_mem\",pod=~\"$pod\"}",
+              "expr": "cnpg_pg_settings_setting{name=\"maintenance_work_mem\",cluster=\"$cluster\",pod=~\"$pod\"}",
               "instant": true,
               "interval": "",
               "legendFormat": "{{pod}}",
@@ -1430,7 +1595,7 @@
             "h": 3,
             "w": 3,
             "x": 18,
-            "y": 3
+            "y": 22
           },
           "id": 48,
           "options": {
@@ -1446,17 +1611,18 @@
             "text": {},
             "textMode": "value"
           },
-          "pluginVersion": "8.4.11",
+          "pluginVersion": "9.2.5",
           "repeat": "pod",
           "repeatDirection": "v",
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": false,
-              "expr": "cnpg_pg_settings_setting{name=\"random_page_cost\",pod=~\"$pod\"}",
+              "expr": "cnpg_pg_settings_setting{name=\"random_page_cost\",cluster=\"$cluster\",pod=~\"$pod\"}",
               "instant": true,
               "interval": "",
               "legendFormat": "{{pod}}",
@@ -1467,6 +1633,7 @@
         },
         {
           "datasource": {
+            "type": "prometheus",
             "uid": "${DataSource}"
           },
           "fieldConfig": {
@@ -1492,7 +1659,7 @@
             "h": 3,
             "w": 3,
             "x": 21,
-            "y": 5
+            "y": 22
           },
           "id": 56,
           "options": {
@@ -1508,13 +1675,17 @@
             "text": {},
             "textMode": "value"
           },
-          "pluginVersion": "8.4.11",
-          "repeat": "instances",
+          "pluginVersion": "9.2.5",
+          "repeat": "pod",
           "repeatDirection": "v",
           "targets": [
             {
+              "datasource": {
+                "uid": "${DataSource}"
+              },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "cnpg_pg_settings_setting{name=\"seq_page_cost\",pod=~\"$pod\"}",
+              "expr": "cnpg_pg_settings_setting{name=\"seq_page_cost\",cluster=\"$cluster\",pod=~\"$pod\"}",
               "instant": true,
               "interval": "",
               "legendFormat": "{{pod}}",
@@ -1525,6 +1696,7 @@
         },
         {
           "datasource": {
+            "type": "prometheus",
             "uid": "${DataSource}"
           },
           "fieldConfig": {
@@ -1535,7 +1707,8 @@
               "custom": {
                 "align": "auto",
                 "displayMode": "auto",
-                "filterable": true
+                "filterable": true,
+                "inspect": false
               },
               "mappings": [],
               "thresholds": {
@@ -1554,7 +1727,7 @@
             "h": 9,
             "w": 24,
             "x": 0,
-            "y": 12
+            "y": 40
           },
           "id": 150,
           "options": {
@@ -1571,12 +1744,16 @@
               }
             ]
           },
-          "pluginVersion": "8.4.11",
+          "pluginVersion": "9.2.5",
           "repeatDirection": "v",
           "targets": [
             {
+              "datasource": {
+                "uid": "${DataSource}"
+              },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "cnpg_pg_settings_setting{pod=~\"$pod\"}",
+              "expr": "cnpg_pg_settings_setting{cluster=\"$cluster\",pod=~\"$pod\"}",
               "format": "table",
               "instant": true,
               "interval": "",
@@ -1622,6 +1799,14 @@
           "type": "table"
         }
       ],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Configuration",
       "type": "row"
     },
@@ -1634,7 +1819,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 12
+        "y": 21
       },
       "id": 10,
       "panels": [
@@ -1649,6 +1834,8 @@
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
@@ -1707,7 +1894,8 @@
             "legend": {
               "calcs": [],
               "displayMode": "list",
-              "placement": "bottom"
+              "placement": "bottom",
+              "showLegend": true
             },
             "tooltip": {
               "mode": "multi",
@@ -1719,27 +1907,31 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{pod=~\"postgres.*\"}) by (pod)",
+              "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{pod=~\"$pod\"}) by (pod)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "{{pod}}",
+              "range": true,
               "refId": "A",
               "step": 10
             },
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{pod=~\"postgres.*\"})",
+              "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate{pod=~\"$pod\"})",
               "hide": false,
               "interval": "",
               "legendFormat": "total",
+              "range": true,
               "refId": "B"
             }
           ],
@@ -1757,6 +1949,8 @@
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
@@ -1890,7 +2084,8 @@
             "legend": {
               "calcs": [],
               "displayMode": "list",
-              "placement": "bottom"
+              "placement": "bottom",
+              "showLegend": true
             },
             "tooltip": {
               "mode": "multi",
@@ -1902,27 +2097,31 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum(container_memory_working_set_bytes{pod=~\"postgres.*\", container!=\"\", image!=\"\"}) by (pod)",
+              "expr": "sum(container_memory_working_set_bytes{pod=~\"$pod\", container!=\"\", image!=\"\"}) by (pod)",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 2,
               "legendFormat": "{{pod}}",
+              "range": true,
               "refId": "A",
               "step": 10
             },
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum(container_memory_working_set_bytes{pod=~\"postgres.*\", container!=\"\", image!=\"\"})",
+              "expr": "sum(container_memory_working_set_bytes{pod=~\"$pod\", container!=\"\", image!=\"\"})",
               "hide": false,
               "interval": "",
               "legendFormat": "total",
+              "range": true,
               "refId": "B"
             }
           ],
@@ -1941,6 +2140,8 @@
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
@@ -1992,7 +2193,8 @@
             "legend": {
               "calcs": [],
               "displayMode": "list",
-              "placement": "bottom"
+              "placement": "bottom",
+              "showLegend": true
             },
             "tooltip": {
               "mode": "multi",
@@ -2003,24 +2205,28 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum(cnpg_backends_total{pod=~\"$pod\"}) by (pod)",
+              "expr": "sum(cnpg_backends_total{cluster=\"$cluster\",pod=~\"$pod\"}) by (pod)",
               "hide": false,
               "interval": "",
               "legendFormat": "total ({{pod}})",
+              "range": true,
               "refId": "B"
             },
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum(cnpg_backends_total{pod=~\"$pod\"}) by (state, pod)",
+              "expr": "sum(cnpg_backends_total{cluster=\"$cluster\",pod=~\"$pod\"}) by (state, pod)",
               "interval": "",
               "legendFormat": "{{state}} ({{pod}})",
+              "range": true,
               "refId": "A"
             }
           ],
@@ -2029,6 +2235,7 @@
         },
         {
           "datasource": {
+            "type": "prometheus",
             "uid": "${DataSource}"
           },
           "fieldConfig": {
@@ -2037,6 +2244,8 @@
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
@@ -2092,7 +2301,8 @@
             "legend": {
               "calcs": [],
               "displayMode": "list",
-              "placement": "bottom"
+              "placement": "bottom",
+              "showLegend": true
             },
             "tooltip": {
               "mode": "multi",
@@ -2101,18 +2311,28 @@
           },
           "targets": [
             {
+              "datasource": {
+                "uid": "${DataSource}"
+              },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum(rate(cnpg_pg_stat_database_xact_commit{pod=~\"$pod\"}[5m])) by (pod)",
+              "expr": "sum(rate(cnpg_pg_stat_database_xact_commit{cluster=\"$cluster\",pod=~\"$pod\"}[5m])) by (pod)",
               "interval": "",
               "legendFormat": "committed ({{pod}})",
+              "range": true,
               "refId": "A"
             },
             {
+              "datasource": {
+                "uid": "${DataSource}"
+              },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum(rate(cnpg_pg_stat_database_xact_rollback{pod=~\"$pod\"}[5m])) by (pod)",
+              "expr": "sum(rate(cnpg_pg_stat_database_xact_rollback{cluster=\"$cluster\",pod=~\"$pod\"}[5m])) by (pod)",
               "hide": false,
               "interval": "",
               "legendFormat": "rolled back ({{pod}})",
+              "range": true,
               "refId": "B"
             }
           ],
@@ -2121,6 +2341,7 @@
         },
         {
           "datasource": {
+            "type": "prometheus",
             "uid": "${DataSource}"
           },
           "description": "",
@@ -2130,6 +2351,8 @@
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
@@ -2186,7 +2409,8 @@
             "legend": {
               "calcs": [],
               "displayMode": "list",
-              "placement": "bottom"
+              "placement": "bottom",
+              "showLegend": true
             },
             "tooltip": {
               "mode": "multi",
@@ -2195,10 +2419,15 @@
           },
           "targets": [
             {
+              "datasource": {
+                "uid": "${DataSource}"
+              },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "max by (pod) (cnpg_backends_max_tx_duration_seconds{pod=~\"$pod\"})",
+              "expr": "max by (pod) (cnpg_backends_max_tx_duration_seconds{cluster=\"$cluster\",pod=~\"$pod\"})",
               "interval": "",
               "legendFormat": "{{pod}}",
+              "range": true,
               "refId": "A"
             }
           ],
@@ -2217,6 +2446,8 @@
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
@@ -2272,7 +2503,8 @@
             "legend": {
               "calcs": [],
               "displayMode": "list",
-              "placement": "bottom"
+              "placement": "bottom",
+              "showLegend": true
             },
             "tooltip": {
               "mode": "multi",
@@ -2283,10 +2515,11 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (pod) (rate(cnpg_pg_stat_database_deadlocks{datname=\"\",pod=~\"$pod\"}[5m]))",
+              "expr": "sum by (pod) (rate(cnpg_pg_stat_database_deadlocks{datname=\"\",cluster=\"$cluster\",pod=~\"$pod\"}[5m]))",
               "hide": false,
               "instant": false,
               "interval": "",
@@ -2309,6 +2542,8 @@
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
@@ -2364,7 +2599,8 @@
             "legend": {
               "calcs": [],
               "displayMode": "list",
-              "placement": "bottom"
+              "placement": "bottom",
+              "showLegend": true
             },
             "tooltip": {
               "mode": "multi",
@@ -2375,17 +2611,27 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (pod) (cnpg_backends_waiting_total{pod=~\"$pod\"})",
+              "expr": "sum by (pod) (cnpg_backends_waiting_total{cluster=\"$cluster\",pod=~\"$pod\"})",
               "interval": "",
               "legendFormat": "{{pod}}",
+              "range": true,
               "refId": "A"
             }
           ],
           "title": "Blocked Queries",
           "type": "timeseries"
+        }
+      ],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "refId": "A"
         }
       ],
       "title": "Operational Stats",
@@ -2400,7 +2646,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 13
+        "y": 22
       },
       "id": 35,
       "panels": [
@@ -2415,6 +2661,8 @@
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
@@ -2470,7 +2718,8 @@
             "legend": {
               "calcs": [],
               "displayMode": "list",
-              "placement": "bottom"
+              "placement": "bottom",
+              "showLegend": true
             },
             "tooltip": {
               "mode": "multi",
@@ -2481,60 +2730,70 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (pod) (rate(cnpg_pg_stat_database_tup_deleted{datname=\"\",pod=~\"$pod\"}[5m]))",
+              "expr": "sum by (pod) (rate(cnpg_pg_stat_database_tup_deleted{datname=\"\",cluster=\"$cluster\",pod=~\"$pod\"}[5m]))",
               "interval": "",
               "legendFormat": "deleted ({{pod}})",
+              "range": true,
               "refId": "A"
             },
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (pod) (rate(cnpg_pg_stat_database_tup_inserted{datname=\"\",pod=~\"$pod\"}[5m]))",
+              "expr": "sum by (pod) (rate(cnpg_pg_stat_database_tup_inserted{datname=\"\",cluster=\"$cluster\",pod=~\"$pod\"}[5m]))",
               "hide": false,
               "interval": "",
               "legendFormat": "inserted ({{pod}})",
+              "range": true,
               "refId": "B"
             },
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (pod) (rate(cnpg_pg_stat_database_tup_fetched{datname=\"\",pod=~\"$pod\"}[5m]))",
+              "expr": "sum by (pod) (rate(cnpg_pg_stat_database_tup_fetched{datname=\"\",cluster=\"$cluster\",pod=~\"$pod\"}[5m]))",
               "hide": false,
               "interval": "",
               "legendFormat": "fetched ({{pod}})",
+              "range": true,
               "refId": "C"
             },
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (pod) (rate(cnpg_pg_stat_database_tup_returned{datname=\"\",pod=~\"$pod\"}[5m]))",
+              "expr": "sum by (pod) (rate(cnpg_pg_stat_database_tup_returned{datname=\"\",cluster=\"$cluster\",pod=~\"$pod\"}[5m]))",
               "hide": false,
               "interval": "",
               "legendFormat": "returned ({{pod}})",
+              "range": true,
               "refId": "D"
             },
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (pod) (rate(cnpg_pg_stat_database_tup_updated{datname=\"\",pod=~\"$pod\"}[5m]))",
+              "expr": "sum by (pod) (rate(cnpg_pg_stat_database_tup_updated{datname=\"\",cluster=\"$cluster\",pod=~\"$pod\"}[5m]))",
               "hide": false,
               "interval": "",
               "legendFormat": "updated ({{pod}})",
+              "range": true,
               "refId": "E"
             }
           ],
@@ -2552,6 +2811,8 @@
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
@@ -2607,7 +2868,8 @@
             "legend": {
               "calcs": [],
               "displayMode": "list",
-              "placement": "bottom"
+              "placement": "bottom",
+              "showLegend": true
             },
             "tooltip": {
               "mode": "multi",
@@ -2618,24 +2880,28 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (pod) (rate(cnpg_pg_stat_database_blks_hit{datname=\"\",pod=~\"$pod\"}[5m]))",
+              "expr": "sum by (pod) (rate(cnpg_pg_stat_database_blks_hit{datname=\"\",cluster=\"$cluster\",pod=~\"$pod\"}[5m]))",
               "interval": "",
               "legendFormat": "hit ({{pod}})",
+              "range": true,
               "refId": "A"
             },
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (pod) (rate(cnpg_pg_stat_database_blks_read{datname=\"\",pod=~\"$pod\"}[5m]))",
+              "expr": "sum by (pod) (rate(cnpg_pg_stat_database_blks_read{datname=\"\",cluster=\"$cluster\",pod=~\"$pod\"}[5m]))",
               "hide": false,
               "interval": "",
               "legendFormat": "read ({{pod}})",
+              "range": true,
               "refId": "B"
             }
           ],
@@ -2653,6 +2919,8 @@
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
@@ -2705,7 +2973,8 @@
             "legend": {
               "calcs": [],
               "displayMode": "list",
-              "placement": "bottom"
+              "placement": "bottom",
+              "showLegend": true
             },
             "tooltip": {
               "mode": "multi",
@@ -2717,12 +2986,14 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (pod) (cnpg_pg_database_size_bytes{datname!~\"template.*\",datname!=\"postgres\",pod=~\"$pod\"})",
+              "expr": "sum by (pod) (cnpg_pg_database_size_bytes{datname!~\"template.*\",datname!=\"postgres\",cluster=\"$cluster\",pod=~\"$pod\"})",
               "interval": "",
               "legendFormat": " {{pod}}: {{datname}}",
+              "range": true,
               "refId": "A"
             }
           ],
@@ -2740,6 +3011,8 @@
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
@@ -2796,7 +3069,8 @@
             "legend": {
               "calcs": [],
               "displayMode": "list",
-              "placement": "bottom"
+              "placement": "bottom",
+              "showLegend": true
             },
             "tooltip": {
               "mode": "multi",
@@ -2807,10 +3081,11 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (pod) (rate(cnpg_pg_stat_database_temp_bytes{datname=\"\",pod=~\"$pod\"}[5m]))",
+              "expr": "sum by (pod) (rate(cnpg_pg_stat_database_temp_bytes{datname=\"\",cluster=\"$cluster\",pod=~\"$pod\"}[5m]))",
               "instant": false,
               "interval": "",
               "legendFormat": "{{pod}}",
@@ -2819,6 +3094,14 @@
           ],
           "title": "Temp Bytes [5m]",
           "type": "timeseries"
+        }
+      ],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "refId": "A"
         }
       ],
       "title": "Storage & I/O",
@@ -2833,7 +3116,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 14
+        "y": 23
       },
       "id": 37,
       "panels": [
@@ -2848,6 +3131,8 @@
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
@@ -2903,7 +3188,8 @@
             "legend": {
               "calcs": [],
               "displayMode": "list",
-              "placement": "bottom"
+              "placement": "bottom",
+              "showLegend": true
             },
             "tooltip": {
               "mode": "multi",
@@ -2914,24 +3200,28 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (pod) (cnpg_collector_pg_wal_archive_status{value=\"ready\",pod=~\"$pod\"})",
+              "expr": "sum by (pod) (cnpg_collector_pg_wal_archive_status{value=\"ready\",cluster=\"$cluster\",pod=~\"$pod\"})",
               "interval": "",
               "legendFormat": "ready ({{pod}})",
+              "range": true,
               "refId": "A"
             },
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (pod) (cnpg_collector_pg_wal_archive_status{value=\"done\",pod=~\"$pod\"})",
+              "expr": "sum by (pod) (cnpg_collector_pg_wal_archive_status{value=\"done\",cluster=\"$cluster\",pod=~\"$pod\"})",
               "hide": false,
               "interval": "",
               "legendFormat": "done ({{pod}})",
+              "range": true,
               "refId": "B"
             }
           ],
@@ -2949,6 +3239,8 @@
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
@@ -3004,7 +3296,8 @@
             "legend": {
               "calcs": [],
               "displayMode": "list",
-              "placement": "bottom"
+              "placement": "bottom",
+              "showLegend": true
             },
             "tooltip": {
               "mode": "multi",
@@ -3015,24 +3308,28 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (pod) (rate(cnpg_pg_stat_archiver_archived_count{pod=~\"$pod\"}[5m]))",
+              "expr": "sum by (pod) (rate(cnpg_pg_stat_archiver_archived_count{cluster=\"$cluster\",pod=~\"$pod\"}[5m]))",
               "interval": "",
               "legendFormat": "archived ({{pod}})",
+              "range": true,
               "refId": "A"
             },
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (pod) (rate(cnpg_pg_stat_archiver_failed_count{pod=~\"$pod\"}[5m]))",
+              "expr": "sum by (pod) (rate(cnpg_pg_stat_archiver_failed_count{cluster=\"$cluster\",pod=~\"$pod\"}[5m]))",
               "hide": false,
               "interval": "",
               "legendFormat": "failed ({{pod}})",
+              "range": true,
               "refId": "B"
             }
           ],
@@ -3051,6 +3348,8 @@
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
@@ -3107,7 +3406,8 @@
             "legend": {
               "calcs": [],
               "displayMode": "list",
-              "placement": "bottom"
+              "placement": "bottom",
+              "showLegend": true
             },
             "tooltip": {
               "mode": "multi",
@@ -3118,17 +3418,27 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (pod) (cnpg_pg_stat_archiver_seconds_since_last_archival{pod=~\"$pod\"})",
+              "expr": "sum by (pod) (cnpg_pg_stat_archiver_seconds_since_last_archival{cluster=\"$cluster\",pod=~\"$pod\"})",
               "interval": "",
               "legendFormat": "age ({{pod}})",
+              "range": true,
               "refId": "A"
             }
           ],
           "title": "Last Archive Age",
           "type": "timeseries"
+        }
+      ],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "refId": "A"
         }
       ],
       "title": "Write Ahead Log",
@@ -3143,7 +3453,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 15
+        "y": 24
       },
       "id": 18,
       "panels": [
@@ -3158,6 +3468,8 @@
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
@@ -3203,7 +3515,7 @@
                   }
                 ]
               },
-              "unit": "s"
+              "unit": "ms"
             },
             "overrides": []
           },
@@ -3218,7 +3530,8 @@
             "legend": {
               "calcs": [],
               "displayMode": "list",
-              "placement": "bottom"
+              "placement": "bottom",
+              "showLegend": true
             },
             "tooltip": {
               "mode": "multi",
@@ -3229,10 +3542,11 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "cnpg_pg_replication_lag{pod=~\"$pod\"}",
+              "expr": "cnpg_pg_replication_lag{cluster=\"$cluster\",pod=~\"$pod\"}",
               "instant": false,
               "interval": "",
               "legendFormat": "{{pod}}",
@@ -3253,6 +3567,8 @@
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
@@ -3294,7 +3610,7 @@
                   }
                 ]
               },
-              "unit": "s"
+              "unit": "ms"
             },
             "overrides": []
           },
@@ -3309,7 +3625,8 @@
             "legend": {
               "calcs": [],
               "displayMode": "list",
-              "placement": "bottom"
+              "placement": "bottom",
+              "showLegend": true
             },
             "tooltip": {
               "mode": "multi",
@@ -3320,10 +3637,11 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "cnpg_pg_stat_replication_write_lag_seconds{pod=~\"$pod\"}",
+              "expr": "cnpg_pg_stat_replication_write_lag_seconds{cluster=\"$cluster\",pod=~\"$pod\"}",
               "instant": false,
               "interval": "",
               "legendFormat": "{{pod}} -> {{application_name}}",
@@ -3344,6 +3662,8 @@
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
@@ -3385,7 +3705,7 @@
                   }
                 ]
               },
-              "unit": "s"
+              "unit": "ms"
             },
             "overrides": []
           },
@@ -3400,7 +3720,8 @@
             "legend": {
               "calcs": [],
               "displayMode": "list",
-              "placement": "bottom"
+              "placement": "bottom",
+              "showLegend": true
             },
             "tooltip": {
               "mode": "single",
@@ -3411,10 +3732,11 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "cnpg_pg_stat_replication_flush_lag_seconds{pod=~\"$pod\"}",
+              "expr": "cnpg_pg_stat_replication_flush_lag_seconds{cluster=\"$cluster\",pod=~\"$pod\"}",
               "instant": false,
               "interval": "",
               "legendFormat": "{{pod}} -> {{application_name}}",
@@ -3436,6 +3758,8 @@
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
@@ -3477,7 +3801,7 @@
                   }
                 ]
               },
-              "unit": "s"
+              "unit": "ms"
             },
             "overrides": []
           },
@@ -3492,7 +3816,8 @@
             "legend": {
               "calcs": [],
               "displayMode": "list",
-              "placement": "bottom"
+              "placement": "bottom",
+              "showLegend": true
             },
             "tooltip": {
               "mode": "single",
@@ -3503,17 +3828,27 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "cnpg_pg_stat_replication_replay_lag_seconds{pod=~\"$pod\"}",
+              "expr": "cnpg_pg_stat_replication_replay_lag_seconds{cluster=\"$cluster\",pod=~\"$pod\"}",
               "interval": "",
               "legendFormat": "{{pod}} -> {{application_name}}",
+              "range": true,
               "refId": "A"
             }
           ],
           "title": "Replay Lag",
           "type": "timeseries"
+        }
+      ],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "refId": "A"
         }
       ],
       "title": "Replication",
@@ -3528,7 +3863,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 16
+        "y": 25
       },
       "id": 231,
       "panels": [
@@ -3543,7 +3878,23 @@
           },
           "dataFormat": "timeseries",
           "datasource": {
+            "type": "prometheus",
             "uid": "${DataSource}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "scaleDistribution": {
+                  "type": "linear"
+                }
+              }
+            },
+            "overrides": []
           },
           "gridPos": {
             "h": 8,
@@ -3558,13 +3909,56 @@
           "legend": {
             "show": false
           },
+          "options": {
+            "calculate": true,
+            "calculation": {},
+            "cellGap": 2,
+            "cellValues": {},
+            "color": {
+              "exponent": 0.5,
+              "fill": "#b4ff00",
+              "mode": "scheme",
+              "reverse": false,
+              "scale": "exponential",
+              "scheme": "Oranges",
+              "steps": 128
+            },
+            "exemplars": {
+              "color": "rgba(255,0,255,0.7)"
+            },
+            "filterValues": {
+              "le": 1e-9
+            },
+            "legend": {
+              "show": false
+            },
+            "rowsFrame": {
+              "layout": "auto"
+            },
+            "showValue": "never",
+            "tooltip": {
+              "show": true,
+              "yHistogram": false
+            },
+            "yAxis": {
+              "axisPlacement": "left",
+              "reverse": false,
+              "unit": "s"
+            }
+          },
+          "pluginVersion": "9.2.5",
           "reverseYBuckets": false,
           "targets": [
             {
+              "datasource": {
+                "uid": "${DataSource}"
+              },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "cnpg_collector_collection_duration_seconds{pod=~\"$pod\"}",
+              "expr": "cnpg_collector_collection_duration_seconds{cluster=\"$cluster\",pod=~\"$pod\"}",
               "interval": "",
               "legendFormat": "",
+              "range": true,
               "refId": "A"
             }
           ],
@@ -3595,6 +3989,8 @@
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
@@ -3650,7 +4046,8 @@
             "legend": {
               "calcs": [],
               "displayMode": "list",
-              "placement": "bottom"
+              "placement": "bottom",
+              "showLegend": true
             },
             "tooltip": {
               "mode": "multi",
@@ -3661,17 +4058,27 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (pod) (cnpg_collector_last_collection_error{pod=~\"$pod\"})",
+              "expr": "sum by (pod) (cnpg_collector_last_collection_error{cluster=\"$cluster\",pod=~\"$pod\"})",
               "interval": "",
               "legendFormat": "{{pod}}",
+              "range": true,
               "refId": "A"
             }
           ],
           "title": "Errors",
           "type": "timeseries"
+        }
+      ],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "refId": "A"
         }
       ],
       "title": "Collector Stats",
@@ -3686,7 +4093,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 17
+        "y": 26
       },
       "id": 239,
       "panels": [
@@ -3701,6 +4108,8 @@
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
@@ -3757,7 +4166,8 @@
             "legend": {
               "calcs": [],
               "displayMode": "list",
-              "placement": "bottom"
+              "placement": "bottom",
+              "showLegend": true
             },
             "tooltip": {
               "mode": "single",
@@ -3768,18 +4178,28 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "cnpg_collector_first_recoverability_point{pod=~\"$pod\"}*1000 > 0",
+              "expr": "cnpg_collector_first_recoverability_point{cluster=\"$cluster\",pod=~\"$pod\"}*1000 > 0",
               "format": "time_series",
               "interval": "",
               "legendFormat": "{{pod}}",
+              "range": true,
               "refId": "A"
             }
           ],
           "title": "First Recoverability Point",
           "type": "timeseries"
+        }
+      ],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "refId": "A"
         }
       ],
       "title": "Backups",
@@ -3794,7 +4214,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 18
+        "y": 27
       },
       "id": 293,
       "panels": [
@@ -3810,6 +4230,8 @@
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": -1,
@@ -3866,7 +4288,8 @@
             "legend": {
               "calcs": [],
               "displayMode": "list",
-              "placement": "bottom"
+              "placement": "bottom",
+              "showLegend": true
             },
             "tooltip": {
               "mode": "multi",
@@ -3878,10 +4301,11 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (pod) (cnpg_pg_stat_bgwriter_checkpoints_req{pod=~\"$pod\"})",
+              "expr": "sum by (pod) (cnpg_pg_stat_bgwriter_checkpoints_req{cluster=\"$cluster\",pod=~\"$pod\"})",
               "format": "time_series",
               "hide": false,
               "instant": false,
@@ -3893,14 +4317,16 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (pod) (cnpg_pg_stat_bgwriter_checkpoints_timed{pod=~\"$pod\"})",
+              "expr": "sum by (pod) (cnpg_pg_stat_bgwriter_checkpoints_timed{cluster=\"$cluster\",pod=~\"$pod\"})",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
               "legendFormat": "timed/{{pod}}",
+              "range": true,
               "refId": "A"
             }
           ],
@@ -3919,6 +4345,8 @@
                 "mode": "palette-classic"
               },
               "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": -1,
@@ -3975,7 +4403,8 @@
             "legend": {
               "calcs": [],
               "displayMode": "list",
-              "placement": "bottom"
+              "placement": "bottom",
+              "showLegend": true
             },
             "tooltip": {
               "mode": "multi",
@@ -3987,10 +4416,11 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (pod) (cnpg_pg_stat_bgwriter_checkpoint_write_time{pod=~\"$pod\"})",
+              "expr": "sum by (pod) (cnpg_pg_stat_bgwriter_checkpoint_write_time{cluster=\"$cluster\",pod=~\"$pod\"})",
               "format": "time_series",
               "hide": false,
               "instant": false,
@@ -4002,14 +4432,16 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
+                "uid": "${DataSource}"
               },
+              "editorMode": "code",
               "exemplar": true,
-              "expr": "sum by (pod) (cnpg_pg_stat_bgwriter_checkpoint_sync_time{pod=~\"$pod\"})",
+              "expr": "sum by (pod) (cnpg_pg_stat_bgwriter_checkpoint_sync_time{cluster=\"$cluster\",pod=~\"$pod\"})",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
               "legendFormat": "sync/{{pod}}",
+              "range": true,
               "refId": "A"
             }
           ],
@@ -4017,12 +4449,20 @@
           "type": "timeseries"
         }
       ],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "${DataSource}"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Checkpoints",
       "type": "row"
     }
   ],
   "refresh": "",
-  "schemaVersion": 35,
+  "schemaVersion": 37,
   "style": "dark",
   "tags": ["postgres"],
   "templating": {
@@ -4030,8 +4470,8 @@
       {
         "current": {
           "selected": false,
-          "text": "Prometheus",
-          "value": "Prometheus"
+          "text": "Mimir",
+          "value": "Mimir"
         },
         "hide": 2,
         "includeAll": false,
@@ -4048,9 +4488,9 @@
       },
       {
         "current": {
-          "selected": false,
-          "text": "dre-test-postgres",
-          "value": "dre-test-postgres"
+          "selected": true,
+          "text": "dre-test-multi-region-postgres",
+          "value": "dre-test-multi-region-postgres"
         },
         "datasource": {
           "type": "prometheus",
@@ -4073,7 +4513,7 @@
         "type": "query"
       },
       {
-        "allValue": ".*",
+        "allValue": "",
         "current": {
           "selected": true,
           "text": ["All"],
@@ -4112,6 +4552,6 @@
   "timezone": "",
   "title": "Postgres: Central",
   "uid": "CloudNativePostgres",
-  "version": 8,
+  "version": 11,
   "weekStart": ""
 }
