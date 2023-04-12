@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -21,15 +24,14 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
-  "iteration": 1669130555836,
+  "id": 35,
   "links": [
     {
       "asDropdown": true,
       "icon": "external link",
       "includeVars": true,
       "keepTime": true,
-      "tags": ["CockroachDB"],
+      "tags": ["CockroachDB", "Kubernetes"],
       "targetBlank": true,
       "title": "Dashboards",
       "type": "dashboards"
@@ -38,6 +40,10 @@
   "liveNow": false,
   "panels": [
     {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -45,6 +51,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "batches",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -102,7 +110,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -112,6 +121,10 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
           "exemplar": true,
           "expr": "sum(rate(distsender_batches{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])) by (cluster)",
           "interval": "",
@@ -119,6 +132,10 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
           "exemplar": true,
           "expr": "sum(rate(distsender_batches_partial{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])) by (cluster)",
           "interval": "",
@@ -130,12 +147,18 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "rpcs",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -192,7 +215,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -202,6 +226,10 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
           "exemplar": true,
           "expr": "sum(rate(distsender_rpc_sent{ cluster=~\"$cluster\"}[$__rate_interval]))",
           "interval": "",
@@ -210,6 +238,10 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
           "exemplar": true,
           "expr": "sum(rate(distsender_rpc_sent_local{cluster=~\"$cluster\"}[$__rate_interval]))",
           "interval": "",
@@ -230,6 +262,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "errors",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -287,7 +321,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -297,6 +332,9 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
+          "datasource": {
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
           "expr": "sum(rate(distsender_rpc_sent_nextreplicaerror{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "hide": false,
@@ -306,6 +344,9 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "uid": "${DS_PROMETHEUS}"
+          },
           "exemplar": true,
           "expr": "sum(rate(distsender_errors_notleaseholder{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
@@ -318,12 +359,18 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "transactions",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -381,7 +428,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -391,6 +439,10 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
           "exemplar": true,
           "expr": "sum(rate(txn_commits{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
@@ -399,6 +451,10 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
           "exemplar": true,
           "expr": "sum(rate(txn_commits1PC{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "hide": false,
@@ -408,6 +464,10 @@
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
           "exemplar": true,
           "expr": "sum(rate(txn_aborts{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
@@ -419,12 +479,18 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "restarts",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -482,7 +548,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -492,6 +559,10 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
           "exemplar": true,
           "expr": "sum(rate(txn_restarts_writetooold{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "interval": "",
@@ -499,6 +570,10 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
           "exemplar": true,
           "expr": "sum(rate(txn_restarts_writetoooldmulti{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "hide": false,
@@ -507,6 +582,10 @@
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
           "exemplar": true,
           "expr": "sum(rate(txn_restarts_serializable{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "hide": false,
@@ -515,6 +594,10 @@
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
           "exemplar": true,
           "expr": "sum(rate(txn_restarts_asyncwritefailure{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "hide": false,
@@ -523,6 +606,10 @@
           "refId": "D"
         },
         {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
           "exemplar": true,
           "expr": "sum(rate(txn_restarts_readwithinuncertainty{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "hide": false,
@@ -531,6 +618,10 @@
           "refId": "E"
         },
         {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
           "exemplar": true,
           "expr": "sum(rate(txn_restarts_txnaborted{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "hide": false,
@@ -539,6 +630,10 @@
           "refId": "F"
         },
         {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
           "exemplar": true,
           "expr": "sum(rate(txn_restarts_txnpush{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "hide": false,
@@ -547,6 +642,10 @@
           "refId": "G"
         },
         {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
           "exemplar": true,
           "expr": "sum(rate(txn_restarts_unknown{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval]))",
           "hide": false,
@@ -570,6 +669,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "transaction duration",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -627,7 +728,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -652,6 +754,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "The 90th percentile of transaction durations over a 1 minute period.",
       "fieldConfig": {
         "defaults": {
@@ -659,6 +765,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "transaction duration",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -716,7 +824,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -741,6 +850,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "The 99th percentile of latency to heartbeat a node's internal liveness record over a 1 minute period.",
       "fieldConfig": {
         "defaults": {
@@ -748,6 +861,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "heartbeat latency",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -805,7 +920,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -831,6 +947,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
       "description": "The 90th percentile of latency to heartbeat a node's internal liveness record over a 1 minute period.",
       "fieldConfig": {
         "defaults": {
@@ -838,6 +958,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "heartbeat latency",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -895,7 +1017,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -921,16 +1044,16 @@
       "type": "timeseries"
     }
   ],
-  "schemaVersion": 35,
+  "schemaVersion": 37,
   "style": "dark",
-  "tags": ["CockroachDB"],
+  "tags": ["CockroachDB", "Kubernetes"],
   "templating": {
     "list": [
       {
         "current": {
           "selected": false,
-          "text": "Prometheus",
-          "value": "Prometheus"
+          "text": "Mimir",
+          "value": "Mimir"
         },
         "hide": 2,
         "includeAll": false,
@@ -947,14 +1070,14 @@
       {
         "current": {
           "selected": false,
-          "text": "dre-test-cockroachdb",
-          "value": "dre-test-cockroachdb"
+          "text": "dba-test-cockroachdb",
+          "value": "dba-test-cockroachdb"
         },
         "datasource": {
           "type": "prometheus",
           "uid": "${DS_PROMETHEUS}"
         },
-        "definition": "sys_uptime{}",
+        "definition": "label_values(sys_uptime{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4).+\"},cluster)",
         "hide": 0,
         "includeAll": false,
         "label": "Cluster",
@@ -962,11 +1085,11 @@
         "name": "cluster",
         "options": [],
         "query": {
-          "query": "sys_uptime{}",
+          "query": "label_values(sys_uptime{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4).+\"},cluster)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
-        "regex": "/cluster=\"([^\"]+)\"/",
+        "regex": "",
         "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
@@ -1004,71 +1127,6 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
-      },
-      {
-        "auto": false,
-        "auto_count": 30,
-        "auto_min": "10s",
-        "current": {
-          "selected": false,
-          "text": "1m",
-          "value": "1m"
-        },
-        "hide": 0,
-        "label": "Rate Interval",
-        "name": "rate_interval",
-        "options": [
-          {
-            "selected": false,
-            "text": "30s",
-            "value": "30s"
-          },
-          {
-            "selected": true,
-            "text": "1m",
-            "value": "1m"
-          },
-          {
-            "selected": false,
-            "text": "5m",
-            "value": "5m"
-          },
-          {
-            "selected": false,
-            "text": "10m",
-            "value": "10m"
-          },
-          {
-            "selected": false,
-            "text": "30m",
-            "value": "30m"
-          },
-          {
-            "selected": false,
-            "text": "1h",
-            "value": "1h"
-          },
-          {
-            "selected": false,
-            "text": "6h",
-            "value": "6h"
-          },
-          {
-            "selected": false,
-            "text": "12h",
-            "value": "12h"
-          },
-          {
-            "selected": false,
-            "text": "1d",
-            "value": "1d"
-          }
-        ],
-        "query": "30s,1m,5m,10m,30m,1h,6h,12h,1d",
-        "queryValue": "",
-        "refresh": 2,
-        "skipUrlSync": false,
-        "type": "interval"
       }
     ]
   },
