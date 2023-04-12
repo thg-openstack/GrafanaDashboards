@@ -29,7 +29,7 @@
       "icon": "external link",
       "includeVars": true,
       "keepTime": true,
-      "tags": ["CockroachDB"],
+      "tags": ["CockroachDB", "Kubernetes"],
       "targetBlank": true,
       "title": "Dashboards",
       "type": "dashboards"
@@ -1768,7 +1768,7 @@
   "refresh": false,
   "schemaVersion": 35,
   "style": "dark",
-  "tags": ["CockroachDB"],
+  "tags": ["CockroachDB", "Kubernetes"],
   "templating": {
     "list": [
       {

@@ -29,7 +29,7 @@
       "icon": "external link",
       "includeVars": true,
       "keepTime": true,
-      "tags": ["CockroachDB"],
+      "tags": ["CockroachDB", "Kubernetes"],
       "targetBlank": true,
       "title": "Dashboards",
       "type": "dashboards"
@@ -913,7 +913,7 @@
   "refresh": false,
   "schemaVersion": 35,
   "style": "dark",
-  "tags": ["CockroachDB"],
+  "tags": ["CockroachDB", "Kubernetes"],
   "templating": {
     "list": [
       {
@@ -944,7 +944,7 @@
           "type": "prometheus",
           "uid": "${DS_PROMETHEUS}"
         },
-        "definition": "sys_uptime{}",
+        "definition": "label_values(sys_uptime{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4).+\"},cluster)",
         "hide": 0,
         "includeAll": false,
         "label": "Cluster",
