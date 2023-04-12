@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 40,
+  "id": 43,
   "links": [
     {
       "asDropdown": true,
@@ -1797,8 +1797,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1960,8 +1959,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2123,8 +2121,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2334,8 +2331,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2516,7 +2512,7 @@
   "revision": 1,
   "schemaVersion": 37,
   "style": "dark",
-  "tags": ["CockroachDB", "VMWare Estate"],
+  "tags": ["CockroachDB", "VMWare"],
   "templating": {
     "list": [
       {
@@ -2669,8 +2665,8 @@
     "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
   },
   "timezone": "",
-  "title": "CockroachDB: Central",
+  "title": "Retail - CockroachDB: Central",
   "uid": "MKCLvPfnz",
-  "version": 5,
+  "version": 2,
   "weekStart": ""
 }
