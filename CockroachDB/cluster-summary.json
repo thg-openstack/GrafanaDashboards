@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 1,
+  "id": 50,
   "links": [
     {
       "asDropdown": true,
@@ -99,7 +99,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 12,
+        "h": 13,
         "w": 12,
         "x": 0,
         "y": 0
@@ -126,14 +126,14 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(replicas_leaseholders{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\"}) by (region)",
+          "expr": "sum(replicas_leaseholders{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\"}) by (cluster)",
           "hide": false,
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Lease Holders DC-Cluster",
+      "title": "Leaseholders",
       "type": "timeseries"
     },
     {
@@ -196,7 +196,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 12,
+        "h": 13,
         "w": 12,
         "x": 12,
         "y": 0
@@ -223,13 +223,13 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(replicas{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\"}) by (region)",
+          "expr": "sum(replicas{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\"}) by (cluster)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Replicas DC-Cluster",
+      "title": "Replicas",
       "type": "timeseries"
     },
     {
@@ -292,10 +292,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 14,
         "w": 24,
         "x": 0,
-        "y": 12
+        "y": 13
       },
       "id": 48,
       "options": {
@@ -318,8 +318,8 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "max(clock_offset_meannanos{job='cockroachdb',cluster=~\"$cluster\",instance=~\"$node\"}) by (region,cluster)",
-          "legendFormat": "{{region}}-{{cluster}}",
+          "expr": "max(clock_offset_meannanos{job='cockroachdb',cluster=~\"$cluster\",instance=~\"$node\"}) by (cluster)",
+          "legendFormat": "{{cluster}}",
           "range": true,
           "refId": "A"
         }
@@ -387,10 +387,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 11,
+        "h": 12,
         "w": 8,
         "x": 0,
-        "y": 20
+        "y": 27
       },
       "id": 46,
       "options": {
@@ -413,7 +413,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum (sys_rss{cluster=~\"$cluster\",pod=~\"$node\"}) by (region)",
+          "expr": "sum (sys_rss{cluster=~\"$cluster\",pod=~\"$node\"}) by (cluster)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -483,10 +483,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 11,
+        "h": 12,
         "w": 16,
         "x": 8,
-        "y": 20
+        "y": 27
       },
       "id": 44,
       "options": {
@@ -509,7 +509,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "avg(sys_cpu_combined_percent_normalized{job='cockroachdb',cluster=~\"$cluster\",instance=~\"$node\"}) by (region)",
+          "expr": "avg(sys_cpu_combined_percent_normalized{job='cockroachdb',cluster=~\"$cluster\",instance=~\"$node\"}) by (cluster)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -535,19 +535,19 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "sys_uptime{job=\"cockroachdb\"}",
+        "definition": "label_values(sys_uptime{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4).+\"},cluster)",
         "hide": 0,
         "includeAll": true,
-        "label": "Cluster name",
+        "label": "Cluster",
         "multi": true,
         "name": "cluster",
         "options": [],
         "query": {
-          "query": "sys_uptime{job=\"cockroachdb\"}",
+          "query": "label_values(sys_uptime{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4).+\"},cluster)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
-        "regex": "/cluster=\"([^\"]+)\"/",
+        "regex": "",
         "skipUrlSync": false,
         "sort": 5,
         "tagValuesQuery": "",
@@ -558,7 +558,7 @@
       {
         "allValue": ".*",
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "All",
           "value": "$__all"
         },
@@ -681,8 +681,8 @@
     "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
   },
   "timezone": "",
-  "title": "CockroachDB: Region Summary",
-  "uid": "cockroachdb_region_summary",
+  "title": "CockroachDB: Cluster Summary",
+  "uid": "cockroachdb_cluster_summary",
   "version": 1,
   "weekStart": ""
 }

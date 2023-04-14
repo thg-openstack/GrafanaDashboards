@@ -24,7 +24,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 39,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -930,7 +929,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 26
+        "y": 5
       },
       "id": 41,
       "panels": [
@@ -1842,7 +1841,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 27
+        "y": 6
       },
       "id": 10,
       "panels": [
@@ -2662,7 +2661,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 28
+        "y": 7
       },
       "id": 35,
       "panels": [
@@ -3128,7 +3127,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 29
+        "y": 8
       },
       "id": 37,
       "panels": [
@@ -3462,7 +3461,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 30
+        "y": 9
       },
       "id": 18,
       "panels": [
@@ -3868,7 +3867,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 31
+        "y": 10
       },
       "id": 231,
       "panels": [
@@ -4097,7 +4096,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 32
+        "y": 11
       },
       "id": 239,
       "panels": [
@@ -4217,7 +4216,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 33
+        "y": 12
       },
       "id": 293,
       "panels": [
@@ -4465,7 +4464,7 @@
   "refresh": false,
   "schemaVersion": 37,
   "style": "dark",
-  "tags": ["postgres"],
+  "tags": ["Postgres", "Kubernetes"],
   "templating": {
     "list": [
       {
@@ -4489,9 +4488,10 @@
       },
       {
         "current": {
+          "isNone": true,
           "selected": false,
-          "text": "dre-test-multi-region-postgres",
-          "value": "dre-test-multi-region-postgres"
+          "text": "None",
+          "value": ""
         },
         "datasource": {
           "type": "prometheus",
@@ -4553,6 +4553,6 @@
   "timezone": "",
   "title": "Postgres: Central",
   "uid": "CloudNativePostgres",
-  "version": 6,
+  "version": 1,
   "weekStart": ""
 }
