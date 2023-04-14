@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 42,
+  "id": 11,
   "links": [
     {
       "asDropdown": true,
@@ -126,7 +126,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(replicas_leaseholders{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "sum(replicas_leaseholders{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\"}) by (cluster)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -222,7 +222,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(replicas{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "sum(replicas{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\"}) by (cluster)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -317,7 +317,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "max(label_replace(clock_offset_meannanos{job='cockroachdb',cluster=~\"$cluster\",instance=~\"$node\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*\")) by (datacentre)",
+          "expr": "max(clock_offset_meannanos{job='cockroachdb',cluster=~\"$cluster\",instance=~\"$node\"}) by (cluster)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -412,7 +412,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sys_rss{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\"}",
+          "expr": "sum(sys_rss{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\"}) by (cluster)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -508,7 +508,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(label_replace(sys_cpu_combined_percent_normalized{job='cockroachdb',cluster=~\"$cluster\",instance=~\"$node\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*\")) by (datacentre)",
+          "expr": "avg(sys_cpu_combined_percent_normalized{job='cockroachdb',cluster=~\"$cluster\",instance=~\"$node\"}) by (cluster)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -664,8 +664,8 @@
     "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
   },
   "timezone": "",
-  "title": "Retail - CockroachDB: DC Summary",
+  "title": "Retail - CockroachDB: Cluster Summary",
   "uid": "6spRz09nk",
-  "version": 4,
+  "version": 1,
   "weekStart": ""
 }
