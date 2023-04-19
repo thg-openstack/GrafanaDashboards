@@ -385,7 +385,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(sum(rate(raftlog_truncated{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}[$rate_interval])) by (instance))",
+          "expr": "sum(sum(rate(raftlog_truncated{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}[5m])) by (instance))",
           "hide": false,
           "legendFormat": "raft log truncated",
           "range": true,
@@ -1474,7 +1474,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(sum(rate(range_splits{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}[$rate_interval])) by (instance))",
+          "expr": "sum(sum(rate(range_splits{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}[5m])) by (instance))",
           "legendFormat": "splits",
           "range": true,
           "refId": "A"
@@ -1485,7 +1485,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(sum(rate(range_adds{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}[$rate_interval])) by (instance))",
+          "expr": "sum(sum(rate(range_adds{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}[5m])) by (instance))",
           "hide": false,
           "legendFormat": "adds",
           "range": true,
@@ -1497,7 +1497,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(sum(rate(range_removes{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}[$rate_interval])) by (instance))",
+          "expr": "sum(sum(rate(range_removes{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}[5m])) by (instance))",
           "hide": false,
           "legendFormat": "removes",
           "range": true,
@@ -1579,7 +1579,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(range_splits{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}[$rate_interval])) by (instance) + sum(rate(range_adds{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}[$rate_interval])) by (instance) + sum(rate(range_removes{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}[$rate_interval])) by (instance)",
+          "expr": "sum(rate(range_splits{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}[5m])) by (instance) + sum(rate(range_adds{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}[5m])) by (instance) + sum(rate(range_removes{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}[5m])) by (instance)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -1717,7 +1717,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(sum(rate(range_snapshots_generated{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}[$rate_interval])) by (instance))",
+          "expr": "sum(sum(rate(range_snapshots_generated{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}[5m])) by (instance))",
           "legendFormat": "Generated",
           "range": true,
           "refId": "A"
@@ -1728,7 +1728,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(sum(rate(range_snapshots_normal_applied{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}[$rate_interval])) by (instance))",
+          "expr": "sum(sum(rate(range_snapshots_normal_applied{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}[5m])) by (instance))",
           "hide": false,
           "legendFormat": "Normal-applied",
           "range": true,
@@ -1740,7 +1740,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(sum(rate(range_snapshots_preemptive_applied{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}[$rate_interval])) by (instance))",
+          "expr": "sum(sum(rate(range_snapshots_preemptive_applied{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}[5m])) by (instance))",
           "hide": false,
           "legendFormat": "Preemptive-applied",
           "range": true,
@@ -1831,7 +1831,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(range_snapshots_generated{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}[$rate_interval])) by (instance)",
+          "expr": "sum(rate(range_snapshots_generated{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}[5m])) by (instance)",
           "legendFormat": "{{instance}} - generated",
           "range": true,
           "refId": "A"
@@ -1842,7 +1842,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(range_snapshots_normal_applied{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}[$rate_interval])) by (instance) + sum(rate(range_snapshots_preemptive_applied{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}[$rate_interval])) by (instance)",
+          "expr": "sum(rate(range_snapshots_normal_applied{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}[5m])) by (instance) + sum(rate(range_snapshots_preemptive_applied{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}[5m])) by (instance)",
           "hide": false,
           "legendFormat": "{{instance}} - applied",
           "range": true,
