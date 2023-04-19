@@ -244,7 +244,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(sum(rate(range_splits{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
+          "expr": "sum(sum(rate(range_splits{cluster=~\"$cluster\",pod=~\"$node\"}[5m])) by (pod))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Splits",
@@ -256,7 +256,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(sum(rate(range_merges{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
+          "expr": "sum(sum(rate(range_merges{cluster=~\"$cluster\",pod=~\"$node\"}[5m])) by (pod))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Merges",
@@ -268,7 +268,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(sum(rate(range_adds{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
+          "expr": "sum(sum(rate(range_adds{cluster=~\"$cluster\",pod=~\"$node\"}[5m])) by (pod))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Adds",
@@ -280,7 +280,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(sum(rate(range_removes{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
+          "expr": "sum(sum(rate(range_removes{cluster=~\"$cluster\",pod=~\"$node\"}[5m])) by (pod))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Removes",
@@ -292,7 +292,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(sum(rate(leases_transfers_success{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
+          "expr": "sum(sum(rate(leases_transfers_success{cluster=~\"$cluster\",pod=~\"$node\"}[5m])) by (pod))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Lease Transfers",
@@ -304,7 +304,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(sum(rate(rebalancing_lease_transfers{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
+          "expr": "sum(sum(rate(rebalancing_lease_transfers{cluster=~\"$cluster\",pod=~\"$node\"}[5m])) by (pod))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Load-based Lease Transfers",
@@ -316,7 +316,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(sum(rate(rebalancing_range_rebalances{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])) by (pod))",
+          "expr": "sum(sum(rate(rebalancing_range_rebalances{cluster=~\"$cluster\",pod=~\"$node\"}[5m])) by (pod))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Load-based Range Rebalances",
@@ -850,7 +850,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(range_snapshots_generated{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(range_snapshots_generated{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Generated",
@@ -862,7 +862,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(range_snapshots_applied_voter{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(range_snapshots_applied_voter{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Applied (Voters)",
@@ -874,7 +874,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(range_snapshots_applied_initial{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(range_snapshots_applied_initial{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Applied (Initial Upreplication)",
@@ -886,7 +886,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(range_snapshots_applied_initial{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(range_snapshots_applied_initial{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,

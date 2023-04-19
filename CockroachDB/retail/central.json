@@ -1522,7 +1522,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_select_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_select_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1536,7 +1536,7 @@
             "type": "prometheus",
             "uid": "PAE45454D0EDB9216"
           },
-          "expr": "sum(rate(sql_insert_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_insert_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "interval": "",
           "legendFormat": "insert",
           "refId": "B"
@@ -1546,7 +1546,7 @@
             "type": "prometheus",
             "uid": "PAE45454D0EDB9216"
           },
-          "expr": "sum(rate(sql_update_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_update_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "interval": "",
           "legendFormat": "update",
           "refId": "C"
@@ -1556,7 +1556,7 @@
             "type": "prometheus",
             "uid": "PAE45454D0EDB9216"
           },
-          "expr": "sum(rate(sql_delete_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_delete_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "interval": "",
           "legendFormat": "delete",
           "refId": "D"
@@ -2239,7 +2239,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_select_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_select_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2254,7 +2254,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_insert_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_insert_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Inserts",
@@ -2266,7 +2266,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_delete_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_delete_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Deletes",
@@ -2278,7 +2278,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_update_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_update_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Updates",
@@ -2290,7 +2290,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_update_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval])+rate(sql_select_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval])+rate(sql_delete_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval])+rate(sql_insert_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_update_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m])+rate(sql_select_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m])+rate(sql_delete_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m])+rate(sql_insert_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Combined",
@@ -2449,7 +2449,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_select_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_select_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2464,7 +2464,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_insert_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_insert_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Inserts",
@@ -2476,7 +2476,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_update_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_update_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Updates",
@@ -2488,7 +2488,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_update_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval])+rate(sql_select_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval])+rate(sql_insert_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_update_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m])+rate(sql_select_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m])+rate(sql_insert_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Combined",

@@ -1695,7 +1695,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1710,7 +1710,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
           "interval": "",
           "legendFormat": "insert",
           "refId": "B"
@@ -1721,7 +1721,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
           "interval": "",
           "legendFormat": "update",
           "refId": "C"
@@ -1732,7 +1732,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_delete_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_delete_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
           "interval": "",
           "legendFormat": "delete",
           "refId": "D"
@@ -2392,7 +2392,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2407,7 +2407,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Inserts",
@@ -2419,7 +2419,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_delete_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_delete_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Deletes",
@@ -2431,7 +2431,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Updates",
@@ -2443,7 +2443,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])+rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])+rate(sql_delete_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])+rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m])+rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m])+rate(sql_delete_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m])+rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Combined",
@@ -2602,7 +2602,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2617,7 +2617,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Inserts",
@@ -2629,7 +2629,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Updates",
@@ -2641,7 +2641,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])+rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval])+rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m])+rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m])+rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Combined",

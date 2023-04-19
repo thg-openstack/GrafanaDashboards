@@ -299,7 +299,7 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
-          "expr": "sum(rate(sql_txn_begin_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_txn_begin_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Begin",
@@ -307,7 +307,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(sql_txn_commit_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_txn_commit_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Commits",
@@ -315,7 +315,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(rate( sql_txn_rollback_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate( sql_txn_rollback_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Rollbacks",
@@ -323,7 +323,7 @@
         },
         {
           "exemplar": true,
-          "expr": "sum(rate(sql_txn_abort_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_txn_abort_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Aborts",
@@ -412,7 +412,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(rate(sql_ddl_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))  ",
+          "expr": "sum(rate(sql_ddl_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))  ",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "DDL Statements",
@@ -599,7 +599,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -612,7 +612,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -625,7 +625,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -638,7 +638,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "exemplar": true,
-          "expr": "sum(rate(sql_delete_count{cluster=~\"$cluster\",pod=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_delete_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
@@ -1297,7 +1297,7 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
-          "expr": "histogram_quantile(0.99,rate(exec_latency_bucket{job=\"cockroachdb\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "histogram_quantile(0.99,rate(exec_latency_bucket{job=\"cockroachdb\",instance=~\"$node\"}[5m]))",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "{{pod}}",
@@ -1382,7 +1382,7 @@
       "pluginVersion": "8.4.11",
       "targets": [
         {
-          "expr": "histogram_quantile(0.90, rate(exec_latency_bucket{job=\"cockroachdb\",instance=~\"$node\",cluster=~\"$cluster\"}[$rate_interval]))",
+          "expr": "histogram_quantile(0.90, rate(exec_latency_bucket{job=\"cockroachdb\",instance=~\"$node\",cluster=~\"$cluster\"}[5m]))",
           "interval": "",
           "legendFormat": "{{pod}}",
           "refId": "A"

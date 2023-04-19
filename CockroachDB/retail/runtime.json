@@ -960,7 +960,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(sys_gc_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sys_gc_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -971,7 +971,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(sys_gc_pause_ns{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sys_gc_pause_ns{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "hide": false,
           "legendFormat": "__auto",
           "range": true,
@@ -1055,7 +1055,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(sys_gc_pause_ns{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval])",
+          "expr": "rate(sys_gc_pause_ns{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m])",
           "format": "time_series",
           "legendFormat": "{{instance}}",
           "range": true,
@@ -1162,7 +1162,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(sys_cpu_user_ns{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sys_cpu_user_ns{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "legendFormat": "User",
           "range": true,
           "refId": "A"
@@ -1173,7 +1173,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(sys_cpu_sys_ns{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sys_cpu_sys_ns{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "hide": false,
           "legendFormat": "System",
           "range": true,
@@ -1241,7 +1241,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(sys_cpu_user_ns{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]) + rate(sys_cpu_sys_ns{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval])",
+          "expr": "rate(sys_cpu_user_ns{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]) + rate(sys_cpu_sys_ns{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m])",
           "format": "time_series",
           "legendFormat": "{{instance}}",
           "range": true,
@@ -1348,7 +1348,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(sys_cgocalls{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sys_cgocalls{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -1415,7 +1415,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(sys_cgocalls{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval])",
+          "expr": "rate(sys_cgocalls{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m])",
           "format": "time_series",
           "legendFormat": "{{instance}}",
           "range": true,

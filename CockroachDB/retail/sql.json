@@ -316,7 +316,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(sql_bytesin{job=\"cockroachdb\", cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_bytesin{job=\"cockroachdb\", cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "legendFormat": "In",
           "range": true,
           "refId": "A"
@@ -327,7 +327,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(sql_bytesout{job=\"cockroachdb\", cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_bytesout{job=\"cockroachdb\", cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "hide": false,
           "legendFormat": "Out",
           "range": true,
@@ -396,7 +396,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(sql_bytesin{job=\"cockroachdb\", cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval])",
+          "expr": "rate(sql_bytesin{job=\"cockroachdb\", cluster=\"$cluster\",instance=~\"$node\"}[5m])",
           "legendFormat": "{{instance}} - in",
           "range": true,
           "refId": "A"
@@ -407,7 +407,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(sql_bytesout{job=\"cockroachdb\", cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval])",
+          "expr": "rate(sql_bytesout{job=\"cockroachdb\", cluster=\"$cluster\",instance=~\"$node\"}[5m])",
           "hide": false,
           "legendFormat": "{{instance}} - out",
           "range": true,
@@ -514,7 +514,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(sql_select_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_select_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "legendFormat": "select",
           "range": true,
           "refId": "A"
@@ -525,7 +525,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(sql_insert_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_insert_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "hide": false,
           "legendFormat": "insert",
           "range": true,
@@ -537,7 +537,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(sql_update_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_update_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "hide": false,
           "legendFormat": "update",
           "range": true,
@@ -549,7 +549,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(sql_delete_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_delete_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "hide": false,
           "legendFormat": "delete",
           "range": true,
@@ -633,7 +633,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(sql_select_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]) + rate(sql_insert_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]) + rate(sql_update_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]) + rate(sql_delete_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval])",
+          "expr": "rate(sql_select_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]) + rate(sql_insert_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]) + rate(sql_update_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]) + rate(sql_delete_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m])",
           "legendFormat": "{{instance}}",
           "range": true,
           "refId": "A"
@@ -821,7 +821,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(sql_txn_begin_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]) + rate(sql_txn_commit_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]) + rate(sql_txn_abort_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]) + rate(sql_txn_rollback_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval])",
+          "expr": "rate(sql_txn_begin_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]) + rate(sql_txn_commit_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]) + rate(sql_txn_abort_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]) + rate(sql_txn_rollback_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m])",
           "legendFormat": "{{instance}}",
           "range": true,
           "refId": "A"
@@ -1009,7 +1009,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(sql_ddl_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval])",
+          "expr": "rate(sql_ddl_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m])",
           "legendFormat": "{{isntance}}",
           "range": true,
           "refId": "A"
@@ -1115,7 +1115,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(sql_txn_begin_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_txn_begin_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "legendFormat": "begin",
           "range": true,
           "refId": "A"
@@ -1126,7 +1126,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(sql_txn_commit_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_txn_commit_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "hide": false,
           "legendFormat": "commit",
           "range": true,
@@ -1138,7 +1138,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(sql_txn_abort_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_txn_abort_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "hide": false,
           "legendFormat": "abort",
           "range": true,
@@ -1150,7 +1150,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(sql_txn_rollback_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_txn_rollback_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "hide": false,
           "legendFormat": "rollback",
           "range": true,
@@ -1248,7 +1248,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(sql_ddl_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[$rate_interval]))",
+          "expr": "sum(rate(sql_ddl_count{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}[5m]))",
           "legendFormat": "DDL",
           "range": true,
           "refId": "A"
