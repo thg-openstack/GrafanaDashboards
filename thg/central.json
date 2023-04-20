@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 48,
+  "id": 1,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -71,7 +71,6 @@
         "type": "prometheus",
         "uid": "PAE45454D0EDB9216"
       },
-      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -91,74 +90,15 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
-        "w": 2,
+        "h": 4,
+        "w": 4,
         "x": 0,
-        "y": 3
-      },
-      "id": 53,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.2.5",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
-          },
-          "editorMode": "code",
-          "expr": "count(count(sys_uptime{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4).+\"}) by (cluster))",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "CockroachDB Cluster Count",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 2,
-        "x": 2,
         "y": 3
       },
       "id": 28,
       "options": {
         "colorMode": "value",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
@@ -243,7 +183,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 6,
         "x": 4,
         "y": 3
@@ -336,7 +276,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 7,
         "x": 10,
         "y": 3
@@ -428,7 +368,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 7,
         "x": 17,
         "y": 3
@@ -464,14 +404,74 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
+        "uid": "PAE45454D0EDB9216"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 7
+      },
+      "id": 53,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.2.5",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "count(count(sys_uptime{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4).+\"}) by (cluster))",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "CockroachDB Cluster Count",
+      "type": "stat"
+    },
+    {
+      "datasource": {
         "type": "datasource",
         "uid": "grafana"
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 4,
         "x": 0,
-        "y": 10
+        "y": 11
       },
       "id": 33,
       "options": {
@@ -546,10 +546,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 6,
         "x": 4,
-        "y": 10
+        "y": 11
       },
       "id": 15,
       "options": {
@@ -638,10 +638,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 7,
         "x": 10,
-        "y": 10
+        "y": 11
       },
       "id": 19,
       "options": {
@@ -663,13 +663,13 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(replicas{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "sum(label_replace(rate(sql_select_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre) + \nsum(label_replace(rate(sql_insert_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre) + \nsum(label_replace(rate(sql_update_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre) + \nsum(label_replace(rate(sql_delete_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Replicas",
+      "title": "QPS Total",
       "type": "timeseries"
     },
     {
@@ -731,10 +731,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 7,
         "x": 17,
-        "y": 10
+        "y": 11
       },
       "id": 17,
       "options": {
@@ -774,7 +774,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 17
+        "y": 19
       },
       "id": 36,
       "options": {
@@ -814,74 +814,15 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
-        "w": 2,
+        "h": 4,
+        "w": 4,
         "x": 0,
-        "y": 19
-      },
-      "id": 54,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.2.5",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
-          },
-          "editorMode": "code",
-          "expr": "count(count(pg_up{}) by (cluster))",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Postgres Cluster Count",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 2,
-        "x": 2,
-        "y": 19
+        "y": 21
       },
       "id": 30,
       "options": {
         "colorMode": "value",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
@@ -969,10 +910,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 6,
         "x": 4,
-        "y": 19
+        "y": 21
       },
       "id": 52,
       "links": [],
@@ -1065,10 +1006,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 7,
         "x": 10,
-        "y": 19
+        "y": 21
       },
       "id": 48,
       "options": {
@@ -1159,10 +1100,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 7,
         "x": 17,
-        "y": 19
+        "y": 21
       },
       "id": 47,
       "options": {
@@ -1195,14 +1136,73 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
+        "uid": "PAE45454D0EDB9216"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 25
+      },
+      "id": 54,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.2.5",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "count(count(pg_up{}) by (cluster))",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Postgres Cluster Count",
+      "type": "stat"
+    },
+    {
+      "datasource": {
         "type": "datasource",
         "uid": "grafana"
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 4,
         "x": 0,
-        "y": 26
+        "y": 29
       },
       "id": 38,
       "options": {
@@ -1280,10 +1280,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 20,
         "x": 4,
-        "y": 26
+        "y": 29
       },
       "id": 50,
       "links": [],
@@ -1326,7 +1326,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 33
+        "y": 37
       },
       "id": 37,
       "options": {
@@ -1366,74 +1366,15 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
-        "w": 2,
+        "h": 4,
+        "w": 4,
         "x": 0,
-        "y": 35
-      },
-      "id": 31,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.2.5",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
-          },
-          "editorMode": "code",
-          "expr": "count(count(couchbase_cluster_up{}) by (cluster))",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Couchbase Cluster Count",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 2,
-        "x": 2,
-        "y": 35
+        "y": 39
       },
       "id": 55,
       "options": {
         "colorMode": "value",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
@@ -1519,10 +1460,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 6,
         "x": 4,
-        "y": 35
+        "y": 39
       },
       "id": 64,
       "options": {
@@ -1612,10 +1553,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 7,
         "x": 10,
-        "y": 35
+        "y": 39
       },
       "id": 61,
       "options": {
@@ -1704,10 +1645,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 7,
         "x": 17,
-        "y": 35
+        "y": 39
       },
       "id": 58,
       "options": {
@@ -1740,32 +1681,6 @@
     },
     {
       "datasource": {
-        "type": "datasource",
-        "uid": "grafana"
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 2,
-        "x": 0,
-        "y": 42
-      },
-      "id": 39,
-      "options": {
-        "folderId": 0,
-        "maxItems": 10,
-        "query": "",
-        "showHeadings": false,
-        "showRecentlyViewed": false,
-        "showSearch": true,
-        "showStarred": false,
-        "tags": ["VMWare", "Couchbase"]
-      },
-      "pluginVersion": "9.2.5",
-      "title": "CockroachDB Dashboards",
-      "type": "dashlist"
-    },
-    {
-      "datasource": {
         "type": "prometheus",
         "uid": "PAE45454D0EDB9216"
       },
@@ -1783,21 +1698,20 @@
                 "value": null
               }
             ]
-          },
-          "unit": "short"
+          }
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
-        "w": 2,
-        "x": 2,
-        "y": 42
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 43
       },
-      "id": 60,
+      "id": 31,
       "options": {
         "colorMode": "value",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
@@ -1815,14 +1729,40 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(couchbase_bucket_basicstats_itemcount)",
+          "expr": "count(count(couchbase_cluster_up{}) by (cluster))",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Couchbase Item Count",
+      "title": "Couchbase Cluster Count",
       "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 47
+      },
+      "id": 39,
+      "options": {
+        "folderId": 0,
+        "maxItems": 10,
+        "query": "",
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": true,
+        "showStarred": false,
+        "tags": ["VMWare", "Couchbase"]
+      },
+      "pluginVersion": "9.2.5",
+      "title": "CockroachDB Dashboards",
+      "type": "dashlist"
     },
     {
       "datasource": {
@@ -1897,10 +1837,10 @@
         ]
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 20,
         "x": 4,
-        "y": 42
+        "y": 47
       },
       "id": 63,
       "links": [],
@@ -1936,12 +1876,72 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PAE45454D0EDB9216"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 51
+      },
+      "id": 60,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.2.5",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "sum(couchbase_bucket_basicstats_itemcount)",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Couchbase Item Count",
+      "type": "stat"
+    },
+    {
       "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 49
+        "y": 55
       },
       "id": 4,
       "panels": [],
@@ -1957,7 +1957,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 50
+        "y": 56
       },
       "id": 40,
       "options": {
@@ -1997,15 +1997,15 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
-        "w": 2,
+        "h": 4,
+        "w": 4,
         "x": 0,
-        "y": 52
+        "y": 58
       },
       "id": 27,
       "options": {
         "colorMode": "value",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
@@ -2030,65 +2030,6 @@
         }
       ],
       "title": "CockroachDB Cluster Count",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 2,
-        "x": 2,
-        "y": 52
-      },
-      "id": 56,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.2.5",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
-          },
-          "editorMode": "code",
-          "expr": "count(sys_uptime{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4).+\"})",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "CockroachDB Pod Count",
       "type": "stat"
     },
     {
@@ -2149,10 +2090,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 6,
         "x": 4,
-        "y": 52
+        "y": 58
       },
       "id": 23,
       "options": {
@@ -2242,10 +2183,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 7,
         "x": 10,
-        "y": 52
+        "y": 58
       },
       "id": 12,
       "options": {
@@ -2335,10 +2276,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 7,
         "x": 17,
-        "y": 52
+        "y": 58
       },
       "id": 43,
       "options": {
@@ -2371,14 +2312,73 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
+        "uid": "PAE45454D0EDB9216"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 62
+      },
+      "id": 56,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.2.5",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "count(sys_uptime{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4).+\"})",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "CockroachDB Pod Count",
+      "type": "stat"
+    },
+    {
+      "datasource": {
         "type": "datasource",
         "uid": "grafana"
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 4,
         "x": 0,
-        "y": 59
+        "y": 66
       },
       "id": 44,
       "options": {
@@ -2453,10 +2453,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 6,
         "x": 4,
-        "y": 59
+        "y": 66
       },
       "id": 6,
       "options": {
@@ -2545,10 +2545,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 7,
         "x": 10,
-        "y": 59
+        "y": 66
       },
       "id": 8,
       "options": {
@@ -2570,13 +2570,13 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(replicas{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4).+\"}) by (region)",
+          "expr": "sum(rate(sql_select_count{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4).+\"}[5m])) by (region) + \nsum(rate(sql_insert_count{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4).+\"}[5m])) by (region) + \nsum(rate(sql_update_count{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4).+\"}[5m])) by (region) + \nsum(rate(sql_delete_count{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4).+\"}[5m])) by (region)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Replicas",
+      "title": "QPS Total",
       "type": "timeseries"
     },
     {
@@ -2638,10 +2638,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 7,
         "x": 17,
-        "y": 59
+        "y": 66
       },
       "id": 10,
       "options": {
@@ -2681,7 +2681,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 66
+        "y": 74
       },
       "id": 41,
       "options": {
@@ -2732,15 +2732,15 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
-        "w": 2,
+        "h": 4,
+        "w": 4,
         "x": 0,
-        "y": 68
+        "y": 76
       },
       "id": 29,
       "options": {
         "colorMode": "value",
-        "graphMode": "area",
+        "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
@@ -2765,76 +2765,6 @@
         }
       ],
       "title": "Postgres Cluster Count",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "index": 1,
-                  "text": "0"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 2,
-        "x": 2,
-        "y": 68
-      },
-      "id": 57,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": ["lastNotNull"],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.2.5",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
-          },
-          "editorMode": "code",
-          "expr": "count(cnpg_collector_up{})",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Postgres Node Count",
       "type": "stat"
     },
     {
@@ -2902,10 +2832,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 6,
         "x": 4,
-        "y": 68
+        "y": 76
       },
       "id": 65,
       "options": {
@@ -2995,10 +2925,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 7,
         "x": 10,
-        "y": 68
+        "y": 76
       },
       "id": 67,
       "options": {
@@ -3087,10 +3017,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 7,
         "x": 17,
-        "y": 68
+        "y": 76
       },
       "id": 68,
       "options": {
@@ -3123,6 +3053,76 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
+        "uid": "PAE45454D0EDB9216"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "index": 1,
+                  "text": "0"
+                }
+              },
+              "type": "special"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 80
+      },
+      "id": 57,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.2.5",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "count(cnpg_collector_up{})",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Postgres Node Count",
+      "type": "stat"
+    },
+    {
+      "datasource": {
         "type": "datasource",
         "uid": "grafana"
       },
@@ -3130,7 +3130,7 @@
         "h": 8,
         "w": 4,
         "x": 0,
-        "y": 75
+        "y": 84
       },
       "id": 45,
       "options": {
@@ -3208,7 +3208,7 @@
         "h": 8,
         "w": 20,
         "x": 4,
-        "y": 75
+        "y": 84
       },
       "id": 70,
       "options": {
