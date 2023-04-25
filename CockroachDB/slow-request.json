@@ -417,7 +417,7 @@
           "type": "prometheus",
           "uid": "${DS_PROMETHEUS}"
         },
-        "definition": "label_values(sys_uptime{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4).+\"},cluster)",
+        "definition": "label_values(sys_uptime{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"},cluster)",
         "hide": 0,
         "includeAll": false,
         "label": "Cluster",

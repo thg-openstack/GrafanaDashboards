@@ -116,7 +116,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "count(sys_uptime{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4).+\"})",
+          "expr": "count(sys_uptime{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"})",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -208,7 +208,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "count(label_replace(sys_uptime{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "count(label_replace(sys_uptime{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
           "legendFormat": "{{region}}",
           "range": true,
           "refId": "A"
@@ -301,7 +301,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(sys_rss{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "sum(label_replace(sys_rss{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -393,7 +393,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(label_replace(sys_cpu_combined_percent_normalized{job='cockroachdb',instance=~\"(de1|gb1|gb4).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "avg(label_replace(sys_cpu_combined_percent_normalized{job='cockroachdb',instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -453,7 +453,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "count(count(sys_uptime{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4).+\"}) by (cluster))",
+          "expr": "count(count(sys_uptime{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}) by (cluster))",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -571,7 +571,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(replicas_leaseholders{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "sum(label_replace(replicas_leaseholders{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -663,7 +663,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(rate(sql_select_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre) + \nsum(label_replace(rate(sql_insert_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre) + \nsum(label_replace(rate(sql_update_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre) + \nsum(label_replace(rate(sql_delete_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "sum(label_replace(rate(sql_select_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre) + \nsum(label_replace(rate(sql_insert_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre) + \nsum(label_replace(rate(sql_update_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre) + \nsum(label_replace(rate(sql_delete_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -756,7 +756,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(label_replace(clock_offset_meannanos{job='cockroachdb',instance=~\"(de1|gb1|gb4).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "avg(label_replace(clock_offset_meannanos{job='cockroachdb',instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -937,7 +937,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(pg_stat_activity_count{job='postgresql',instance=~\"(de1|gb1|gb4).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "sum(label_replace(pg_stat_activity_count{job='postgresql',instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
           "hide": false,
           "legendFormat": "__auto",
           "range": true,
@@ -1031,7 +1031,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(process_resident_memory_bytes{job='postgresql',instance=~\"(de1|gb1|gb4).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "sum(label_replace(process_resident_memory_bytes{job='postgresql',instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
           "hide": false,
           "legendFormat": "__auto",
           "range": true,
@@ -1125,7 +1125,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(label_replace(rate(process_cpu_seconds_total{job=\"postgresql\",instance=~\"(de1|gb1|gb4).+\"}[5m]) * 10000, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "avg(label_replace(rate(process_cpu_seconds_total{job=\"postgresql\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]) * 10000, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -1307,7 +1307,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(rate(pg_replication_lag{job='postgresql',instance=~\"(de1|gb1|gb4).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "sum(label_replace(rate(pg_replication_lag{job='postgresql',instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
           "hide": false,
           "legendFormat": "__auto",
           "range": true,
@@ -1485,7 +1485,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(couchbase_bucket_stats_misses{instance=~\"(de1|gb1|gb4).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "sum(label_replace(couchbase_bucket_stats_misses{instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -1578,7 +1578,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(couchbase_bucket_stats_mem_actual_used_bytes{instance=~\"(de1|gb1|gb4).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "sum(label_replace(couchbase_bucket_stats_mem_actual_used_bytes{instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -1670,7 +1670,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(label_replace(couchbase_bucket_stats_cpu_utilization_rate{instance=~\"(de1|gb1|gb4).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "avg(label_replace(couchbase_bucket_stats_cpu_utilization_rate{instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -1864,7 +1864,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(couchbase_bucket_basicstats_opspersec{instance=~\"(de1|gb1|gb4).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "sum(label_replace(couchbase_bucket_basicstats_opspersec{instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
           "hide": false,
           "legendFormat": "__auto",
           "range": true,
@@ -2023,7 +2023,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "count(count(sys_uptime{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4).+\"}) by (cluster))",
+          "expr": "count(count(sys_uptime{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"}) by (cluster))",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -2115,7 +2115,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "count(sys_uptime{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4).+\"}) by (region)",
+          "expr": "count(sys_uptime{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"}) by (region)",
           "legendFormat": "{{region}}",
           "range": true,
           "refId": "A"
@@ -2208,7 +2208,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(sys_rss{job='cockroachdb',instance!~\"(de1|gb1|gb4).+\"}) by (region)",
+          "expr": "sum(sys_rss{job='cockroachdb',instance!~\"(de1|gb1|gb4|gb5).+\"}) by (region)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -2301,7 +2301,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(sys_cpu_combined_percent_normalized{job='cockroachdb',instance!~\"(de1|gb1|gb4).+\"}) by (region)",
+          "expr": "sum(sys_cpu_combined_percent_normalized{job='cockroachdb',instance!~\"(de1|gb1|gb4|gb5).+\"}) by (region)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -2360,7 +2360,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "count(sys_uptime{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4).+\"})",
+          "expr": "count(sys_uptime{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"})",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -2478,7 +2478,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(replicas_leaseholders{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4).+\"}) by (region)",
+          "expr": "sum(replicas_leaseholders{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"}) by (region)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -2570,7 +2570,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(sql_select_count{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4).+\"}[5m])) by (region) + \nsum(rate(sql_insert_count{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4).+\"}[5m])) by (region) + \nsum(rate(sql_update_count{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4).+\"}[5m])) by (region) + \nsum(rate(sql_delete_count{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4).+\"}[5m])) by (region)",
+          "expr": "sum(rate(sql_select_count{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"}[5m])) by (region) + \nsum(rate(sql_insert_count{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"}[5m])) by (region) + \nsum(rate(sql_update_count{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"}[5m])) by (region) + \nsum(rate(sql_delete_count{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"}[5m])) by (region)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -2663,7 +2663,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(clock_offset_meannanos{job='cockroachdb',instance!~\"(de1|gb1|gb4).+\"}) by (region)",
+          "expr": "avg(clock_offset_meannanos{job='cockroachdb',instance!~\"(de1|gb1|gb4|gb5).+\"}) by (region)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
