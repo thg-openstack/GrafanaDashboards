@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 49,
+  "id": 53,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -138,13 +138,35 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(windows_mssql_waitstats_wait_for_the_worker_waits{instance=~\"$instance\"}[5m])",
+          "expr": "rate(windows_mssql_waitstats_wait_for_the_worker_waits{cluster=~\"$cluster\"}[5m])",
           "legendFormat": "{{item}}",
           "range": true,
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "rate(windows_mssql_waitstats_wait_for_the_worker_waits{cluster=~\"$cluster\"}[5m]offset $offset)",
+          "hide": false,
+          "legendFormat": "{{item}} (offset $offset)",
+          "range": true,
+          "refId": "B"
         }
       ],
       "title": "Wait for Worker Threads",
+      "transformations": [
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "pattern": "^((?!{).)*$"
+            }
+          }
+        }
+      ],
       "type": "timeseries"
     },
     {
@@ -178,7 +200,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -235,7 +257,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "windows_mssql_memmgr_free_memory_bytes{instance=\"$instance\"}",
+          "expr": "windows_mssql_memmgr_free_memory_bytes{cluster=\"$cluster\"} != 0",
           "hide": false,
           "legendFormat": "Free Memory",
           "range": true,
@@ -247,9 +269,9 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "windows_mssql_memmgr_free_memory_bytes{instance=\"$instance\"} offset 7d",
+          "expr": "windows_mssql_memmgr_free_memory_bytes{cluster=\"$cluster\"} offset $offset != 0",
           "hide": false,
-          "legendFormat": "Free Memory",
+          "legendFormat": "Free Memory (offset $offset)",
           "range": true,
           "refId": "A"
         }
@@ -346,7 +368,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum by (mode) (irate(windows_cpu_time_total{instance=\"$instance\"}[5m]))",
+          "expr": "sum by (mode) (irate(windows_cpu_time_total{cluster=\"$cluster\"}[5m]))",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -468,7 +490,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(windows_mssql_sqlstats_batch_requests{instance=~\"$instance\"}[5m])",
+          "expr": "rate(windows_mssql_sqlstats_batch_requests{cluster=~\"$cluster\"}[5m])!= 0",
           "legendFormat": "Batch Requests/Second",
           "range": true,
           "refId": "A"
@@ -479,9 +501,9 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(windows_mssql_sqlstats_batch_requests{instance=~\"$instance\"}[5m] offset 7d) ",
+          "expr": "rate(windows_mssql_sqlstats_batch_requests{cluster=~\"$cluster\"}[5m] offset $offset) != 0",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "Batch Requests/Second (offset $offset)",
           "range": true,
           "refId": "B"
         }
@@ -576,7 +598,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "windows_mssql_genstats_user_connections{instance=~\"$instance\"}",
+          "expr": "windows_mssql_genstats_user_connections{cluster=~\"$cluster\"} != 0",
           "legendFormat": "User Connections",
           "range": true,
           "refId": "A"
@@ -587,9 +609,9 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "windows_mssql_genstats_user_connections{instance=~\"$instance\"} offset 7d",
+          "expr": "windows_mssql_genstats_user_connections{cluster=~\"$cluster\"} offset $offset != 0",
           "hide": false,
-          "legendFormat": "User Connections",
+          "legendFormat": "User Connections (offset $offset)",
           "range": true,
           "refId": "B"
         }
@@ -684,7 +706,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(windows_mssql_genstats_logins{instance=~\"$instance\"}[5m])",
+          "expr": "rate(windows_mssql_genstats_logins{cluster=~\"$cluster\"}[5m]) != 0",
           "legendFormat": "Logins/Second",
           "range": true,
           "refId": "A"
@@ -695,9 +717,9 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(windows_mssql_genstats_logins{instance=~\"$instance\"}[5m] offset 7d)",
+          "expr": "rate(windows_mssql_genstats_logins{cluster=~\"$cluster\"}[5m] offset $offset) != 0",
           "hide": false,
-          "legendFormat": "Logins/Second",
+          "legendFormat": "Logins/Second (offset $offset)",
           "range": true,
           "refId": "B"
         }
@@ -792,7 +814,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(windows_mssql_bufman_page_reads{instance=~\"$instance\"}[5m])",
+          "expr": "rate(windows_mssql_bufman_page_reads{cluster=~\"$cluster\"}[5m]) != 0",
           "legendFormat": "Page Reads/Second",
           "range": true,
           "refId": "A"
@@ -803,9 +825,9 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(windows_mssql_bufman_page_reads{instance=~\"$instance\"}[5m] offset 7d)",
+          "expr": "rate(windows_mssql_bufman_page_reads{cluster=~\"$cluster\"}[5m] offset $offset) != 0",
           "hide": false,
-          "legendFormat": "Page Reads/Second",
+          "legendFormat": "Page Reads/Second (offset $offset)",
           "range": true,
           "refId": "B"
         }
@@ -900,7 +922,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(windows_mssql_bufman_page_writes{instance=~\"$instance\"}[5m])",
+          "expr": "rate(windows_mssql_bufman_page_writes{cluster=~\"$cluster\"}[5m]) != 0",
           "legendFormat": "Page Writes/Second",
           "range": true,
           "refId": "A"
@@ -911,9 +933,9 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(windows_mssql_bufman_page_writes{instance=~\"$instance\"}[5m] offset 7d)",
+          "expr": "rate(windows_mssql_bufman_page_writes{cluster=~\"$cluster\"}[5m] offset $offset) != 0",
           "hide": false,
-          "legendFormat": "Page Writes/Second",
+          "legendFormat": "Page Writes/Second (offset $offset)",
           "range": true,
           "refId": "B"
         }
@@ -1034,7 +1056,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "windows_mssql_bufman_page_life_expectancy_seconds{instance=~\"$instance\"}",
+          "expr": "windows_mssql_bufman_page_life_expectancy_seconds{cluster=~\"$cluster\"} != 0",
           "legendFormat": "Page Life Expectancy Seconds",
           "range": true,
           "refId": "A"
@@ -1045,9 +1067,9 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "windows_mssql_bufman_page_life_expectancy_seconds{instance=~\"$instance\"} offset 7d",
+          "expr": "windows_mssql_bufman_page_life_expectancy_seconds{cluster=~\"$cluster\"} offset $offset != 0",
           "hide": false,
-          "legendFormat": "Page Life Expectancy Seconds",
+          "legendFormat": "Page Life Expectancy Seconds (offset $offset)",
           "range": true,
           "refId": "B"
         }
@@ -1142,8 +1164,8 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(windows_memory_page_faults_total{instance=~\"$instance\"}[5m])",
-          "legendFormat": "Page Faults/Second",
+          "expr": "rate(windows_memory_page_faults_total{cluster=~\"$cluster\"}[5m]) != 0",
+          "legendFormat": "Page Faults/Second - {{instance}}",
           "range": true,
           "refId": "A"
         },
@@ -1153,9 +1175,9 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(windows_memory_page_faults_total{instance=~\"$instance\"}[5m] offset 7d)",
+          "expr": "rate(windows_memory_page_faults_total{cluster=~\"$cluster\"}[5m] offset $offset) != 0",
           "hide": false,
-          "legendFormat": "Page Faults/Second",
+          "legendFormat": "Page Faults/Second - {{instance}} (offset $offset)",
           "range": true,
           "refId": "B"
         }
@@ -1276,7 +1298,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(rate(windows_logical_disk_read_latency_seconds_total{instance=~\"$instance\"}[5m]))",
+          "expr": "avg(rate(windows_logical_disk_read_latency_seconds_total{cluster=~\"$cluster\"}[5m])) != 0",
           "legendFormat": "Average Disk Read Response Time",
           "range": true,
           "refId": "A"
@@ -1287,9 +1309,9 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(rate(windows_logical_disk_read_latency_seconds_total{instance=~\"$instance\"}[5m] offset 7d))",
+          "expr": "avg(rate(windows_logical_disk_read_latency_seconds_total{cluster=~\"$cluster\"}[5m] offset $offset)) != 0",
           "hide": false,
-          "legendFormat": "Average Disk Read Response Time",
+          "legendFormat": "Average Disk Read Response Time (offset $offset)",
           "range": true,
           "refId": "B"
         }
@@ -1384,7 +1406,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(rate(windows_logical_disk_write_latency_seconds_total{instance=~\"$instance\"}[5m]))",
+          "expr": "avg(rate(windows_logical_disk_write_latency_seconds_total{cluster=~\"$cluster\"}[5m])) != 0",
           "legendFormat": "Average Disk Write Response Time",
           "range": true,
           "refId": "A"
@@ -1395,9 +1417,9 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(rate(windows_logical_disk_write_latency_seconds_total{instance=~\"$instance\"}[5m] offset 7d))",
+          "expr": "avg(rate(windows_logical_disk_write_latency_seconds_total{cluster=~\"$cluster\"}[5m] offset $offset)) != 0",
           "hide": false,
-          "legendFormat": "Average Disk Write Response Time",
+          "legendFormat": "Average Disk Write Response Time (offset $offset)",
           "range": true,
           "refId": "B"
         }
@@ -1519,8 +1541,8 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(windows_mssql_sqlstats_sql_compilations{instance=~\"$instance\"}[5m])",
-          "legendFormat": "__auto",
+          "expr": "rate(windows_mssql_sqlstats_sql_compilations{cluster=~\"$cluster\"}[5m]) != 0",
+          "legendFormat": "Compilations/Second",
           "range": true,
           "refId": "A"
         },
@@ -1530,9 +1552,9 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(windows_mssql_sqlstats_sql_compilations{instance=~\"$instance\"}[5m] offset 7d)",
+          "expr": "rate(windows_mssql_sqlstats_sql_compilations{cluster=~\"$cluster\"}[5m] offset $offset) != 0",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "Compilations/Second (offset $offset)",
           "range": true,
           "refId": "B"
         }
@@ -1628,8 +1650,8 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(windows_mssql_accessmethods_full_scans{instance=~\"$instance\"}[5m])",
-          "legendFormat": "__auto",
+          "expr": "rate(windows_mssql_accessmethods_full_scans{cluster=~\"$cluster\"}[5m]) != 0",
+          "legendFormat": "Full Scans/Second",
           "range": true,
           "refId": "A"
         },
@@ -1639,9 +1661,9 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(windows_mssql_accessmethods_full_scans{instance=~\"$instance\"}[5m] offset 7d)",
+          "expr": "rate(windows_mssql_accessmethods_full_scans{cluster=~\"$cluster\"}[5m] offset $offset) != 0",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "Full Scans/Second (offset $offset)",
           "range": true,
           "refId": "B"
         }
@@ -1736,7 +1758,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(windows_mssql_accessmethods_index_searches{instance=~\"$instance\"}[5m])",
+          "expr": "rate(windows_mssql_accessmethods_index_searches{cluster=~\"$cluster\"}[5m]) != 0",
           "legendFormat": "Index Searches/Second",
           "range": true,
           "refId": "A"
@@ -1747,9 +1769,9 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(windows_mssql_accessmethods_index_searches{instance=~\"$instance\"}[5m] offset 7d)",
+          "expr": "rate(windows_mssql_accessmethods_index_searches{cluster=~\"$cluster\"}[5m] offset $offset) != 0",
           "hide": false,
-          "legendFormat": "Index Searches/Second",
+          "legendFormat": "Index Searches/Second (offset $offset)",
           "range": true,
           "refId": "B"
         }
@@ -1758,32 +1780,32 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "",
+  "refresh": false,
   "revision": 1,
   "schemaVersion": 37,
   "style": "dark",
-  "tags": ["VMWare", "MSSQL"],
+  "tags": ["MSSQL", "VMWare"],
   "templating": {
     "list": [
       {
         "current": {
           "selected": false,
-          "text": "gfc-st-cmsdb001:9182",
-          "value": "gfc-st-cmsdb001:9182"
+          "text": "st-cmsdb",
+          "value": "st-cmsdb"
         },
         "datasource": {
           "type": "prometheus",
           "uid": "PAE45454D0EDB9216"
         },
-        "definition": "label_values(windows_mssql_collector_success,instance)",
+        "definition": "label_values(windows_mssql_collector_success,cluster)",
         "hide": 0,
         "includeAll": false,
-        "label": "Instance",
+        "label": "cluster",
         "multi": false,
-        "name": "instance",
+        "name": "cluster",
         "options": [],
         "query": {
-          "query": "label_values(windows_mssql_collector_success,instance)",
+          "query": "label_values(windows_mssql_collector_success,cluster)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -1791,11 +1813,82 @@
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
+      },
+      {
+        "auto": false,
+        "auto_count": 30,
+        "auto_min": "10s",
+        "current": {
+          "selected": false,
+          "text": "7d",
+          "value": "7d"
+        },
+        "description": "offset to use for comparing to other timeframes",
+        "hide": 0,
+        "label": "offset",
+        "name": "offset",
+        "options": [
+          {
+            "selected": false,
+            "text": "1m",
+            "value": "1m"
+          },
+          {
+            "selected": false,
+            "text": "10m",
+            "value": "10m"
+          },
+          {
+            "selected": false,
+            "text": "30m",
+            "value": "30m"
+          },
+          {
+            "selected": false,
+            "text": "1h",
+            "value": "1h"
+          },
+          {
+            "selected": false,
+            "text": "6h",
+            "value": "6h"
+          },
+          {
+            "selected": false,
+            "text": "12h",
+            "value": "12h"
+          },
+          {
+            "selected": false,
+            "text": "1d",
+            "value": "1d"
+          },
+          {
+            "selected": true,
+            "text": "7d",
+            "value": "7d"
+          },
+          {
+            "selected": false,
+            "text": "14d",
+            "value": "14d"
+          },
+          {
+            "selected": false,
+            "text": "30d",
+            "value": "30d"
+          }
+        ],
+        "query": "1m,10m,30m,1h,6h,12h,1d,7d,14d,30d",
+        "queryValue": "",
+        "refresh": 2,
+        "skipUrlSync": false,
+        "type": "interval"
       }
     ]
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-1h",
     "now": false,
     "to": "now"
   },
@@ -1822,6 +1915,6 @@
   "timezone": "browser",
   "title": "Retail - MSSQL: Central",
   "uid": "000000107",
-  "version": 4,
+  "version": 1,
   "weekStart": ""
 }
