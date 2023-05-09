@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 30,
+  "id": 34,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -208,7 +208,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "count(label_replace(sys_uptime{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "count(label_replace(sys_uptime{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
           "legendFormat": "{{region}}",
           "range": true,
           "refId": "A"
@@ -301,7 +301,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(sys_rss{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "sum(label_replace(sys_rss{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -394,7 +394,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(label_replace(sys_cpu_combined_percent_normalized{job='cockroachdb',instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "avg(label_replace(sys_cpu_combined_percent_normalized{job='cockroachdb',instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -572,7 +572,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(replicas_leaseholders{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "sum(label_replace(replicas_leaseholders{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -664,7 +664,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(rate(sql_select_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre) + \nsum(label_replace(rate(sql_insert_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre) + \nsum(label_replace(rate(sql_update_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre) + \nsum(label_replace(rate(sql_delete_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "sum(label_replace(rate(sql_select_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre) + \nsum(label_replace(rate(sql_insert_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre) + \nsum(label_replace(rate(sql_update_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre) + \nsum(label_replace(rate(sql_delete_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -757,7 +757,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(label_replace(clock_offset_meannanos{job='cockroachdb',instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "avg(label_replace(clock_offset_meannanos{job='cockroachdb',instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -938,7 +938,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(pg_stat_activity_count{job='postgresql',instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "sum(label_replace(pg_stat_activity_count{job='postgresql',instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
           "hide": false,
           "legendFormat": "__auto",
           "range": true,
@@ -1032,7 +1032,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(process_resident_memory_bytes{job='postgresql',instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "sum(label_replace(process_resident_memory_bytes{job='postgresql',instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
           "hide": false,
           "legendFormat": "__auto",
           "range": true,
@@ -1126,7 +1126,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(label_replace(rate(process_cpu_seconds_total{job=\"postgresql\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]) * 10000, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "avg(label_replace(rate(process_cpu_seconds_total{job=\"postgresql\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]) * 10000, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -1308,7 +1308,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(rate(pg_replication_lag{job='postgresql',instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "sum(label_replace(rate(pg_replication_lag{job='postgresql',instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
           "hide": false,
           "legendFormat": "__auto",
           "range": true,
@@ -1486,7 +1486,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(couchbase_bucket_stats_misses{instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "sum(label_replace(couchbase_bucket_stats_misses{instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -1579,7 +1579,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(couchbase_bucket_stats_mem_actual_used_bytes{instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "sum(label_replace(couchbase_bucket_stats_mem_actual_used_bytes{instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -1671,7 +1671,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(label_replace(couchbase_bucket_stats_cpu_utilization_rate{instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "avg(label_replace(couchbase_bucket_stats_cpu_utilization_rate{instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -1865,7 +1865,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(couchbase_bucket_basicstats_opspersec{instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (datacentre)",
+          "expr": "sum(label_replace(couchbase_bucket_basicstats_opspersec{instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
           "hide": false,
           "legendFormat": "__auto",
           "range": true,
@@ -2017,7 +2017,7 @@
           "refId": "A"
         }
       ],
-      "title": "MSSQL Cluster Count",
+      "title": "MSSQL Node Count",
       "type": "stat"
     },
     {
@@ -2074,7 +2074,7 @@
               }
             ]
           },
-          "unit": "percentunit"
+          "unit": "ms"
         },
         "overrides": []
       },
@@ -2104,7 +2104,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(label_replace(rate(windows_logical_disk_read_latency_seconds_total{}[5m]), \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*\")) by (datacentre)",
+          "expr": "avg(label_replace(rate(windows_logical_disk_read_latency_seconds_total{}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
           "hide": false,
           "legendFormat": "{{datacentre}}",
           "range": true,
@@ -2198,14 +2198,14 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(windows_memory_committed_bytes, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*\")) by (datacentre)",
+          "expr": "sum(label_replace(windows_memory_committed_bytes, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
           "hide": false,
           "legendFormat": "{{datacentre}}",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "CPU Usage",
+      "title": "Memory Usage",
       "type": "timeseries"
     },
     {
@@ -2262,7 +2262,7 @@
               }
             ]
           },
-          "unit": "bytes"
+          "unit": "percent"
         },
         "overrides": []
       },
@@ -2292,7 +2292,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(windows_memory_committed_bytes, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*\")) by (datacentre)",
+          "expr": "avg(label_replace(100 - (irate(windows_cpu_time_total{mode=\"idle\"}[2m])) * 100, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
           "hide": false,
           "legendFormat": "{{datacentre}}",
           "range": true,
@@ -2352,14 +2352,14 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "count(windows_exporter_collector_success{collector=\"cpu\"})",
+          "expr": "count(group (windows_mssql_collector_success) by (cluster))",
           "hide": false,
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "CockroachDB Pod Count",
+      "title": "MSSQL Cluster Count",
       "type": "stat"
     },
     {
@@ -2460,7 +2460,7 @@
           "showLegend": true
         },
         "tooltip": {
-          "mode": "single",
+          "mode": "multi",
           "sort": "none"
         }
       },
@@ -2471,7 +2471,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(windows_mssql_genstats_user_connections, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*\")) by (datacentre)",
+          "expr": "sum(label_replace(windows_mssql_genstats_user_connections, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
           "legendFormat": "{{datacentre}}",
           "range": true,
           "refId": "A"
@@ -2552,7 +2552,7 @@
           "showLegend": true
         },
         "tooltip": {
-          "mode": "single",
+          "mode": "multi",
           "sort": "none"
         }
       },
@@ -2563,7 +2563,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(rate(windows_mssql_sqlstats_batch_requests{}[5m]), \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*\")) by (datacentre)",
+          "expr": "sum(label_replace(rate(windows_mssql_sqlstats_batch_requests{}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
           "legendFormat": "{{datacentre}}",
           "range": true,
           "refId": "A"
@@ -2639,7 +2639,7 @@
         "x": 0,
         "y": 76
       },
-      "id": 27,
+      "id": 56,
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -2660,13 +2660,13 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "count(count(sys_uptime{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"}) by (cluster))",
+          "expr": "count(sys_uptime{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"})",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "CockroachDB Cluster Count",
+      "title": "CockroachDB Node Count",
       "type": "stat"
     },
     {
@@ -2976,7 +2976,7 @@
         "x": 0,
         "y": 80
       },
-      "id": 56,
+      "id": 27,
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -2997,13 +2997,13 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "count(sys_uptime{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"})",
+          "expr": "count(count(sys_uptime{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"}) by (cluster))",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "CockroachDB Pod Count",
+      "title": "CockroachDB Cluster Count",
       "type": "stat"
     },
     {
@@ -3374,7 +3374,7 @@
         "x": 0,
         "y": 94
       },
-      "id": 29,
+      "id": 57,
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -3395,13 +3395,13 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "count(count(cnpg_collector_up{}) by (cluster))",
+          "expr": "count(cnpg_collector_up{})",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Postgres Cluster Count",
+      "title": "Postgres Node Count",
       "type": "stat"
     },
     {
@@ -3729,7 +3729,7 @@
         "x": 0,
         "y": 98
       },
-      "id": 57,
+      "id": 29,
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -3750,13 +3750,13 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "count(cnpg_collector_up{})",
+          "expr": "count(count(cnpg_collector_up{}) by (cluster))",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Postgres Node Count",
+      "title": "Postgres Cluster Count",
       "type": "stat"
     },
     {

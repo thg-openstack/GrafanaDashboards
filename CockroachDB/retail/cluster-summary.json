@@ -128,7 +128,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(replicas_leaseholders{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (cluster,datacentre)",
+          "expr": "sum(label_replace(replicas_leaseholders{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster,datacentre)",
           "legendFormat": "{{datacentre}}-{{cluster}}",
           "range": true,
           "refId": "A"
@@ -224,7 +224,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(replicas{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (cluster,datacentre)",
+          "expr": "sum(label_replace(replicas{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster,datacentre)",
           "legendFormat": "{{datacentre}}-{{cluster}}",
           "range": true,
           "refId": "A"
@@ -319,7 +319,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "max(label_replace(clock_offset_meannanos{job='cockroachdb',cluster=~\"$cluster\",instance=~\"$node\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (cluster,datacentre)",
+          "expr": "max(label_replace(clock_offset_meannanos{job='cockroachdb',cluster=~\"$cluster\",instance=~\"$node\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster,datacentre)",
           "legendFormat": "{{datacentre}}-{{cluster}}",
           "range": true,
           "refId": "A"
@@ -414,7 +414,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(sys_rss{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (cluster,datacentre)",
+          "expr": "sum(label_replace(sys_rss{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster,datacentre)",
           "legendFormat": "{{datacentre}}-{{cluster}}",
           "range": true,
           "refId": "A"
@@ -510,7 +510,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(label_replace(sys_cpu_combined_percent_normalized{job='cockroachdb',cluster=~\"$cluster\",instance=~\"$node\"}, \"datacentre\", \"$1\", \"instance\", \"(.*)-.*-.*-.*\")) by (cluster,datacentre)",
+          "expr": "avg(label_replace(sys_cpu_combined_percent_normalized{job='cockroachdb',cluster=~\"$cluster\",instance=~\"$node\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster,datacentre)",
           "legendFormat": "{{datacentre}}-{{cluster}}",
           "range": true,
           "refId": "A"
