@@ -257,7 +257,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "windows_mssql_memmgr_free_memory_bytes{cluster=\"$cluster\"} != 0",
+          "expr": "windows_memory_committed_bytes{cluster=\"$cluster\"}",
           "hide": false,
           "legendFormat": "{{instance}} - Free Memory",
           "range": true,
@@ -269,14 +269,14 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "windows_mssql_memmgr_free_memory_bytes{cluster=\"$cluster\"} offset $offset != 0",
+          "expr": "windows_memory_committed_bytes{cluster=\"$cluster\"} offset $offset",
           "hide": false,
           "legendFormat": "{{instance}} - Free Memory (offset $offset)",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Available Memory/MB",
+      "title": "Memory Used",
       "type": "timeseries"
     },
     {
@@ -1500,8 +1500,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1609,8 +1608,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1717,8 +1715,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1789,7 +1786,7 @@
     "list": [
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "aao-li-trdrp002",
           "value": "aao-li-trdrp002"
         },
@@ -1887,7 +1884,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "All",
           "value": "$__all"
         },
@@ -1942,6 +1939,6 @@
   "timezone": "browser",
   "title": "Retail - MSSQL: Central",
   "uid": "000000107",
-  "version": 1,
+  "version": 3,
   "weekStart": ""
 }

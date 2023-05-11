@@ -21,11 +21,10 @@
       }
     ]
   },
-  "description": "Show writes and reads against tables on DB combinations",
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "graphTooltip": 0,
-  "id": 53,
+  "graphTooltip": 1,
+  "id": 54,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -42,11 +41,11 @@
           "custom": {
             "axisCenteredZero": false,
             "axisColorMode": "text",
-            "axisLabel": "",
+            "axisLabel": "Seconds",
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 10,
+            "fillOpacity": 0,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -60,13 +59,13 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": false,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
             },
             "thresholdsStyle": {
-              "mode": "off"
+              "mode": "line+area"
             }
           },
           "mappings": [],
@@ -74,20 +73,17 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
-              },
-              {
-                "color": "red",
-                "value": 80
+                "color": "transparent",
+                "value": null
               }
             ]
           },
-          "unit": "short"
+          "unit": "ms"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 17,
+        "h": 13,
         "w": 24,
         "x": 0,
         "y": 0
@@ -96,7 +92,7 @@
       "links": [],
       "options": {
         "legend": {
-          "calcs": ["mean", "lastNotNull", "max", "sum"],
+          "calcs": ["mean", "lastNotNull", "max"],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true
@@ -114,13 +110,13 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(mssql_index_statistics{cluster=\"$cluster\",database=\"$database\",type!=\"writes\"}[5m])",
-          "legendFormat": "{{table}}-{{index}}-{{type}}",
+          "expr": "avg(mssql_replication_latency{cluster=~\"$cluster\"}) by (cluster)",
+          "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "$database Reads",
+      "title": "Average Publication Latency",
       "type": "timeseries"
     },
     {
@@ -136,11 +132,11 @@
           "custom": {
             "axisCenteredZero": false,
             "axisColorMode": "text",
-            "axisLabel": "",
+            "axisLabel": "latency",
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 10,
+            "fillOpacity": 0,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -160,7 +156,7 @@
               "mode": "none"
             },
             "thresholdsStyle": {
-              "mode": "off"
+              "mode": "line+area"
             }
           },
           "mappings": [],
@@ -168,29 +164,26 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
-              },
-              {
-                "color": "red",
-                "value": 80
+                "color": "transparent",
+                "value": null
               }
             ]
           },
-          "unit": "short"
+          "unit": "ms"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 16,
+        "h": 15,
         "w": 24,
         "x": 0,
-        "y": 17
+        "y": 13
       },
-      "id": 2,
+      "id": 3,
       "links": [],
       "options": {
         "legend": {
-          "calcs": ["mean", "lastNotNull", "max", "sum"],
+          "calcs": ["mean", "lastNotNull", "max"],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true
@@ -208,13 +201,13 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(mssql_index_statistics{cluster=\"$cluster\",database=\"$database\",type=\"writes\"}[5m])",
-          "legendFormat": "{{table}}-{{index}}-{{type}}",
+          "expr": "mssql_replication_latency{cluster=~\"$cluster\",source_table=~\"$source_table\"}",
+          "legendFormat": "{{cluster}}-{{source_table}}",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "$database Writes",
+      "title": "Full List",
       "type": "timeseries"
     }
   ],
@@ -227,23 +220,23 @@
     "list": [
       {
         "current": {
-          "selected": false,
-          "text": "gfc-li-hqdw002",
-          "value": "gfc-li-hqdw002"
+          "selected": true,
+          "text": ["All"],
+          "value": ["$__all"]
         },
         "datasource": {
           "type": "prometheus",
           "uid": "PAE45454D0EDB9216"
         },
-        "definition": "label_values(windows_mssql_collector_success,cluster)",
+        "definition": "label_values(mssql_replication_latency, cluster)",
         "hide": 0,
-        "includeAll": false,
+        "includeAll": true,
         "label": "cluster",
-        "multi": false,
+        "multi": true,
         "name": "cluster",
         "options": [],
         "query": {
-          "query": "label_values(windows_mssql_collector_success,cluster)",
+          "query": "label_values(mssql_replication_latency, cluster)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -254,38 +247,35 @@
       },
       {
         "current": {
-          "selected": false,
-          "text": "Application_Support",
-          "value": "Application_Support"
+          "selected": true,
+          "text": ["All"],
+          "value": ["$__all"]
         },
         "datasource": {
           "type": "prometheus",
           "uid": "PAE45454D0EDB9216"
         },
-        "definition": "label_values(mssql_index_statistics{cluster=\"$cluster\"},database)",
+        "definition": "label_values(mssql_replication_latency{cluster=~\"$cluster\"}, source_table)",
         "hide": 0,
-        "includeAll": false,
-        "label": "database",
-        "multi": false,
-        "name": "database",
+        "includeAll": true,
+        "label": "source_table",
+        "multi": true,
+        "name": "source_table",
         "options": [],
         "query": {
-          "query": "label_values(mssql_index_statistics{cluster=\"$cluster\"},database)",
+          "query": "label_values(mssql_replication_latency{cluster=~\"$cluster\"}, source_table)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "type": "query"
       }
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {
@@ -304,8 +294,8 @@
     "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
   },
   "timezone": "browser",
-  "title": "Retail - MSSQL: Index usage",
-  "uid": "000000108",
-  "version": 2,
+  "title": "Retail - MSSQL: Replication Latency",
+  "uid": "000000110",
+  "version": 8,
   "weekStart": ""
 }
