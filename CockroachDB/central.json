@@ -24,14 +24,14 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 7,
+  "id": 43,
   "links": [
     {
       "asDropdown": true,
       "icon": "external link",
       "includeVars": true,
       "keepTime": true,
-      "tags": ["CockroachDB", "kubernetes"],
+      "tags": ["CockroachDB", "Kubernetes"],
       "targetBlank": true,
       "title": "Dashboards",
       "type": "dashboards"
@@ -39,6 +39,19 @@
   ],
   "liveNow": false,
   "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 57,
+      "panels": [],
+      "title": "Health, Clock & Uptime",
+      "type": "row"
+    },
     {
       "datasource": {
         "type": "prometheus",
@@ -69,7 +82,7 @@
         "h": 7,
         "w": 5,
         "x": 0,
-        "y": 0
+        "y": 1
       },
       "id": 2,
       "links": [],
@@ -196,7 +209,7 @@
         "h": 7,
         "w": 11,
         "x": 5,
-        "y": 0
+        "y": 1
       },
       "id": 55,
       "options": {
@@ -280,7 +293,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 0
+        "y": 1
       },
       "id": 30,
       "links": [],
@@ -386,7 +399,7 @@
         "h": 7,
         "w": 16,
         "x": 0,
-        "y": 7
+        "y": 8
       },
       "id": 20,
       "links": [],
@@ -476,7 +489,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 7
+        "y": 8
       },
       "id": 21,
       "links": [],
@@ -517,6 +530,19 @@
         }
       ],
       "type": "table"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 15
+      },
+      "id": 59,
+      "panels": [],
+      "title": "Query Latency",
+      "type": "row"
     },
     {
       "datasource": {
@@ -581,7 +607,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 14
+        "y": 16
       },
       "id": 22,
       "links": [],
@@ -681,7 +707,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 14
+        "y": 16
       },
       "id": 31,
       "links": [],
@@ -781,7 +807,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 21
+        "y": 23
       },
       "id": 24,
       "links": [],
@@ -881,7 +907,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 21
+        "y": 23
       },
       "id": 32,
       "links": [],
@@ -981,7 +1007,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 28
+        "y": 30
       },
       "id": 26,
       "links": [],
@@ -1081,7 +1107,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 28
+        "y": 30
       },
       "id": 33,
       "links": [],
@@ -1164,7 +1190,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1180,7 +1207,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 35
+        "y": 37
       },
       "id": 39,
       "links": [],
@@ -1263,7 +1290,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1279,7 +1307,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 35
+        "y": 37
       },
       "id": 40,
       "links": [],
@@ -1315,6 +1343,216 @@
       ],
       "title": "$cluster SQL Latency: 50th percentile",
       "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 44
+      },
+      "id": 61,
+      "panels": [],
+      "title": "Contention & Failures",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PAE45454D0EDB9216"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 45
+      },
+      "id": 69,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "sum(rate(sql_contention_resolver_retries{cluster=~\"$cluster\"}[5m])) by (cluster)",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Contention Retries",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PAE45454D0EDB9216"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 45
+      },
+      "id": 70,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "sum(rate(sql_failure_count{cluster=~\"$cluster\"}[5m])) by (cluster)",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "SQL Failures",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 53
+      },
+      "id": 63,
+      "panels": [],
+      "title": "Leaseholders, Replicas & QPS",
+      "type": "row"
     },
     {
       "datasource": {
@@ -1362,7 +1600,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1378,7 +1617,7 @@
         "h": 10,
         "w": 12,
         "x": 0,
-        "y": 42
+        "y": 54
       },
       "id": 41,
       "links": [],
@@ -1461,7 +1700,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1477,7 +1717,7 @@
         "h": 10,
         "w": 12,
         "x": 12,
-        "y": 42
+        "y": 54
       },
       "id": 37,
       "links": [],
@@ -1535,7 +1775,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1567,7 +1808,7 @@
         "h": 10,
         "w": 8,
         "x": 0,
-        "y": 52
+        "y": 64
       },
       "id": 42,
       "links": [],
@@ -1655,7 +1896,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1671,7 +1913,7 @@
         "h": 10,
         "w": 16,
         "x": 8,
-        "y": 52
+        "y": 64
       },
       "id": 38,
       "links": [],
@@ -1742,6 +1984,19 @@
       "type": "timeseries"
     },
     {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 74
+      },
+      "id": 65,
+      "panels": [],
+      "title": "Hardware Performance",
+      "type": "row"
+    },
+    {
       "datasource": {
         "type": "prometheus",
         "uid": "${DS_PROMETHEUS}"
@@ -1787,7 +2042,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1803,7 +2059,7 @@
         "h": 11,
         "w": 8,
         "x": 0,
-        "y": 62
+        "y": 75
       },
       "id": 46,
       "options": {
@@ -1880,7 +2136,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1896,7 +2153,7 @@
         "h": 11,
         "w": 16,
         "x": 8,
-        "y": 62
+        "y": 75
       },
       "id": 44,
       "options": {
@@ -1950,7 +2207,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2042,7 +2300,7 @@
         "h": 14,
         "w": 8,
         "x": 0,
-        "y": 73
+        "y": 86
       },
       "id": 48,
       "links": [],
@@ -2112,7 +2370,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2204,7 +2463,7 @@
         "h": 14,
         "w": 8,
         "x": 8,
-        "y": 73
+        "y": 86
       },
       "id": 50,
       "links": [],
@@ -2274,7 +2533,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2366,7 +2626,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 73
+        "y": 86
       },
       "id": 52,
       "links": [],
@@ -2484,7 +2744,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2576,7 +2837,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 80
+        "y": 93
       },
       "id": 53,
       "links": [],
@@ -2669,9 +2930,9 @@
     "list": [
       {
         "current": {
-          "selected": false,
-          "text": "dba-test-cockroachdb",
-          "value": "dba-test-cockroachdb"
+          "selected": true,
+          "text": "li-new-jersey-2-wcs-cockroachdb",
+          "value": "li-new-jersey-2-wcs-cockroachdb"
         },
         "datasource": {
           "type": "prometheus",
@@ -2727,92 +2988,6 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
-      },
-      {
-        "auto": false,
-        "auto_count": 30,
-        "auto_min": "10s",
-        "current": {
-          "selected": false,
-          "text": "30s",
-          "value": "30s"
-        },
-        "hide": 0,
-        "includeAll": false,
-        "label": "Rate Interval",
-        "multi": false,
-        "name": "rate_interval",
-        "options": [
-          {
-            "selected": true,
-            "text": "30s",
-            "value": "30s"
-          },
-          {
-            "selected": false,
-            "text": "1m",
-            "value": "1m"
-          },
-          {
-            "selected": false,
-            "text": "5m",
-            "value": "5m"
-          },
-          {
-            "selected": false,
-            "text": "10m",
-            "value": "10m"
-          },
-          {
-            "selected": false,
-            "text": "30m",
-            "value": "30m"
-          },
-          {
-            "selected": false,
-            "text": "1h",
-            "value": "1h"
-          },
-          {
-            "selected": false,
-            "text": "6h",
-            "value": "6h"
-          },
-          {
-            "selected": false,
-            "text": "12h",
-            "value": "12h"
-          },
-          {
-            "selected": false,
-            "text": "1d",
-            "value": "1d"
-          }
-        ],
-        "query": "30s,1m,5m,10m,30m,1h,6h,12h,1d",
-        "queryValue": "",
-        "refresh": 2,
-        "regex": "",
-        "skipUrlSync": false,
-        "type": "interval"
-      },
-      {
-        "current": {
-          "selected": false,
-          "text": "Mimir",
-          "value": "Mimir"
-        },
-        "hide": 2,
-        "includeAll": false,
-        "multi": false,
-        "name": "DS_PROMETHEUS",
-        "options": [],
-        "query": "prometheus",
-        "queryValue": "",
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "type": "datasource"
       }
     ]
   },
