@@ -24,14 +24,14 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 43,
+  "id": 54,
   "links": [
     {
       "asDropdown": true,
       "icon": "external link",
       "includeVars": true,
       "keepTime": true,
-      "tags": ["CockroachDB", "Kubernetes"],
+      "tags": ["CockroachDB", "kubernetes"],
       "targetBlank": true,
       "title": "Dashboards",
       "type": "dashboards"
@@ -40,22 +40,9 @@
   "liveNow": false,
   "panels": [
     {
-      "collapsed": false,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 0
-      },
-      "id": 57,
-      "panels": [],
-      "title": "Health, Clock & Uptime",
-      "type": "row"
-    },
-    {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "PAE45454D0EDB9216"
       },
       "description": "",
       "fieldConfig": {
@@ -82,7 +69,7 @@
         "h": 7,
         "w": 5,
         "x": 0,
-        "y": 1
+        "y": 0
       },
       "id": 2,
       "links": [],
@@ -104,7 +91,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "count(up{cluster=~\"$cluster\",pod=~\"$node\"})",
@@ -120,7 +107,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "count(up{cluster=~\"$cluster\",pod=~\"$node\"} == 1)",
@@ -136,7 +123,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "max(liveness_livenodes{cluster=~\"$cluster\",pod=~\"$node\"})",
@@ -155,7 +142,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "PAE45454D0EDB9216"
       },
       "fieldConfig": {
         "defaults": {
@@ -209,7 +196,7 @@
         "h": 7,
         "w": 11,
         "x": 5,
-        "y": 1
+        "y": 0
       },
       "id": 55,
       "options": {
@@ -228,7 +215,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "max(liveness_livenodes{cluster=~\"$cluster\",pod=~\"$node\"})",
@@ -243,7 +230,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "PAE45454D0EDB9216"
       },
       "fieldConfig": {
         "defaults": {
@@ -293,7 +280,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 1
+        "y": 0
       },
       "id": 30,
       "links": [],
@@ -310,7 +297,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum by (pod, cluster) (sys_uptime{cluster=~\"$cluster\",pod=~\"$node\"})",
@@ -338,7 +325,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "PAE45454D0EDB9216"
       },
       "description": "",
       "fieldConfig": {
@@ -399,7 +386,7 @@
         "h": 7,
         "w": 16,
         "x": 0,
-        "y": 8
+        "y": 7
       },
       "id": 20,
       "links": [],
@@ -420,7 +407,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum by (pod,cluster) (clock_offset_meannanos{cluster=~\"$cluster\", pod=~\"$node\"})",
@@ -438,7 +425,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "PAE45454D0EDB9216"
       },
       "fieldConfig": {
         "defaults": {
@@ -489,7 +476,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 8
+        "y": 7
       },
       "id": 21,
       "links": [],
@@ -506,7 +493,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum by (pod, cluster) (clock_offset_meannanos{cluster=~\"$cluster\", pod=~\"$node\"})",
@@ -532,22 +519,9 @@
       "type": "table"
     },
     {
-      "collapsed": false,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 15
-      },
-      "id": 59,
-      "panels": [],
-      "title": "Query Latency",
-      "type": "row"
-    },
-    {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "PAE45454D0EDB9216"
       },
       "fieldConfig": {
         "defaults": {
@@ -607,7 +581,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 16
+        "y": 14
       },
       "id": 22,
       "links": [],
@@ -628,7 +602,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum by (cluster, pod) (histogram_quantile(0.99,rate(sql_txn_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
@@ -647,7 +621,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "PAE45454D0EDB9216"
       },
       "fieldConfig": {
         "defaults": {
@@ -707,7 +681,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 16
+        "y": 14
       },
       "id": 31,
       "links": [],
@@ -728,7 +702,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum by (cluster, pod) (histogram_quantile(0.99,rate(exec_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
@@ -747,7 +721,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "PAE45454D0EDB9216"
       },
       "fieldConfig": {
         "defaults": {
@@ -807,7 +781,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 23
+        "y": 21
       },
       "id": 24,
       "links": [],
@@ -828,7 +802,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum by (cluster, pod) (histogram_quantile(0.95,rate(sql_txn_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
@@ -847,7 +821,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "PAE45454D0EDB9216"
       },
       "fieldConfig": {
         "defaults": {
@@ -907,7 +881,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 23
+        "y": 21
       },
       "id": 32,
       "links": [],
@@ -928,7 +902,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum by (cluster, pod) (histogram_quantile(0.95,rate(exec_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
@@ -947,7 +921,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "PAE45454D0EDB9216"
       },
       "fieldConfig": {
         "defaults": {
@@ -1007,7 +981,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 30
+        "y": 28
       },
       "id": 26,
       "links": [],
@@ -1028,7 +1002,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum by (cluster, pod) (histogram_quantile(0.90,rate(sql_txn_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
@@ -1047,7 +1021,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "PAE45454D0EDB9216"
       },
       "fieldConfig": {
         "defaults": {
@@ -1107,7 +1081,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 30
+        "y": 28
       },
       "id": 33,
       "links": [],
@@ -1128,7 +1102,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum by (cluster, pod) (histogram_quantile(0.90,rate(exec_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
@@ -1147,7 +1121,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "PAE45454D0EDB9216"
       },
       "fieldConfig": {
         "defaults": {
@@ -1207,7 +1181,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 37
+        "y": 35
       },
       "id": 39,
       "links": [],
@@ -1228,7 +1202,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum by (cluster, pod) (histogram_quantile(0.50,rate(sql_txn_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
@@ -1247,7 +1221,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "PAE45454D0EDB9216"
       },
       "fieldConfig": {
         "defaults": {
@@ -1307,7 +1281,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 37
+        "y": 35
       },
       "id": 40,
       "links": [],
@@ -1328,7 +1302,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum by (cluster, pod) (histogram_quantile(0.50,rate(exec_latency_bucket{cluster=~\"$cluster\",pod=~\"$node\"}[$__rate_interval])))",
@@ -1345,219 +1319,9 @@
       "type": "timeseries"
     },
     {
-      "collapsed": false,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 44
-      },
-      "id": 61,
-      "panels": [],
-      "title": "Contention & Failures",
-      "type": "row"
-    },
-    {
       "datasource": {
         "type": "prometheus",
         "uid": "PAE45454D0EDB9216"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 45
-      },
-      "id": 69,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": false
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
-          },
-          "editorMode": "code",
-          "expr": "sum(rate(sql_contention_resolver_retries{cluster=~\"$cluster\"}[5m])) by (cluster)",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Contention Retries",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 45
-      },
-      "id": 70,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": false
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
-          },
-          "editorMode": "code",
-          "expr": "sum(rate(sql_failure_count{cluster=~\"$cluster\"}[5m])) by (cluster)",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "SQL Failures",
-      "type": "timeseries"
-    },
-    {
-      "collapsed": false,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 53
-      },
-      "id": 63,
-      "panels": [],
-      "title": "Leaseholders, Replicas & QPS",
-      "type": "row"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1600,8 +1364,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1617,7 +1380,7 @@
         "h": 10,
         "w": 12,
         "x": 0,
-        "y": 54
+        "y": 42
       },
       "id": 41,
       "links": [],
@@ -1638,7 +1401,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum by (pod, cluster) (replicas_leaseholders{cluster=~\"$cluster\",pod=~\"$node\"})",
@@ -1657,7 +1420,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "PAE45454D0EDB9216"
       },
       "fieldConfig": {
         "defaults": {
@@ -1700,8 +1463,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1717,7 +1479,7 @@
         "h": 10,
         "w": 12,
         "x": 12,
-        "y": 54
+        "y": 42
       },
       "id": 37,
       "links": [],
@@ -1738,7 +1500,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum by (pod, cluster) (replicas{cluster=~\"$cluster\",pod=~\"$node\"})",
@@ -1757,7 +1519,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "PAE45454D0EDB9216"
       },
       "fieldConfig": {
         "defaults": {
@@ -1775,8 +1537,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1808,7 +1569,7 @@
         "h": 10,
         "w": 8,
         "x": 0,
-        "y": 64
+        "y": 52
       },
       "id": 42,
       "links": [],
@@ -1825,7 +1586,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum by (pod, cluster) (replicas_leaseholders{cluster=~\"$cluster\",pod=~\"$node\"})",
@@ -1853,7 +1614,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "PAE45454D0EDB9216"
       },
       "fieldConfig": {
         "defaults": {
@@ -1896,8 +1657,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1913,7 +1673,7 @@
         "h": 10,
         "w": 16,
         "x": 8,
-        "y": 64
+        "y": 52
       },
       "id": 38,
       "links": [],
@@ -1934,7 +1694,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum(rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
@@ -1949,7 +1709,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum(rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
@@ -1960,7 +1720,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
@@ -1971,7 +1731,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum(rate(sql_delete_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
@@ -1984,22 +1744,9 @@
       "type": "timeseries"
     },
     {
-      "collapsed": false,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 74
-      },
-      "id": 65,
-      "panels": [],
-      "title": "Hardware Performance",
-      "type": "row"
-    },
-    {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "PAE45454D0EDB9216"
       },
       "fieldConfig": {
         "defaults": {
@@ -2042,8 +1789,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2059,7 +1805,7 @@
         "h": 11,
         "w": 8,
         "x": 0,
-        "y": 75
+        "y": 62
       },
       "id": 46,
       "options": {
@@ -2079,7 +1825,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum by (pod,cluster) (sys_rss{cluster=~\"$cluster\",pod=~\"$node\"})",
@@ -2094,7 +1840,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "PAE45454D0EDB9216"
       },
       "fieldConfig": {
         "defaults": {
@@ -2136,8 +1882,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2153,7 +1898,7 @@
         "h": 11,
         "w": 16,
         "x": 8,
-        "y": 75
+        "y": 62
       },
       "id": 44,
       "options": {
@@ -2173,7 +1918,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum by (pod,cluster) (sys_cpu_combined_percent_normalized{job='cockroachdb',cluster=~\"$cluster\",pod=~\"$node\"})",
@@ -2188,7 +1933,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "PAE45454D0EDB9216"
       },
       "fieldConfig": {
         "defaults": {
@@ -2207,8 +1952,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2300,7 +2044,7 @@
         "h": 14,
         "w": 8,
         "x": 0,
-        "y": 86
+        "y": 73
       },
       "id": 48,
       "links": [],
@@ -2323,7 +2067,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum by (pod, cluster) (sys_cpu_combined_percent_normalized{cluster=~\"$cluster\",pod=~\"$node\"})",
@@ -2351,7 +2095,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "PAE45454D0EDB9216"
       },
       "fieldConfig": {
         "defaults": {
@@ -2370,8 +2114,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2463,7 +2206,7 @@
         "h": 14,
         "w": 8,
         "x": 8,
-        "y": 86
+        "y": 73
       },
       "id": 50,
       "links": [],
@@ -2486,7 +2229,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum by (pod, cluster) (sys_rss{cluster=~\"$cluster\",pod=~\"$node\"})",
@@ -2514,7 +2257,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "PAE45454D0EDB9216"
       },
       "fieldConfig": {
         "defaults": {
@@ -2533,8 +2276,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2626,7 +2368,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 86
+        "y": 73
       },
       "id": 52,
       "links": [],
@@ -2649,7 +2391,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum(rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
@@ -2664,7 +2406,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum(rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
@@ -2676,7 +2418,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum(rate(sql_delete_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
@@ -2688,7 +2430,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
@@ -2700,7 +2442,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m])+rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m])+rate(sql_delete_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m])+rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
@@ -2725,7 +2467,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "PAE45454D0EDB9216"
       },
       "fieldConfig": {
         "defaults": {
@@ -2744,8 +2486,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2837,7 +2578,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 93
+        "y": 80
       },
       "id": 53,
       "links": [],
@@ -2860,7 +2601,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum(rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
@@ -2875,7 +2616,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum(rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
@@ -2887,7 +2628,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
@@ -2899,7 +2640,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "PAE45454D0EDB9216"
           },
           "exemplar": true,
           "expr": "sum(rate(sql_update_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m])+rate(sql_select_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m])+rate(sql_insert_count{cluster=~\"$cluster\",pod=~\"$node\"}[5m]))",
@@ -2930,13 +2671,13 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "li-new-jersey-2-wcs-cockroachdb",
           "value": "li-new-jersey-2-wcs-cockroachdb"
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
+          "uid": "PAE45454D0EDB9216"
         },
         "definition": "label_values(sys_uptime{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"},cluster)",
         "hide": 0,
@@ -2967,7 +2708,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
+          "uid": "PAE45454D0EDB9216"
         },
         "definition": "label_values(sys_uptime{cluster=~\"$cluster\"},pod)",
         "hide": 0,
@@ -3013,6 +2754,6 @@
   "timezone": "",
   "title": "CockroachDB: Central",
   "uid": "cockroachdb-central",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }
