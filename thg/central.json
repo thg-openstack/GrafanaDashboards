@@ -24,10 +24,23 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 47,
+  "id": 50,
   "links": [],
   "liveNow": false,
   "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 95,
+      "panels": [],
+      "title": "Alerting",
+      "type": "row"
+    },
     {
       "datasource": {
         "type": "datasource",
@@ -37,7 +50,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 0
+        "y": 1
       },
       "id": 90,
       "options": {
@@ -59,10 +72,10 @@
         "uid": "grafana"
       },
       "gridPos": {
-        "h": 10,
-        "w": 6,
+        "h": 8,
+        "w": 12,
         "x": 0,
-        "y": 2
+        "y": 3
       },
       "id": 82,
       "options": {
@@ -101,52 +114,10 @@
         "uid": "grafana"
       },
       "gridPos": {
-        "h": 10,
-        "w": 6,
-        "x": 6,
-        "y": 2
-      },
-      "id": 84,
-      "options": {
-        "alertInstanceLabelFilter": "",
-        "alertName": "PostgreSQL",
-        "dashboardAlerts": false,
-        "datasource": "Mimir",
-        "groupBy": [],
-        "groupMode": "default",
-        "maxItems": 100,
-        "sortOrder": 3,
-        "stateFilter": {
-          "error": true,
-          "firing": true,
-          "noData": false,
-          "normal": false,
-          "pending": true
-        },
-        "viewMode": "list"
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "datasource",
-            "uid": "grafana"
-          },
-          "refId": "A"
-        }
-      ],
-      "title": "PostgreSQL Alerts",
-      "type": "alertlist"
-    },
-    {
-      "datasource": {
-        "type": "datasource",
-        "uid": "grafana"
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 6,
+        "h": 8,
+        "w": 12,
         "x": 12,
-        "y": 2
+        "y": 3
       },
       "id": 86,
       "options": {
@@ -185,10 +156,52 @@
         "uid": "grafana"
       },
       "gridPos": {
-        "h": 10,
-        "w": 6,
-        "x": 18,
-        "y": 2
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 11
+      },
+      "id": 84,
+      "options": {
+        "alertInstanceLabelFilter": "",
+        "alertName": "PostgreSQL",
+        "dashboardAlerts": false,
+        "datasource": "Mimir",
+        "groupBy": [],
+        "groupMode": "default",
+        "maxItems": 100,
+        "sortOrder": 3,
+        "stateFilter": {
+          "error": true,
+          "firing": true,
+          "noData": false,
+          "normal": false,
+          "pending": true
+        },
+        "viewMode": "list"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "PostgreSQL Alerts",
+      "type": "alertlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 11
       },
       "id": 88,
       "options": {
@@ -227,7 +240,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 12
+        "y": 19
       },
       "id": 2,
       "panels": [],
@@ -243,7 +256,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 13
+        "y": 20
       },
       "id": 35,
       "options": {
@@ -286,7 +299,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 15
+        "y": 22
       },
       "id": 28,
       "options": {
@@ -379,7 +392,7 @@
         "h": 8,
         "w": 6,
         "x": 4,
-        "y": 15
+        "y": 22
       },
       "id": 42,
       "options": {
@@ -472,7 +485,7 @@
         "h": 8,
         "w": 7,
         "x": 10,
-        "y": 15
+        "y": 22
       },
       "id": 18,
       "options": {
@@ -565,7 +578,7 @@
         "h": 8,
         "w": 7,
         "x": 17,
-        "y": 15
+        "y": 22
       },
       "id": 14,
       "options": {
@@ -624,7 +637,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 19
+        "y": 26
       },
       "id": 53,
       "options": {
@@ -665,7 +678,7 @@
         "h": 8,
         "w": 4,
         "x": 0,
-        "y": 23
+        "y": 30
       },
       "id": 33,
       "options": {
@@ -741,9 +754,9 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 6,
+        "w": 5,
         "x": 4,
-        "y": 23
+        "y": 30
       },
       "id": 15,
       "options": {
@@ -833,17 +846,17 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 7,
-        "x": 10,
-        "y": 23
+        "w": 5,
+        "x": 9,
+        "y": 30
       },
-      "id": 19,
+      "id": 92,
       "options": {
         "legend": {
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": false
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -857,13 +870,13 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(rate(sql_select_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre) + \nsum(label_replace(rate(sql_insert_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre) + \nsum(label_replace(rate(sql_update_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre) + \nsum(label_replace(rate(sql_delete_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
-          "legendFormat": "__auto",
+          "expr": "sum(label_replace(rate(sql_conns{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
+          "legendFormat": "{{datacentre}}",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "QPS Total",
+      "title": "SQL Connections",
       "type": "timeseries"
     },
     {
@@ -926,9 +939,9 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 7,
-        "x": 17,
-        "y": 23
+        "w": 5,
+        "x": 14,
+        "y": 30
       },
       "id": 17,
       "options": {
@@ -961,6 +974,98 @@
     },
     {
       "datasource": {
+        "type": "prometheus",
+        "uid": "PAE45454D0EDB9216"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 5,
+        "x": 19,
+        "y": 30
+      },
+      "id": 19,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "sum(label_replace(rate(sql_select_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre) + \nsum(label_replace(rate(sql_insert_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre) + \nsum(label_replace(rate(sql_update_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre) + \nsum(label_replace(rate(sql_delete_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "QPS Total",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
         "type": "datasource",
         "uid": "grafana"
       },
@@ -968,7 +1073,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 31
+        "y": 38
       },
       "id": 36,
       "options": {
@@ -1011,7 +1116,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 33
+        "y": 40
       },
       "id": 30,
       "options": {
@@ -1107,7 +1212,7 @@
         "h": 8,
         "w": 6,
         "x": 4,
-        "y": 33
+        "y": 40
       },
       "id": 52,
       "links": [],
@@ -1203,7 +1308,7 @@
         "h": 8,
         "w": 7,
         "x": 10,
-        "y": 33
+        "y": 40
       },
       "id": 48,
       "options": {
@@ -1297,7 +1402,7 @@
         "h": 8,
         "w": 7,
         "x": 17,
-        "y": 33
+        "y": 40
       },
       "id": 47,
       "options": {
@@ -1355,7 +1460,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 37
+        "y": 44
       },
       "id": 54,
       "options": {
@@ -1396,7 +1501,7 @@
         "h": 8,
         "w": 4,
         "x": 0,
-        "y": 41
+        "y": 48
       },
       "id": 38,
       "options": {
@@ -1477,7 +1582,7 @@
         "h": 8,
         "w": 20,
         "x": 4,
-        "y": 41
+        "y": 48
       },
       "id": 50,
       "links": [],
@@ -1520,7 +1625,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 49
+        "y": 56
       },
       "id": 37,
       "options": {
@@ -1563,7 +1668,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 51
+        "y": 58
       },
       "id": 55,
       "options": {
@@ -1657,7 +1762,7 @@
         "h": 8,
         "w": 6,
         "x": 4,
-        "y": 51
+        "y": 58
       },
       "id": 64,
       "options": {
@@ -1750,7 +1855,7 @@
         "h": 8,
         "w": 7,
         "x": 10,
-        "y": 51
+        "y": 58
       },
       "id": 61,
       "options": {
@@ -1842,7 +1947,7 @@
         "h": 8,
         "w": 7,
         "x": 17,
-        "y": 51
+        "y": 58
       },
       "id": 58,
       "options": {
@@ -1900,7 +2005,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 55
+        "y": 62
       },
       "id": 31,
       "options": {
@@ -1941,7 +2046,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 59
+        "y": 66
       },
       "id": 39,
       "options": {
@@ -2034,7 +2139,7 @@
         "h": 8,
         "w": 20,
         "x": 4,
-        "y": 59
+        "y": 66
       },
       "id": 63,
       "links": [],
@@ -2097,7 +2202,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 63
+        "y": 70
       },
       "id": 60,
       "options": {
@@ -2138,7 +2243,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 67
+        "y": 74
       },
       "id": 71,
       "options": {
@@ -2181,7 +2286,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 69
+        "y": 76
       },
       "id": 74,
       "options": {
@@ -2275,7 +2380,7 @@
         "h": 8,
         "w": 6,
         "x": 4,
-        "y": 69
+        "y": 76
       },
       "id": 78,
       "options": {
@@ -2369,7 +2474,7 @@
         "h": 8,
         "w": 7,
         "x": 10,
-        "y": 69
+        "y": 76
       },
       "id": 79,
       "options": {
@@ -2463,7 +2568,7 @@
         "h": 8,
         "w": 7,
         "x": 17,
-        "y": 69
+        "y": 76
       },
       "id": 80,
       "options": {
@@ -2522,7 +2627,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 73
+        "y": 80
       },
       "id": 75,
       "options": {
@@ -2564,7 +2669,7 @@
         "h": 8,
         "w": 4,
         "x": 0,
-        "y": 77
+        "y": 84
       },
       "id": 76,
       "options": {
@@ -2642,7 +2747,7 @@
         "h": 8,
         "w": 10,
         "x": 4,
-        "y": 77
+        "y": 84
       },
       "id": 77,
       "options": {
@@ -2734,7 +2839,7 @@
         "h": 8,
         "w": 10,
         "x": 14,
-        "y": 77
+        "y": 84
       },
       "id": 73,
       "options": {
@@ -2771,7 +2876,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 85
+        "y": 92
       },
       "id": 4,
       "panels": [],
@@ -2787,7 +2892,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 86
+        "y": 93
       },
       "id": 40,
       "options": {
@@ -2830,7 +2935,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 88
+        "y": 95
       },
       "id": 56,
       "options": {
@@ -2923,7 +3028,7 @@
         "h": 8,
         "w": 6,
         "x": 4,
-        "y": 88
+        "y": 95
       },
       "id": 23,
       "options": {
@@ -3016,7 +3121,7 @@
         "h": 8,
         "w": 7,
         "x": 10,
-        "y": 88
+        "y": 95
       },
       "id": 12,
       "options": {
@@ -3109,7 +3214,7 @@
         "h": 8,
         "w": 7,
         "x": 17,
-        "y": 88
+        "y": 95
       },
       "id": 43,
       "options": {
@@ -3167,7 +3272,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 92
+        "y": 99
       },
       "id": 27,
       "options": {
@@ -3208,7 +3313,7 @@
         "h": 8,
         "w": 4,
         "x": 0,
-        "y": 96
+        "y": 103
       },
       "id": 44,
       "options": {
@@ -3284,9 +3389,9 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 6,
+        "w": 5,
         "x": 4,
-        "y": 96
+        "y": 103
       },
       "id": 6,
       "options": {
@@ -3376,9 +3481,101 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 7,
-        "x": 10,
-        "y": 96
+        "w": 5,
+        "x": 9,
+        "y": 103
+      },
+      "id": 93,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "sum(rate(sql_conns{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"}[5m])) by (region)",
+          "legendFormat": "{{datacentre}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "SQL Connections",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PAE45454D0EDB9216"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 5,
+        "x": 14,
+        "y": 103
       },
       "id": 8,
       "options": {
@@ -3469,9 +3666,9 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 7,
-        "x": 17,
-        "y": 96
+        "w": 5,
+        "x": 19,
+        "y": 103
       },
       "id": 10,
       "options": {
@@ -3511,7 +3708,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 104
+        "y": 111
       },
       "id": 41,
       "options": {
@@ -3565,7 +3762,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 106
+        "y": 113
       },
       "id": 57,
       "options": {
@@ -3665,7 +3862,7 @@
         "h": 8,
         "w": 6,
         "x": 4,
-        "y": 106
+        "y": 113
       },
       "id": 65,
       "options": {
@@ -3759,7 +3956,7 @@
         "h": 8,
         "w": 7,
         "x": 10,
-        "y": 106
+        "y": 113
       },
       "id": 67,
       "options": {
@@ -3851,7 +4048,7 @@
         "h": 8,
         "w": 7,
         "x": 17,
-        "y": 106
+        "y": 113
       },
       "id": 68,
       "options": {
@@ -3920,7 +4117,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 110
+        "y": 117
       },
       "id": 29,
       "options": {
@@ -3961,7 +4158,7 @@
         "h": 8,
         "w": 4,
         "x": 0,
-        "y": 114
+        "y": 121
       },
       "id": 45,
       "options": {
@@ -4039,7 +4236,7 @@
         "h": 8,
         "w": 20,
         "x": 4,
-        "y": 114
+        "y": 121
       },
       "id": 70,
       "options": {
