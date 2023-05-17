@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 49,
+  "id": 23,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -368,10 +368,11 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum (irate(windows_cpu_time_total{cluster=\"$cluster\"}[5m])) by (instance, mode)",
-          "legendFormat": "{{instance}} - {{mode}}",
+          "expr": "avg(irate(windows_cpu_processor_utility_total{cluster=\"$cluster\"}[5m]) / 1000 / 1000) by (instance)",
+          "hide": false,
+          "legendFormat": "__auto",
           "range": true,
-          "refId": "A"
+          "refId": "B"
         }
       ],
       "title": "Processor Time",
@@ -1257,8 +1258,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1365,8 +1365,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1939,6 +1938,6 @@
   "timezone": "browser",
   "title": "Retail - MSSQL: Central",
   "uid": "000000107",
-  "version": 3,
+  "version": 1,
   "weekStart": ""
 }
