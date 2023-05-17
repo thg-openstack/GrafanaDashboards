@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 23,
+  "id": 39,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -138,7 +138,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(windows_mssql_waitstats_wait_for_the_worker_waits{cluster=~\"$cluster\",instance=~\"$instance\"}[5m])",
+          "expr": "rate(windows_mssql_waitstats_wait_for_the_worker_waits{cluster=~\"$cluster\",instance=~\"$instance\"}[5m]) != 0",
           "legendFormat": "{{instance}} - {{item}}",
           "range": true,
           "refId": "A"
@@ -149,7 +149,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(windows_mssql_waitstats_wait_for_the_worker_waits{cluster=~\"$cluster\",instance=~\"$instance\"}[5m]offset $offset)",
+          "expr": "rate(windows_mssql_waitstats_wait_for_the_worker_waits{cluster=~\"$cluster\",instance=~\"$instance\"}[5m]offset $offset) != 0",
           "hide": false,
           "legendFormat": "{{instance}} - {{item}} (offset $offset)",
           "range": true,
