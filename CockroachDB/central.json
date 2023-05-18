@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 44,
+  "id": 27,
   "links": [
     {
       "asDropdown": true,
@@ -1402,8 +1402,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1494,8 +1493,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1600,8 +1598,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1700,8 +1697,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1775,8 +1771,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1896,8 +1891,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2042,8 +2036,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2136,8 +2129,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2207,8 +2199,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2370,8 +2361,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2533,8 +2523,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2744,8 +2733,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2930,9 +2918,9 @@
     "list": [
       {
         "current": {
-          "selected": false,
-          "text": "li-new-jersey-2-wcs-cockroachdb",
-          "value": "li-new-jersey-2-wcs-cockroachdb"
+          "selected": true,
+          "text": "unify-infra-cockroachdb",
+          "value": "unify-infra-cockroachdb"
         },
         "datasource": {
           "type": "prometheus",
@@ -2941,7 +2929,7 @@
         "definition": "label_values(sys_uptime{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"},cluster)",
         "hide": 0,
         "includeAll": false,
-        "label": "Cluster name",
+        "label": "Cluster",
         "multi": false,
         "name": "cluster",
         "options": [],
@@ -2959,7 +2947,34 @@
         "useTags": false
       },
       {
-        "allValue": ".*",
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PAE45454D0EDB9216"
+        },
+        "definition": "label_values(up{cluster=\"$cluster\"},region)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Region",
+        "multi": false,
+        "name": "region",
+        "options": [],
+        "query": {
+          "query": "label_values(up{cluster=\"$cluster\"},region)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "allValue": "",
         "current": {
           "selected": false,
           "text": "All",
@@ -2969,7 +2984,7 @@
           "type": "prometheus",
           "uid": "PAE45454D0EDB9216"
         },
-        "definition": "label_values(sys_uptime{cluster=~\"$cluster\"},pod)",
+        "definition": "label_values(sys_uptime{cluster=~\"$cluster\",region=~\"$region\"},pod)",
         "hide": 0,
         "includeAll": true,
         "label": "Node",
@@ -2977,7 +2992,7 @@
         "name": "node",
         "options": [],
         "query": {
-          "query": "label_values(sys_uptime{cluster=~\"$cluster\"},pod)",
+          "query": "label_values(sys_uptime{cluster=~\"$cluster\",region=~\"$region\"},pod)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,

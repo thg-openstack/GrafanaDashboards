@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 14,
+  "id": 10,
   "links": [
     {
       "asDropdown": true,
@@ -2787,7 +2787,7 @@
         "definition": "label_values(sys_uptime{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"},cluster)",
         "hide": 0,
         "includeAll": false,
-        "label": "Cluster name",
+        "label": "Cluster",
         "multi": false,
         "name": "cluster",
         "options": [],
@@ -2805,7 +2805,33 @@
         "useTags": false
       },
       {
-        "allValue": ".*",
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PAE45454D0EDB9216"
+        },
+        "definition": "label_values(up{cluster=\"$cluster\",instance=~\"(de1|gb1|gb4|gb5).+\"},instance)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Datacentre",
+        "multi": false,
+        "name": "datacentre",
+        "options": [],
+        "query": {
+          "query": "label_values(up{cluster=\"$cluster\",instance=~\"(de1|gb1|gb4|gb5).+\"},instance)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "^([^-]+)-.*$",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
         "current": {
           "selected": false,
           "text": "All",
@@ -2815,7 +2841,7 @@
           "type": "prometheus",
           "uid": "PAE45454D0EDB9216"
         },
-        "definition": "label_values(sys_uptime{job=\"cockroachdb\",cluster=\"$cluster\"},instance)",
+        "definition": "label_values(sys_uptime{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$datacentre.*\"},instance)",
         "hide": 0,
         "includeAll": true,
         "label": "Node",
@@ -2823,17 +2849,14 @@
         "name": "node",
         "options": [],
         "query": {
-          "query": "label_values(sys_uptime{job=\"cockroachdb\",cluster=\"$cluster\"},instance)",
+          "query": "label_values(sys_uptime{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$datacentre.*\"},instance)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
-        "sort": 3,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
+        "sort": 0,
+        "type": "query"
       }
     ]
   },
