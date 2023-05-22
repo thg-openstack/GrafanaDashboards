@@ -26,7 +26,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 3662,
   "graphTooltip": 0,
-  "id": 10,
+  "id": 42,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -53,7 +53,7 @@
           "refId": "A"
         }
       ],
-      "title": "at a glance",
+      "title": "Uptime",
       "type": "row"
     },
     {
@@ -239,16 +239,12 @@
                       "value": null
                     },
                     {
-                      "color": "rgba(237, 129, 40, 0.89)",
-                      "value": null
+                      "color": "rgba(237, 129, 40, 0.89)"
                     },
                     {
-                      "color": "rgba(255, 0, 0, 0.97)",
-                      "value": null
+                      "color": "rgba(255, 0, 0, 0.97)"
                     },
-                    {
-                      "value": null
-                    }
+                    {}
                   ]
                 }
               }
@@ -480,7 +476,7 @@
           "refId": "A"
         }
       ],
-      "title": "quick numbers",
+      "title": "Quick Numbers",
       "type": "row"
     },
     {
@@ -911,7 +907,7 @@
           "refId": "A"
         }
       ],
-      "title": "errors",
+      "title": "Errors",
       "type": "row"
     },
     {
@@ -1262,7 +1258,7 @@
           "refId": "A"
         }
       ],
-      "title": "up",
+      "title": "Up",
       "type": "row"
     },
     {
@@ -1481,7 +1477,7 @@
           "refId": "A"
         }
       ],
-      "title": "series",
+      "title": "Series",
       "type": "row"
     },
     {
@@ -1723,7 +1719,7 @@
           "refId": "A"
         }
       ],
-      "title": "appended samples",
+      "title": "Appended Samples",
       "type": "row"
     },
     {
@@ -1862,7 +1858,7 @@
           "refId": "A"
         }
       ],
-      "title": "sync",
+      "title": "Sync",
       "type": "row"
     },
     {
@@ -2082,7 +2078,7 @@
           "refId": "A"
         }
       ],
-      "title": "scrapes",
+      "title": "Scrapes",
       "type": "row"
     },
     {
@@ -2337,7 +2333,7 @@
           "refId": "A"
         }
       ],
-      "title": "durations",
+      "title": "Durations",
       "type": "row"
     },
     {
@@ -2772,7 +2768,7 @@
           "refId": "A"
         }
       ],
-      "title": "notifications",
+      "title": "Notifications",
       "type": "row"
     },
     {
@@ -2894,7 +2890,7 @@
           "refId": "A"
         }
       ],
-      "title": "config",
+      "title": "Configuration",
       "type": "row"
     },
     {
@@ -3114,7 +3110,7 @@
           "refId": "A"
         }
       ],
-      "title": "garbage collection",
+      "title": "Garbage Collection",
       "type": "row"
     },
     {
@@ -3218,7 +3214,7 @@
   "revision": 1,
   "schemaVersion": 37,
   "style": "dark",
-  "tags": [],
+  "tags": ["Prometheus", "VMWare"],
   "templating": {
     "list": [
       {
