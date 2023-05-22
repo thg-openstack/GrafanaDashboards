@@ -689,7 +689,7 @@
         "showRecentlyViewed": false,
         "showSearch": true,
         "showStarred": false,
-        "tags": ["CockroachDB", "VMWare"]
+        "tags": ["CockroachDB", "Retail"]
       },
       "pluginVersion": "9.2.5",
       "title": "CockroachDB Dashboards",
@@ -1512,7 +1512,7 @@
         "showRecentlyViewed": false,
         "showSearch": true,
         "showStarred": false,
-        "tags": ["VMWare", "Postgres"]
+        "tags": ["Retail", "Postgres"]
       },
       "pluginVersion": "9.2.5",
       "title": "CockroachDB Dashboards",
@@ -2057,7 +2057,7 @@
         "showRecentlyViewed": false,
         "showSearch": true,
         "showStarred": false,
-        "tags": ["VMWare", "Couchbase"]
+        "tags": ["Retail", "Couchbase"]
       },
       "pluginVersion": "9.2.5",
       "title": "CockroachDB Dashboards",
@@ -2680,7 +2680,7 @@
         "showRecentlyViewed": false,
         "showSearch": true,
         "showStarred": false,
-        "tags": ["MSSQL", "VMWare"]
+        "tags": ["MSSQL", "Retail"]
       },
       "pluginVersion": "9.2.5",
       "title": "MSSQL Dashboards",
@@ -4270,7 +4270,7 @@
   ],
   "schemaVersion": 37,
   "style": "dark",
-  "tags": ["Kubernetes", "VMWare", "CockroachDB", "Postgres", "MSSQL"],
+  "tags": ["Kubernetes", "Retail", "CockroachDB", "Postgres", "MSSQL"],
   "templating": {
     "list": []
   },

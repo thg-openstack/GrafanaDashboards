@@ -4943,7 +4943,7 @@
   "revision": 1,
   "schemaVersion": 37,
   "style": "dark",
-  "tags": ["Kafka", "VMWare"],
+  "tags": ["Kafka", "Retail"],
   "templating": {
     "list": [
       {

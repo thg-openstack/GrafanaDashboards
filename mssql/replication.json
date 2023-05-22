@@ -215,7 +215,7 @@
   "revision": 1,
   "schemaVersion": 37,
   "style": "dark",
-  "tags": ["MSSQL", "VMWare"],
+  "tags": ["MSSQL", "Retail"],
   "templating": {
     "list": [
       {

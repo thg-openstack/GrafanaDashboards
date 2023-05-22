@@ -793,7 +793,7 @@
   "revision": 1,
   "schemaVersion": 37,
   "style": "dark",
-  "tags": ["Postgres", "VMWare"],
+  "tags": ["Postgres", "Retail"],
   "templating": {
     "list": [
       {

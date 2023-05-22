@@ -2760,7 +2760,7 @@
   "revision": 1,
   "schemaVersion": 37,
   "style": "dark",
-  "tags": ["Couchbase", "VMWare"],
+  "tags": ["Couchbase", "Retail"],
   "templating": {
     "list": [
       {

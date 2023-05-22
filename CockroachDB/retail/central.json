@@ -31,7 +31,7 @@
       "icon": "external link",
       "includeVars": true,
       "keepTime": true,
-      "tags": ["VMWare", "CockroachDB"],
+      "tags": ["Retail", "CockroachDB"],
       "targetBlank": true,
       "title": "Dashboards",
       "type": "dashboards"
@@ -2771,7 +2771,7 @@
   "revision": 1,
   "schemaVersion": 37,
   "style": "dark",
-  "tags": ["CockroachDB", "VMWare"],
+  "tags": ["CockroachDB", "Retail"],
   "templating": {
     "list": [
       {
