@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 40,
+  "id": 32,
   "links": [
     {
       "asDropdown": true,
@@ -431,6 +431,7 @@
           "custom": {
             "axisCenteredZero": false,
             "axisColorMode": "text",
+            "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
@@ -525,6 +526,7 @@
           "custom": {
             "axisCenteredZero": false,
             "axisColorMode": "text",
+            "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
@@ -622,7 +624,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "${datasource}"
+          "uid": "PAE45454D0EDB9216"
         },
         "definition": "label_values(sys_uptime{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"},cluster)",
         "hide": 0,
@@ -653,7 +655,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "${datasource}"
+          "uid": "PAE45454D0EDB9216"
         },
         "definition": "label_values(sys_uptime{job=\"cockroachdb\",cluster=\"$cluster\"},pod)",
         "hide": 0,
