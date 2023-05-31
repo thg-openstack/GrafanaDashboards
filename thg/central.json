@@ -2319,7 +2319,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(max by (cluster) (couchbase_bucket_basicstats_itemcount))",
+          "expr": "sum(max by (cluster,bucket) (couchbase_bucket_basicstats_itemcount))",
           "hide": false,
           "legendFormat": "__auto",
           "range": true,
