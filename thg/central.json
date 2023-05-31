@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 24,
+  "id": 22,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -2319,7 +2319,8 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(couchbase_bucket_basicstats_itemcount)",
+          "expr": "sum(max by (cluster) (couchbase_bucket_basicstats_itemcount))",
+          "hide": false,
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
