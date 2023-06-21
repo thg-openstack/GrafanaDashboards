@@ -25,7 +25,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 53,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -74,7 +73,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -96,7 +96,12 @@
       "links": [],
       "options": {
         "legend": {
-          "calcs": ["mean", "lastNotNull", "max", "sum"],
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max",
+            "sum"
+          ],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true
@@ -114,7 +119,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(mssql_index_statistics{cluster=\"$cluster\",database=\"$database\",type!=\"writes\"}[5m])",
+          "expr": "rate(mssql_index_statistics{cluster=\"$cluster\",database=\"$database\",type!=\"writes\",table=~\"$table\"}[5m])",
           "legendFormat": "{{table}}-{{index}}-{{type}}",
           "range": true,
           "refId": "A"
@@ -168,7 +173,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -190,7 +196,12 @@
       "links": [],
       "options": {
         "legend": {
-          "calcs": ["mean", "lastNotNull", "max", "sum"],
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max",
+            "sum"
+          ],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true
@@ -208,7 +219,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(mssql_index_statistics{cluster=\"$cluster\",database=\"$database\",type=\"writes\"}[5m])",
+          "expr": "rate(mssql_index_statistics{cluster=\"$cluster\",database=\"$database\",type=\"writes\",table=~\"$table\"}[5m])",
           "legendFormat": "{{table}}-{{index}}-{{type}}",
           "range": true,
           "refId": "A"
@@ -222,14 +233,17 @@
   "revision": 1,
   "schemaVersion": 37,
   "style": "dark",
-  "tags": ["MSSQL", "Retail"],
+  "tags": [
+    "MSSQL",
+    "Retail"
+  ],
   "templating": {
     "list": [
       {
         "current": {
-          "selected": false,
-          "text": "gfc-li-hqdw002",
-          "value": "gfc-li-hqdw002"
+          "selected": true,
+          "text": "gfc-li-tabdb001",
+          "value": "gfc-li-tabdb001"
         },
         "datasource": {
           "type": "prometheus",
@@ -254,9 +268,9 @@
       },
       {
         "current": {
-          "selected": false,
-          "text": "Application_Support",
-          "value": "Application_Support"
+          "selected": true,
+          "text": "Returns_Manager",
+          "value": "Returns_Manager"
         },
         "datasource": {
           "type": "prometheus",
@@ -281,6 +295,37 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PAE45454D0EDB9216"
+        },
+        "definition": "label_values(mssql_index_statistics{cluster=\"$cluster\"},table)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Table Name",
+        "multi": true,
+        "name": "table",
+        "options": [],
+        "query": {
+          "query": "label_values(mssql_index_statistics{cluster=\"$cluster\"},table)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
       }
     ]
   },
@@ -301,11 +346,21 @@
       "2h",
       "1d"
     ],
-    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
   },
   "timezone": "browser",
   "title": "Retail - MSSQL: Index usage",
   "uid": "000000108",
-  "version": 2,
+  "version": 1,
   "weekStart": ""
 }
