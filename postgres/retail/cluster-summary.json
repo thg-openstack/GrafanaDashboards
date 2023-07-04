@@ -21,7 +21,7 @@
         }
       ]
     },
-    "description": "Dashbord works with postgres_exporter for prometheus",
+    "description": "Summary of Postgres Clusters in Retail Estate",
     "editable": true,
     "fiscalYearStartMonth": 0,
     "gnetId": 9628,
@@ -731,7 +731,7 @@
     },
     "timezone": "",
     "title": "Retail - PostgreSQL: Cluster Summary",
-    "uid": "YRz2gar4k",
-    "version": 2,
+    "uid": "postgres_cluster_summary",
+    "version": 1,
     "weekStart": ""
   }
