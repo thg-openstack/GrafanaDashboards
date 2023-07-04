@@ -21,21 +21,14 @@
         }
       ]
     },
-    "description": "Summary of Postgres Clusters in Retail Estate",
     "editable": true,
     "fiscalYearStartMonth": 0,
-    "gnetId": 9628,
-    "graphTooltip": 0,
-    "id": 53,
+    "graphTooltip": 1,
     "links": [],
     "liveNow": false,
     "panels": [
       {
         "collapsed": false,
-        "datasource": {
-          "type": "redis-datasource",
-          "uid": "ZJEXAgQGk"
-        },
         "gridPos": {
           "h": 1,
           "w": 24,
