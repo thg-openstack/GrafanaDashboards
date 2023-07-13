@@ -652,6 +652,8 @@
             }
           },
           "mappings": [],
+          "max": 1,
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -695,7 +697,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(label_replace(sys_cpu_combined_percent_normalized{job='cockroachdb',instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
+          "expr": "max(avg(label_replace(sys_cpu_combined_percent_normalized{job='cockroachdb',instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -848,7 +850,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "short"
         },
         "overrides": []
       },
@@ -1063,7 +1066,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(label_replace(clock_offset_meannanos{job='cockroachdb',instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
+          "expr": "max(avg(label_replace(clock_offset_meannanos{job='cockroachdb',instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -1125,7 +1128,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "reqps"
         },
         "overrides": []
       },
@@ -1471,7 +1475,7 @@
               "viz": false
             },
             "lineInterpolation": "linear",
-            "lineWidth": 1,
+            "lineWidth": 2,
             "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
@@ -1502,7 +1506,52 @@
           },
           "unit": "percent"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "gb1_max"
+            },
+            "properties": [
+              {
+                "id": "custom.fillBelowTo",
+                "value": "gb1_min"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "gb4_max"
+            },
+            "properties": [
+              {
+                "id": "custom.fillBelowTo",
+                "value": "gb4_min"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*_m.*"
+            },
+            "properties": [
+              {
+                "id": "custom.lineWidth",
+                "value": 0
+              },
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": true,
+                  "tooltip": true,
+                  "viz": false
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 8,
@@ -1530,10 +1579,39 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(label_replace(rate(process_cpu_seconds_total{job=\"postgresql\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]) * 10000, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
+          "expr": "max(avg(label_replace(rate(process_cpu_seconds_total{job=\"postgresql\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]) * 10000, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre)",
+          "hide": false,
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "max(avg(label_replace(rate(process_cpu_seconds_total{job=\"postgresql\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]) * 10000, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre) + stddev(avg(label_replace(rate(process_cpu_seconds_total{job=\"postgresql\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]) * 10000, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{datacentre}}_max",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "max(avg(label_replace(rate(process_cpu_seconds_total{job=\"postgresql\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]) * 10000, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre) - stddev(avg(label_replace(rate(process_cpu_seconds_total{job=\"postgresql\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]) * 10000, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre)",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "{{datacentre}}_min",
+          "range": true,
+          "refId": "C"
         }
       ],
       "title": "CPU Usage",
@@ -1685,7 +1763,7 @@
               }
             ]
           },
-          "unit": "none"
+          "unit": "reqps"
         },
         "overrides": []
       },
@@ -1728,7 +1806,7 @@
           "refId": "B"
         }
       ],
-      "title": "Active sessions",
+      "title": "Sum of Transactions",
       "type": "timeseries"
     },
     {
@@ -1749,7 +1827,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 10,
+            "fillOpacity": 15,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -1757,13 +1835,16 @@
               "viz": false
             },
             "lineInterpolation": "linear",
-            "lineWidth": 1,
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 3,
             "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "never",
-            "spanNulls": false,
+            "showPoints": "auto",
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1787,7 +1868,7 @@
               }
             ]
           },
-          "unit": "deckbytes"
+          "unit": "s"
         },
         "overrides": []
       },
@@ -1809,7 +1890,9 @@
           ],
           "displayMode": "table",
           "placement": "bottom",
-          "showLegend": false
+          "showLegend": false,
+          "sortBy": "Max",
+          "sortDesc": true
         },
         "tooltip": {
           "mode": "multi",
@@ -1824,8 +1907,10 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(rate(pg_replication_lag{job='postgresql',instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
+          "exemplar": false,
+          "expr": "max(avg(label_replace(pg_replication_lag{job='postgresql',instance=~\"(de1|gb1|gb4|gb5).+\",instance!~\".*li-orbitwppsql.*\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre)",
           "hide": false,
+          "instant": false,
           "legendFormat": "__auto",
           "range": true,
           "refId": "B"
@@ -2131,7 +2216,7 @@
               "viz": false
             },
             "lineInterpolation": "linear",
-            "lineWidth": 1,
+            "lineWidth": 2,
             "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
@@ -2147,6 +2232,8 @@
             }
           },
           "mappings": [],
+          "max": 100,
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -2159,9 +2246,55 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "percent"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "gb1_max"
+            },
+            "properties": [
+              {
+                "id": "custom.fillBelowTo",
+                "value": "gb1_min"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "gb4_max"
+            },
+            "properties": [
+              {
+                "id": "custom.fillBelowTo",
+                "value": "gb4_min"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*_m.*"
+            },
+            "properties": [
+              {
+                "id": "custom.lineWidth",
+                "value": 0
+              },
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": true,
+                  "tooltip": true,
+                  "viz": false
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 8,
@@ -2189,10 +2322,36 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(label_replace(couchbase_bucket_stats_cpu_utilization_rate{instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
+          "expr": "max(avg(label_replace(couchbase_bucket_stats_cpu_utilization_rate{instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "max(avg(label_replace(couchbase_bucket_stats_cpu_utilization_rate{instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre) + stddev(avg(label_replace(couchbase_bucket_stats_cpu_utilization_rate{instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{datacentre}}_max",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "max(avg(label_replace(couchbase_bucket_stats_cpu_utilization_rate{instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre) - stddev(avg(label_replace(couchbase_bucket_stats_cpu_utilization_rate{instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{datacentre}}_min",
+          "range": true,
+          "refId": "C"
         }
       ],
       "title": "CPU Usage",
@@ -2343,7 +2502,7 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "ops"
         },
         "overrides": [
           {
@@ -2632,7 +2791,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(label_replace(rate(windows_logical_disk_read_latency_seconds_total{}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
+          "expr": "avg(max(label_replace(rate(windows_logical_disk_read_latency_seconds_total{}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre)",
           "hide": false,
           "legendFormat": "{{datacentre}}",
           "range": true,
@@ -2820,7 +2979,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(label_replace(100 - (irate(windows_cpu_time_total{mode=\"idle\"}[2m])) * 100, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
+          "expr": "avg(max(label_replace(100 - (irate(windows_cpu_time_total{mode=\"idle\"}[2m])) * 100, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre)",
           "hide": false,
           "legendFormat": "{{datacentre}}",
           "range": true,
@@ -2974,7 +3133,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "short"
         },
         "overrides": []
       },
@@ -3066,7 +3226,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "reqps"
         },
         "overrides": []
       },
@@ -3155,8 +3316,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "blue",
-                    "value": null
+                    "color": "blue"
                   }
                 ]
               }
@@ -3247,8 +3407,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -3340,8 +3499,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -3432,8 +3590,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -3525,8 +3682,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -3588,8 +3744,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "blue",
-                    "value": null
+                    "color": "blue"
                   }
                 ]
               }
@@ -3708,8 +3863,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -3800,8 +3954,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -3892,8 +4045,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -3984,8 +4136,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -4083,8 +4234,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "blue",
-                    "value": null
+                    "color": "blue"
                   }
                 ]
               }
@@ -4185,8 +4335,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "blue",
-                    "value": null
+                    "color": "blue"
                   }
                 ]
               }
@@ -4274,8 +4423,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -4367,8 +4515,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -4624,7 +4771,7 @@
     "list": []
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-2d",
     "to": "now"
   },
   "timepicker": {},

@@ -1,730 +1,641 @@
 {
-    "annotations": {
-      "list": [
-        {
-          "builtIn": 1,
-          "datasource": {
-            "type": "datasource",
-            "uid": "grafana"
-          },
-          "enable": true,
-          "hide": true,
-          "iconColor": "rgba(0, 211, 255, 1)",
-          "name": "Annotations & Alerts",
-          "target": {
-            "limit": 100,
-            "matchAny": false,
-            "tags": [],
-            "type": "dashboard"
-          },
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
           "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 34,
+      "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "redis-datasource",
+            "uid": "ZJEXAgQGk"
+          },
+          "refId": "A"
         }
-      ]
+      ],
+      "title": "By Cluster",
+      "type": "row"
     },
-    "editable": true,
-    "fiscalYearStartMonth": 0,
-    "graphTooltip": 1,
-    "links": [],
-    "liveNow": false,
-    "panels": [
-      {
-        "collapsed": false,
-        "gridPos": {
-          "h": 1,
-          "w": 24,
-          "x": 0,
-          "y": 0
-        },
-        "id": 34,
-        "panels": [],
-        "targets": [
-          {
-            "datasource": {
-              "type": "redis-datasource",
-              "uid": "ZJEXAgQGk"
-            },
-            "refId": "A"
-          }
-        ],
-        "title": "By Cluster",
-        "type": "row"
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PAE45454D0EDB9216"
       },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "PAE45454D0EDB9216"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 10,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineInterpolation": "linear",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "never",
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "links": [],
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "short"
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
           },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 8,
-          "w": 24,
-          "x": 0,
-          "y": 1
-        },
-        "id": 60,
-        "links": [],
-        "options": {
-          "legend": {
-            "calcs": [
-              "mean",
-              "lastNotNull",
-              "max"
-            ],
-            "displayMode": "table",
-            "placement": "right",
-            "showLegend": true,
-            "sortBy": "Max",
-            "sortDesc": true
-          },
-          "tooltip": {
-            "mode": "multi",
-            "sort": "desc"
-          }
-        },
-        "pluginVersion": "9.2.5",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "PAE45454D0EDB9216"
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
             },
-            "editorMode": "code",
-            "expr": "sum(label_replace(label_replace(irate(pg_stat_database_xact_commit{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]) !=0, \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster, datacentre)",
-            "interval": "",
-            "legendFormat": "{{datacentre}}-{{cluster}}",
-            "range": true,
-            "refId": "A"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "PAE45454D0EDB9216"
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
             },
-            "editorMode": "code",
-            "expr": "label_replace(irate(pg_stat_database_xact_rollback{cluster=\"$cluster\", datname=~\"$datname\"}[5m]) !=0, \"node\", \"$1\", \"instance\", \"(.*?):.*\")",
-            "hide": true,
-            "legendFormat": "{{node}} {{datname}} rollbacks",
-            "range": true,
-            "refId": "B"
-          }
-        ],
-        "title": "Transactions",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "PAE45454D0EDB9216"
-        },
-        "description": "Average user and system CPU time spent in seconds.",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
             },
-            "custom": {
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 10,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineInterpolation": "linear",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "never",
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "links": [],
-            "mappings": [],
-            "max": 1,
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "percentunit"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 12,
-          "x": 0,
-          "y": 9
-        },
-        "id": 22,
-        "links": [],
-        "options": {
-          "legend": {
-            "calcs": [
-              "mean",
-              "lastNotNull",
-              "max",
-              "min"
-            ],
-            "displayMode": "table",
-            "placement": "right",
-            "showLegend": true
-          },
-          "tooltip": {
-            "mode": "multi",
-            "sort": "none"
-          }
-        },
-        "pluginVersion": "9.2.5",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "PAE45454D0EDB9216"
-            },
-            "editorMode": "code",
-            "expr": "max(label_replace(label_replace(rate(process_cpu_seconds_total{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]) *1000 / on() group_left() max(pg_settings_max_worker_processes{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}), \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster,datacentre)",
-            "interval": "",
-            "legendFormat": "{{datacentre}}-{{cluster}}",
-            "range": true,
-            "refId": "A"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "PAE45454D0EDB9216"
-            },
-            "editorMode": "code",
-            "expr": "sum(label_replace(label_replace(irate(pg_stat_database_xact_commit{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]) !=0, \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster, datacentre)",
-            "hide": true,
-            "legendFormat": "__auto",
-            "range": true,
-            "refId": "B"
-          }
-        ],
-        "title": "Average CPU Usage",
-        "transformations": [],
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "PAE45454D0EDB9216"
-        },
-        "description": "Virtual and Resident memory size in bytes, averages over 5 min interval",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 10,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineInterpolation": "linear",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "never",
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "links": [],
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "decbytes"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 12,
-          "x": 12,
-          "y": 9
-        },
-        "id": 24,
-        "links": [],
-        "options": {
-          "legend": {
-            "calcs": [
-              "mean",
-              "lastNotNull",
-              "max",
-              "min"
-            ],
-            "displayMode": "table",
-            "placement": "right",
-            "showLegend": true,
-            "sortBy": "Max",
-            "sortDesc": true
-          },
-          "tooltip": {
-            "mode": "multi",
-            "sort": "none"
-          }
-        },
-        "pluginVersion": "9.2.5",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "PAE45454D0EDB9216"
-            },
-            "editorMode": "code",
-            "expr": "sum(label_replace(label_replace(rate(process_resident_memory_bytes{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]), \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\") + label_replace(label_replace(rate(process_virtual_memory_bytes{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]), \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster,datacentre)",
-            "interval": "",
-            "legendFormat": "{{datacentre}}-{{cluster}}",
-            "range": true,
-            "refId": "A"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "PAE45454D0EDB9216"
-            },
-            "editorMode": "code",
-            "expr": "label_replace(rate(process_virtual_memory_bytes{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]), \"node\", \"$1\", \"instance\", \"(.*?):.*\")",
-            "hide": true,
-            "legendFormat": "{{node}} Virtual Mem",
-            "range": true,
-            "refId": "B"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "PAE45454D0EDB9216"
-            },
-            "editorMode": "code",
-            "expr": "sum(label_replace(label_replace(irate(pg_stat_database_xact_commit{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]) !=0, \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster, datacentre)",
-            "hide": true,
-            "legendFormat": "__auto",
-            "range": true,
-            "refId": "C"
-          }
-        ],
-        "title": "Average Memory Usage",
-        "type": "timeseries"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "PAE45454D0EDB9216"
-        },
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisCenteredZero": false,
-              "axisColorMode": "text",
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 10,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineInterpolation": "linear",
-              "lineWidth": 4,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "never",
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "links": [],
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "deckbytes"
-          },
-          "overrides": [
-            {
-              "__systemRef": "hideSeriesFrom",
-              "matcher": {
-                "id": "byNames",
-                "options": {
-                  "mode": "exclude",
-                  "names": [
-                    "gb1-aandapsql",
-                    "gb4-aandapsql",
-                    "gb1-accessaudit",
-                    "gb4-accessaudit",
-                    "gb1-arkepsql-gb1",
-                    "gb4-arkepsql-gb4",
-                    "gb1-artemisplpsql",
-                    "gb4-artemisplpsql",
-                    "gb1-bansheeamqpsql-gb1",
-                    "gb4-bansheeamqpsql-gb4",
-                    "gb1-campaigns",
-                    "gb4-campaigns",
-                    "gb1-cloudmon",
-                    "gb4-cloudmon",
-                    "gb1-coreamqgb1",
-                    "gb4-coreamqgb4",
-                    "gb1-dataservices",
-                    "gb4-dataservices",
-                    "gb1-docker1",
-                    "gb4-docker4",
-                    "gb1-dronecipsql",
-                    "gb4-dronecipsql",
-                    "gb1-grafanapsql",
-                    "gb4-grafanapsql",
-                    "gb1-greenhousepsql",
-                    "gb4-greenhousepsql",
-                    "gb1-intraservamqpsql-gb1",
-                    "gb4-intraservamqpsql-gb1",
-                    "gb1-li-artifactorypsql",
-                    "gb4-li-artifactorypsql",
-                    "gb1-linuxintdnsgb1",
-                    "gb4-linuxintdnsgb4",
-                    "gb1-linuxpsql-gb4",
-                    "gb4-linuxpsql-gb4",
-                    "gb1-mlflowpsql",
-                    "gb4-mlflowpsql",
-                    "gb1-munninpsql-gb1",
-                    "gb4-munninpsql-gb4",
-                    "gb1-netboxpsql",
-                    "gb4-netboxpsql",
-                    "gb1-netlb",
-                    "gb4-netlb",
-                    "gb1-oralb",
-                    "gb4-oralb",
-                    "gb1-sageingty",
-                    "gb4-sageingty",
-                    "gb1-secopspsql",
-                    "gb4-secopspsql",
-                    "gb4-spacewalkgb4",
-                    "gb1-superset",
-                    "gb4-superset",
-                    "gb1-taxengineservicepsql",
-                    "gb4-taxengineservicepsql",
-                    "gb1-thgidentity",
-                    "gb4-thgidentity",
-                    "gb1-thgwidget",
-                    "gb4-thgwidget",
-                    "gb1-tritongb1",
-                    "gb4-tritongb4",
-                    "gb1-vspsql",
-                    "gb4-vspsql",
-                    "gb1-xtrfint",
-                    "gb4-xtrfint",
-                    "gb1-zbixlinxpsqlgb1",
-                    "gb4-zbixlinxpsqlgb1"
-                  ],
-                  "prefix": "All except:",
-                  "readOnly": true
-                }
-              },
-              "properties": [
-                {
-                  "id": "custom.hideFrom",
-                  "value": {
-                    "legend": false,
-                    "tooltip": false,
-                    "viz": true
-                  }
-                }
-              ]
+            "thresholdsStyle": {
+              "mode": "off"
             }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "id": 60,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "pluginVersion": "9.2.5",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "sum(label_replace(label_replace(irate(pg_stat_database_xact_commit{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]) !=0, \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster, datacentre)",
+          "interval": "",
+          "legendFormat": "{{datacentre}}-{{cluster}}",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "label_replace(irate(pg_stat_database_xact_rollback{cluster=\"$cluster\", datname=~\"$datname\"}[5m]) !=0, \"node\", \"$1\", \"instance\", \"(.*?):.*\")",
+          "hide": true,
+          "legendFormat": "{{node}} {{datname}} rollbacks",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Transactions",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PAE45454D0EDB9216"
+      },
+      "description": "Average user and system CPU time spent in seconds.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "max": 1,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 9
+      },
+      "id": 22,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.2.5",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "max(label_replace(label_replace(rate(process_cpu_seconds_total{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]) *1000 / on() group_left() max(pg_settings_max_worker_processes{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}), \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster,datacentre)",
+          "interval": "",
+          "legendFormat": "{{datacentre}}-{{cluster}}",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "sum(label_replace(label_replace(irate(pg_stat_database_xact_commit{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]) !=0, \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster, datacentre)",
+          "hide": true,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Average CPU Usage",
+      "transformations": [],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PAE45454D0EDB9216"
+      },
+      "description": "Virtual and Resident memory size in bytes, averages over 5 min interval",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 9
+      },
+      "id": 24,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.2.5",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "sum(label_replace(label_replace(rate(process_resident_memory_bytes{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]), \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\") + label_replace(label_replace(rate(process_virtual_memory_bytes{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]), \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster,datacentre)",
+          "interval": "",
+          "legendFormat": "{{datacentre}}-{{cluster}}",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "label_replace(rate(process_virtual_memory_bytes{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]), \"node\", \"$1\", \"instance\", \"(.*?):.*\")",
+          "hide": true,
+          "legendFormat": "{{node}} Virtual Mem",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "sum(label_replace(label_replace(irate(pg_stat_database_xact_commit{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]) !=0, \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster, datacentre)",
+          "hide": true,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
+        }
+      ],
+      "title": "Average Memory Usage",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PAE45454D0EDB9216"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 4,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 18
+      },
+      "id": 71,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "pluginVersion": "9.2.5",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "max(label_replace(label_replace(pg_replication_lag{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}, \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster,datacentre)",
+          "interval": "",
+          "legendFormat": "{{datacentre}}-{{cluster}}",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "sum(label_replace(label_replace(irate(pg_stat_database_xact_commit{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]) !=0, \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster, datacentre)",
+          "hide": true,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Replication WAL Latency",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "",
+  "revision": 1,
+  "schemaVersion": 37,
+  "style": "dark",
+  "tags": [
+    "Postgres",
+    "Retail"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
           ]
         },
-        "gridPos": {
-          "h": 8,
-          "w": 24,
-          "x": 0,
-          "y": 18
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PAE45454D0EDB9216"
         },
-        "id": 71,
-        "links": [],
-        "options": {
-          "legend": {
-            "calcs": [
-              "mean",
-              "lastNotNull",
-              "max",
-              "min"
-            ],
-            "displayMode": "table",
-            "placement": "right",
-            "showLegend": true,
-            "sortBy": "Max",
-            "sortDesc": true
-          },
-          "tooltip": {
-            "mode": "multi",
-            "sort": "desc"
-          }
+        "definition": "label_values(up{job=\"postgresql\"},cluster)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Cluster",
+        "multi": true,
+        "name": "cluster",
+        "options": [],
+        "query": {
+          "query": "label_values(up{job=\"postgresql\"},cluster)",
+          "refId": "StandardVariableQuery"
         },
-        "pluginVersion": "9.2.5",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "PAE45454D0EDB9216"
-            },
-            "editorMode": "code",
-            "expr": "max(label_replace(label_replace(pg_replication_lag{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}, \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster,datacentre)",
-            "interval": "",
-            "legendFormat": "{{datacentre}}-{{cluster}}",
-            "range": true,
-            "refId": "A"
-          },
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "PAE45454D0EDB9216"
-            },
-            "editorMode": "code",
-            "expr": "sum(label_replace(label_replace(irate(pg_stat_database_xact_commit{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]) !=0, \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster, datacentre)",
-            "hide": true,
-            "legendFormat": "__auto",
-            "range": true,
-            "refId": "B"
-          }
-        ],
-        "title": "Replication WAL Latency",
-        "type": "timeseries"
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PAE45454D0EDB9216"
+        },
+        "definition": "label_values(up{job=\"postgresql\"},instance)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Datacentre",
+        "multi": true,
+        "name": "datacentre",
+        "options": [],
+        "query": {
+          "query": "label_values(up{job=\"postgresql\"},instance)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "^([^-]+)-.*$",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
       }
+    ]
+  },
+  "time": {
+    "from": "now-3h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
     ],
-    "refresh": "",
-    "revision": 1,
-    "schemaVersion": 37,
-    "style": "dark",
-    "tags": [
-      "Postgres",
-      "Retail"
-    ],
-    "templating": {
-      "list": [
-        {
-          "current": {
-            "selected": true,
-            "text": [
-              "All"
-            ],
-            "value": [
-              "$__all"
-            ]
-          },
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
-          },
-          "definition": "label_values(up{job=\"postgresql\"},cluster)",
-          "hide": 0,
-          "includeAll": true,
-          "label": "Cluster",
-          "multi": true,
-          "name": "cluster",
-          "options": [],
-          "query": {
-            "query": "label_values(up{job=\"postgresql\"},cluster)",
-            "refId": "StandardVariableQuery"
-          },
-          "refresh": 1,
-          "regex": "",
-          "skipUrlSync": false,
-          "sort": 1,
-          "tagValuesQuery": "",
-          "tagsQuery": "",
-          "type": "query",
-          "useTags": false
-        },
-        {
-          "current": {
-            "selected": true,
-            "text": [
-              "All"
-            ],
-            "value": [
-              "$__all"
-            ]
-          },
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
-          },
-          "definition": "label_values(up{job=\"postgresql\"},instance)",
-          "hide": 0,
-          "includeAll": true,
-          "label": "Datacentre",
-          "multi": true,
-          "name": "datacentre",
-          "options": [],
-          "query": {
-            "query": "label_values(up{job=\"postgresql\"},instance)",
-            "refId": "StandardVariableQuery"
-          },
-          "refresh": 1,
-          "regex": "^([^-]+)-.*$",
-          "skipUrlSync": false,
-          "sort": 0,
-          "type": "query"
-        }
-      ]
-    },
-    "time": {
-      "from": "now-6h",
-      "to": "now"
-    },
-    "timepicker": {
-      "refresh_intervals": [
-        "30s",
-        "1m",
-        "5m",
-        "15m",
-        "30m",
-        "1h",
-        "2h",
-        "1d"
-      ],
-      "time_options": [
-        "5m",
-        "15m",
-        "1h",
-        "6h",
-        "12h",
-        "24h",
-        "2d",
-        "7d",
-        "30d"
-      ]
-    },
-    "timezone": "",
-    "title": "Retail - PostgreSQL: Cluster Summary",
-    "uid": "postgres_cluster_summary",
-    "version": 1,
-    "weekStart": ""
-  }
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "Retail - PostgreSQL: Cluster Summary",
+  "uid": "postgres_cluster_summary",
+  "version": 1,
+  "weekStart": ""
+}
