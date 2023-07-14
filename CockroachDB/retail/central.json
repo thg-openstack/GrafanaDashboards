@@ -316,7 +316,7 @@
           "placement": "bottom",
           "showLegend": false
         },
-        "mode": "candles"
+        "mode": "candles+volume"
       },
       "pluginVersion": "9.2.5",
       "targets": [
@@ -413,7 +413,7 @@
           "step": 120
         }
       ],
-      "title": "$cluster SQL Latency",
+      "title": "$cluster CPU Load",
       "transformations": [],
       "type": "candlestick"
     },
@@ -3190,8 +3190,8 @@
       {
         "current": {
           "selected": true,
-          "text": "Ecrmtrkng",
-          "value": "Ecrmtrkng"
+          "text": "AccountsCockroach",
+          "value": "AccountsCockroach"
         },
         "datasource": {
           "type": "prometheus",
