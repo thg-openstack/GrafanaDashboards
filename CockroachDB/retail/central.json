@@ -24,14 +24,16 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 10,
   "links": [
     {
       "asDropdown": true,
       "icon": "external link",
       "includeVars": true,
       "keepTime": true,
-      "tags": ["Retail", "CockroachDB"],
+      "tags": [
+        "Retail",
+        "CockroachDB"
+      ],
       "targetBlank": true,
       "title": "Dashboards",
       "type": "dashboards"
@@ -40,11 +42,387 @@
   "liveNow": false,
   "panels": [
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PAE45454D0EDB9216"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-BlPu",
+            "seriesBy": "last"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 3,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 68,
+      "interval": "1m",
+      "links": [],
+      "options": {
+        "candleStyle": "candles",
+        "colorStrategy": "close-close",
+        "colors": {
+          "down": "green",
+          "up": "red"
+        },
+        "fields": {
+          "close": "Min - p75",
+          "high": "Max - p99",
+          "low": "Min - p50",
+          "open": "Max - p95"
+        },
+        "includeAllFields": true,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "mode": "candles"
+      },
+      "pluginVersion": "9.2.5",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "min(sql_exec_latency:rate1m:quantile_50{job=\"cockroachdb\", cluster=\"$cluster\", instance=~\"$node\", instance=~\"$datacentre.*\"} > 1000000)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Min - p50",
+          "metric": "round_trip_latency:rate1m:quantile_50",
+          "range": true,
+          "refId": "p50",
+          "step": 120
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "min(sql_exec_latency:rate1m:quantile_75{job=\"cockroachdb\", cluster=\"$cluster\", instance=~\"$node\", instance=~\"$datacentre.*\"} > 1000000)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Min - p75",
+          "metric": "round_trip_latency:rate1m:quantile_50",
+          "range": true,
+          "refId": "p75",
+          "step": 120
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "max(sql_exec_latency:rate1m:quantile_99{job=\"cockroachdb\", cluster=\"$cluster\", instance=~\"$node\", instance=~\"$datacentre.*\"} > 1000000)",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Max - p99",
+          "metric": "round_trip_latency:rate1m:quantile_50",
+          "range": true,
+          "refId": "p99",
+          "step": 120
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "avg(sql_exec_latency:rate1m:quantile_99{job=\"cockroachdb\", cluster=\"$cluster\", instance=~\"$node\", instance=~\"$datacentre.*\"} > 1000000)",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "2",
+          "intervalFactor": 1,
+          "legendFormat": "Avg - p99",
+          "metric": "round_trip_latency:rate1m:quantile_50",
+          "range": true,
+          "refId": "Avg",
+          "step": 120
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "max(sql_exec_latency:rate1m:quantile_95{job=\"cockroachdb\", cluster=\"$cluster\", instance=~\"$node\", instance=~\"$datacentre.*\"} > 1000000)",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Max - p95",
+          "metric": "round_trip_latency:rate1m:quantile_50",
+          "range": true,
+          "refId": "p95",
+          "step": 120
+        }
+      ],
+      "title": "$cluster SQL Latency",
+      "transformations": [],
+      "type": "candlestick"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PAE45454D0EDB9216"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-BlPu",
+            "seriesBy": "last"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 3,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "max": 1,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 69,
+      "interval": "1m",
+      "links": [],
+      "options": {
+        "candleStyle": "candles",
+        "colorStrategy": "close-close",
+        "colors": {
+          "down": "green",
+          "up": "red"
+        },
+        "fields": {
+          "close": "p25",
+          "high": "Max",
+          "low": "Min",
+          "open": "p75"
+        },
+        "includeAllFields": true,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "mode": "candles"
+      },
+      "pluginVersion": "9.2.5",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "min(sys_cpu_combined_percent_normalized{job=\"cockroachdb\", cluster=\"$cluster\", instance=~\"$node\", instance=~\"$datacentre.*\"} > 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Min",
+          "metric": "round_trip_latency:rate1m:quantile_50",
+          "range": true,
+          "refId": "Min",
+          "step": 120
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "avg(sys_cpu_combined_percent_normalized{job=\"cockroachdb\", cluster=\"$cluster\", instance=~\"$node\", instance=~\"$datacentre.*\"} > 0) - stddev(sys_cpu_combined_percent_normalized{job=\"cockroachdb\", cluster=\"$cluster\", instance=~\"$node\", instance=~\"$datacentre.*\"} > 0)",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "p25",
+          "metric": "round_trip_latency:rate1m:quantile_50",
+          "range": true,
+          "refId": "p25",
+          "step": 120
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "max(sys_cpu_combined_percent_normalized{job=\"cockroachdb\", cluster=\"$cluster\", instance=~\"$node\", instance=~\"$datacentre.*\"} > 0)",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Max",
+          "metric": "round_trip_latency:rate1m:quantile_50",
+          "range": true,
+          "refId": "Max",
+          "step": 120
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "avg(sys_cpu_combined_percent_normalized{job=\"cockroachdb\", cluster=\"$cluster\", instance=~\"$node\", instance=~\"$datacentre.*\"} > 0)",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Avg ",
+          "metric": "round_trip_latency:rate1m:quantile_50",
+          "range": true,
+          "refId": "Avg",
+          "step": 120
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "avg(sys_cpu_combined_percent_normalized{job=\"cockroachdb\", cluster=\"$cluster\", instance=~\"$node\", instance=~\"$datacentre.*\"} > 0) + stddev(sys_cpu_combined_percent_normalized{job=\"cockroachdb\", cluster=\"$cluster\", instance=~\"$node\", instance=~\"$datacentre.*\"} > 0)",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "p75",
+          "metric": "round_trip_latency:rate1m:quantile_50",
+          "range": true,
+          "refId": "p75",
+          "step": 120
+        }
+      ],
+      "title": "$cluster SQL Latency",
+      "transformations": [],
+      "type": "candlestick"
+    },
+    {
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 0
+        "y": 7
       },
       "id": 55,
       "title": "Health, Clock & Uptime",
@@ -127,7 +505,7 @@
         "h": 7,
         "w": 16,
         "x": 0,
-        "y": 1
+        "y": 8
       },
       "id": 2,
       "links": [],
@@ -138,7 +516,9 @@
         "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["mean"],
+          "calcs": [
+            "mean"
+          ],
           "fields": "",
           "values": false
         },
@@ -210,7 +590,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 1
+        "y": 8
       },
       "id": 30,
       "links": [],
@@ -276,7 +656,7 @@
         "h": 7,
         "w": 16,
         "x": 0,
-        "y": 8
+        "y": 15
       },
       "hiddenSeries": false,
       "id": 20,
@@ -378,7 +758,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 8
+        "y": 15
       },
       "id": 21,
       "links": [],
@@ -435,7 +815,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 15
+        "y": 22
       },
       "id": 57,
       "panels": [],
@@ -463,7 +843,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 16
+        "y": 23
       },
       "hiddenSeries": false,
       "id": 22,
@@ -560,7 +940,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 16
+        "y": 23
       },
       "hiddenSeries": false,
       "id": 31,
@@ -657,7 +1037,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 23
+        "y": 30
       },
       "hiddenSeries": false,
       "id": 24,
@@ -754,7 +1134,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 23
+        "y": 30
       },
       "hiddenSeries": false,
       "id": 32,
@@ -851,7 +1231,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 30
+        "y": 37
       },
       "hiddenSeries": false,
       "id": 26,
@@ -948,7 +1328,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 30
+        "y": 37
       },
       "hiddenSeries": false,
       "id": 33,
@@ -1045,7 +1425,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 37
+        "y": 44
       },
       "hiddenSeries": false,
       "id": 39,
@@ -1142,7 +1522,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 37
+        "y": 44
       },
       "hiddenSeries": false,
       "id": 40,
@@ -1224,7 +1604,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 44
+        "y": 51
       },
       "id": 59,
       "panels": [],
@@ -1292,7 +1672,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 45
+        "y": 52
       },
       "id": 61,
       "options": {
@@ -1384,7 +1764,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 45
+        "y": 52
       },
       "id": 62,
       "options": {
@@ -1421,7 +1801,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 53
+        "y": 60
       },
       "id": 64,
       "panels": [],
@@ -1449,7 +1829,7 @@
         "h": 10,
         "w": 12,
         "x": 0,
-        "y": 54
+        "y": 61
       },
       "hiddenSeries": false,
       "id": 41,
@@ -1548,7 +1928,7 @@
         "h": 10,
         "w": 12,
         "x": 12,
-        "y": 54
+        "y": 61
       },
       "hiddenSeries": false,
       "id": 37,
@@ -1648,7 +2028,7 @@
         "h": 10,
         "w": 8,
         "x": 0,
-        "y": 64
+        "y": 71
       },
       "id": 42,
       "links": [],
@@ -1720,7 +2100,7 @@
         "h": 10,
         "w": 16,
         "x": 8,
-        "y": 64
+        "y": 71
       },
       "hiddenSeries": false,
       "id": 38,
@@ -1835,7 +2215,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 74
+        "y": 81
       },
       "id": 66,
       "panels": [],
@@ -1857,7 +2237,7 @@
         "h": 11,
         "w": 8,
         "x": 0,
-        "y": 75
+        "y": 82
       },
       "hiddenSeries": false,
       "id": 46,
@@ -1947,7 +2327,7 @@
         "h": 11,
         "w": 16,
         "x": 8,
-        "y": 75
+        "y": 82
       },
       "hiddenSeries": false,
       "id": 44,
@@ -1981,10 +2361,12 @@
             "type": "prometheus",
             "uid": "PAE45454D0EDB9216"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "sys_cpu_combined_percent_normalized{job='cockroachdb',cluster=\"$cluster\",instance=~\"$node\"}",
           "interval": "",
           "legendFormat": "{{instance}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -2137,14 +2519,16 @@
         "h": 16,
         "w": 8,
         "x": 0,
-        "y": 86
+        "y": 93
       },
       "id": 48,
       "links": [],
       "options": {
         "footer": {
           "fields": "",
-          "reducer": ["sum"],
+          "reducer": [
+            "sum"
+          ],
           "show": false
         },
         "showHeader": true,
@@ -2179,7 +2563,12 @@
           "id": "reduce",
           "options": {
             "includeTimeField": false,
-            "reducers": ["last", "mean", "min", "max"]
+            "reducers": [
+              "last",
+              "mean",
+              "min",
+              "max"
+            ]
           }
         }
       ],
@@ -2300,14 +2689,16 @@
         "h": 16,
         "w": 8,
         "x": 8,
-        "y": 86
+        "y": 93
       },
       "id": 50,
       "links": [],
       "options": {
         "footer": {
           "fields": "",
-          "reducer": ["sum"],
+          "reducer": [
+            "sum"
+          ],
           "show": false
         },
         "showHeader": true,
@@ -2342,7 +2733,12 @@
           "id": "reduce",
           "options": {
             "includeTimeField": false,
-            "reducers": ["last", "mean", "min", "max"]
+            "reducers": [
+              "last",
+              "mean",
+              "min",
+              "max"
+            ]
           }
         }
       ],
@@ -2463,14 +2859,16 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 86
+        "y": 93
       },
       "id": 52,
       "links": [],
       "options": {
         "footer": {
           "fields": "",
-          "reducer": ["sum"],
+          "reducer": [
+            "sum"
+          ],
           "show": false
         },
         "showHeader": true,
@@ -2557,7 +2955,12 @@
           "id": "reduce",
           "options": {
             "includeTimeField": false,
-            "reducers": ["last", "mean", "min", "max"]
+            "reducers": [
+              "last",
+              "mean",
+              "min",
+              "max"
+            ]
           }
         }
       ],
@@ -2678,14 +3081,16 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 94
+        "y": 101
       },
       "id": 53,
       "links": [],
       "options": {
         "footer": {
           "fields": "",
-          "reducer": ["sum"],
+          "reducer": [
+            "sum"
+          ],
           "show": false
         },
         "showHeader": true,
@@ -2760,25 +3165,33 @@
           "id": "reduce",
           "options": {
             "includeTimeField": false,
-            "reducers": ["last", "mean", "min", "max"]
+            "reducers": [
+              "last",
+              "mean",
+              "min",
+              "max"
+            ]
           }
         }
       ],
       "type": "table"
     }
   ],
-  "refresh": "",
+  "refresh": "30s",
   "revision": 1,
   "schemaVersion": 37,
   "style": "dark",
-  "tags": ["CockroachDB", "Retail"],
+  "tags": [
+    "CockroachDB",
+    "Retail"
+  ],
   "templating": {
     "list": [
       {
         "current": {
-          "selected": false,
-          "text": "AccountsCockroach",
-          "value": "AccountsCockroach"
+          "selected": true,
+          "text": "Ecrmtrkng",
+          "value": "Ecrmtrkng"
         },
         "datasource": {
           "type": "prometheus",
@@ -2806,7 +3219,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "All",
           "value": "$__all"
         },
@@ -2877,7 +3290,17 @@
       "2h",
       "1d"
     ],
-    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
   },
   "timezone": "",
   "title": "Retail - CockroachDB: Central",
