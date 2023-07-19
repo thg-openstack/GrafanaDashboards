@@ -343,32 +343,7 @@
           },
           "unit": "percent"
         },
-        "overrides": [
-          {
-            "__systemRef": "hideSeriesFrom",
-            "matcher": {
-              "id": "byNames",
-              "options": {
-                "mode": "exclude",
-                "names": [
-                  "gb4-li-db-003:9182"
-                ],
-                "prefix": "All except:",
-                "readOnly": true
-              }
-            },
-            "properties": [
-              {
-                "id": "custom.hideFrom",
-                "value": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": true
-                }
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
       "gridPos": {
         "h": 5,
@@ -495,32 +470,7 @@
           },
           "unit": "short"
         },
-        "overrides": [
-          {
-            "__systemRef": "hideSeriesFrom",
-            "matcher": {
-              "id": "byNames",
-              "options": {
-                "mode": "exclude",
-                "names": [
-                  "gb4-li-db-003:9182 - Batch Requests/Second"
-                ],
-                "prefix": "All except:",
-                "readOnly": true
-              }
-            },
-            "properties": [
-              {
-                "id": "custom.hideFrom",
-                "value": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": true
-                }
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
       "gridPos": {
         "h": 7,
@@ -1091,8 +1041,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1202,8 +1151,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1884,7 +1832,7 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "gfc-li-elydb001",
           "value": "gfc-li-elydb001"
         },
@@ -2010,9 +1958,9 @@
     ]
   },
   "time": {
-    "from": "2023-07-04T10:00:00.000Z",
+    "from": "now-3h",
     "now": false,
-    "to": "2023-07-04T15:59:59.000Z"
+    "to": "now"
   },
   "timepicker": {
     "collapse": false,
