@@ -24,6 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
+  "id": 26,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -377,7 +378,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(irate(windows_cpu_processor_utility_total{cluster=\"$cluster\"}[5m]) / 1000 / 1000) by (instance)",
+          "expr": "100 - (avg by (instance) (irate(windows_cpu_time_total{cluster=\"$cluster\", mode=\"idle\"}[2m])) * 100)",
           "hide": false,
           "legendFormat": "__auto",
           "range": true,
@@ -1287,7 +1288,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1397,7 +1399,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
