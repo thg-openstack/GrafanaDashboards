@@ -42,6 +42,17 @@
   "liveNow": false,
   "panels": [
     {
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 73,
+      "title": "Summary - Key Metrics",
+      "type": "row"
+    },
+    {
       "datasource": {
         "type": "prometheus",
         "uid": "PAE45454D0EDB9216"
@@ -100,11 +111,11 @@
       },
       "gridPos": {
         "h": 7,
-        "w": 12,
+        "w": 24,
         "x": 0,
-        "y": 0
+        "y": 1
       },
-      "id": 68,
+      "id": 74,
       "interval": "1m",
       "links": [],
       "options": {
@@ -115,10 +126,10 @@
           "up": "red"
         },
         "fields": {
-          "close": "Min - p75",
-          "high": "Max - p99",
-          "low": "Min - p50",
-          "open": "Max - p95"
+          "close": "p25",
+          "high": "Max",
+          "low": "Min",
+          "open": "p75"
         },
         "includeAllFields": true,
         "legend": {
@@ -127,7 +138,7 @@
           "placement": "bottom",
           "showLegend": false
         },
-        "mode": "candles"
+        "mode": "candles+volume"
       },
       "pluginVersion": "9.2.5",
       "targets": [
@@ -138,15 +149,15 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "min(sql_exec_latency:rate1m:quantile_50{job=\"cockroachdb\", cluster=\"$cluster\", instance=~\"$node\", instance=~\"$datacentre.*\"} > 1000000)",
+          "expr": "min(sql_exec_latency:rate1m:quantile_50{job=\"cockroachdb\", cluster=\"$cluster\", instance=~\"$node\", instance=~\"$datacentre.*\"} > 0)",
           "format": "time_series",
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "Min - p50",
+          "legendFormat": "Min",
           "metric": "round_trip_latency:rate1m:quantile_50",
           "range": true,
-          "refId": "p50",
+          "refId": "Min",
           "step": 120
         },
         {
@@ -160,10 +171,10 @@
           "hide": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "Min - p75",
+          "legendFormat": "p25",
           "metric": "round_trip_latency:rate1m:quantile_50",
           "range": true,
-          "refId": "p75",
+          "refId": "p25",
           "step": 120
         },
         {
@@ -179,10 +190,10 @@
           "instant": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "Max - p99",
+          "legendFormat": "Max",
           "metric": "round_trip_latency:rate1m:quantile_50",
           "range": true,
-          "refId": "p99",
+          "refId": "Max",
           "step": 120
         },
         {
@@ -196,9 +207,9 @@
           "format": "time_series",
           "hide": false,
           "instant": false,
-          "interval": "2",
+          "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "Avg - p99",
+          "legendFormat": "Avg ",
           "metric": "round_trip_latency:rate1m:quantile_50",
           "range": true,
           "refId": "Avg",
@@ -217,16 +228,153 @@
           "instant": false,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "Max - p95",
+          "legendFormat": "p75",
           "metric": "round_trip_latency:rate1m:quantile_50",
           "range": true,
-          "refId": "p95",
+          "refId": "p75",
           "step": 120
         }
       ],
       "title": "$cluster SQL Latency",
       "transformations": [],
       "type": "candlestick"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PAE45454D0EDB9216"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": 600000,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "id": 71,
+      "options": {
+        "legend": {
+          "calcs": [
+            "min",
+            "max",
+            "mean",
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.2.5",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "histogram_quantile(0.99, max(label_replace(rate(round_trip_latency_bucket{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\", instance=~\"$datacentre.*\"}[$__rate_interval]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, le))",
+          "hide": true,
+          "interval": "",
+          "legendFormat": "{{instance}}",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "max(label_replace(round_trip_latency:rate1m:quantile_50{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\", instance=~\"$datacentre.*\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)",
+          "hide": true,
+          "interval": "",
+          "legendFormat": "{{datacentre}} p50",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "max(label_replace(round_trip_latency:rate1m:quantile_75{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\", instance=~\"$datacentre.*\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)",
+          "hide": true,
+          "interval": "",
+          "legendFormat": "{{datacentre}} p75",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "max(label_replace(round_trip_latency:rate1m:quantile_99{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\", instance=~\"$datacentre.*\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{datacentre}} p99",
+          "range": true,
+          "refId": "D"
+        }
+      ],
+      "title": "Network latency",
+      "type": "timeseries"
     },
     {
       "datasource": {
@@ -288,10 +436,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 12,
         "x": 12,
-        "y": 0
+        "y": 8
       },
       "id": 69,
       "interval": "1m",
@@ -422,7 +570,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 7
+        "y": 16
       },
       "id": 55,
       "title": "Health, Clock & Uptime",
@@ -505,7 +653,7 @@
         "h": 7,
         "w": 16,
         "x": 0,
-        "y": 8
+        "y": 17
       },
       "id": 2,
       "links": [],
@@ -590,7 +738,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 8
+        "y": 17
       },
       "id": 30,
       "links": [],
@@ -656,7 +804,7 @@
         "h": 7,
         "w": 16,
         "x": 0,
-        "y": 15
+        "y": 24
       },
       "hiddenSeries": false,
       "id": 20,
@@ -758,7 +906,7 @@
         "h": 7,
         "w": 8,
         "x": 16,
-        "y": 15
+        "y": 24
       },
       "id": 21,
       "links": [],
@@ -815,7 +963,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 22
+        "y": 31
       },
       "id": 57,
       "panels": [],
@@ -843,7 +991,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 23
+        "y": 32
       },
       "hiddenSeries": false,
       "id": 22,
@@ -940,7 +1088,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 23
+        "y": 32
       },
       "hiddenSeries": false,
       "id": 31,
@@ -1037,7 +1185,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 30
+        "y": 39
       },
       "hiddenSeries": false,
       "id": 24,
@@ -1134,7 +1282,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 30
+        "y": 39
       },
       "hiddenSeries": false,
       "id": 32,
@@ -1231,7 +1379,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 37
+        "y": 46
       },
       "hiddenSeries": false,
       "id": 26,
@@ -1328,7 +1476,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 37
+        "y": 46
       },
       "hiddenSeries": false,
       "id": 33,
@@ -1425,7 +1573,7 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 44
+        "y": 53
       },
       "hiddenSeries": false,
       "id": 39,
@@ -1522,7 +1670,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 44
+        "y": 53
       },
       "hiddenSeries": false,
       "id": 40,
@@ -1604,7 +1752,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 51
+        "y": 60
       },
       "id": 59,
       "panels": [],
@@ -1656,8 +1804,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1672,7 +1819,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 52
+        "y": 61
       },
       "id": 61,
       "options": {
@@ -1748,8 +1895,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1764,7 +1910,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 52
+        "y": 61
       },
       "id": 62,
       "options": {
@@ -1801,7 +1947,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 60
+        "y": 69
       },
       "id": 64,
       "panels": [],
@@ -1829,7 +1975,7 @@
         "h": 10,
         "w": 12,
         "x": 0,
-        "y": 61
+        "y": 70
       },
       "hiddenSeries": false,
       "id": 41,
@@ -1928,7 +2074,7 @@
         "h": 10,
         "w": 12,
         "x": 12,
-        "y": 61
+        "y": 70
       },
       "hiddenSeries": false,
       "id": 37,
@@ -2028,7 +2174,7 @@
         "h": 10,
         "w": 8,
         "x": 0,
-        "y": 71
+        "y": 80
       },
       "id": 42,
       "links": [],
@@ -2100,7 +2246,7 @@
         "h": 10,
         "w": 16,
         "x": 8,
-        "y": 71
+        "y": 80
       },
       "hiddenSeries": false,
       "id": 38,
@@ -2215,7 +2361,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 81
+        "y": 90
       },
       "id": 66,
       "panels": [],
@@ -2237,7 +2383,7 @@
         "h": 11,
         "w": 8,
         "x": 0,
-        "y": 82
+        "y": 91
       },
       "hiddenSeries": false,
       "id": 46,
@@ -2327,7 +2473,7 @@
         "h": 11,
         "w": 16,
         "x": 8,
-        "y": 82
+        "y": 91
       },
       "hiddenSeries": false,
       "id": 44,
@@ -2426,8 +2572,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2519,7 +2664,7 @@
         "h": 16,
         "w": 8,
         "x": 0,
-        "y": 93
+        "y": 102
       },
       "id": 48,
       "links": [],
@@ -2596,8 +2741,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2689,7 +2833,7 @@
         "h": 16,
         "w": 8,
         "x": 8,
-        "y": 93
+        "y": 102
       },
       "id": 50,
       "links": [],
@@ -2766,8 +2910,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2859,7 +3002,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 93
+        "y": 102
       },
       "id": 52,
       "links": [],
@@ -2988,8 +3131,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -3081,7 +3223,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 101
+        "y": 110
       },
       "id": 53,
       "links": [],
@@ -3189,7 +3331,7 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "AccountsCockroach",
           "value": "AccountsCockroach"
         },
@@ -3219,7 +3361,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "All",
           "value": "$__all"
         },
@@ -3274,7 +3416,7 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {
