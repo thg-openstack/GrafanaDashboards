@@ -151,7 +151,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(gin_uri_request_total{job=\"serviceinsight\",code=~\"2.+\",instance=~\"$instance\"}) by (code)",
+          "expr": "sum(gin_uri_request_total{job=\"serviceinsight\",code=~\"2.+\",instance=~\"$instance\"})",
           "legendFormat": "{{code}}",
           "range": true,
           "refId": "A"
@@ -211,7 +211,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(gin_uri_request_total{job=\"serviceinsight\",code=~\"3.+\",instance=~\"$instance\"}) by (code)",
+          "expr": "sum(gin_uri_request_total{job=\"serviceinsight\",code=~\"3.+\",instance=~\"$instance\"})",
           "legendFormat": "{{code}}",
           "range": true,
           "refId": "A"
@@ -271,7 +271,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(gin_uri_request_total{job=\"serviceinsight\",code=~\"4.+\",instance=~\"$instance\"}) by (code)",
+          "expr": "sum(gin_uri_request_total{job=\"serviceinsight\",code=~\"4.+\",instance=~\"$instance\"})",
           "legendFormat": "{{code}}",
           "range": true,
           "refId": "A"
@@ -331,7 +331,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(gin_uri_request_total{job=\"serviceinsight\",code=~\"5.+\",instance=~\"$instance\"}) by (code)",
+          "expr": "sum(gin_uri_request_total{job=\"serviceinsight\",code=~\"5.+\",instance=~\"$instance\"})",
           "legendFormat": "{{code}}",
           "range": true,
           "refId": "A"
@@ -1169,7 +1169,7 @@
       "options": {
         "legend": {
           "calcs": ["mean", "max"],
-          "displayMode": "list",
+          "displayMode": "table",
           "placement": "bottom",
           "showLegend": true
         },
@@ -1355,7 +1355,7 @@
       "options": {
         "legend": {
           "calcs": ["mean", "max"],
-          "displayMode": "list",
+          "displayMode": "table",
           "placement": "bottom",
           "showLegend": true
         },
@@ -1541,7 +1541,7 @@
       "options": {
         "legend": {
           "calcs": ["mean", "max"],
-          "displayMode": "list",
+          "displayMode": "table",
           "placement": "bottom",
           "showLegend": true
         },
@@ -1601,13 +1601,13 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Retail - Service Insight: Central",
   "uid": "uQ8m8A3Vz",
-  "version": 4,
+  "version": 1,
   "weekStart": ""
 }
