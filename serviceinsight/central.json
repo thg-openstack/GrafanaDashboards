@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 54,
+  "id": 6,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -1569,7 +1569,7 @@
   ],
   "schemaVersion": 37,
   "style": "dark",
-  "tags": [],
+  "tags": ["Retail", "ServiceInsight"],
   "templating": {
     "list": [
       {
