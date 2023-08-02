@@ -26,7 +26,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 1860,
   "graphTooltip": 1,
-  "id": 53,
+  "id": 43,
   "links": [
     {
       "icon": "external link",
@@ -22677,8 +22677,8 @@
       {
         "current": {
           "selected": false,
-          "text": "gb5-st-accessauditpsql-001:9100",
-          "value": "gb5-st-accessauditpsql-001:9100"
+          "text": "de1-li-accountsckrdb-001:21111",
+          "value": "de1-li-accountsckrdb-001:21111"
         },
         "datasource": {
           "type": "prometheus",
@@ -22728,7 +22728,7 @@
     ]
   },
   "time": {
-    "from": "now-24h",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {
@@ -22749,6 +22749,6 @@
   "timezone": "browser",
   "title": "Retail - Linux: Central",
   "uid": "rYdddlPWk",
-  "version": 5,
+  "version": 1,
   "weekStart": ""
 }
