@@ -24,19 +24,41 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
+  "id": 6,
   "links": [
     {
       "asDropdown": true,
       "icon": "external link",
       "includeVars": true,
       "keepTime": true,
-      "tags": [
-        "Retail",
-        "CockroachDB"
-      ],
+      "tags": ["Retail", "CockroachDB"],
       "targetBlank": true,
       "title": "Dashboards",
       "type": "dashboards"
+    },
+    {
+      "asDropdown": false,
+      "icon": "bolt",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": true,
+      "title": "CockroachDB Console",
+      "tooltip": "Open CockroachDB Console",
+      "type": "link",
+      "url": "http://${node.0}"
+    },
+    {
+      "asDropdown": false,
+      "icon": "bolt",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": true,
+      "title": "DBMarlin",
+      "tooltip": "Open DBMarlin",
+      "type": "link",
+      "url": "http://dbmarlin.gslb.thehut.local:9000"
     }
   ],
   "liveNow": false,
@@ -303,12 +325,7 @@
       "id": 71,
       "options": {
         "legend": {
-          "calcs": [
-            "min",
-            "max",
-            "mean",
-            "lastNotNull"
-          ],
+          "calcs": ["min", "max", "mean", "lastNotNull"],
           "displayMode": "table",
           "placement": "bottom",
           "showLegend": false
@@ -664,16 +681,14 @@
         "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
+          "calcs": ["mean"],
           "fields": "",
           "values": false
         },
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -946,10 +961,7 @@
       "id": 75,
       "options": {
         "legend": {
-          "calcs": [
-            "max",
-            "mean"
-          ],
+          "calcs": ["max", "mean"],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
@@ -1075,7 +1087,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1272,7 +1284,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1469,7 +1481,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1666,7 +1678,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2657,7 +2669,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -2765,11 +2779,11 @@
       "id": 48,
       "links": [],
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
-          "reducer": [
-            "sum"
-          ],
+          "reducer": ["sum"],
           "show": false
         },
         "showHeader": true,
@@ -2780,7 +2794,7 @@
           }
         ]
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -2804,12 +2818,7 @@
           "id": "reduce",
           "options": {
             "includeTimeField": false,
-            "reducers": [
-              "last",
-              "mean",
-              "min",
-              "max"
-            ]
+            "reducers": ["last", "mean", "min", "max"]
           }
         }
       ],
@@ -2827,7 +2836,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -2935,11 +2946,11 @@
       "id": 50,
       "links": [],
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
-          "reducer": [
-            "sum"
-          ],
+          "reducer": ["sum"],
           "show": false
         },
         "showHeader": true,
@@ -2950,7 +2961,7 @@
           }
         ]
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -2974,12 +2985,7 @@
           "id": "reduce",
           "options": {
             "includeTimeField": false,
-            "reducers": [
-              "last",
-              "mean",
-              "min",
-              "max"
-            ]
+            "reducers": ["last", "mean", "min", "max"]
           }
         }
       ],
@@ -2997,7 +3003,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -3105,11 +3113,11 @@
       "id": 52,
       "links": [],
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
-          "reducer": [
-            "sum"
-          ],
+          "reducer": ["sum"],
           "show": false
         },
         "showHeader": true,
@@ -3120,7 +3128,7 @@
           }
         ]
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -3196,12 +3204,7 @@
           "id": "reduce",
           "options": {
             "includeTimeField": false,
-            "reducers": [
-              "last",
-              "mean",
-              "min",
-              "max"
-            ]
+            "reducers": ["last", "mean", "min", "max"]
           }
         }
       ],
@@ -3219,7 +3222,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -3327,11 +3332,11 @@
       "id": 53,
       "links": [],
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
-          "reducer": [
-            "sum"
-          ],
+          "reducer": ["sum"],
           "show": false
         },
         "showHeader": true,
@@ -3342,7 +3347,7 @@
           }
         ]
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -3406,12 +3411,7 @@
           "id": "reduce",
           "options": {
             "includeTimeField": false,
-            "reducers": [
-              "last",
-              "mean",
-              "min",
-              "max"
-            ]
+            "reducers": ["last", "mean", "min", "max"]
           }
         }
       ],
@@ -3420,12 +3420,9 @@
   ],
   "refresh": "30s",
   "revision": 1,
-  "schemaVersion": 37,
+  "schemaVersion": 38,
   "style": "dark",
-  "tags": [
-    "CockroachDB",
-    "Retail"
-  ],
+  "tags": ["CockroachDB", "Retail"],
   "templating": {
     "list": [
       {
@@ -3531,17 +3528,7 @@
       "2h",
       "1d"
     ],
-    "time_options": [
-      "5m",
-      "15m",
-      "1h",
-      "6h",
-      "12h",
-      "24h",
-      "2d",
-      "7d",
-      "30d"
-    ]
+    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
   },
   "timezone": "",
   "title": "Retail - CockroachDB: Central",

@@ -30,13 +30,34 @@
       "icon": "external link",
       "includeVars": true,
       "keepTime": true,
-      "tags": [
-        "CockroachDB",
-        "Retail"
-      ],
+      "tags": ["CockroachDB", "Retail"],
       "targetBlank": true,
       "title": "Dashboards",
       "type": "dashboards"
+    },
+    {
+      "asDropdown": false,
+      "icon": "bolt",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": true,
+      "title": "CockroachDB Console",
+      "tooltip": "Open CockroachDB Console",
+      "type": "link",
+      "url": "http://${node.0}"
+    },
+    {
+      "asDropdown": false,
+      "icon": "bolt",
+      "includeVars": false,
+      "keepTime": false,
+      "tags": [],
+      "targetBlank": true,
+      "title": "DBMarlin",
+      "tooltip": "Open DBMarlin",
+      "type": "link",
+      "url": "http://dbmarlin.gslb.thehut.local:9000"
     }
   ],
   "liveNow": false,
