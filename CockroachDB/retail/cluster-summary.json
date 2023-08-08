@@ -8,14 +8,14 @@
           "uid": "grafana"
         },
         "enable": true,
-        "hide": true,
+        "hide": false,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
         "target": {
           "limit": 100,
           "matchAny": false,
-          "tags": [],
-          "type": "dashboard"
+          "tags": ["cluster=$cluster"],
+          "type": "tags"
         },
         "type": "dashboard"
       }
@@ -141,11 +141,7 @@
       "id": 56,
       "options": {
         "legend": {
-          "calcs": [
-            "mean",
-            "max",
-            "lastNotNull"
-          ],
+          "calcs": ["mean", "max", "lastNotNull"],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true
@@ -174,7 +170,7 @@
           },
           "editorMode": "code",
           "expr": "sum(label_replace(replicas_leaseholders{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\",instance=~\"$datacentre.*\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster,datacentre)",
-          "hide": true,
+          "hide": false,
           "legendFormat": "__auto",
           "range": true,
           "refId": "B"
@@ -250,11 +246,7 @@
       "id": 57,
       "options": {
         "legend": {
-          "calcs": [
-            "mean",
-            "max",
-            "lastNotNull"
-          ],
+          "calcs": ["mean", "max", "lastNotNull"],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true
@@ -283,7 +275,7 @@
           },
           "editorMode": "code",
           "expr": "sum(label_replace(replicas_leaseholders{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\",instance=~\"$datacentre.*\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster,datacentre)",
-          "hide": true,
+          "hide": false,
           "legendFormat": "__auto",
           "range": true,
           "refId": "B"
@@ -360,11 +352,7 @@
       "id": 65,
       "options": {
         "legend": {
-          "calcs": [
-            "mean",
-            "max",
-            "lastNotNull"
-          ],
+          "calcs": ["mean", "max", "lastNotNull"],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true
@@ -394,7 +382,7 @@
           },
           "editorMode": "code",
           "expr": "sum(label_replace(replicas_leaseholders{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\",instance=~\"$datacentre.*\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster,datacentre)",
-          "hide": true,
+          "hide": false,
           "legendFormat": "__auto",
           "range": true,
           "refId": "B"
@@ -471,11 +459,7 @@
       "id": 69,
       "options": {
         "legend": {
-          "calcs": [
-            "mean",
-            "max",
-            "lastNotNull"
-          ],
+          "calcs": ["mean", "max", "lastNotNull"],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
@@ -506,7 +490,7 @@
           },
           "editorMode": "code",
           "expr": "avg(label_replace(raft_process_commandcommit_latency:rate1m:quantile_99{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\",instance=~\"$datacentre.*\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster,datacentre)",
-          "hide": true,
+          "hide": false,
           "legendFormat": "__auto",
           "range": true,
           "refId": "B"
@@ -583,10 +567,7 @@
       "id": 58,
       "options": {
         "legend": {
-          "calcs": [
-            "max",
-            "min"
-          ],
+          "calcs": ["max", "min"],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true
@@ -682,9 +663,7 @@
       "links": [],
       "options": {
         "legend": {
-          "calcs": [
-            "last"
-          ],
+          "calcs": ["last"],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
@@ -783,9 +762,7 @@
       "links": [],
       "options": {
         "legend": {
-          "calcs": [
-            "last"
-          ],
+          "calcs": ["last"],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true
@@ -880,11 +857,7 @@
       "id": 61,
       "options": {
         "legend": {
-          "calcs": [
-            "max",
-            "mean",
-            "lastNotNull"
-          ],
+          "calcs": ["max", "mean", "lastNotNull"],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true
@@ -984,11 +957,7 @@
       "id": 62,
       "options": {
         "legend": {
-          "calcs": [
-            "max",
-            "mean",
-            "lastNotNull"
-          ],
+          "calcs": ["max", "mean", "lastNotNull"],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true
@@ -1021,7 +990,7 @@
           },
           "editorMode": "code",
           "expr": "avg(label_replace(sys_cpu_combined_percent_normalized{job='cockroachdb',cluster=~\"$cluster\",instance=~\"$node\",instance=~\"$datacentre.*\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
-          "hide": true,
+          "hide": false,
           "legendFormat": "{{datacentre}} - avg",
           "range": true,
           "refId": "B"
@@ -1098,11 +1067,7 @@
       "id": 63,
       "options": {
         "legend": {
-          "calcs": [
-            "mean",
-            "max",
-            "lastNotNull"
-          ],
+          "calcs": ["mean", "max", "lastNotNull"],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true
@@ -1145,7 +1110,7 @@
           },
           "editorMode": "code",
           "expr": "sum(sum(capacity{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\",instance=~\"$datacentre.*\"}) by (datacentre)) - sum(sum(capacity_available{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\",instance=~\"$datacentre.*\"}) by (datacentre))",
-          "hide": true,
+          "hide": false,
           "legendFormat": "{{datacentre}}",
           "range": true,
           "refId": "C"
@@ -1230,11 +1195,7 @@
           "id": 50,
           "options": {
             "legend": {
-              "calcs": [
-                "mean",
-                "max",
-                "lastNotNull"
-              ],
+              "calcs": ["mean", "max", "lastNotNull"],
               "displayMode": "table",
               "placement": "right",
               "showLegend": true
@@ -1263,7 +1224,7 @@
               },
               "editorMode": "code",
               "expr": "sum(label_replace(replicas_leaseholders{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\",instance=~\"$datacentre.*\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster,datacentre)",
-              "hide": true,
+              "hide": false,
               "legendFormat": "__auto",
               "range": true,
               "refId": "B"
@@ -1339,11 +1300,7 @@
           "id": 51,
           "options": {
             "legend": {
-              "calcs": [
-                "mean",
-                "max",
-                "lastNotNull"
-              ],
+              "calcs": ["mean", "max", "lastNotNull"],
               "displayMode": "table",
               "placement": "right",
               "showLegend": true
@@ -1372,7 +1329,7 @@
               },
               "editorMode": "code",
               "expr": "sum(label_replace(replicas_leaseholders{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\",instance=~\"$datacentre.*\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster,datacentre)",
-              "hide": true,
+              "hide": false,
               "legendFormat": "__auto",
               "range": true,
               "refId": "B"
@@ -1449,11 +1406,7 @@
           "id": 66,
           "options": {
             "legend": {
-              "calcs": [
-                "mean",
-                "max",
-                "lastNotNull"
-              ],
+              "calcs": ["mean", "max", "lastNotNull"],
               "displayMode": "table",
               "placement": "right",
               "showLegend": true,
@@ -1484,7 +1437,7 @@
               },
               "editorMode": "code",
               "expr": "sum(label_replace(replicas_leaseholders{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\",instance=~\"$datacentre.*\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster,datacentre)",
-              "hide": true,
+              "hide": false,
               "legendFormat": "__auto",
               "range": true,
               "refId": "B"
@@ -1561,11 +1514,7 @@
           "id": 67,
           "options": {
             "legend": {
-              "calcs": [
-                "mean",
-                "max",
-                "lastNotNull"
-              ],
+              "calcs": ["mean", "max", "lastNotNull"],
               "displayMode": "table",
               "placement": "right",
               "showLegend": true,
@@ -1596,7 +1545,7 @@
               },
               "editorMode": "code",
               "expr": "avg(label_replace(raft_process_commandcommit_latency:rate1m:quantile_99{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\",instance=~\"$datacentre.*\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster,datacentre)",
-              "hide": true,
+              "hide": false,
               "legendFormat": "__auto",
               "range": true,
               "refId": "B"
@@ -1673,10 +1622,7 @@
           "id": 48,
           "options": {
             "legend": {
-              "calcs": [
-                "max",
-                "min"
-              ],
+              "calcs": ["max", "min"],
               "displayMode": "table",
               "placement": "right",
               "showLegend": true
@@ -1772,9 +1718,7 @@
           "links": [],
           "options": {
             "legend": {
-              "calcs": [
-                "last"
-              ],
+              "calcs": ["last"],
               "displayMode": "table",
               "placement": "right",
               "showLegend": true,
@@ -1872,9 +1816,7 @@
           "links": [],
           "options": {
             "legend": {
-              "calcs": [
-                "last"
-              ],
+              "calcs": ["last"],
               "displayMode": "table",
               "placement": "right",
               "showLegend": true
@@ -1969,11 +1911,7 @@
           "id": 46,
           "options": {
             "legend": {
-              "calcs": [
-                "max",
-                "mean",
-                "lastNotNull"
-              ],
+              "calcs": ["max", "mean", "lastNotNull"],
               "displayMode": "table",
               "placement": "right",
               "showLegend": true
@@ -2069,11 +2007,7 @@
           "id": 44,
           "options": {
             "legend": {
-              "calcs": [
-                "max",
-                "mean",
-                "lastNotNull"
-              ],
+              "calcs": ["max", "mean", "lastNotNull"],
               "displayMode": "table",
               "placement": "right",
               "showLegend": true
@@ -2168,11 +2102,7 @@
           "id": 64,
           "options": {
             "legend": {
-              "calcs": [
-                "mean",
-                "max",
-                "lastNotNull"
-              ],
+              "calcs": ["mean", "max", "lastNotNull"],
               "displayMode": "table",
               "placement": "right",
               "showLegend": true
@@ -2203,7 +2133,7 @@
               },
               "editorMode": "code",
               "expr": "sum(label_replace(capacity{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\",instance=~\"$datacentre.*\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster, datacentre)",
-              "hide": true,
+              "hide": false,
               "interval": "",
               "legendFormat": "{{datacentre}}-{{cluster}}-capacity",
               "range": true,
@@ -2216,7 +2146,7 @@
               },
               "editorMode": "code",
               "expr": "sum(sum(capacity{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\",instance=~\"$datacentre.*\"}) by (datacentre)) - sum(sum(capacity_available{job=\"cockroachdb\",cluster=~\"$cluster\",instance=~\"$node\",instance=~\"$datacentre.*\"}) by (datacentre))",
-              "hide": true,
+              "hide": false,
               "legendFormat": "{{datacentre}}",
               "range": true,
               "refId": "C"
@@ -2234,21 +2164,14 @@
   "revision": 1,
   "schemaVersion": 37,
   "style": "dark",
-  "tags": [
-    "CockroachDB",
-    "Retail"
-  ],
+  "tags": ["CockroachDB", "Retail"],
   "templating": {
     "list": [
       {
         "current": {
           "selected": true,
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
+          "text": ["All"],
+          "value": ["$__all"]
         },
         "datasource": {
           "type": "prometheus",
@@ -2308,12 +2231,8 @@
       {
         "current": {
           "selected": true,
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
+          "text": ["All"],
+          "value": ["$__all"]
         },
         "datasource": {
           "type": "prometheus",
@@ -2343,27 +2262,8 @@
     "to": "now"
   },
   "timepicker": {
-    "refresh_intervals": [
-      "30s",
-      "1m",
-      "5m",
-      "15m",
-      "30m",
-      "1h",
-      "2h",
-      "1d"
-    ],
-    "time_options": [
-      "5m",
-      "15m",
-      "1h",
-      "6h",
-      "12h",
-      "24h",
-      "2d",
-      "7d",
-      "30d"
-    ]
+    "refresh_intervals": ["30s", "1m", "5m", "15m", "30m", "1h", "2h", "1d"],
+    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
   },
   "timezone": "browser",
   "title": "Retail - CockroachDB: Cluster Summary",

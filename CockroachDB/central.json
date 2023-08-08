@@ -8,14 +8,14 @@
           "uid": "grafana"
         },
         "enable": true,
-        "hide": true,
+        "hide": false,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
         "target": {
           "limit": 100,
           "matchAny": false,
-          "tags": [],
-          "type": "dashboard"
+          "tags": ["cluster=$cluster"],
+          "type": "tags"
         },
         "type": "dashboard"
       }
@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 27,
+  "id": 3,
   "links": [
     {
       "asDropdown": true,
@@ -99,7 +99,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -109,7 +109,7 @@
           "exemplar": true,
           "expr": "count(up{cluster=~\"$cluster\",pod=~\"$node\"})",
           "format": "time_series",
-          "hide": true,
+          "hide": false,
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "All nodes",
@@ -125,7 +125,7 @@
           "exemplar": true,
           "expr": "count(up{cluster=~\"$cluster\",pod=~\"$node\"} == 1)",
           "format": "time_series",
-          "hide": true,
+          "hide": false,
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Running nodes (prometheus)",
@@ -252,7 +252,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "mappings": [],
@@ -298,14 +300,16 @@
       "id": 30,
       "links": [],
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": ["sum"],
           "show": false
         },
         "showHeader": true
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -447,7 +451,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "decimals": 2,
@@ -494,14 +500,16 @@
       "id": 21,
       "links": [],
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": ["sum"],
           "show": false
         },
         "showHeader": true
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -1190,8 +1198,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1290,8 +1297,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1762,7 +1768,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "decimals": 0,
@@ -2189,7 +2197,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -2351,7 +2361,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -2513,7 +2525,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -2723,7 +2737,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -2910,8 +2926,8 @@
       "type": "table"
     }
   ],
-  "refresh": false,
-  "schemaVersion": 37,
+  "refresh": "",
+  "schemaVersion": 38,
   "style": "dark",
   "tags": ["CockroachDB", "Kubernetes"],
   "templating": {
@@ -2919,8 +2935,8 @@
       {
         "current": {
           "selected": true,
-          "text": "unify-infra-cockroachdb",
-          "value": "unify-infra-cockroachdb"
+          "text": "dre-test-cockroachdb",
+          "value": "dre-test-cockroachdb"
         },
         "datasource": {
           "type": "prometheus",
@@ -2948,7 +2964,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "All",
           "value": "$__all"
         },

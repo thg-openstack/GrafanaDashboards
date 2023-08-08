@@ -5,14 +5,14 @@
         "builtIn": 1,
         "datasource": "-- Grafana --",
         "enable": true,
-        "hide": true,
+        "hide": false,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
         "target": {
           "limit": 100,
           "matchAny": false,
-          "tags": [],
-          "type": "dashboard"
+          "tags": ["cluster=$cluster"],
+          "type": "tags"
         },
         "type": "dashboard"
       }

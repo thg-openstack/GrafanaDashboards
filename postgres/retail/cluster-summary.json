@@ -8,14 +8,14 @@
           "uid": "grafana"
         },
         "enable": true,
-        "hide": true,
+        "hide": false,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
         "target": {
           "limit": 100,
           "matchAny": false,
-          "tags": [],
-          "type": "dashboard"
+          "tags": ["cluster=$cluster"],
+          "type": "tags"
         },
         "type": "dashboard"
       }
@@ -118,11 +118,7 @@
       "links": [],
       "options": {
         "legend": {
-          "calcs": [
-            "mean",
-            "lastNotNull",
-            "max"
-          ],
+          "calcs": ["mean", "lastNotNull", "max"],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
@@ -155,7 +151,7 @@
           },
           "editorMode": "code",
           "expr": "label_replace(irate(pg_stat_database_xact_rollback{cluster=\"$cluster\", datname=~\"$datname\"}[5m]) !=0, \"node\", \"$1\", \"instance\", \"(.*?):.*\")",
-          "hide": true,
+          "hide": false,
           "legendFormat": "{{node}} {{datname}} rollbacks",
           "range": true,
           "refId": "B"
@@ -236,12 +232,7 @@
       "links": [],
       "options": {
         "legend": {
-          "calcs": [
-            "mean",
-            "lastNotNull",
-            "max",
-            "min"
-          ],
+          "calcs": ["mean", "lastNotNull", "max", "min"],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true
@@ -272,7 +263,7 @@
           },
           "editorMode": "code",
           "expr": "sum(label_replace(label_replace(irate(pg_stat_database_xact_commit{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]) !=0, \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster, datacentre)",
-          "hide": true,
+          "hide": false,
           "legendFormat": "__auto",
           "range": true,
           "refId": "B"
@@ -352,12 +343,7 @@
       "links": [],
       "options": {
         "legend": {
-          "calcs": [
-            "mean",
-            "lastNotNull",
-            "max",
-            "min"
-          ],
+          "calcs": ["mean", "lastNotNull", "max", "min"],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
@@ -390,7 +376,7 @@
           },
           "editorMode": "code",
           "expr": "label_replace(rate(process_virtual_memory_bytes{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]), \"node\", \"$1\", \"instance\", \"(.*?):.*\")",
-          "hide": true,
+          "hide": false,
           "legendFormat": "{{node}} Virtual Mem",
           "range": true,
           "refId": "B"
@@ -402,7 +388,7 @@
           },
           "editorMode": "code",
           "expr": "sum(label_replace(label_replace(irate(pg_stat_database_xact_commit{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]) !=0, \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster, datacentre)",
-          "hide": true,
+          "hide": false,
           "legendFormat": "__auto",
           "range": true,
           "refId": "C"
@@ -481,12 +467,7 @@
       "links": [],
       "options": {
         "legend": {
-          "calcs": [
-            "mean",
-            "lastNotNull",
-            "max",
-            "min"
-          ],
+          "calcs": ["mean", "lastNotNull", "max", "min"],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
@@ -519,7 +500,7 @@
           },
           "editorMode": "code",
           "expr": "sum(label_replace(label_replace(irate(pg_stat_database_xact_commit{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]) !=0, \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster, datacentre)",
-          "hide": true,
+          "hide": false,
           "legendFormat": "__auto",
           "range": true,
           "refId": "B"
@@ -533,21 +514,14 @@
   "revision": 1,
   "schemaVersion": 37,
   "style": "dark",
-  "tags": [
-    "Postgres",
-    "Retail"
-  ],
+  "tags": ["Postgres", "Retail"],
   "templating": {
     "list": [
       {
         "current": {
           "selected": true,
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
+          "text": ["All"],
+          "value": ["$__all"]
         },
         "datasource": {
           "type": "prometheus",
@@ -576,12 +550,8 @@
       {
         "current": {
           "selected": true,
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
+          "text": ["All"],
+          "value": ["$__all"]
         },
         "datasource": {
           "type": "prometheus",
@@ -611,27 +581,8 @@
     "to": "now"
   },
   "timepicker": {
-    "refresh_intervals": [
-      "30s",
-      "1m",
-      "5m",
-      "15m",
-      "30m",
-      "1h",
-      "2h",
-      "1d"
-    ],
-    "time_options": [
-      "5m",
-      "15m",
-      "1h",
-      "6h",
-      "12h",
-      "24h",
-      "2d",
-      "7d",
-      "30d"
-    ]
+    "refresh_intervals": ["30s", "1m", "5m", "15m", "30m", "1h", "2h", "1d"],
+    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
   },
   "timezone": "",
   "title": "Retail - PostgreSQL: Cluster Summary",
