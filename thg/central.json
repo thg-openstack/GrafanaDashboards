@@ -24,7 +24,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 32,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -250,6 +249,7 @@
       },
       "id": 121,
       "options": {
+        "alertInstanceLabelFilter": "",
         "alertName": "mimir",
         "dashboardAlerts": false,
         "datasource": "Mimir",
@@ -279,7 +279,7 @@
       "type": "alertlist"
     },
     {
-      "collapsed": false,
+      "collapsed": true,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -287,285 +287,286 @@
         "y": 6
       },
       "id": 95,
-      "panels": [],
-      "title": "Alerting",
-      "type": "row"
-    },
-    {
-      "datasource": {
-        "type": "datasource",
-        "uid": "grafana"
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 24,
-        "x": 0,
-        "y": 7
-      },
-      "id": 90,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
+      "panels": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "gridPos": {
+            "h": 2,
+            "w": 24,
+            "x": 0,
+            "y": 7
+          },
+          "id": 90,
+          "options": {
+            "code": {
+              "language": "plaintext",
+              "showLineNumbers": false,
+              "showMiniMap": false
+            },
+            "content": "# Alerts",
+            "mode": "markdown"
+          },
+          "pluginVersion": "9.5.2",
+          "transparent": true,
+          "type": "text"
         },
-        "content": "# Alerts",
-        "mode": "markdown"
-      },
-      "pluginVersion": "9.5.2",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 8,
-        "x": 0,
-        "y": 9
-      },
-      "id": 100,
-      "options": {
-        "alertInstanceLabelFilter": "",
-        "alertName": "Node",
-        "dashboardAlerts": false,
-        "groupBy": [],
-        "groupMode": "default",
-        "maxItems": 100,
-        "sortOrder": 1,
-        "stateFilter": {
-          "error": true,
-          "firing": true,
-          "noData": false,
-          "normal": false,
-          "pending": true
-        },
-        "viewMode": "list"
-      },
-      "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "PAE45454D0EDB9216"
           },
-          "refId": "A"
-        }
-      ],
-      "title": "Linux Alerts",
-      "type": "alertlist"
-    },
-    {
-      "datasource": {
-        "type": "datasource",
-        "uid": "grafana"
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 8,
-        "x": 8,
-        "y": 9
-      },
-      "id": 82,
-      "options": {
-        "alertInstanceLabelFilter": "",
-        "alertName": "CockroachDB",
-        "dashboardAlerts": false,
-        "datasource": "Mimir",
-        "groupBy": [],
-        "groupMode": "default",
-        "maxItems": 100,
-        "sortOrder": 3,
-        "stateFilter": {
-          "error": true,
-          "firing": true,
-          "noData": false,
-          "normal": false,
-          "pending": true
+          "gridPos": {
+            "h": 9,
+            "w": 8,
+            "x": 0,
+            "y": 9
+          },
+          "id": 100,
+          "options": {
+            "alertInstanceLabelFilter": "",
+            "alertName": "Node",
+            "dashboardAlerts": false,
+            "groupBy": [],
+            "groupMode": "default",
+            "maxItems": 100,
+            "sortOrder": 1,
+            "stateFilter": {
+              "error": true,
+              "firing": true,
+              "noData": false,
+              "normal": false,
+              "pending": true
+            },
+            "viewMode": "list"
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "PAE45454D0EDB9216"
+              },
+              "refId": "A"
+            }
+          ],
+          "title": "Linux Alerts",
+          "type": "alertlist"
         },
-        "viewMode": "list"
-      },
-      "targets": [
         {
           "datasource": {
             "type": "datasource",
             "uid": "grafana"
           },
-          "refId": "A"
-        }
-      ],
-      "title": "CockroachDB Alerts",
-      "type": "alertlist"
-    },
-    {
-      "datasource": {
-        "type": "datasource",
-        "uid": "grafana"
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 8,
-        "x": 16,
-        "y": 9
-      },
-      "id": 86,
-      "options": {
-        "alertInstanceLabelFilter": "",
-        "alertName": "Couchbase",
-        "dashboardAlerts": false,
-        "datasource": "Mimir",
-        "groupBy": [],
-        "groupMode": "default",
-        "maxItems": 100,
-        "sortOrder": 3,
-        "stateFilter": {
-          "error": true,
-          "firing": true,
-          "noData": false,
-          "normal": false,
-          "pending": true
+          "gridPos": {
+            "h": 9,
+            "w": 8,
+            "x": 8,
+            "y": 9
+          },
+          "id": 82,
+          "options": {
+            "alertInstanceLabelFilter": "",
+            "alertName": "CockroachDB",
+            "dashboardAlerts": false,
+            "datasource": "Mimir",
+            "groupBy": [],
+            "groupMode": "default",
+            "maxItems": 100,
+            "sortOrder": 3,
+            "stateFilter": {
+              "error": true,
+              "firing": true,
+              "noData": false,
+              "normal": false,
+              "pending": true
+            },
+            "viewMode": "list"
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "datasource",
+                "uid": "grafana"
+              },
+              "refId": "A"
+            }
+          ],
+          "title": "CockroachDB Alerts",
+          "type": "alertlist"
         },
-        "viewMode": "list"
-      },
-      "targets": [
         {
           "datasource": {
             "type": "datasource",
             "uid": "grafana"
           },
-          "refId": "A"
-        }
-      ],
-      "title": "Couchbase Alerts",
-      "type": "alertlist"
-    },
-    {
-      "datasource": {
-        "type": "datasource",
-        "uid": "grafana"
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 0,
-        "y": 18
-      },
-      "id": 84,
-      "options": {
-        "alertInstanceLabelFilter": "",
-        "alertName": "PostgreSQL",
-        "dashboardAlerts": false,
-        "datasource": "Mimir",
-        "groupBy": [],
-        "groupMode": "default",
-        "maxItems": 100,
-        "sortOrder": 3,
-        "stateFilter": {
-          "error": true,
-          "firing": true,
-          "noData": false,
-          "normal": false,
-          "pending": true
+          "gridPos": {
+            "h": 9,
+            "w": 8,
+            "x": 16,
+            "y": 9
+          },
+          "id": 86,
+          "options": {
+            "alertInstanceLabelFilter": "",
+            "alertName": "Couchbase",
+            "dashboardAlerts": false,
+            "datasource": "Mimir",
+            "groupBy": [],
+            "groupMode": "default",
+            "maxItems": 100,
+            "sortOrder": 3,
+            "stateFilter": {
+              "error": true,
+              "firing": true,
+              "noData": false,
+              "normal": false,
+              "pending": true
+            },
+            "viewMode": "list"
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "datasource",
+                "uid": "grafana"
+              },
+              "refId": "A"
+            }
+          ],
+          "title": "Couchbase Alerts",
+          "type": "alertlist"
         },
-        "viewMode": "list"
-      },
-      "targets": [
         {
           "datasource": {
             "type": "datasource",
             "uid": "grafana"
           },
-          "refId": "A"
-        }
-      ],
-      "title": "PostgreSQL Alerts",
-      "type": "alertlist"
-    },
-    {
-      "datasource": {
-        "type": "datasource",
-        "uid": "grafana"
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 8,
-        "y": 18
-      },
-      "id": 88,
-      "options": {
-        "alertInstanceLabelFilter": "",
-        "alertName": "Kafka",
-        "dashboardAlerts": false,
-        "datasource": "Mimir",
-        "groupBy": [],
-        "groupMode": "default",
-        "maxItems": 100,
-        "sortOrder": 3,
-        "stateFilter": {
-          "error": true,
-          "firing": true,
-          "noData": false,
-          "normal": false,
-          "pending": true
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 0,
+            "y": 18
+          },
+          "id": 84,
+          "options": {
+            "alertInstanceLabelFilter": "",
+            "alertName": "PostgreSQL",
+            "dashboardAlerts": false,
+            "datasource": "Mimir",
+            "groupBy": [],
+            "groupMode": "default",
+            "maxItems": 100,
+            "sortOrder": 3,
+            "stateFilter": {
+              "error": true,
+              "firing": true,
+              "noData": false,
+              "normal": false,
+              "pending": true
+            },
+            "viewMode": "list"
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "datasource",
+                "uid": "grafana"
+              },
+              "refId": "A"
+            }
+          ],
+          "title": "PostgreSQL Alerts",
+          "type": "alertlist"
         },
-        "viewMode": "list"
-      },
-      "targets": [
         {
           "datasource": {
             "type": "datasource",
             "uid": "grafana"
           },
-          "refId": "A"
-        }
-      ],
-      "title": "Kafka Alerts",
-      "type": "alertlist"
-    },
-    {
-      "datasource": {
-        "type": "datasource",
-        "uid": "grafana"
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 16,
-        "y": 18
-      },
-      "id": 122,
-      "options": {
-        "alertInstanceLabelFilter": "",
-        "alertName": "mimir",
-        "dashboardAlerts": false,
-        "datasource": "Mimir",
-        "groupBy": [],
-        "groupMode": "default",
-        "maxItems": 100,
-        "sortOrder": 3,
-        "stateFilter": {
-          "error": true,
-          "firing": true,
-          "noData": false,
-          "normal": false,
-          "pending": true
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 8,
+            "y": 18
+          },
+          "id": 88,
+          "options": {
+            "alertInstanceLabelFilter": "",
+            "alertName": "Kafka",
+            "dashboardAlerts": false,
+            "datasource": "Mimir",
+            "groupBy": [],
+            "groupMode": "default",
+            "maxItems": 100,
+            "sortOrder": 3,
+            "stateFilter": {
+              "error": true,
+              "firing": true,
+              "noData": false,
+              "normal": false,
+              "pending": true
+            },
+            "viewMode": "list"
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "datasource",
+                "uid": "grafana"
+              },
+              "refId": "A"
+            }
+          ],
+          "title": "Kafka Alerts",
+          "type": "alertlist"
         },
-        "viewMode": "list"
-      },
-      "targets": [
         {
           "datasource": {
             "type": "datasource",
             "uid": "grafana"
           },
-          "refId": "A"
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 16,
+            "y": 18
+          },
+          "id": 122,
+          "options": {
+            "alertInstanceLabelFilter": "",
+            "alertName": "mimir",
+            "dashboardAlerts": false,
+            "datasource": "Mimir",
+            "groupBy": [],
+            "groupMode": "default",
+            "maxItems": 100,
+            "sortOrder": 3,
+            "stateFilter": {
+              "error": true,
+              "firing": true,
+              "noData": false,
+              "normal": false,
+              "pending": true
+            },
+            "viewMode": "list"
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "datasource",
+                "uid": "grafana"
+              },
+              "refId": "A"
+            }
+          ],
+          "title": "Mimir Alerts",
+          "type": "alertlist"
         }
       ],
-      "title": "Mimir Alerts",
-      "type": "alertlist"
+      "title": "Alerting",
+      "type": "row"
     },
     {
       "collapsed": false,
@@ -573,7 +574,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 26
+        "y": 7
       },
       "id": 2,
       "panels": [],
@@ -589,7 +590,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 27
+        "y": 8
       },
       "id": 35,
       "options": {
@@ -632,7 +633,7 @@
         "h": 5,
         "w": 4,
         "x": 0,
-        "y": 29
+        "y": 10
       },
       "id": 107,
       "options": {
@@ -726,7 +727,7 @@
         "h": 8,
         "w": 5,
         "x": 4,
-        "y": 29
+        "y": 10
       },
       "id": 113,
       "options": {
@@ -820,7 +821,7 @@
         "h": 8,
         "w": 5,
         "x": 9,
-        "y": 29
+        "y": 10
       },
       "id": 114,
       "options": {
@@ -913,7 +914,7 @@
         "h": 8,
         "w": 5,
         "x": 14,
-        "y": 29
+        "y": 10
       },
       "id": 118,
       "options": {
@@ -1007,7 +1008,7 @@
         "h": 8,
         "w": 5,
         "x": 19,
-        "y": 29
+        "y": 10
       },
       "id": 119,
       "options": {
@@ -1066,7 +1067,7 @@
         "h": 3,
         "w": 2,
         "x": 0,
-        "y": 34
+        "y": 15
       },
       "id": 109,
       "options": {
@@ -1125,7 +1126,7 @@
         "h": 3,
         "w": 2,
         "x": 2,
-        "y": 34
+        "y": 15
       },
       "id": 110,
       "options": {
@@ -1184,7 +1185,7 @@
         "h": 3,
         "w": 2,
         "x": 0,
-        "y": 37
+        "y": 18
       },
       "id": 111,
       "options": {
@@ -1243,7 +1244,7 @@
         "h": 3,
         "w": 2,
         "x": 2,
-        "y": 37
+        "y": 18
       },
       "id": 112,
       "options": {
@@ -1337,7 +1338,7 @@
         "h": 8,
         "w": 5,
         "x": 4,
-        "y": 37
+        "y": 18
       },
       "id": 116,
       "options": {
@@ -1431,7 +1432,7 @@
         "h": 8,
         "w": 5,
         "x": 9,
-        "y": 37
+        "y": 18
       },
       "id": 115,
       "options": {
@@ -1525,7 +1526,7 @@
         "h": 8,
         "w": 5,
         "x": 14,
-        "y": 37
+        "y": 18
       },
       "id": 117,
       "options": {
@@ -1619,7 +1620,7 @@
         "h": 8,
         "w": 5,
         "x": 19,
-        "y": 37
+        "y": 18
       },
       "id": 120,
       "options": {
@@ -1660,7 +1661,7 @@
         "h": 5,
         "w": 4,
         "x": 0,
-        "y": 40
+        "y": 21
       },
       "id": 108,
       "options": {
@@ -1686,7 +1687,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 45
+        "y": 26
       },
       "id": 106,
       "options": {
@@ -1729,7 +1730,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 47
+        "y": 28
       },
       "id": 28,
       "options": {
@@ -1824,7 +1825,7 @@
         "h": 8,
         "w": 5,
         "x": 4,
-        "y": 47
+        "y": 28
       },
       "id": 97,
       "options": {
@@ -1917,7 +1918,7 @@
         "h": 8,
         "w": 5,
         "x": 9,
-        "y": 47
+        "y": 28
       },
       "id": 15,
       "options": {
@@ -2010,7 +2011,7 @@
         "h": 8,
         "w": 5,
         "x": 14,
-        "y": 47
+        "y": 28
       },
       "id": 18,
       "options": {
@@ -2105,7 +2106,7 @@
         "h": 8,
         "w": 5,
         "x": 19,
-        "y": 47
+        "y": 28
       },
       "id": 14,
       "options": {
@@ -2164,7 +2165,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 51
+        "y": 32
       },
       "id": 53,
       "options": {
@@ -2205,7 +2206,7 @@
         "h": 8,
         "w": 4,
         "x": 0,
-        "y": 55
+        "y": 36
       },
       "id": 33,
       "options": {
@@ -2283,7 +2284,7 @@
         "h": 8,
         "w": 5,
         "x": 4,
-        "y": 55
+        "y": 36
       },
       "id": 42,
       "options": {
@@ -2375,7 +2376,7 @@
         "h": 8,
         "w": 5,
         "x": 9,
-        "y": 55
+        "y": 36
       },
       "id": 17,
       "options": {
@@ -2466,7 +2467,7 @@
         "h": 8,
         "w": 5,
         "x": 14,
-        "y": 55
+        "y": 36
       },
       "id": 92,
       "options": {
@@ -2558,7 +2559,7 @@
         "h": 8,
         "w": 5,
         "x": 19,
-        "y": 55
+        "y": 36
       },
       "id": 19,
       "options": {
@@ -2598,7 +2599,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 63
+        "y": 44
       },
       "id": 36,
       "options": {
@@ -2640,7 +2641,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 65
+        "y": 46
       },
       "id": 30,
       "options": {
@@ -2735,7 +2736,7 @@
         "h": 8,
         "w": 6,
         "x": 4,
-        "y": 65
+        "y": 46
       },
       "id": 52,
       "links": [],
@@ -2830,7 +2831,7 @@
         "h": 8,
         "w": 7,
         "x": 10,
-        "y": 65
+        "y": 46
       },
       "id": 48,
       "options": {
@@ -2968,7 +2969,7 @@
         "h": 8,
         "w": 7,
         "x": 17,
-        "y": 65
+        "y": 46
       },
       "id": 47,
       "options": {
@@ -3054,7 +3055,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 69
+        "y": 50
       },
       "id": 54,
       "options": {
@@ -3095,7 +3096,7 @@
         "h": 8,
         "w": 4,
         "x": 0,
-        "y": 73
+        "y": 54
       },
       "id": 38,
       "options": {
@@ -3175,7 +3176,7 @@
         "h": 8,
         "w": 9,
         "x": 4,
-        "y": 73
+        "y": 54
       },
       "id": 99,
       "links": [],
@@ -3275,7 +3276,7 @@
         "h": 8,
         "w": 11,
         "x": 13,
-        "y": 73
+        "y": 54
       },
       "id": 50,
       "links": [],
@@ -3322,7 +3323,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 81
+        "y": 62
       },
       "id": 37,
       "options": {
@@ -3364,7 +3365,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 83
+        "y": 64
       },
       "id": 55,
       "options": {
@@ -3457,7 +3458,7 @@
         "h": 8,
         "w": 6,
         "x": 4,
-        "y": 83
+        "y": 64
       },
       "id": 64,
       "options": {
@@ -3549,7 +3550,7 @@
         "h": 8,
         "w": 7,
         "x": 10,
-        "y": 83
+        "y": 64
       },
       "id": 61,
       "options": {
@@ -3688,7 +3689,7 @@
         "h": 8,
         "w": 7,
         "x": 17,
-        "y": 83
+        "y": 64
       },
       "id": 58,
       "options": {
@@ -3771,7 +3772,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 87
+        "y": 68
       },
       "id": 31,
       "options": {
@@ -3812,7 +3813,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 91
+        "y": 72
       },
       "id": 39,
       "options": {
@@ -3904,7 +3905,7 @@
         "h": 8,
         "w": 20,
         "x": 4,
-        "y": 91
+        "y": 72
       },
       "id": 63,
       "links": [],
@@ -3966,7 +3967,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 95
+        "y": 76
       },
       "id": 60,
       "options": {
@@ -4008,7 +4009,7 @@
         "h": 2,
         "w": 24,
         "x": 0,
-        "y": 99
+        "y": 80
       },
       "id": 71,
       "options": {
@@ -4050,7 +4051,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 101
+        "y": 82
       },
       "id": 74,
       "options": {
@@ -4143,7 +4144,7 @@
         "h": 8,
         "w": 6,
         "x": 4,
-        "y": 101
+        "y": 82
       },
       "id": 78,
       "options": {
@@ -4236,7 +4237,7 @@
         "h": 8,
         "w": 7,
         "x": 10,
-        "y": 101
+        "y": 82
       },
       "id": 79,
       "options": {
@@ -4329,7 +4330,7 @@
         "h": 8,
         "w": 7,
         "x": 17,
-        "y": 101
+        "y": 82
       },
       "id": 80,
       "options": {
@@ -4387,7 +4388,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 105
+        "y": 86
       },
       "id": 75,
       "options": {
@@ -4429,7 +4430,7 @@
         "h": 8,
         "w": 4,
         "x": 0,
-        "y": 109
+        "y": 90
       },
       "id": 76,
       "options": {
@@ -4507,7 +4508,7 @@
         "h": 8,
         "w": 10,
         "x": 4,
-        "y": 109
+        "y": 90
       },
       "id": 77,
       "options": {
@@ -4599,7 +4600,7 @@
         "h": 8,
         "w": 10,
         "x": 14,
-        "y": 109
+        "y": 90
       },
       "id": 73,
       "options": {
@@ -4636,7 +4637,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 117
+        "y": 98
       },
       "id": 4,
       "panels": [
