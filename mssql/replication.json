@@ -295,7 +295,7 @@
   },
   "timezone": "browser",
   "title": "Retail - MSSQL: Replication Latency",
-  "uid": "000000110",
+  "uid": "retail-mssql-replication-latency",
   "version": 8,
   "weekStart": ""
 }

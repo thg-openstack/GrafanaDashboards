@@ -360,7 +360,7 @@
   },
   "timezone": "browser",
   "title": "Retail - MSSQL: Index usage",
-  "uid": "000000108",
+  "uid": "retail-mssql-index-usage",
   "version": 1,
   "weekStart": ""
 }

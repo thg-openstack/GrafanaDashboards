@@ -1997,7 +1997,7 @@
   },
   "timezone": "browser",
   "title": "Retail - MSSQL: Central",
-  "uid": "000000107",
+  "uid": "retail-mssql-central",
   "version": 1,
   "weekStart": ""
 }

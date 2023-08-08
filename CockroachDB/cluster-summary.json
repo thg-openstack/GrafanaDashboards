@@ -689,7 +689,7 @@
   },
   "timezone": "",
   "title": "CockroachDB: Cluster Summary",
-  "uid": "cockroachdb_cluster_summary",
+  "uid": "cockroachdb-cluster-summary",
   "version": 1,
   "weekStart": ""
 }

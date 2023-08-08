@@ -2367,7 +2367,7 @@
   },
   "timezone": "browser",
   "title": "Retail - CockroachDB: Cluster Summary",
-  "uid": "6spRz09nk",
+  "uid": "retail-cockroachdb-cluster-summary",
   "version": 1,
   "weekStart": ""
 }

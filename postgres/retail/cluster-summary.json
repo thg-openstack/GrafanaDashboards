@@ -635,7 +635,7 @@
   },
   "timezone": "",
   "title": "Retail - PostgreSQL: Cluster Summary",
-  "uid": "postgres_cluster_summary",
+  "uid": "retail-postgresql-cluster-summary",
   "version": 1,
   "weekStart": ""
 }

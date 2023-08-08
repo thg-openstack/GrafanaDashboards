@@ -6161,7 +6161,7 @@
   },
   "timezone": "",
   "title": "Postgres: Central",
-  "uid": "CloudNativePostgres",
+  "uid": "postgres-central",
   "version": 1,
   "weekStart": ""
 }
