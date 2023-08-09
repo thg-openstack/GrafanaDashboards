@@ -1,0 +1,326 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "tags"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 57,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "annotations": true,
+        "autoScroll": true,
+        "calendarType": "legacy",
+        "colors": "frame",
+        "displayTime": true,
+        "quickLinks": true
+      },
+      "title": "Annotation Calendar",
+      "type": "marcusolsson-calendar-panel"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 23,
+        "w": 12,
+        "x": 0,
+        "y": 10
+      },
+      "id": 1,
+      "options": {
+        "alertInstanceLabelFilter": "",
+        "alertName": "",
+        "dashboardAlerts": false,
+        "groupBy": [],
+        "groupMode": "default",
+        "maxItems": 50,
+        "sortOrder": 1,
+        "stateFilter": {
+          "error": true,
+          "firing": true,
+          "noData": false,
+          "normal": false,
+          "pending": true
+        },
+        "viewMode": "list"
+      },
+      "title": "Alerts",
+      "type": "alertlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 12,
+        "w": 3,
+        "x": 12,
+        "y": 10
+      },
+      "id": 10,
+      "options": {
+        "maxItems": 10,
+        "query": "",
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": false,
+        "showStarred": true,
+        "tags": []
+      },
+      "pluginVersion": "9.5.2",
+      "title": "Starred Dashboards",
+      "type": "dashlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 3,
+        "x": 15,
+        "y": 10
+      },
+      "id": 3,
+      "options": {
+        "maxItems": 20,
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": true,
+        "showStarred": false,
+        "tags": ["CockroachDB"]
+      },
+      "pluginVersion": "9.5.2",
+      "title": "CockroachDB Dashboards",
+      "type": "dashlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 3,
+        "x": 18,
+        "y": 10
+      },
+      "id": 9,
+      "options": {
+        "maxItems": 20,
+        "query": "",
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": true,
+        "showStarred": false,
+        "tags": ["mimir"]
+      },
+      "pluginVersion": "9.5.2",
+      "title": "Mimir Dashboards",
+      "type": "dashlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 3,
+        "x": 21,
+        "y": 10
+      },
+      "id": 8,
+      "options": {
+        "maxItems": 20,
+        "query": "",
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": true,
+        "showStarred": false,
+        "tags": ["MSSQL"]
+      },
+      "pluginVersion": "9.5.2",
+      "title": "MSSQL Dashboards",
+      "type": "dashlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 3,
+        "x": 12,
+        "y": 22
+      },
+      "id": 6,
+      "options": {
+        "maxItems": 20,
+        "query": "",
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": true,
+        "showStarred": false,
+        "tags": ["Windows"]
+      },
+      "pluginVersion": "9.5.2",
+      "title": "Windows Dashboards",
+      "type": "dashlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 3,
+        "x": 15,
+        "y": 22
+      },
+      "id": 5,
+      "options": {
+        "maxItems": 20,
+        "query": "",
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": true,
+        "showStarred": false,
+        "tags": ["Linux"]
+      },
+      "pluginVersion": "9.5.2",
+      "title": "Linux Dashboards",
+      "type": "dashlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 3,
+        "x": 18,
+        "y": 22
+      },
+      "id": 4,
+      "options": {
+        "maxItems": 20,
+        "query": "",
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": true,
+        "showStarred": false,
+        "tags": ["Couchbase"]
+      },
+      "pluginVersion": "9.5.2",
+      "title": "Couchbase Dashboards",
+      "type": "dashlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 3,
+        "x": 21,
+        "y": 22
+      },
+      "id": 7,
+      "options": {
+        "maxItems": 20,
+        "query": "",
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": true,
+        "showStarred": false,
+        "tags": ["Postgres"]
+      },
+      "pluginVersion": "9.5.2",
+      "title": "Postgres Dashboards",
+      "type": "dashlist"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "DBA: Home",
+  "uid": "dba-home",
+  "version": 1,
+  "weekStart": ""
+}
