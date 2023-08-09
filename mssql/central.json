@@ -259,7 +259,7 @@
           "editorMode": "code",
           "expr": "windows_mssql_memmgr_total_server_memory_bytes{cluster=\"$cluster\"} - windows_mssql_memmgr_free_memory_bytes{cluster=\"$cluster\"}",
           "hide": false,
-          "legendFormat": "{{instance}} - Free Memory",
+          "legendFormat": "{{instance}}",
           "range": true,
           "refId": "B"
         }
@@ -1246,7 +1246,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1353,7 +1354,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1487,7 +1489,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1595,7 +1598,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1702,7 +1706,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1926,6 +1931,6 @@
   "timezone": "browser",
   "title": "Retail - MSSQL: Central",
   "uid": "retail-mssql-central",
-  "version": 2,
+  "version": 3,
   "weekStart": ""
 }
