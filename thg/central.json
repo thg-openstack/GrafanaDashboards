@@ -5650,7 +5650,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "count(node_network_up{device=\"eth0\",instance!~\"(de1|gb1|gb4|gb5|gb6).+\"})",
+          "expr": "count(windows_cs_logical_processors{instance!~\"(de1|gb1|gb4|gb5|gb6).+\"})",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
