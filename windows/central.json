@@ -349,52 +349,6 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Value #G"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "number of processes"
-              },
-              {
-                "id": "unit",
-                "value": "short"
-              },
-              {
-                "id": "decimals",
-                "value": 0
-              },
-              {
-                "id": "custom.align"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Value #H"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "running service"
-              },
-              {
-                "id": "unit",
-                "value": "short"
-              },
-              {
-                "id": "decimals",
-                "value": 0
-              },
-              {
-                "id": "custom.align"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
               "options": "Value #I"
             },
             "properties": [
@@ -489,29 +443,6 @@
                     }
                   ]
                 }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Value #K"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "CPU frequency"
-              },
-              {
-                "id": "unit",
-                "value": "rothz"
-              },
-              {
-                "id": "decimals",
-                "value": 2
-              },
-              {
-                "id": "custom.align"
               }
             ]
           },
@@ -666,19 +597,6 @@
           "interval": "",
           "legendFormat": "",
           "refId": "E"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
-          },
-          "expr": "max by (instance) (1-windows_logical_disk_free_bytes{job=~\"$job\"}/windows_logical_disk_size_bytes{job=~\"$job\"})",
-          "format": "table",
-          "hide": false,
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "F"
         },
         {
           "datasource": {
@@ -1121,7 +1039,7 @@
           "item": {
             "filter": ""
           },
-          "legendFormat": "{{instance}}_upload",
+          "legendFormat": "{{instance}} - Upload",
           "metric": "mysql_global_status_questions",
           "mode": 0,
           "options": {
@@ -1155,7 +1073,7 @@
           "item": {
             "filter": ""
           },
-          "legendFormat": "{{instance}}_download",
+          "legendFormat": "{{instance}} - Download",
           "metric": "mysql_global_status_questions",
           "mode": 0,
           "options": {
@@ -1259,6 +1177,7 @@
             "type": "prometheus",
             "uid": "PAE45454D0EDB9216"
           },
+          "editorMode": "code",
           "expr": "-max by (instance) (irate(windows_logical_disk_read_bytes_total[2m]))",
           "format": "time_series",
           "functions": [],
@@ -1274,12 +1193,13 @@
           "item": {
             "filter": ""
           },
-          "legendFormat": "{{instance}}_读取",
+          "legendFormat": "{{instance}} - Read",
           "metric": "mysql_global_status_questions",
           "mode": 0,
           "options": {
             "showDisabledItems": false
           },
+          "range": true,
           "refId": "A",
           "step": 20
         },
@@ -1291,6 +1211,7 @@
             "type": "prometheus",
             "uid": "PAE45454D0EDB9216"
           },
+          "editorMode": "code",
           "expr": "max by (instance) (irate(windows_logical_disk_write_bytes_total[2m]))",
           "format": "time_series",
           "functions": [],
@@ -1306,12 +1227,13 @@
           "item": {
             "filter": ""
           },
-          "legendFormat": "{{instance}}_写入",
+          "legendFormat": "{{instance}} - Write",
           "metric": "mysql_global_status_questions",
           "mode": 0,
           "options": {
             "showDisabledItems": false
           },
+          "range": true,
           "refId": "B",
           "step": 20
         }
@@ -1409,6 +1331,7 @@
             "type": "prometheus",
             "uid": "PAE45454D0EDB9216"
           },
+          "editorMode": "code",
           "expr": "-max by (instance) (irate(windows_logical_disk_reads_total[2m]))",
           "format": "time_series",
           "functions": [],
@@ -1424,12 +1347,13 @@
           "item": {
             "filter": ""
           },
-          "legendFormat": "{{instance}}_读取",
+          "legendFormat": "{{instance}} - Read",
           "metric": "mysql_global_status_questions",
           "mode": 0,
           "options": {
             "showDisabledItems": false
           },
+          "range": true,
           "refId": "B",
           "step": 20
         },
@@ -1441,6 +1365,7 @@
             "type": "prometheus",
             "uid": "PAE45454D0EDB9216"
           },
+          "editorMode": "code",
           "expr": "max by (instance) (irate(windows_logical_disk_writes_total[2m]))",
           "format": "time_series",
           "functions": [],
@@ -1456,12 +1381,13 @@
           "item": {
             "filter": ""
           },
-          "legendFormat": "{{instance}}_写入",
+          "legendFormat": "{{instance}} - Write",
           "metric": "mysql_global_status_questions",
           "mode": 0,
           "options": {
             "showDisabledItems": false
           },
+          "range": true,
           "refId": "C",
           "step": 20
         }
@@ -2228,7 +2154,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "100 - (windows_logical_disk_free_bytes{job=~\"$job\",instance=~\"$instance\"} / windows_logical_disk_size_bytes{job=~\"$job\",instance=~\"$instance\"})*100",
+          "expr": "100 - (windows_logical_disk_free_bytes{job=~\"$job\",instance=~\"$instance\",volume=~\".*:.*\"} / windows_logical_disk_size_bytes{job=~\"$job\",instance=~\"$instance\"})*100",
           "instant": false,
           "interval": "",
           "legendFormat": "{{volume}}",
@@ -2656,7 +2582,8 @@
             "type": "prometheus",
             "uid": "PAE45454D0EDB9216"
           },
-          "expr": "windows_logical_disk_free_bytes{job=~\"$job\",instance=~\"$instance\"}",
+          "editorMode": "code",
+          "expr": "windows_logical_disk_free_bytes{job=~\"$job\",instance=~\"$instance\",volume=~\".*:.*\"}",
           "format": "time_series",
           "functions": [],
           "group": {
@@ -2677,6 +2604,7 @@
           "options": {
             "showDisabledItems": false
           },
+          "range": true,
           "refId": "A",
           "step": 20
         },
@@ -2688,7 +2616,8 @@
             "type": "prometheus",
             "uid": "PAE45454D0EDB9216"
           },
-          "expr": "windows_logical_disk_size_bytes{job=~\"$job\",instance=~\"$instance\"}",
+          "editorMode": "code",
+          "expr": "windows_logical_disk_size_bytes{job=~\"$job\",instance=~\"$instance\",volume=~\".*:.*\"}",
           "format": "time_series",
           "functions": [],
           "group": {
@@ -2709,6 +2638,7 @@
           "options": {
             "showDisabledItems": false
           },
+          "range": true,
           "refId": "B",
           "step": 20
         }
@@ -2903,7 +2833,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "irate(windows_logical_disk_read_bytes_total{job=~\"$job\",instance=~\"$instance\"}[5m])\r\n",
+          "expr": "irate(windows_logical_disk_read_bytes_total{job=~\"$job\",instance=~\"$instance\",volume=~\".*:.*\"}[5m])\r\n",
           "format": "time_series",
           "functions": [],
           "group": {
@@ -2936,7 +2866,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "irate(windows_logical_disk_write_bytes_total{job=~\"$job\",instance=~\"$instance\"}[5m])\r\n",
+          "expr": "irate(windows_logical_disk_write_bytes_total{job=~\"$job\",instance=~\"$instance\",volume=~\".*:.*\"}[5m])\r\n",
           "format": "time_series",
           "functions": [],
           "group": {
@@ -3054,7 +2984,8 @@
             "type": "prometheus",
             "uid": "PAE45454D0EDB9216"
           },
-          "expr": "irate(windows_logical_disk_reads_total{job=~\"$job\",instance=~\"$instance\"}[5m])",
+          "editorMode": "code",
+          "expr": "irate(windows_logical_disk_reads_total{job=~\"$job\",instance=~\"$instance\",volume=~\".*:.*\"}[5m])",
           "format": "time_series",
           "functions": [],
           "group": {
@@ -3074,6 +3005,7 @@
           "options": {
             "showDisabledItems": false
           },
+          "range": true,
           "refId": "B",
           "step": 20
         },
@@ -3085,7 +3017,8 @@
             "type": "prometheus",
             "uid": "PAE45454D0EDB9216"
           },
-          "expr": "irate(windows_logical_disk_writes_total{job=~\"$job\",instance=~\"$instance\"}[5m])",
+          "editorMode": "code",
+          "expr": "irate(windows_logical_disk_writes_total{job=~\"$job\",instance=~\"$instance\",volume=~\".*:.*\"}[5m])",
           "format": "time_series",
           "functions": [],
           "group": {
@@ -3105,6 +3038,7 @@
           "options": {
             "showDisabledItems": false
           },
+          "range": true,
           "refId": "C",
           "step": 20
         }
@@ -3583,7 +3517,7 @@
           },
           "editorMode": "code",
           "expr": "(irate(windows_net_bytes_total{job=~\"$job\",instance=~\"$instance\",nic!~'isatap.*|VPN.*'}[5m]) * 8 / windows_net_current_bandwidth_bytes{job=~\"$job\",instance=~\"$instance\",nic!~'isatap.*|VPN.*'}) * 100",
-          "legendFormat": "__auto",
+          "legendFormat": "{{nic}}",
           "range": true,
           "refId": "A"
         }
@@ -3681,6 +3615,7 @@
             "type": "prometheus",
             "uid": "PAE45454D0EDB9216"
           },
+          "editorMode": "code",
           "expr": "irate(windows_net_packets_outbound_discarded_total{job=~\"$job\",instance=~\"$instance\", nic!~'isatap.*|VPN.*'}[5m]) + irate(windows_net_packets_outbound_errors_total{job=~\"$job\",instance=~\"$instance\"}[5m])",
           "format": "time_series",
           "functions": [],
@@ -3696,12 +3631,13 @@
           "item": {
             "filter": ""
           },
-          "legendFormat": "outbound",
+          "legendFormat": "{{nic}} - Sent",
           "metric": "mysql_global_status_questions",
           "mode": 0,
           "options": {
             "showDisabledItems": false
           },
+          "range": true,
           "refId": "B",
           "step": 15
         },
@@ -3713,6 +3649,7 @@
             "type": "prometheus",
             "uid": "PAE45454D0EDB9216"
           },
+          "editorMode": "code",
           "expr": "irate(windows_net_packets_outbound_discarded_total{job=~\"$job\",instance=~\"$instance\", nic!~'isatap.*|VPN.*'}[5m]) + irate(windows_net_packets_outbound_errors_total{job=~\"$job\",instance=~\"$instance\"}[5m])",
           "format": "time_series",
           "functions": [],
@@ -3728,12 +3665,13 @@
           "item": {
             "filter": ""
           },
-          "legendFormat": "received",
+          "legendFormat": "{{nic}} - Received",
           "metric": "mysql_global_status_questions",
           "mode": 0,
           "options": {
             "showDisabledItems": false
           },
+          "range": true,
           "refId": "A",
           "step": 15
         }
@@ -3811,8 +3749,8 @@
       {
         "current": {
           "selected": true,
-          "text": "10.80.74.80:9187",
-          "value": "10.80.74.80:9187"
+          "text": "gb1-te-elycn001.thehut.local:9182",
+          "value": "gb1-te-elycn001.thehut.local:9182"
         },
         "datasource": {
           "type": "prometheus",
@@ -3861,6 +3799,6 @@
   "timezone": "",
   "title": "Retail - Windows: Central",
   "uid": "retail-windows-central",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }
