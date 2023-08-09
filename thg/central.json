@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 41,
+  "id": 2,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -4825,7 +4825,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "100 - avg(label_replace(irate(windows_cpu_time_total{mode=\"idle\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by(datacentre) *100",
+          "expr": "avg(100 - label_replace(irate(windows_cpu_time_total{mode=\"idle\",instance=~\".+-.+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\") * 100) by(datacentre)",
           "hide": false,
           "legendFormat": "__auto",
           "range": true,
@@ -4919,7 +4919,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(irate(windows_net_bytes_sent_total{nic!~'isatap.*|VPN.*'}[2m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre) * 8 ",
+          "expr": "sum(label_replace(irate(windows_net_bytes_sent_total{nic!~'isatap.*|VPN.*',instance=~\".+-.+\"}[2m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre) * 8 ",
           "hide": false,
           "legendFormat": "__auto",
           "range": true,
@@ -5013,7 +5013,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(irate(windows_logical_disk_read_bytes_total{}[2m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre) * 8 ",
+          "expr": "sum(label_replace(irate(windows_logical_disk_read_bytes_total{instance=~\".+-.+\"}[2m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre) * 8 ",
           "hide": false,
           "legendFormat": "__auto",
           "range": true,
@@ -5343,7 +5343,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg( 100 - (label_replace(windows_os_physical_memory_free_bytes{}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\") / label_replace(windows_cs_physical_memory_bytes{}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) * 100) by (datacentre) ",
+          "expr": "avg( 100 - (label_replace(windows_os_physical_memory_free_bytes{instance=~\".+-.+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\") / label_replace(windows_cs_physical_memory_bytes{instance=~\".+-.+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) * 100) by (datacentre) ",
           "hide": false,
           "legendFormat": "__auto",
           "range": true,
@@ -5437,7 +5437,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(irate(windows_net_bytes_received_total{nic!~'isatap.*|VPN.*'}[2m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre) * 8 ",
+          "expr": "sum(label_replace(irate(windows_net_bytes_received_total{nic!~'isatap.*|VPN.*',instance=~\".+-.+\"}[2m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre) * 8 ",
           "hide": false,
           "legendFormat": "__auto",
           "range": true,
@@ -5531,7 +5531,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(irate(windows_logical_disk_write_bytes_total{}[2m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre) * 8 ",
+          "expr": "sum(label_replace(irate(windows_logical_disk_write_bytes_total{instance=~\".+-.+\"}[2m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre) * 8 ",
           "hide": false,
           "legendFormat": "__auto",
           "range": true,
@@ -5735,8 +5735,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "blue",
-                    "value": null
+                    "color": "blue"
                   }
                 ]
               }
@@ -5825,8 +5824,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -5918,8 +5916,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -6010,8 +6007,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -6103,8 +6099,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -6166,8 +6161,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "blue",
-                    "value": null
+                    "color": "blue"
                   }
                 ]
               }
@@ -6281,8 +6275,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -6373,8 +6366,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -6465,8 +6457,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -6557,8 +6548,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -6656,8 +6646,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "blue",
-                    "value": null
+                    "color": "blue"
                   }
                 ]
               }
@@ -6756,8 +6745,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "blue",
-                    "value": null
+                    "color": "blue"
                   }
                 ]
               }
@@ -6845,8 +6833,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -6938,8 +6925,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -7011,8 +6997,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "blue",
-                    "value": null
+                    "color": "blue"
                   }
                 ]
               }
@@ -7126,8 +7111,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -7201,6 +7185,6 @@
   "timezone": "",
   "title": "THG - Central",
   "uid": "thg-central",
-  "version": 1,
+  "version": 3,
   "weekStart": ""
 }
