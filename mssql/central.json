@@ -262,6 +262,18 @@
           "legendFormat": "{{instance}}",
           "range": true,
           "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "windows_mssql_memmgr_total_server_memory_bytes{cluster=\"$cluster\"} - windows_mssql_memmgr_free_memory_bytes{cluster=\"$cluster\"} offset $offset",
+          "hide": false,
+          "legendFormat": "{{instance}} (offset $offset)",
+          "range": true,
+          "refId": "A"
         }
       ],
       "title": "Memory Used",
