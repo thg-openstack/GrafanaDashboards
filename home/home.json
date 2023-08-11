@@ -68,7 +68,7 @@
         "calendarType": "legacy",
         "colors": "frame",
         "displayTime": true,
-        "quickLinks": true
+        "quickLinks": false
       },
       "title": "Annotation Calendar",
       "type": "marcusolsson-calendar-panel"
