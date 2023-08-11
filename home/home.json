@@ -15,7 +15,7 @@
           "limit": 100,
           "matchAny": false,
           "tags": [],
-          "type": "tags"
+          "type": "dashboard"
         },
         "type": "dashboard"
       }
@@ -24,7 +24,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 57,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -68,7 +67,7 @@
         "calendarType": "legacy",
         "colors": "frame",
         "displayTime": true,
-        "quickLinks": false
+        "quickLinks": true
       },
       "title": "Annotation Calendar",
       "type": "marcusolsson-calendar-panel"
