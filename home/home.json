@@ -145,6 +145,7 @@
       "id": 3,
       "options": {
         "maxItems": 20,
+        "query": "",
         "showHeadings": false,
         "showRecentlyViewed": false,
         "showSearch": true,
@@ -314,8 +315,8 @@
     "list": []
   },
   "time": {
-    "from": "now-5m",
-    "to": "now"
+    "from": "now/w",
+    "to": "now/w"
   },
   "timepicker": {},
   "timezone": "",
