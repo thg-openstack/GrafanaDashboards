@@ -24,6 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
+  "id": 38,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -67,7 +68,7 @@
         "calendarType": "legacy",
         "colors": "frame",
         "displayTime": true,
-        "quickLinks": true
+        "quickLinks": false
       },
       "title": "Annotation Calendar",
       "type": "marcusolsson-calendar-panel"
@@ -321,6 +322,6 @@
   "timezone": "",
   "title": "DBA: Home",
   "uid": "dba-home",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }
