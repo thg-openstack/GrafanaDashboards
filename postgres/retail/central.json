@@ -26,6 +26,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 9628,
   "graphTooltip": 0,
+  "id": 52,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -145,7 +146,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "label_replace(rate(process_cpu_seconds_total{cluster=\"$cluster\"}[5m]) *1000 / on() group_left() max(pg_settings_max_worker_processes{cluster=\"$cluster\"}), \"node\", \"$1\", \"instance\", \"(.*?):.*\")",
+          "expr": "(sum by(instance) (irate(node_cpu_seconds_total{instance=~\"$instance.*\", mode!=\"idle\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{instance=~\"$instance.*\"}[$__rate_interval]))))",
           "legendFormat": "{{instance}}",
           "range": true,
           "refId": "A"
@@ -790,7 +791,7 @@
   ],
   "refresh": "",
   "revision": 1,
-  "schemaVersion": 37,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": ["Postgres", "Retail"],
   "templating": {
@@ -814,7 +815,7 @@
         "options": [],
         "query": {
           "query": "label_values(up{job=\"postgresql\"},cluster)",
-          "refId": "StandardVariableQuery"
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
         "regex": "",
@@ -827,7 +828,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": ["All"],
           "value": ["$__all"]
         },
@@ -857,7 +858,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": ["All"],
           "value": ["$__all"]
         },
@@ -884,11 +885,38 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PAE45454D0EDB9216"
+        },
+        "definition": "label_values(pg_up{job=\"postgresql\",cluster=\"$cluster\"},instance)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "instance",
+        "multi": false,
+        "name": "instance",
+        "options": [],
+        "query": {
+          "query": "label_values(pg_up{job=\"postgresql\",cluster=\"$cluster\"},instance)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "(.*):.*",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
       }
     ]
   },
   "time": {
-    "from": "now-30d",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
