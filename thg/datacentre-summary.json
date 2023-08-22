@@ -870,7 +870,8 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "New dashboard",
-  "version": 0,
+  "title": "DataCentre Summary",
+  "uid": "f1443c5d-c3e8-4b57-8ed4-d7cae4f0bf13",
+  "version": 2,
   "weekStart": ""
 }
