@@ -790,7 +790,14 @@
   "refresh": "15m",
   "schemaVersion": 38,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "Retail",
+    "CockroachDB",
+    "Postgres",
+    "MSSQL",
+    "Linux",
+    "Windows"
+  ],
   "templating": {
     "list": [
       {
