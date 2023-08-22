@@ -26,7 +26,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 1860,
   "graphTooltip": 1,
-  "id": 43,
+  "id": 51,
   "links": [
     {
       "icon": "external link",
@@ -136,7 +136,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -219,7 +219,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -300,7 +300,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -372,30 +372,20 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "PAE45454D0EDB9216"
           },
+          "editorMode": "code",
           "expr": "((node_memory_MemTotal_bytes{instance=\"$node\",job=\"$job\"} - node_memory_MemFree_bytes{instance=\"$node\",job=\"$job\"}) / (node_memory_MemTotal_bytes{instance=\"$node\",job=\"$job\"} )) * 100",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 1,
+          "range": true,
           "refId": "A",
-          "step": 240
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
-          },
-          "expr": "100 - ((node_memory_MemAvailable_bytes{instance=\"$node\",job=\"$job\"} * 100) / node_memory_MemTotal_bytes{instance=\"$node\",job=\"$job\"})",
-          "format": "time_series",
-          "hide": false,
-          "intervalFactor": 1,
-          "refId": "B",
           "step": 240
         }
       ],
@@ -465,7 +455,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -544,7 +534,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -621,7 +611,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -701,7 +691,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -782,7 +772,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -861,7 +851,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -938,7 +928,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -22639,7 +22629,7 @@
   ],
   "refresh": "",
   "revision": 1,
-  "schemaVersion": 37,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": ["Retail", "Linux"],
   "templating": {
@@ -22655,7 +22645,7 @@
           "uid": "PAE45454D0EDB9216"
         },
         "definition": "",
-        "hide": 0,
+        "hide": 2,
         "includeAll": false,
         "label": "Job",
         "multi": false,
@@ -22676,9 +22666,9 @@
       },
       {
         "current": {
-          "selected": false,
-          "text": "de1-li-accountsckrdb-001:21111",
-          "value": "de1-li-accountsckrdb-001:21111"
+          "selected": true,
+          "text": "gb1-li-psqlconsul-002:21111",
+          "value": "gb1-li-psqlconsul-002:21111"
         },
         "datasource": {
           "type": "prometheus",
