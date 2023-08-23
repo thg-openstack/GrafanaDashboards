@@ -31,7 +31,7 @@
       },
       "id": 2,
       "panels": [],
-      "title": "Multi DC Clusters",
+      "title": "Multi DC Clusters - All",
       "type": "row"
     },
     {
@@ -64,7 +64,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 6,
         "w": 6,
         "x": 0,
         "y": 1
@@ -95,7 +95,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(serviceinsight_datacentre_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",type=\"NumClusterActive\"}) by (DataCentre) / sum(serviceinsight_datacentre_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",type=\"NumClusters\"}) by (DataCentre)",
+          "expr": "sum(serviceinsight_service_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"HasActiveNode\"}) by (DataCentre) / count(serviceinsight_service_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"HasActiveNode\"}) by (DataCentre)",
           "format": "time_series",
           "hide": false,
           "instant": false,
@@ -138,7 +138,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 6,
         "w": 6,
         "x": 6,
         "y": 1
@@ -169,28 +169,13 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(serviceinsight_datacentre_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",type=\"NumSvcClusterPrimary\"}) by (DataCentre) / sum(serviceinsight_datacentre_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",type=\"NumClusters\"}) by (DataCentre)",
+          "expr": "sum(serviceinsight_service_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"IsServicePrimary\"}) by (DataCentre) / count(serviceinsight_service_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"IsServicePrimary\"}) by (DataCentre)",
           "format": "time_series",
           "hide": false,
           "instant": false,
           "legendFormat": "{{DataCentre}}",
           "range": true,
           "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "serviceinsight_datacentre_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",type=\"NumClusterActive\"}",
-          "format": "table",
-          "hide": true,
-          "instant": true,
-          "legendFormat": "{{DataCentre}}-{{type}}",
-          "range": true,
-          "refId": "B"
         }
       ],
       "title": "Service Primary",
@@ -226,7 +211,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 6,
         "w": 6,
         "x": 12,
         "y": 1
@@ -257,28 +242,13 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(serviceinsight_datacentre_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",type=\"NumOSClusterPrimary\"}) by (DataCentre) / sum(serviceinsight_datacentre_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",type=\"NumClusters\"}) by (DataCentre)",
+          "expr": "sum(serviceinsight_service_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",HasOSCluster=\"1\",type=\"IsOSPrimary\"}) by (DataCentre) / count(serviceinsight_service_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",HasOSCluster=\"1\",type=\"IsOSPrimary\"}) by (DataCentre)",
           "format": "time_series",
           "hide": false,
           "instant": false,
-          "legendFormat": "{{DataCentre}}",
+          "legendFormat": "{{DataCentre}} {{ServiceType}}",
           "range": true,
           "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "serviceinsight_datacentre_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",type=\"NumClusterActive\"}",
-          "format": "table",
-          "hide": true,
-          "instant": true,
-          "legendFormat": "{{DataCentre}}-{{type}}",
-          "range": true,
-          "refId": "B"
         }
       ],
       "title": "OS Primary",
@@ -314,7 +284,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 6,
         "w": 6,
         "x": 18,
         "y": 1
@@ -345,28 +315,13 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(serviceinsight_datacentre_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",type=\"NumClusterUnknown\"}) by (DataCentre) / sum(serviceinsight_datacentre_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",type=\"NumClusters\"}) by (DataCentre)",
+          "expr": "sum(serviceinsight_service_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"IsUnknownStatus\"}) by (DataCentre) / count(serviceinsight_service_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"IsUnknownStatus\"}) by (DataCentre)",
           "format": "time_series",
           "hide": false,
           "instant": false,
           "legendFormat": "{{DataCentre}}",
           "range": true,
           "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "serviceinsight_datacentre_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",type=\"NumClusterActive\"}",
-          "format": "table",
-          "hide": true,
-          "instant": true,
-          "legendFormat": "{{DataCentre}}-{{type}}",
-          "range": true,
-          "refId": "B"
         }
       ],
       "title": "Service Unknown",
@@ -374,11 +329,24 @@
       "type": "bargauge"
     },
     {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "id": 31,
+      "panels": [],
+      "title": "Service Detail",
+      "type": "row"
+    },
+    {
       "datasource": {
         "type": "prometheus",
         "uid": "PAE45454D0EDB9216"
       },
-      "description": "Service Currently Running from this DC",
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -408,7 +376,7 @@
             "spanNulls": false,
             "stacking": {
               "group": "A",
-              "mode": "none"
+              "mode": "normal"
             },
             "thresholdsStyle": {
               "mode": "off"
@@ -435,9 +403,9 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 9
+        "y": 8
       },
-      "id": 25,
+      "id": 24,
       "options": {
         "legend": {
           "calcs": [
@@ -464,7 +432,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(serviceinsight_node_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",type=\"IsServicePrimary\",ServiceType=~\"$servicetype\"}) by (ServiceName,DataCentre) > 0",
+          "expr": "serviceinsight_service_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"HasActiveNode\"} > 0",
           "hide": false,
           "instant": false,
           "legendFormat": "{{DataCentre}}-{{ServiceName}}",
@@ -472,7 +440,7 @@
           "refId": "A"
         }
       ],
-      "title": "Primary Services",
+      "title": "Active Services",
       "transparent": true,
       "type": "timeseries"
     },
@@ -511,7 +479,7 @@
             "spanNulls": false,
             "stacking": {
               "group": "A",
-              "mode": "none"
+              "mode": "normal"
             },
             "thresholdsStyle": {
               "mode": "off"
@@ -538,7 +506,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 9
+        "y": 8
       },
       "id": 26,
       "options": {
@@ -567,11 +535,11 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(serviceinsight_node_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",type=\"IsOSPrimary\",ServiceType=~\"$servicetype\"}) by (ServiceName,DataCentre) > 0",
+          "expr": "serviceinsight_service_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",HasOSCluster=\"1\",type=\"IsOSPrimary\"}",
           "format": "time_series",
           "hide": false,
           "instant": false,
-          "legendFormat": "{{DataCentre}}-{{ServiceName}}",
+          "legendFormat": "{{DataCentre}} {{ServiceName}}",
           "range": true,
           "refId": "A"
         }
@@ -585,7 +553,7 @@
         "type": "prometheus",
         "uid": "PAE45454D0EDB9216"
       },
-      "description": "",
+      "description": "Service Currently Running from this DC",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -615,7 +583,7 @@
             "spanNulls": false,
             "stacking": {
               "group": "A",
-              "mode": "none"
+              "mode": "normal"
             },
             "thresholdsStyle": {
               "mode": "off"
@@ -642,9 +610,9 @@
         "h": 7,
         "w": 12,
         "x": 0,
-        "y": 16
+        "y": 15
       },
-      "id": 24,
+      "id": 25,
       "options": {
         "legend": {
           "calcs": [
@@ -671,15 +639,15 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(serviceinsight_node_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",type=\"IsActiveNode\",ServiceType=~\"$servicetype\"}) by (ServiceName,DataCentre) > 0",
+          "expr": "serviceinsight_service_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"IsServicePrimary\"} > 0",
           "hide": false,
           "instant": false,
-          "legendFormat": "{{DataCentre}}-{{ServiceName}}",
+          "legendFormat": "{{DataCentre}} {{ServiceName}}",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Active Services",
+      "title": "Primary Services",
       "transparent": true,
       "type": "timeseries"
     },
@@ -718,7 +686,7 @@
             "spanNulls": false,
             "stacking": {
               "group": "A",
-              "mode": "none"
+              "mode": "normal"
             },
             "thresholdsStyle": {
               "mode": "off"
@@ -745,7 +713,7 @@
         "h": 7,
         "w": 12,
         "x": 12,
-        "y": 16
+        "y": 15
       },
       "id": 27,
       "options": {
@@ -774,10 +742,10 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(serviceinsight_node_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",type=\"IsUnknownStatus\",ServiceType=~\"$servicetype\"}) by (ServiceName,DataCentre) > 0",
+          "expr": "serviceinsight_service_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"IsUnknownStatus\"} > 0",
           "hide": false,
           "instant": false,
-          "legendFormat": "{{DataCentre}}-{{ServiceName}}",
+          "legendFormat": "{{DataCentre}} {{ServiceName}}",
           "range": true,
           "refId": "A"
         }
