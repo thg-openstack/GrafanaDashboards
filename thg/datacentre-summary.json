@@ -1345,10 +1345,10 @@
           },
           "id": 41,
           "options": {
-            "displayMode": "lcd",
-            "minVizHeight": 10,
-            "minVizWidth": 0,
-            "orientation": "horizontal",
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "auto",
             "reduceOptions": {
               "calcs": [
                 "lastNotNull"
@@ -1356,8 +1356,7 @@
               "fields": "",
               "values": false
             },
-            "showUnfilled": true,
-            "valueMode": "color"
+            "textMode": "auto"
           },
           "pluginVersion": "9.5.2",
           "repeatDirection": "v",
@@ -1369,7 +1368,7 @@
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "sum(serviceinsight_service_status{IsMultiDC=\"0\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"IsStandalone\",IsClustered=\"0\"}) by (DataCentre)",
+              "expr": "count(serviceinsight_service_status{IsMultiDC=\"0\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"IsStandalone\",ClusterType=\"Standalone\"}) by (DataCentre)",
               "format": "time_series",
               "hide": false,
               "instant": false,
@@ -1380,7 +1379,7 @@
           ],
           "title": "Standalone Services",
           "transparent": true,
-          "type": "bargauge"
+          "type": "stat"
         }
       ],
       "title": "Single DC - Summary",
@@ -1401,53 +1400,48 @@
             "type": "prometheus",
             "uid": "PAE45454D0EDB9216"
           },
-          "description": "",
+          "description": "DB Services that are currently running from the DC selected",
           "fieldConfig": {
             "defaults": {
               "color": {
-                "mode": "palette-classic"
+                "mode": "thresholds"
               },
               "custom": {
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
+                "align": "auto",
+                "cellOptions": {
+                  "type": "color-text"
                 },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "normal"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
+                "inspect": false
               },
-              "mappings": [],
+              "mappings": [
+                {
+                  "options": {
+                    "0": {
+                      "index": 1,
+                      "text": "No"
+                    },
+                    "1": {
+                      "index": 0,
+                      "text": "Yes"
+                    }
+                  },
+                  "type": "value"
+                }
+              ],
               "thresholds": {
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
+                    "color": "text",
                     "value": null
                   },
                   {
                     "color": "red",
-                    "value": 80
+                    "value": 0
+                  },
+                  {
+                    "color": "green",
+                    "value": 1
                   }
                 ]
               }
@@ -1460,126 +1454,22 @@
             "x": 0,
             "y": 24
           },
-          "id": 34,
+          "id": 48,
           "options": {
-            "legend": {
-              "calcs": [
-                "lastNotNull",
-                "max"
-              ],
-              "displayMode": "table",
-              "placement": "right",
-              "showLegend": true,
-              "sortBy": "Max",
-              "sortDesc": true
+            "cellHeight": "sm",
+            "footer": {
+              "countRows": false,
+              "fields": "",
+              "reducer": [],
+              "show": false
             },
-            "tooltip": {
-              "mode": "multi",
-              "sort": "desc"
-            }
-          },
-          "pluginVersion": "9.5.2",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PAE45454D0EDB9216"
-              },
-              "editorMode": "code",
-              "exemplar": false,
-              "expr": "serviceinsight_service_status{IsMultiDC=\"0\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",IsClustered=\"1\",type=\"HasActiveNode\"} == 0",
-              "hide": false,
-              "instant": false,
-              "legendFormat": "{{ServiceName}}",
-              "range": true,
-              "refId": "A"
-            }
-          ],
-          "title": "Inactive Services",
-          "transparent": true,
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
-          },
-          "description": "WSFC Role running from this DC",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "normal"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
+            "showHeader": true,
+            "sortBy": [
+              {
+                "desc": false,
+                "displayName": "Node Active in DC"
               }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 12,
-            "x": 12,
-            "y": 24
-          },
-          "id": 36,
-          "options": {
-            "legend": {
-              "calcs": [
-                "lastNotNull",
-                "max"
-              ],
-              "displayMode": "table",
-              "placement": "right",
-              "showLegend": true,
-              "sortBy": "Max",
-              "sortDesc": true
-            },
-            "tooltip": {
-              "mode": "multi",
-              "sort": "desc"
-            }
+            ]
           },
           "pluginVersion": "9.5.2",
           "targets": [
@@ -1590,272 +1480,574 @@
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "serviceinsight_service_status{IsMultiDC=\"0\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",HasOSCluster=\"1\",type=\"IsOSPrimary\"}",
-              "format": "time_series",
+              "expr": "serviceinsight_service_status{IsMultiDC=\"0\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"HasActiveNode\"}",
+              "format": "table",
               "hide": false,
-              "instant": false,
-              "legendFormat": "{{ServiceName}}",
-              "range": true,
-              "refId": "A"
-            }
-          ],
-          "title": "OS Primary",
-          "transparent": true,
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
-          },
-          "description": "Single DC clusters that appear to be down?",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "normal"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 12,
-            "x": 0,
-            "y": 31
-          },
-          "id": 35,
-          "options": {
-            "legend": {
-              "calcs": [
-                "lastNotNull",
-                "max"
-              ],
-              "displayMode": "table",
-              "placement": "right",
-              "showLegend": true,
-              "sortBy": "Max",
-              "sortDesc": true
-            },
-            "tooltip": {
-              "mode": "multi",
-              "sort": "desc"
-            }
-          },
-          "pluginVersion": "9.5.2",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PAE45454D0EDB9216"
-              },
-              "editorMode": "code",
-              "exemplar": false,
-              "expr": "serviceinsight_service_status{IsMultiDC=\"0\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",IsClustered=\"1\",type=\"IsServicePrimary\"} == 0",
-              "hide": false,
-              "instant": false,
-              "legendFormat": "{{ServiceName}}",
-              "range": true,
-              "refId": "A"
-            }
-          ],
-          "title": "No Primary Node",
-          "transparent": true,
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
-          },
-          "description": "",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "normal"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 7,
-            "w": 12,
-            "x": 12,
-            "y": 31
-          },
-          "id": 40,
-          "options": {
-            "legend": {
-              "calcs": [
-                "lastNotNull",
-                "max"
-              ],
-              "displayMode": "table",
-              "placement": "right",
-              "showLegend": true,
-              "sortBy": "Max",
-              "sortDesc": true
-            },
-            "tooltip": {
-              "mode": "multi",
-              "sort": "desc"
-            }
-          },
-          "pluginVersion": "9.5.2",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PAE45454D0EDB9216"
-              },
-              "editorMode": "code",
-              "exemplar": false,
-              "expr": "serviceinsight_service_status{IsMultiDC=\"0\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"IsUnknownStatus\"} > 0",
-              "hide": false,
-              "instant": false,
+              "instant": true,
               "legendFormat": "{{DataCentre}} {{ServiceName}}",
-              "range": true,
+              "range": false,
               "refId": "A"
             }
           ],
-          "title": "Unknown Nodes",
-          "transparent": true,
-          "type": "timeseries"
+          "title": "DB Has an Active Node?",
+          "transformations": [
+            {
+              "id": "groupBy",
+              "options": {
+                "fields": {
+                  "ClusterType": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  },
+                  "DataCentre": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  },
+                  "ServiceName": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  },
+                  "ServiceType": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  },
+                  "Time": {
+                    "aggregations": [
+                      "lastNotNull"
+                    ],
+                    "operation": "aggregate"
+                  },
+                  "Value": {
+                    "aggregations": [
+                      "sum"
+                    ],
+                    "operation": "groupby"
+                  },
+                  "type": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  }
+                }
+              }
+            },
+            {
+              "id": "organize",
+              "options": {
+                "excludeByName": {
+                  "Time (lastNotNull)": true
+                },
+                "indexByName": {},
+                "renameByName": {
+                  "Value": "Node Active in DC",
+                  "type": ""
+                }
+              }
+            }
+          ],
+          "type": "table"
         },
         {
           "datasource": {
             "type": "prometheus",
             "uid": "PAE45454D0EDB9216"
           },
-          "description": "",
+          "description": "DB Services that are currently running from the DC selected",
           "fieldConfig": {
             "defaults": {
               "color": {
-                "mode": "palette-classic"
+                "mode": "thresholds"
               },
               "custom": {
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
+                "align": "auto",
+                "cellOptions": {
+                  "type": "color-text"
                 },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "normal"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
+                "filterable": false,
+                "inspect": false
               },
-              "mappings": [],
+              "mappings": [
+                {
+                  "options": {
+                    "0": {
+                      "index": 1,
+                      "text": "No"
+                    },
+                    "1": {
+                      "index": 0,
+                      "text": "Yes"
+                    }
+                  },
+                  "type": "value"
+                }
+              ],
               "thresholds": {
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green"
+                    "color": "text",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 0
+                  },
+                  {
+                    "color": "green",
+                    "value": 1
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 12,
+            "x": 12,
+            "y": 24
+          },
+          "id": 49,
+          "options": {
+            "cellHeight": "sm",
+            "footer": {
+              "countRows": false,
+              "enablePagination": false,
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": true,
+            "sortBy": [
+              {
+                "desc": false,
+                "displayName": "Service Primary"
+              }
+            ]
+          },
+          "pluginVersion": "9.5.2",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "PAE45454D0EDB9216"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "serviceinsight_service_status{IsMultiDC=\"0\",IsClustered=\"1\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"IsServicePrimary\"}",
+              "format": "table",
+              "hide": false,
+              "instant": true,
+              "legendFormat": "{{DataCentre}} {{ServiceName}}",
+              "range": false,
+              "refId": "A"
+            }
+          ],
+          "title": "DB Cluster is Running?",
+          "transformations": [
+            {
+              "id": "groupBy",
+              "options": {
+                "fields": {
+                  "ClusterType": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  },
+                  "DataCentre": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  },
+                  "ServiceName": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  },
+                  "ServiceType": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  },
+                  "Time": {
+                    "aggregations": [
+                      "lastNotNull"
+                    ],
+                    "operation": "aggregate"
+                  },
+                  "Value": {
+                    "aggregations": [
+                      "sum"
+                    ],
+                    "operation": "groupby"
+                  },
+                  "type": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  }
+                }
+              }
+            },
+            {
+              "id": "organize",
+              "options": {
+                "excludeByName": {
+                  "Time (lastNotNull)": true
+                },
+                "indexByName": {},
+                "renameByName": {
+                  "Value": "Service Primary",
+                  "type": ""
+                }
+              }
+            }
+          ],
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "description": "DB Services that are currently running from the DC selected",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "cellOptions": {
+                  "type": "color-text"
+                },
+                "inspect": false
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "0": {
+                      "index": 1,
+                      "text": "No"
+                    },
+                    "1": {
+                      "index": 0,
+                      "text": "Yes"
+                    }
+                  },
+                  "type": "value"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "text",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 0
+                  },
+                  {
+                    "color": "green",
+                    "value": 1
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 12,
+            "x": 0,
+            "y": 31
+          },
+          "id": 50,
+          "options": {
+            "cellHeight": "sm",
+            "footer": {
+              "countRows": false,
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": true,
+            "sortBy": [
+              {
+                "desc": true,
+                "displayName": "Node Active in DC"
+              }
+            ]
+          },
+          "pluginVersion": "9.5.2",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "PAE45454D0EDB9216"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "serviceinsight_service_status{IsMultiDC=\"0\",IsClustered=\"1\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",HasOSCluster=\"1\",type=\"IsOSPrimary\"}",
+              "format": "table",
+              "hide": false,
+              "instant": true,
+              "legendFormat": "{{DataCentre}} {{ServiceName}}",
+              "range": false,
+              "refId": "A"
+            }
+          ],
+          "title": "Where is the OS Cluster running from?",
+          "transformations": [
+            {
+              "id": "groupBy",
+              "options": {
+                "fields": {
+                  "ClusterType": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  },
+                  "DataCentre": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  },
+                  "ServiceName": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  },
+                  "ServiceType": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  },
+                  "Time": {
+                    "aggregations": [
+                      "lastNotNull"
+                    ],
+                    "operation": "aggregate"
+                  },
+                  "Value": {
+                    "aggregations": [
+                      "sum"
+                    ],
+                    "operation": "groupby"
+                  },
+                  "type": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  }
+                }
+              }
+            },
+            {
+              "id": "organize",
+              "options": {
+                "excludeByName": {
+                  "Time (lastNotNull)": true
+                },
+                "indexByName": {},
+                "renameByName": {
+                  "Value": "OS Cluster in DC",
+                  "type": ""
+                }
+              }
+            }
+          ],
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "description": "DB Services that are currently running from the DC selected",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "cellOptions": {
+                  "type": "color-text"
+                },
+                "inspect": false
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "0": {
+                      "index": 1,
+                      "text": "No"
+                    },
+                    "1": {
+                      "index": 0,
+                      "text": "Yes"
+                    }
+                  },
+                  "type": "value"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "text",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 0
+                  },
+                  {
+                    "color": "green",
+                    "value": 1
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 12,
+            "x": 12,
+            "y": 31
+          },
+          "id": 52,
+          "options": {
+            "cellHeight": "sm",
+            "footer": {
+              "countRows": false,
+              "fields": "",
+              "reducer": [
+                "sum"
+              ],
+              "show": false
+            },
+            "showHeader": true,
+            "sortBy": [
+              {
+                "desc": true,
+                "displayName": "Node Active in DC"
+              }
+            ]
+          },
+          "pluginVersion": "9.5.2",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "PAE45454D0EDB9216"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "serviceinsight_service_status{IsMultiDC=\"0\",IsClustered=\"1\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",HasOSCluster=\"1\",type=\"IsOSPrimary\"}",
+              "format": "table",
+              "hide": false,
+              "instant": true,
+              "legendFormat": "{{DataCentre}} {{ServiceName}}",
+              "range": false,
+              "refId": "A"
+            }
+          ],
+          "title": "Where is the OS Cluster running from?",
+          "transformations": [
+            {
+              "id": "groupBy",
+              "options": {
+                "fields": {
+                  "ClusterType": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  },
+                  "DataCentre": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  },
+                  "ServiceName": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  },
+                  "ServiceType": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  },
+                  "Time": {
+                    "aggregations": [
+                      "lastNotNull"
+                    ],
+                    "operation": "aggregate"
+                  },
+                  "Value": {
+                    "aggregations": [
+                      "sum"
+                    ],
+                    "operation": "groupby"
+                  },
+                  "type": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  }
+                }
+              }
+            },
+            {
+              "id": "organize",
+              "options": {
+                "excludeByName": {
+                  "Time (lastNotNull)": true
+                },
+                "indexByName": {},
+                "renameByName": {
+                  "Value": "OS Cluster in DC",
+                  "type": ""
+                }
+              }
+            }
+          ],
+          "type": "table"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "description": "List of All Services",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "cellOptions": {
+                  "type": "auto"
+                },
+                "inspect": false
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "0": {
+                      "color": "red",
+                      "index": 0,
+                      "text": "No"
+                    },
+                    "1": {
+                      "color": "green",
+                      "index": 1,
+                      "text": "Yes"
+                    }
+                  },
+                  "type": "value"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
                   },
                   {
                     "color": "red",
@@ -1867,28 +2059,29 @@
             "overrides": []
           },
           "gridPos": {
-            "h": 13,
+            "h": 15,
             "w": 24,
             "x": 0,
             "y": 38
           },
-          "id": 43,
+          "id": 51,
           "options": {
-            "legend": {
-              "calcs": [
-                "lastNotNull",
-                "max"
+            "cellHeight": "sm",
+            "footer": {
+              "countRows": false,
+              "fields": "",
+              "reducer": [
+                "sum"
               ],
-              "displayMode": "table",
-              "placement": "right",
-              "showLegend": true,
-              "sortBy": "Max",
-              "sortDesc": true
+              "show": false
             },
-            "tooltip": {
-              "mode": "multi",
-              "sort": "desc"
-            }
+            "showHeader": true,
+            "sortBy": [
+              {
+                "desc": false,
+                "displayName": "ServiceName"
+              }
+            ]
           },
           "pluginVersion": "9.5.2",
           "targets": [
@@ -1899,17 +2092,80 @@
               },
               "editorMode": "code",
               "exemplar": false,
-              "expr": "serviceinsight_service_status{IsMultiDC=\"0\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",IsClustered=\"0\",type=\"IsStandalone\"}",
+              "expr": "serviceinsight_service_status{DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"HoursSinceLastVerified\"}",
+              "format": "table",
               "hide": false,
-              "instant": false,
-              "legendFormat": "{{DataCentre}} {{ServiceType}} {{ServiceName}}",
-              "range": true,
+              "instant": true,
+              "legendFormat": "{{DataCentre}} {{ServiceName}}",
+              "range": false,
               "refId": "A"
             }
           ],
-          "title": "Standalone Nodes",
-          "transparent": true,
-          "type": "timeseries"
+          "title": "All Services (Clustered/Standalone)",
+          "transformations": [
+            {
+              "id": "groupBy",
+              "options": {
+                "fields": {
+                  "ClusterType": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  },
+                  "DataCentre": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  },
+                  "HasOSCluster": {
+                    "aggregations": []
+                  },
+                  "IsMultiDC": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  },
+                  "ServiceName": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  },
+                  "ServiceType": {
+                    "aggregations": [],
+                    "operation": "groupby"
+                  },
+                  "Time": {
+                    "aggregations": [
+                      "lastNotNull"
+                    ],
+                    "operation": "aggregate"
+                  },
+                  "Value": {
+                    "aggregations": [
+                      "sum"
+                    ],
+                    "operation": "groupby"
+                  },
+                  "type": {
+                    "aggregations": []
+                  }
+                }
+              }
+            },
+            {
+              "id": "organize",
+              "options": {
+                "excludeByName": {
+                  "Time (lastNotNull)": true,
+                  "Value": true
+                },
+                "indexByName": {},
+                "renameByName": {
+                  "IsMultiDC": "",
+                  "ServiceType": "",
+                  "Value": "Hours Since Last Checked",
+                  "type": ""
+                }
+              }
+            }
+          ],
+          "type": "table"
         }
       ],
       "title": "Single DC - Service Detail",
@@ -1931,7 +2187,7 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": [
             "All"
           ],
@@ -1962,7 +2218,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": [
             "All"
           ],
@@ -2012,6 +2268,6 @@
   "timezone": "",
   "title": "DataCentre Summary",
   "uid": "f5a8025f-0cb7-4931-a6f4-c6b1e1c21734",
-  "version": 4,
+  "version": 5,
   "weekStart": ""
 }
