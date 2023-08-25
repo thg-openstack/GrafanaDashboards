@@ -24,7 +24,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 41,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -86,7 +85,9 @@
         "alertName": "CockroachDB",
         "dashboardAlerts": false,
         "datasource": "Mimir",
-        "groupBy": ["instance"],
+        "groupBy": [
+          "instance"
+        ],
         "groupMode": "custom",
         "maxItems": 100,
         "sortOrder": 3,
@@ -643,7 +644,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -1078,7 +1081,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -1121,7 +1126,10 @@
         "showRecentlyViewed": false,
         "showSearch": true,
         "showStarred": false,
-        "tags": ["CockroachDB", "Retail"]
+        "tags": [
+          "CockroachDB",
+          "Retail"
+        ]
       },
       "pluginVersion": "9.5.2",
       "title": "CockroachDB Dashboards",
@@ -1559,7 +1567,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -1652,7 +1662,11 @@
       "links": [],
       "options": {
         "legend": {
-          "calcs": ["mean", "lastNotNull", "max"],
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max"
+          ],
           "displayMode": "list",
           "placement": "bottom",
           "showLegend": false
@@ -1815,6 +1829,8 @@
             }
           },
           "mappings": [],
+          "max": 1,
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1828,7 +1844,7 @@
               }
             ]
           },
-          "unit": "percent"
+          "unit": "percentunit"
         },
         "overrides": [
           {
@@ -1903,42 +1919,14 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "max(avg(label_replace(rate(process_cpu_seconds_total{job=\"postgresql\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]) * 10000, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre)",
+          "expr": "max(max(label_replace(label_replace((sum by(instance) (irate(node_cpu_seconds_total{mode!=\"idle\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total[$__rate_interval])))), \"node_name\", \"$1\", \"instance\", \"^([^:]+):.*$\") * on(node_name) group_left(cluster) label_replace(patroni_master{job=\"postgresql\"}, \"node_name\", \"$1\", \"instance\", \"^([^:]+):.*$\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre,cluster)) by (datacentre)",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "{{datacentre}} max",
           "range": true,
           "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
-          },
-          "editorMode": "code",
-          "expr": "max(avg(label_replace(rate(process_cpu_seconds_total{job=\"postgresql\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]) * 10000, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre) + stddev(avg(label_replace(rate(process_cpu_seconds_total{job=\"postgresql\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]) * 10000, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "{{datacentre}}_max",
-          "range": true,
-          "refId": "B"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "max(avg(label_replace(rate(process_cpu_seconds_total{job=\"postgresql\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]) * 10000, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre) - stddev(avg(label_replace(rate(process_cpu_seconds_total{job=\"postgresql\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]) * 10000, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre)",
-          "format": "time_series",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "{{datacentre}}_min",
-          "range": true,
-          "refId": "C"
         }
       ],
-      "title": "CPU Usage",
+      "title": "Max CPU Usage",
       "type": "timeseries"
     },
     {
@@ -1977,7 +1965,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -2020,7 +2010,10 @@
         "showRecentlyViewed": false,
         "showSearch": true,
         "showStarred": false,
-        "tags": ["Retail", "Postgres"]
+        "tags": [
+          "Retail",
+          "Postgres"
+        ]
       },
       "pluginVersion": "9.5.2",
       "title": "Postgres Dashboards",
@@ -2096,7 +2089,11 @@
       "links": [],
       "options": {
         "legend": {
-          "calcs": ["mean", "lastNotNull", "max"],
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max"
+          ],
           "displayMode": "list",
           "placement": "bottom",
           "showLegend": false
@@ -2197,7 +2194,12 @@
       "links": [],
       "options": {
         "legend": {
-          "calcs": ["mean", "lastNotNull", "max", "min"],
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max",
+            "min"
+          ],
           "displayMode": "table",
           "placement": "bottom",
           "showLegend": false,
@@ -2290,7 +2292,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -2701,7 +2705,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -2744,7 +2750,10 @@
         "showRecentlyViewed": false,
         "showSearch": true,
         "showStarred": false,
-        "tags": ["Retail", "Couchbase"]
+        "tags": [
+          "Retail",
+          "Couchbase"
+        ]
       },
       "pluginVersion": "9.5.2",
       "title": "Couchbase Dashboards",
@@ -2898,7 +2907,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -2983,7 +2994,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -3303,8 +3316,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -3324,7 +3336,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -3368,7 +3382,10 @@
         "showRecentlyViewed": false,
         "showSearch": true,
         "showStarred": false,
-        "tags": ["MSSQL", "Retail"]
+        "tags": [
+          "MSSQL",
+          "Retail"
+        ]
       },
       "pluginVersion": "9.5.2",
       "title": "MSSQL Dashboards",
@@ -3419,8 +3436,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -3512,8 +3528,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -3600,8 +3615,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -3621,7 +3635,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -3689,8 +3705,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -3783,8 +3798,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -3876,8 +3890,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -3970,8 +3983,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -4034,8 +4046,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -4055,7 +4066,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -4093,8 +4106,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -4114,7 +4126,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -4152,8 +4166,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -4173,7 +4186,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -4211,8 +4226,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -4232,7 +4246,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -4300,8 +4316,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -4394,8 +4409,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -4488,8 +4502,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -4582,8 +4595,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -4651,7 +4663,10 @@
         "showRecentlyViewed": false,
         "showSearch": true,
         "showStarred": false,
-        "tags": ["Retail", "Linux"]
+        "tags": [
+          "Retail",
+          "Linux"
+        ]
       },
       "pluginVersion": "9.5.2",
       "title": "Linux Dashboards",
@@ -4697,8 +4712,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -4718,7 +4732,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -4786,8 +4802,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -4880,8 +4895,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -4974,8 +4988,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -5038,8 +5051,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -5059,7 +5071,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -5097,8 +5111,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -5118,7 +5131,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -5156,8 +5171,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -5177,7 +5191,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -5215,8 +5231,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -5236,7 +5251,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -5304,8 +5321,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -5398,8 +5414,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -5492,8 +5507,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -5556,8 +5570,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -5577,7 +5590,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -5615,8 +5630,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -5636,7 +5650,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -5679,7 +5695,10 @@
         "showRecentlyViewed": false,
         "showSearch": true,
         "showStarred": false,
-        "tags": ["Retail", "Windows"]
+        "tags": [
+          "Retail",
+          "Windows"
+        ]
       },
       "pluginVersion": "9.5.2",
       "title": "Windows Dashboards",
@@ -5755,7 +5774,9 @@
             "justifyMode": "auto",
             "orientation": "auto",
             "reduceOptions": {
-              "calcs": ["lastNotNull"],
+              "calcs": [
+                "lastNotNull"
+              ],
               "fields": "",
               "values": false
             },
@@ -6181,7 +6202,9 @@
             "justifyMode": "auto",
             "orientation": "auto",
             "reduceOptions": {
-              "calcs": ["lastNotNull"],
+              "calcs": [
+                "lastNotNull"
+              ],
               "fields": "",
               "values": false
             },
@@ -6224,7 +6247,10 @@
             "showRecentlyViewed": false,
             "showSearch": true,
             "showStarred": false,
-            "tags": ["CockroachDB", "Kubernetes"]
+            "tags": [
+              "CockroachDB",
+              "Kubernetes"
+            ]
           },
           "pluginVersion": "9.5.2",
           "title": "CockroachDB Dashboards",
@@ -6666,7 +6692,9 @@
             "justifyMode": "auto",
             "orientation": "auto",
             "reduceOptions": {
-              "calcs": ["lastNotNull"],
+              "calcs": [
+                "lastNotNull"
+              ],
               "fields": "",
               "values": false
             },
@@ -7017,7 +7045,9 @@
             "justifyMode": "auto",
             "orientation": "auto",
             "reduceOptions": {
-              "calcs": ["lastNotNull"],
+              "calcs": [
+                "lastNotNull"
+              ],
               "fields": "",
               "values": false
             },
@@ -7060,7 +7090,10 @@
             "showRecentlyViewed": false,
             "showSearch": true,
             "showStarred": false,
-            "tags": ["Kubernetes", "Postgres"]
+            "tags": [
+              "Kubernetes",
+              "Postgres"
+            ]
           },
           "pluginVersion": "9.5.2",
           "title": "Postgres Dashboards",
@@ -7178,13 +7211,13 @@
     "list": []
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "THG - Central",
   "uid": "thg-central",
-  "version": 3,
+  "version": 1,
   "weekStart": ""
 }

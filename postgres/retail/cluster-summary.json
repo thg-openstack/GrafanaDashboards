@@ -14,7 +14,9 @@
         "target": {
           "limit": 100,
           "matchAny": false,
-          "tags": ["cluster=$cluster"],
+          "tags": [
+            "cluster=$cluster"
+          ],
           "type": "tags"
         },
         "type": "dashboard"
@@ -118,7 +120,11 @@
       "links": [],
       "options": {
         "legend": {
-          "calcs": ["mean", "lastNotNull", "max"],
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max"
+          ],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
@@ -232,10 +238,17 @@
       "links": [],
       "options": {
         "legend": {
-          "calcs": ["mean", "lastNotNull", "max", "min"],
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max",
+            "min"
+          ],
           "displayMode": "table",
           "placement": "right",
-          "showLegend": true
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
         },
         "tooltip": {
           "mode": "multi",
@@ -250,26 +263,14 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "max(label_replace(label_replace(rate(process_cpu_seconds_total{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]) *1000 / on() group_left() max(pg_settings_max_worker_processes{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}), \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster,datacentre)",
+          "expr": "max(label_replace((sum by(instance) (irate(node_cpu_seconds_total{mode!=\"idle\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total[$__rate_interval])))), \"node_name\", \"$1\", \"instance\", \"^([^:]+):.*$\") * on(node_name) group_left(cluster) label_replace(patroni_master{job=\"postgresql\"}, \"node_name\", \"$1\", \"instance\", \"^([^:]+):.*$\")) by (cluster)",
           "interval": "",
-          "legendFormat": "{{datacentre}}-{{cluster}}",
+          "legendFormat": "{{cluster}}",
           "range": true,
           "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
-          },
-          "editorMode": "code",
-          "expr": "sum(label_replace(label_replace(irate(pg_stat_database_xact_commit{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]) !=0, \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster, datacentre)",
-          "hide": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "B"
         }
       ],
-      "title": "Average CPU Usage",
+      "title": "CPU Usage",
       "transformations": [],
       "type": "timeseries"
     },
@@ -343,7 +344,12 @@
       "links": [],
       "options": {
         "legend": {
-          "calcs": ["mean", "lastNotNull", "max", "min"],
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max",
+            "min"
+          ],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
@@ -368,30 +374,6 @@
           "legendFormat": "{{datacentre}}-{{cluster}}",
           "range": true,
           "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
-          },
-          "editorMode": "code",
-          "expr": "label_replace(rate(process_virtual_memory_bytes{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]), \"node\", \"$1\", \"instance\", \"(.*?):.*\")",
-          "hide": false,
-          "legendFormat": "{{node}} Virtual Mem",
-          "range": true,
-          "refId": "B"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
-          },
-          "editorMode": "code",
-          "expr": "sum(label_replace(label_replace(irate(pg_stat_database_xact_commit{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]) !=0, \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster, datacentre)",
-          "hide": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "C"
         }
       ],
       "title": "Average Memory Usage",
@@ -467,7 +449,12 @@
       "links": [],
       "options": {
         "legend": {
-          "calcs": ["mean", "lastNotNull", "max", "min"],
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max",
+            "min"
+          ],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
@@ -492,18 +479,6 @@
           "legendFormat": "{{datacentre}}-{{cluster}}",
           "range": true,
           "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
-          },
-          "editorMode": "code",
-          "expr": "sum(label_replace(label_replace(irate(pg_stat_database_xact_commit{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]) !=0, \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster, datacentre)",
-          "hide": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "B"
         }
       ],
       "title": "Replication WAL Latency",
@@ -512,16 +487,23 @@
   ],
   "refresh": "",
   "revision": 1,
-  "schemaVersion": 37,
+  "schemaVersion": 38,
   "style": "dark",
-  "tags": ["Postgres", "Retail"],
+  "tags": [
+    "Postgres",
+    "Retail"
+  ],
   "templating": {
     "list": [
       {
         "current": {
           "selected": true,
-          "text": ["All"],
-          "value": ["$__all"]
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": {
           "type": "prometheus",
@@ -550,8 +532,12 @@
       {
         "current": {
           "selected": true,
-          "text": ["All"],
-          "value": ["$__all"]
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": {
           "type": "prometheus",
@@ -581,8 +567,27 @@
     "to": "now"
   },
   "timepicker": {
-    "refresh_intervals": ["30s", "1m", "5m", "15m", "30m", "1h", "2h", "1d"],
-    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
+    "refresh_intervals": [
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
   },
   "timezone": "",
   "title": "Retail - PostgreSQL: Cluster Summary",
