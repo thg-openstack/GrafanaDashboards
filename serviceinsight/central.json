@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 6,
+  "id": 54,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -83,7 +83,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -143,7 +143,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -203,7 +203,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -263,7 +263,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -323,7 +323,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -518,7 +518,7 @@
           "editorMode": "code",
           "expr": "sum(rate(gin_uri_request_total{job=\"serviceinsight\",code!=\"200\",instance=~\"$instance\"}[15m])) by (uri,code)",
           "hide": false,
-          "instant": true,
+          "instant": false,
           "key": "Q-9c975f59-e7d0-45ae-87ed-35f55dc5a004-1",
           "legendFormat": "{{uri}}-{{code}}",
           "range": true,
@@ -1053,8 +1053,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1146,8 +1145,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1239,8 +1237,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1332,8 +1329,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1425,8 +1421,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1518,8 +1513,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1567,7 +1561,8 @@
       "type": "timeseries"
     }
   ],
-  "schemaVersion": 37,
+  "refresh": "",
+  "schemaVersion": 38,
   "style": "dark",
   "tags": ["Retail", "ServiceInsight"],
   "templating": {
@@ -1608,6 +1603,6 @@
   "timezone": "",
   "title": "Retail - Service Insight: Central",
   "uid": "retail-service-insight-central",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }
