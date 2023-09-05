@@ -24,7 +24,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 60,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -516,9 +515,9 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(gin_uri_request_total{job=\"servicewhisper\",code!=\"200\",instance=~\"$instance\"}[15m])) by (uri,code)",
+          "expr": "sum(rate(gin_uri_request_total{job=\"servicewhisper\",code!=\"200\",instance=~\"$instance\"}[15m])) by (uri,code) != 0",
           "hide": false,
-          "instant": true,
+          "instant": false,
           "key": "Q-9c975f59-e7d0-45ae-87ed-35f55dc5a004-1",
           "legendFormat": "{{uri}}-{{code}}",
           "range": true,
@@ -613,7 +612,7 @@
           },
           "editorMode": "code",
           "expr": "sum(rate(gin_request_body_total{job=\"servicewhisper\",instance=~\"$instance\"}[15m]))",
-          "legendFormat": "{{instance}}",
+          "legendFormat": "rx",
           "range": true,
           "refId": "A"
         }
@@ -706,7 +705,7 @@
           },
           "editorMode": "code",
           "expr": "sum(rate(gin_response_body_total{job=\"servicewhisper\",instance=~\"$instance\"}[15m]))",
-          "legendFormat": "{{instance}}",
+          "legendFormat": "tx",
           "range": true,
           "refId": "A"
         }
@@ -798,7 +797,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(rate(gin_request_duration_sum{job=\"servicewhisper\",instance=~\"$instance\"}[15m])) by (uri)",
+          "expr": "avg(rate(gin_request_duration_sum{job=\"servicewhisper\",instance=~\"$instance\", uri=~\"/.+\"}[15m])) by (uri)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -893,7 +892,7 @@
           "calcs": ["mean", "max"],
           "displayMode": "table",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -908,7 +907,7 @@
           },
           "editorMode": "code",
           "expr": "sum(go_memstats_alloc_bytes{job=\"servicewhisper\",instance=~\"$instance\"})",
-          "legendFormat": "{{instance}}",
+          "legendFormat": "Memory Allocated",
           "range": true,
           "refId": "A"
         }
@@ -985,7 +984,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -1000,7 +999,7 @@
           },
           "editorMode": "code",
           "expr": "sum(process_open_fds{job=\"servicewhisper\",instance=~\"$instance\"})",
-          "legendFormat": "__auto",
+          "legendFormat": "Open File Descriptors",
           "range": true,
           "refId": "A"
         }
@@ -1077,7 +1076,7 @@
           "calcs": ["mean", "max"],
           "displayMode": "table",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -1093,7 +1092,7 @@
           },
           "editorMode": "code",
           "expr": "sum(go_goroutines{job=\"servicewhisper\",instance=~\"$instance\"})",
-          "legendFormat": "{{instance}}",
+          "legendFormat": "Go Routines",
           "range": true,
           "refId": "A"
         }
@@ -1171,7 +1170,7 @@
           "calcs": ["mean", "max"],
           "displayMode": "table",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -1186,7 +1185,7 @@
           },
           "editorMode": "code",
           "expr": "sum(go_gc_duration_seconds{job=\"servicewhisper\",quantile=\"1\",instance=~\"$instance\"})",
-          "legendFormat": "{{instance}}",
+          "legendFormat": "GC 99th Percentile",
           "range": true,
           "refId": "A"
         }
@@ -1263,7 +1262,7 @@
           "calcs": ["mean", "max"],
           "displayMode": "table",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -1279,7 +1278,7 @@
           },
           "editorMode": "code",
           "expr": "sum(go_threads{job=\"servicewhisper\",instance=~\"$instance\"})",
-          "legendFormat": "{{instance}}",
+          "legendFormat": "Go Threads",
           "range": true,
           "refId": "A"
         }
@@ -1357,7 +1356,7 @@
           "calcs": ["mean", "max"],
           "displayMode": "table",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -1372,7 +1371,7 @@
           },
           "editorMode": "code",
           "expr": "sum(go_gc_duration_seconds{job=\"servicewhisper\",quantile=\"0.75\",instance=~\"$instance\"})",
-          "legendFormat": "{{instance}}",
+          "legendFormat": "GC 75th Percentile",
           "range": true,
           "refId": "A"
         }
@@ -1450,7 +1449,7 @@
           "calcs": ["mean", "max"],
           "displayMode": "table",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -1465,7 +1464,7 @@
           },
           "editorMode": "code",
           "expr": "sum(rate(process_cpu_seconds_total{job=\"servicewhisper\",instance=~\"$instance\"}[15m]))",
-          "legendFormat": "{{instance}}",
+          "legendFormat": "CPU Seconds",
           "range": true,
           "refId": "A"
         }
@@ -1543,7 +1542,7 @@
           "calcs": ["mean", "max"],
           "displayMode": "table",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -1558,7 +1557,7 @@
           },
           "editorMode": "code",
           "expr": "sum(go_gc_duration_seconds{job=\"servicewhisper\",quantile=\"0.5\",instance=~\"$instance\"})",
-          "legendFormat": "{{instance}}",
+          "legendFormat": "GC 50th Percentile",
           "range": true,
           "refId": "A"
         }
@@ -1609,6 +1608,6 @@
   "timezone": "",
   "title": "Retail - Service Whisper: Central",
   "uid": "retail-service-whisper-central",
-  "version": 4,
+  "version": 2,
   "weekStart": ""
 }
