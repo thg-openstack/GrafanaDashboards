@@ -98,9 +98,9 @@
           "expr": "sum(serviceinsight_service_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"HasActiveNode\"}) by (DataCentre) / count(serviceinsight_service_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"HasActiveNode\"}) by (DataCentre)",
           "format": "time_series",
           "hide": false,
-          "instant": false,
+          "instant": true,
           "legendFormat": "{{DataCentre}}",
-          "range": true,
+          "range": false,
           "refId": "A"
         }
       ],
@@ -172,9 +172,9 @@
           "expr": "sum(serviceinsight_service_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"IsServicePrimary\",IsClustered=\"1\",ClusterType=\"Primary-Passive\"}) by (DataCentre) / count(serviceinsight_service_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"IsServicePrimary\",IsClustered=\"1\",ClusterType=\"Primary-Passive\"}) by (DataCentre)",
           "format": "time_series",
           "hide": false,
-          "instant": false,
+          "instant": true,
           "legendFormat": "{{DataCentre}}",
-          "range": true,
+          "range": false,
           "refId": "A"
         }
       ],
@@ -246,9 +246,9 @@
           "expr": "sum(serviceinsight_service_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"IsServicePrimary\",IsClustered=\"1\",ClusterType=\"Active-Active\"}) by (DataCentre) / count(serviceinsight_service_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"IsServicePrimary\",IsClustered=\"1\",ClusterType=\"Active-Active\"}) by (DataCentre)",
           "format": "time_series",
           "hide": false,
-          "instant": false,
+          "instant": true,
           "legendFormat": "{{DataCentre}}",
-          "range": true,
+          "range": false,
           "refId": "A"
         }
       ],
@@ -319,9 +319,9 @@
           "expr": "sum(serviceinsight_service_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",HasOSCluster=\"1\",type=\"IsOSPrimary\"}) by (DataCentre) / count(serviceinsight_service_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",HasOSCluster=\"1\",type=\"IsOSPrimary\"}) by (DataCentre)",
           "format": "time_series",
           "hide": false,
-          "instant": false,
+          "instant": true,
           "legendFormat": "{{DataCentre}} {{ServiceType}}",
-          "range": true,
+          "range": false,
           "refId": "A"
         }
       ],
@@ -392,9 +392,9 @@
           "expr": "sum(serviceinsight_service_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"IsUnknownStatus\"}) by (DataCentre) / count(serviceinsight_service_status{IsMultiDC=\"1\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"IsUnknownStatus\"}) by (DataCentre)",
           "format": "time_series",
           "hide": false,
-          "instant": false,
+          "instant": true,
           "legendFormat": "{{DataCentre}}",
-          "range": true,
+          "range": false,
           "refId": "A"
         }
       ],
@@ -792,7 +792,7 @@
             "sortBy": [
               {
                 "desc": true,
-                "displayName": "Node Active in DC"
+                "displayName": "OS Cluster in DC"
               }
             ]
           },
@@ -1086,9 +1086,9 @@
           "expr": "sum(serviceinsight_service_status{IsMultiDC=\"0\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"HasActiveNode\"}) by (DataCentre) / count(serviceinsight_service_status{IsMultiDC=\"0\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"HasActiveNode\"}) by (DataCentre)",
           "format": "time_series",
           "hide": false,
-          "instant": false,
+          "instant": true,
           "legendFormat": "{{DataCentre}}",
-          "range": true,
+          "range": false,
           "refId": "A"
         }
       ],
@@ -1160,9 +1160,9 @@
           "expr": "sum(serviceinsight_service_status{IsMultiDC=\"0\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",IsClustered=\"1\",type=\"IsServicePrimary\"}) by (DataCentre) / count(serviceinsight_service_status{IsMultiDC=\"0\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",IsClustered=\"1\",type=\"IsServicePrimary\"}) by (DataCentre)",
           "format": "time_series",
           "hide": false,
-          "instant": false,
+          "instant": true,
           "legendFormat": "{{DataCentre}}",
-          "range": true,
+          "range": false,
           "refId": "A"
         }
       ],
@@ -1233,9 +1233,9 @@
           "expr": "sum(serviceinsight_service_status{IsMultiDC=\"0\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",HasOSCluster=\"1\",type=\"IsOSPrimary\"}) by (DataCentre) / count(serviceinsight_service_status{IsMultiDC=\"0\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",HasOSCluster=\"1\",type=\"IsOSPrimary\"}) by (DataCentre)",
           "format": "time_series",
           "hide": false,
-          "instant": false,
+          "instant": true,
           "legendFormat": "{{DataCentre}} {{ServiceType}}",
-          "range": true,
+          "range": false,
           "refId": "A"
         }
       ],
@@ -1303,9 +1303,9 @@
           "expr": "sum(serviceinsight_service_status{IsMultiDC=\"0\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"IsUnknownStatus\"}) by (DataCentre)",
           "format": "time_series",
           "hide": false,
-          "instant": false,
+          "instant": true,
           "legendFormat": "{{DataCentre}}",
-          "range": true,
+          "range": false,
           "refId": "A"
         }
       ],
@@ -1374,9 +1374,9 @@
           "expr": "count(serviceinsight_service_status{IsMultiDC=\"0\",DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"IsStandalone\",ClusterType=\"Standalone\"}) by (DataCentre)",
           "format": "time_series",
           "hide": false,
-          "instant": false,
+          "instant": true,
           "legendFormat": "{{DataCentre}}",
-          "range": true,
+          "range": false,
           "refId": "A"
         }
       ],
@@ -2019,165 +2019,188 @@
             }
           ],
           "type": "table"
+        }
+      ],
+      "title": "Single DC - Service Detail",
+      "type": "row"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 16
+      },
+      "id": 53,
+      "panels": [],
+      "title": "List of All Services",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PAE45454D0EDB9216"
+      },
+      "description": "List of All Services",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": true,
+            "inspect": false
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "red",
+                  "index": 0,
+                  "text": "No"
+                },
+                "1": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "Yes"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
         },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 24,
+        "x": 0,
+        "y": 17
+      },
+      "id": 51,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Service Primary"
+          }
+        ]
+      },
+      "pluginVersion": "9.5.2",
+      "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "PAE45454D0EDB9216"
           },
-          "description": "List of All Services",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "thresholds"
-              },
-              "custom": {
-                "align": "auto",
-                "cellOptions": {
-                  "type": "auto"
-                },
-                "inspect": false
-              },
-              "mappings": [
-                {
-                  "options": {
-                    "0": {
-                      "color": "red",
-                      "index": 0,
-                      "text": "No"
-                    },
-                    "1": {
-                      "color": "green",
-                      "index": 1,
-                      "text": "Yes"
-                    }
-                  },
-                  "type": "value"
-                }
-              ],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": null
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 15,
-            "w": 24,
-            "x": 0,
-            "y": 30
-          },
-          "id": 51,
-          "options": {
-            "cellHeight": "sm",
-            "footer": {
-              "countRows": false,
-              "fields": "",
-              "reducer": [
-                "sum"
-              ],
-              "show": false
-            },
-            "showHeader": true,
-            "sortBy": []
-          },
-          "pluginVersion": "9.5.2",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "PAE45454D0EDB9216"
-              },
-              "editorMode": "code",
-              "exemplar": false,
-              "expr": "serviceinsight_service_status{DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"HoursSinceLastVerified\"}",
-              "format": "table",
-              "hide": false,
-              "instant": true,
-              "legendFormat": "{{DataCentre}} {{ServiceName}}",
-              "range": false,
-              "refId": "A"
-            }
-          ],
-          "title": "All Services (Clustered/Standalone)",
-          "transformations": [
-            {
-              "id": "groupBy",
-              "options": {
-                "fields": {
-                  "ClusterType": {
-                    "aggregations": [],
-                    "operation": "groupby"
-                  },
-                  "DataCentre": {
-                    "aggregations": [],
-                    "operation": "groupby"
-                  },
-                  "HasOSCluster": {
-                    "aggregations": []
-                  },
-                  "IsMultiDC": {
-                    "aggregations": [],
-                    "operation": "groupby"
-                  },
-                  "ServiceName": {
-                    "aggregations": [],
-                    "operation": "groupby"
-                  },
-                  "ServiceType": {
-                    "aggregations": [],
-                    "operation": "groupby"
-                  },
-                  "Time": {
-                    "aggregations": [
-                      "lastNotNull"
-                    ],
-                    "operation": "aggregate"
-                  },
-                  "Value": {
-                    "aggregations": [
-                      "sum"
-                    ],
-                    "operation": "groupby"
-                  },
-                  "type": {
-                    "aggregations": []
-                  }
-                }
-              }
-            },
-            {
-              "id": "organize",
-              "options": {
-                "excludeByName": {
-                  "Time (lastNotNull)": true,
-                  "Value": true
-                },
-                "indexByName": {},
-                "renameByName": {
-                  "IsMultiDC": "",
-                  "ServiceType": "",
-                  "Value": "Hours Since Last Checked",
-                  "type": ""
-                }
-              }
-            }
-          ],
-          "type": "table"
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "serviceinsight_service_status{DataCentre=~\"$datacentre\",ServiceType=~\"$servicetype\",type=\"IsServicePrimary\"}",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "{{DataCentre}} {{ServiceName}}",
+          "range": false,
+          "refId": "A"
         }
       ],
-      "title": "Single DC - Service Detail",
-      "type": "row"
+      "title": "All Services (Clustered/Standalone)",
+      "transformations": [
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "ClusterType": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "DataCentre": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "HasOSCluster": {
+                "aggregations": []
+              },
+              "IsClustered": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "IsMultiDC": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "ServiceName": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "ServiceType": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Time": {
+                "aggregations": [
+                  "lastNotNull"
+                ],
+                "operation": "aggregate"
+              },
+              "Value": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "groupby"
+              },
+              "type": {
+                "aggregations": []
+              }
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time (lastNotNull)": true,
+              "Value": false
+            },
+            "indexByName": {},
+            "renameByName": {
+              "IsMultiDC": "",
+              "ServiceType": "",
+              "Value": "Service Primary",
+              "type": ""
+            }
+          }
+        }
+      ],
+      "type": "table"
     }
   ],
   "refresh": "15m",
@@ -2276,6 +2299,6 @@
   "timezone": "",
   "title": "DataCentre Summary",
   "uid": "f5a8025f-0cb7-4931-a6f4-c6b1e1c21734",
-  "version": 6,
+  "version": 7,
   "weekStart": ""
 }

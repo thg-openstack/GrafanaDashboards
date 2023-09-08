@@ -252,7 +252,7 @@
         },
         "tooltip": {
           "mode": "multi",
-          "sort": "none"
+          "sort": "desc"
         }
       },
       "pluginVersion": "9.2.5",
@@ -263,7 +263,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "max(label_replace((sum by(instance) (irate(node_cpu_seconds_total{mode!=\"idle\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total[$__rate_interval])))), \"node_name\", \"$1\", \"instance\", \"^([^:]+):.*$\") * on(node_name) group_left(cluster) label_replace(patroni_master{job=\"postgresql\"}, \"node_name\", \"$1\", \"instance\", \"^([^:]+):.*$\")) by (cluster)",
+          "expr": "label_replace(patroni_master{job=\"postgresql\"}==1, \"node_name\", \"$1\", \"instance\", \"^([^:]+):.*$\") * on (node_name) group_left() label_replace((sum by(instance) (irate(node_cpu_seconds_total{mode!=\"idle\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total[$__rate_interval])))), \"node_name\", \"$1\", \"instance\", \"^([^:]+):.*$\")",
           "interval": "",
           "legendFormat": "{{cluster}}",
           "range": true,
@@ -592,6 +592,6 @@
   "timezone": "",
   "title": "Retail - PostgreSQL: Cluster Summary",
   "uid": "retail-postgresql-cluster-summary",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }
