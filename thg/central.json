@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 2,
+  "id": 57,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -331,6 +331,7 @@
             "alertInstanceLabelFilter": "",
             "alertName": "Node",
             "dashboardAlerts": false,
+            "datasource": "-- Grafana --",
             "groupBy": [],
             "groupMode": "default",
             "maxItems": 100,
@@ -7116,6 +7117,6 @@
   "timezone": "",
   "title": "THG - Central",
   "uid": "thg-central",
-  "version": 9,
+  "version": 5,
   "weekStart": ""
 }
