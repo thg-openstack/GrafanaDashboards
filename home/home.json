@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 38,
+  "id": 53,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -64,6 +64,8 @@
       "id": 2,
       "options": {
         "annotations": true,
+        "annotationsLimit": 100,
+        "annotationsType": "",
         "autoScroll": true,
         "calendarType": "legacy",
         "colors": "frame",
@@ -86,9 +88,12 @@
       },
       "id": 1,
       "options": {
-        "alertInstanceLabelFilter": "",
         "alertName": "",
         "dashboardAlerts": false,
+        "folder": {
+          "title": "DBA",
+          "uid": "fe40bbb4-2377-469d-9e2d-ee614c3b2da4"
+        },
         "groupBy": [],
         "groupMode": "default",
         "maxItems": 50,
@@ -119,6 +124,8 @@
       },
       "id": 10,
       "options": {
+        "includeVars": false,
+        "keepTime": false,
         "maxItems": 10,
         "query": "",
         "showHeadings": false,
@@ -127,7 +134,7 @@
         "showStarred": true,
         "tags": []
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "title": "Starred Dashboards",
       "type": "dashlist"
     },
@@ -144,6 +151,8 @@
       },
       "id": 3,
       "options": {
+        "includeVars": false,
+        "keepTime": false,
         "maxItems": 20,
         "query": "",
         "showHeadings": false,
@@ -152,7 +161,7 @@
         "showStarred": false,
         "tags": ["CockroachDB"]
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "title": "CockroachDB Dashboards",
       "type": "dashlist"
     },
@@ -169,6 +178,8 @@
       },
       "id": 9,
       "options": {
+        "includeVars": false,
+        "keepTime": false,
         "maxItems": 20,
         "query": "",
         "showHeadings": false,
@@ -177,7 +188,7 @@
         "showStarred": false,
         "tags": ["mimir"]
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "title": "Mimir Dashboards",
       "type": "dashlist"
     },
@@ -194,6 +205,8 @@
       },
       "id": 8,
       "options": {
+        "includeVars": false,
+        "keepTime": false,
         "maxItems": 20,
         "query": "",
         "showHeadings": false,
@@ -202,7 +215,7 @@
         "showStarred": false,
         "tags": ["MSSQL"]
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "title": "MSSQL Dashboards",
       "type": "dashlist"
     },
@@ -219,6 +232,8 @@
       },
       "id": 6,
       "options": {
+        "includeVars": false,
+        "keepTime": false,
         "maxItems": 20,
         "query": "",
         "showHeadings": false,
@@ -227,7 +242,7 @@
         "showStarred": false,
         "tags": ["Windows"]
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "title": "Windows Dashboards",
       "type": "dashlist"
     },
@@ -244,6 +259,8 @@
       },
       "id": 5,
       "options": {
+        "includeVars": false,
+        "keepTime": false,
         "maxItems": 20,
         "query": "",
         "showHeadings": false,
@@ -252,7 +269,7 @@
         "showStarred": false,
         "tags": ["Linux"]
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "title": "Linux Dashboards",
       "type": "dashlist"
     },
@@ -269,6 +286,8 @@
       },
       "id": 4,
       "options": {
+        "includeVars": false,
+        "keepTime": false,
         "maxItems": 20,
         "query": "",
         "showHeadings": false,
@@ -277,7 +296,7 @@
         "showStarred": false,
         "tags": ["Couchbase"]
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "title": "Couchbase Dashboards",
       "type": "dashlist"
     },
@@ -294,6 +313,8 @@
       },
       "id": 7,
       "options": {
+        "includeVars": false,
+        "keepTime": false,
         "maxItems": 20,
         "query": "",
         "showHeadings": false,
@@ -302,7 +323,7 @@
         "showStarred": false,
         "tags": ["Postgres"]
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "title": "Postgres Dashboards",
       "type": "dashlist"
     }
@@ -322,6 +343,6 @@
   "timezone": "",
   "title": "DBA: Home",
   "uid": "dba-home",
-  "version": 2,
+  "version": 1,
   "weekStart": ""
 }
