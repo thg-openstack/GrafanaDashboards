@@ -56,8 +56,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 15,
-        "w": 24,
+        "h": 18,
+        "w": 12,
         "x": 0,
         "y": 0
       },
@@ -65,7 +65,7 @@
       "options": {
         "annotations": true,
         "annotationsLimit": 100,
-        "annotationsType": "",
+        "annotationsType": "annotation",
         "autoScroll": true,
         "calendarType": "legacy",
         "colors": "frame",
@@ -77,6 +77,177 @@
     },
     {
       "datasource": {
+        "type": "volkovlabs-grapi-datasource",
+        "uid": "eba76090-522e-4a75-985e-db3d0894ef77"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "left",
+            "cellOptions": {
+              "type": "color-text"
+            },
+            "filterable": true,
+            "inspect": false
+          },
+          "mappings": [
+            {
+              "options": {
+                "Alerting": {
+                  "color": "super-light-red",
+                  "index": 0
+                },
+                "Pending": {
+                  "color": "super-light-orange",
+                  "index": 1
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Prev State"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 150
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "New State"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 150
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Alert Name"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 300
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Time"
+            },
+            "properties": [
+              {
+                "id": "custom.minWidth"
+              },
+              {
+                "id": "custom.width",
+                "value": 200
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 18,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 11,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": false,
+          "fields": "",
+          "reducer": ["sum"],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "10.0.3",
+      "targets": [
+        {
+          "annotationDashboard": "",
+          "annotationLimit": 1000,
+          "annotationNewState": "Alerting",
+          "annotationPattern": "",
+          "annotationPrevState": "",
+          "annotationRange": "selected",
+          "annotationRules": true,
+          "annotationType": "alert",
+          "datasource": {
+            "type": "volkovlabs-grapi-datasource",
+            "uid": "eba76090-522e-4a75-985e-db3d0894ef77"
+          },
+          "refId": "A",
+          "requestType": "annotations"
+        }
+      ],
+      "title": "Alert List (Firing)",
+      "transformations": [
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": ["Text", "Prev State", "New State", "Alert Name", "Time"]
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time End": true
+            },
+            "indexByName": {
+              "Alert Name": 1,
+              "New State": 3,
+              "Prev State": 2,
+              "Text": 4,
+              "Time": 0,
+              "Time End": 5
+            },
+            "renameByName": {
+              "New State": "New State",
+              "Prev State": "Previous State",
+              "Text": "Alert Text",
+              "Time": "Alert Time",
+              "Time End": ""
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
         "type": "datasource",
         "uid": "grafana"
       },
@@ -84,10 +255,11 @@
         "h": 18,
         "w": 12,
         "x": 0,
-        "y": 15
+        "y": 18
       },
       "id": 1,
       "options": {
+        "alertInstanceLabelFilter": "",
         "alertName": "",
         "dashboardAlerts": false,
         "folder": {
@@ -120,7 +292,7 @@
         "h": 10,
         "w": 3,
         "x": 12,
-        "y": 15
+        "y": 18
       },
       "id": 10,
       "options": {
@@ -147,7 +319,7 @@
         "h": 10,
         "w": 3,
         "x": 15,
-        "y": 15
+        "y": 18
       },
       "id": 3,
       "options": {
@@ -174,7 +346,7 @@
         "h": 10,
         "w": 3,
         "x": 18,
-        "y": 15
+        "y": 18
       },
       "id": 9,
       "options": {
@@ -201,7 +373,7 @@
         "h": 10,
         "w": 3,
         "x": 21,
-        "y": 15
+        "y": 18
       },
       "id": 8,
       "options": {
@@ -228,7 +400,7 @@
         "h": 8,
         "w": 3,
         "x": 12,
-        "y": 25
+        "y": 28
       },
       "id": 6,
       "options": {
@@ -255,7 +427,7 @@
         "h": 8,
         "w": 3,
         "x": 15,
-        "y": 25
+        "y": 28
       },
       "id": 5,
       "options": {
@@ -282,7 +454,7 @@
         "h": 8,
         "w": 3,
         "x": 18,
-        "y": 25
+        "y": 28
       },
       "id": 4,
       "options": {
@@ -309,7 +481,7 @@
         "h": 8,
         "w": 3,
         "x": 21,
-        "y": 25
+        "y": 28
       },
       "id": 7,
       "options": {
@@ -343,6 +515,6 @@
   "timezone": "",
   "title": "DBA: Home",
   "uid": "dba-home",
-  "version": 1,
+  "version": 8,
   "weekStart": ""
 }
