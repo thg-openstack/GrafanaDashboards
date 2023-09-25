@@ -14,9 +14,7 @@
         "target": {
           "limit": 100,
           "matchAny": false,
-          "tags": [
-            "cluster=$cluster"
-          ],
+          "tags": ["cluster=$cluster"],
           "type": "tags"
         },
         "type": "dashboard"
@@ -26,16 +24,14 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
+  "id": 23,
   "links": [
     {
       "asDropdown": true,
       "icon": "external link",
       "includeVars": true,
       "keepTime": true,
-      "tags": [
-        "Retail",
-        "CockroachDB"
-      ],
+      "tags": ["Retail", "CockroachDB"],
       "targetBlank": true,
       "title": "Dashboards",
       "type": "dashboards"
@@ -329,12 +325,7 @@
       "id": 71,
       "options": {
         "legend": {
-          "calcs": [
-            "min",
-            "max",
-            "mean",
-            "lastNotNull"
-          ],
+          "calcs": ["min", "max", "mean", "lastNotNull"],
           "displayMode": "table",
           "placement": "bottom",
           "showLegend": false
@@ -664,7 +655,7 @@
       },
       "gridPos": {
         "h": 7,
-        "w": 16,
+        "w": 11,
         "x": 0,
         "y": 17
       },
@@ -677,16 +668,14 @@
         "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
+          "calcs": ["mean"],
           "fields": "",
           "values": false
         },
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -731,6 +720,77 @@
         }
       ],
       "title": "Nodes: $cluster",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PAE45454D0EDB9216"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "dateTimeAsSystem"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 5,
+        "x": 11,
+        "y": 17
+      },
+      "id": 76,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "10.0.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "max(schedules_BACKUP_last_completed_time{cluster=~\"$cluster\"}) * 1000",
+          "instant": false,
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "expr": "",
+          "hide": false,
+          "instant": false,
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Last Full Backup",
       "type": "stat"
     },
     {
@@ -959,10 +1019,7 @@
       "id": 75,
       "options": {
         "legend": {
-          "calcs": [
-            "max",
-            "mean"
-          ],
+          "calcs": ["max", "mean"],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
@@ -1049,7 +1106,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1284,7 +1341,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1481,7 +1538,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1678,7 +1735,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2783,9 +2840,7 @@
         "footer": {
           "countRows": false,
           "fields": "",
-          "reducer": [
-            "sum"
-          ],
+          "reducer": ["sum"],
           "show": false
         },
         "showHeader": true,
@@ -2796,7 +2851,7 @@
           }
         ]
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -2820,12 +2875,7 @@
           "id": "reduce",
           "options": {
             "includeTimeField": false,
-            "reducers": [
-              "last",
-              "mean",
-              "min",
-              "max"
-            ]
+            "reducers": ["last", "mean", "min", "max"]
           }
         }
       ],
@@ -2957,9 +3007,7 @@
         "footer": {
           "countRows": false,
           "fields": "",
-          "reducer": [
-            "sum"
-          ],
+          "reducer": ["sum"],
           "show": false
         },
         "showHeader": true,
@@ -2970,7 +3018,7 @@
           }
         ]
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -2994,12 +3042,7 @@
           "id": "reduce",
           "options": {
             "includeTimeField": false,
-            "reducers": [
-              "last",
-              "mean",
-              "min",
-              "max"
-            ]
+            "reducers": ["last", "mean", "min", "max"]
           }
         }
       ],
@@ -3131,9 +3174,7 @@
         "footer": {
           "countRows": false,
           "fields": "",
-          "reducer": [
-            "sum"
-          ],
+          "reducer": ["sum"],
           "show": false
         },
         "showHeader": true,
@@ -3144,7 +3185,7 @@
           }
         ]
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -3220,12 +3261,7 @@
           "id": "reduce",
           "options": {
             "includeTimeField": false,
-            "reducers": [
-              "last",
-              "mean",
-              "min",
-              "max"
-            ]
+            "reducers": ["last", "mean", "min", "max"]
           }
         }
       ],
@@ -3357,9 +3393,7 @@
         "footer": {
           "countRows": false,
           "fields": "",
-          "reducer": [
-            "sum"
-          ],
+          "reducer": ["sum"],
           "show": false
         },
         "showHeader": true,
@@ -3370,7 +3404,7 @@
           }
         ]
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -3434,31 +3468,23 @@
           "id": "reduce",
           "options": {
             "includeTimeField": false,
-            "reducers": [
-              "last",
-              "mean",
-              "min",
-              "max"
-            ]
+            "reducers": ["last", "mean", "min", "max"]
           }
         }
       ],
       "type": "table"
     }
   ],
-  "refresh": false,
+  "refresh": "",
   "revision": 1,
   "schemaVersion": 38,
   "style": "dark",
-  "tags": [
-    "CockroachDB",
-    "Retail"
-  ],
+  "tags": ["CockroachDB", "Retail"],
   "templating": {
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "AccountsCockroach",
           "value": "AccountsCockroach"
         },
@@ -3559,21 +3585,11 @@
       "2h",
       "1d"
     ],
-    "time_options": [
-      "5m",
-      "15m",
-      "1h",
-      "6h",
-      "12h",
-      "24h",
-      "2d",
-      "7d",
-      "30d"
-    ]
+    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
   },
   "timezone": "",
   "title": "Retail - CockroachDB: Central",
   "uid": "retail-cockroachdb-central",
-  "version": 2,
+  "version": 1,
   "weekStart": ""
 }
