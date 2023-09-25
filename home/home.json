@@ -127,7 +127,7 @@
     {
       "datasource": {
         "type": "volkovlabs-grapi-datasource",
-        "uid": "eba76090-522e-4a75-985e-db3d0894ef77"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -253,7 +253,7 @@
           "annotationType": "alert",
           "datasource": {
             "type": "volkovlabs-grapi-datasource",
-            "uid": "eba76090-522e-4a75-985e-db3d0894ef77"
+            "uid": "${datasource}"
           },
           "refId": "A",
           "requestType": "annotations"
@@ -653,7 +653,26 @@
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "Grafana HTTP API",
+          "value": "Grafana HTTP API"
+        },
+        "hide": 2,
+        "includeAll": false,
+        "label": "datasource",
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "volkovlabs-grapi-datasource",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      }
+    ]
   },
   "time": {
     "from": "now/w",
@@ -663,6 +682,6 @@
   "timezone": "",
   "title": "DBA: Home",
   "uid": "dba-home",
-  "version": 9,
+  "version": 10,
   "weekStart": ""
 }
