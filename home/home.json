@@ -197,7 +197,7 @@
           "annotationDashboard": "",
           "annotationLimit": 1000,
           "annotationNewState": "Alerting",
-          "annotationPattern": "",
+          "annotationPattern": "^((?!Sage).)*$",
           "annotationPrevState": "",
           "annotationRange": "selected",
           "annotationRules": true,
