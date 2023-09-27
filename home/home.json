@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 53,
+  "id": 5,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -36,7 +36,7 @@
       "gridPos": {
         "h": 2,
         "w": 3,
-        "x": 4,
+        "x": 11,
         "y": 0
       },
       "id": 13,
@@ -47,31 +47,6 @@
           "showMiniMap": false
         },
         "content": "# Annotation Calendar",
-        "mode": "markdown"
-      },
-      "pluginVersion": "10.0.3",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "datasource": {
-        "type": "datasource",
-        "uid": "grafana"
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 3,
-        "x": 17,
-        "y": 0
-      },
-      "id": 12,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "# Alert History (Firing)",
         "mode": "markdown"
       },
       "pluginVersion": "10.0.3",
@@ -106,8 +81,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 18,
-        "w": 12,
+        "h": 17,
+        "w": 24,
         "x": 0,
         "y": 2
       },
@@ -126,176 +101,6 @@
     },
     {
       "datasource": {
-        "type": "volkovlabs-grapi-datasource",
-        "uid": "${datasource}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {
-            "align": "left",
-            "cellOptions": {
-              "type": "color-text"
-            },
-            "filterable": true,
-            "inspect": false
-          },
-          "mappings": [
-            {
-              "options": {
-                "Alerting": {
-                  "color": "super-light-red",
-                  "index": 0
-                },
-                "Pending": {
-                  "color": "super-light-orange",
-                  "index": 1
-                }
-              },
-              "type": "value"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "text",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Prev State"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 150
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "New State"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 150
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Alert Name"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 300
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Time"
-            },
-            "properties": [
-              {
-                "id": "custom.minWidth"
-              },
-              {
-                "id": "custom.width",
-                "value": 200
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 18,
-        "w": 12,
-        "x": 12,
-        "y": 2
-      },
-      "id": 11,
-      "options": {
-        "cellHeight": "sm",
-        "footer": {
-          "countRows": false,
-          "enablePagination": false,
-          "fields": "",
-          "reducer": ["sum"],
-          "show": false
-        },
-        "showHeader": true,
-        "sortBy": []
-      },
-      "pluginVersion": "10.0.3",
-      "targets": [
-        {
-          "annotationDashboard": "",
-          "annotationLimit": 1000,
-          "annotationNewState": "Alerting",
-          "annotationPattern": "^((?!Sage).)*$",
-          "annotationPrevState": "",
-          "annotationRange": "selected",
-          "annotationRules": true,
-          "annotationType": "alert",
-          "datasource": {
-            "type": "volkovlabs-grapi-datasource",
-            "uid": "${datasource}"
-          },
-          "refId": "A",
-          "requestType": "annotations"
-        }
-      ],
-      "transformations": [
-        {
-          "id": "filterFieldsByName",
-          "options": {
-            "include": {
-              "names": ["Text", "Prev State", "New State", "Alert Name", "Time"]
-            }
-          }
-        },
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {
-              "Time End": true
-            },
-            "indexByName": {
-              "Alert Name": 1,
-              "New State": 3,
-              "Prev State": 2,
-              "Text": 4,
-              "Time": 0,
-              "Time End": 5
-            },
-            "renameByName": {
-              "New State": "New State",
-              "Prev State": "Previous State",
-              "Text": "Alert Text",
-              "Time": "Alert Time",
-              "Time End": ""
-            }
-          }
-        }
-      ],
-      "type": "table"
-    },
-    {
-      "datasource": {
         "type": "datasource",
         "uid": "grafana"
       },
@@ -303,7 +108,7 @@
         "h": 2,
         "w": 3,
         "x": 4,
-        "y": 20
+        "y": 19
       },
       "id": 14,
       "options": {
@@ -327,8 +132,8 @@
       "gridPos": {
         "h": 2,
         "w": 3,
-        "x": 12,
-        "y": 20
+        "x": 13,
+        "y": 19
       },
       "id": 16,
       "options": {
@@ -353,7 +158,7 @@
         "h": 2,
         "w": 3,
         "x": 17,
-        "y": 20
+        "y": 19
       },
       "id": 15,
       "options": {
@@ -377,8 +182,8 @@
       "gridPos": {
         "h": 2,
         "w": 3,
-        "x": 21,
-        "y": 20
+        "x": 20,
+        "y": 19
       },
       "id": 17,
       "options": {
@@ -403,7 +208,7 @@
         "h": 18,
         "w": 12,
         "x": 0,
-        "y": 22
+        "y": 21
       },
       "id": 1,
       "options": {
@@ -440,7 +245,7 @@
         "h": 10,
         "w": 3,
         "x": 12,
-        "y": 22
+        "y": 21
       },
       "id": 10,
       "options": {
@@ -467,7 +272,7 @@
         "h": 10,
         "w": 3,
         "x": 15,
-        "y": 22
+        "y": 21
       },
       "id": 3,
       "options": {
@@ -494,7 +299,7 @@
         "h": 10,
         "w": 3,
         "x": 18,
-        "y": 22
+        "y": 21
       },
       "id": 9,
       "options": {
@@ -521,7 +326,7 @@
         "h": 10,
         "w": 3,
         "x": 21,
-        "y": 22
+        "y": 21
       },
       "id": 8,
       "options": {
@@ -548,7 +353,7 @@
         "h": 8,
         "w": 3,
         "x": 12,
-        "y": 32
+        "y": 31
       },
       "id": 6,
       "options": {
@@ -575,7 +380,7 @@
         "h": 8,
         "w": 3,
         "x": 15,
-        "y": 32
+        "y": 31
       },
       "id": 5,
       "options": {
@@ -602,7 +407,7 @@
         "h": 8,
         "w": 3,
         "x": 18,
-        "y": 32
+        "y": 31
       },
       "id": 4,
       "options": {
@@ -629,7 +434,7 @@
         "h": 8,
         "w": 3,
         "x": 21,
-        "y": 32
+        "y": 31
       },
       "id": 7,
       "options": {
@@ -657,8 +462,8 @@
       {
         "current": {
           "selected": false,
-          "text": "Grafana HTTP API",
-          "value": "Grafana HTTP API"
+          "text": "No data sources found",
+          "value": ""
         },
         "hide": 2,
         "includeAll": false,
@@ -682,6 +487,6 @@
   "timezone": "",
   "title": "DBA: Home",
   "uid": "dba-home",
-  "version": 10,
+  "version": 6,
   "weekStart": ""
 }
