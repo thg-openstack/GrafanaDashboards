@@ -30,55 +30,13 @@
   "panels": [
     {
       "datasource": {
-        "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 4,
-        "x": 0,
-        "y": 0
-      },
-      "id": 101,
-      "options": {
-        "alertInstanceLabelFilter": "",
-        "alertName": "Linux",
-        "dashboardAlerts": false,
-        "datasource": "-- Grafana --",
-        "groupBy": [],
-        "groupMode": "default",
-        "maxItems": 100,
-        "sortOrder": 1,
-        "stateFilter": {
-          "error": true,
-          "firing": true,
-          "noData": false,
-          "normal": false,
-          "pending": true
-        },
-        "viewMode": "stat"
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
-          },
-          "refId": "A"
-        }
-      ],
-      "title": "Linux Alerts",
-      "type": "alertlist"
-    },
-    {
-      "datasource": {
         "type": "datasource",
         "uid": "grafana"
       },
       "gridPos": {
         "h": 6,
-        "w": 4,
-        "x": 4,
+        "w": 2,
+        "x": 0,
         "y": 0
       },
       "id": 102,
@@ -86,7 +44,7 @@
         "alertInstanceLabelFilter": "",
         "alertName": "CockroachDB",
         "dashboardAlerts": false,
-        "datasource": "-- Grafana --",
+        "datasource": "Mimir",
         "groupBy": ["instance"],
         "groupMode": "custom",
         "maxItems": 100,
@@ -119,8 +77,8 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 4,
-        "x": 8,
+        "w": 2,
+        "x": 2,
         "y": 0
       },
       "id": 103,
@@ -128,7 +86,7 @@
         "alertInstanceLabelFilter": "",
         "alertName": "couchbase",
         "dashboardAlerts": false,
-        "datasource": "-- Grafana --",
+        "datasource": "Mimir",
         "groupBy": [],
         "groupMode": "default",
         "maxItems": 100,
@@ -161,8 +119,50 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 4,
-        "x": 12,
+        "w": 2,
+        "x": 4,
+        "y": 0
+      },
+      "id": 140,
+      "options": {
+        "alertInstanceLabelFilter": "",
+        "alertName": "MSSQL",
+        "dashboardAlerts": false,
+        "datasource": "Mimir",
+        "groupBy": ["instance"],
+        "groupMode": "custom",
+        "maxItems": 100,
+        "sortOrder": 3,
+        "stateFilter": {
+          "error": true,
+          "firing": true,
+          "noData": false,
+          "normal": false,
+          "pending": true
+        },
+        "viewMode": "stat"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "MSSQL Alerts",
+      "type": "alertlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 2,
+        "x": 6,
         "y": 0
       },
       "id": 104,
@@ -170,7 +170,7 @@
         "alertInstanceLabelFilter": "",
         "alertName": "Postgres",
         "dashboardAlerts": false,
-        "datasource": "-- Grafana --",
+        "datasource": "Mimir",
         "groupBy": [],
         "groupMode": "default",
         "maxItems": 100,
@@ -203,8 +203,8 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 4,
-        "x": 16,
+        "w": 2,
+        "x": 8,
         "y": 0
       },
       "id": 105,
@@ -212,7 +212,7 @@
         "alertInstanceLabelFilter": "",
         "alertName": "kafka",
         "dashboardAlerts": false,
-        "datasource": "-- Grafana --",
+        "datasource": "Mimir",
         "groupBy": [],
         "groupMode": "default",
         "maxItems": 100,
@@ -245,8 +245,92 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 4,
-        "x": 20,
+        "w": 2,
+        "x": 10,
+        "y": 0
+      },
+      "id": 139,
+      "options": {
+        "alertInstanceLabelFilter": "",
+        "alertName": "ServiceInsight",
+        "dashboardAlerts": false,
+        "datasource": "Mimir",
+        "groupBy": ["instance"],
+        "groupMode": "custom",
+        "maxItems": 100,
+        "sortOrder": 3,
+        "stateFilter": {
+          "error": true,
+          "firing": true,
+          "noData": false,
+          "normal": false,
+          "pending": true
+        },
+        "viewMode": "stat"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "ServiceInsight Alerts",
+      "type": "alertlist"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PAE45454D0EDB9216"
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 2,
+        "x": 12,
+        "y": 0
+      },
+      "id": 101,
+      "options": {
+        "alertInstanceLabelFilter": "",
+        "alertName": "Linux",
+        "dashboardAlerts": false,
+        "datasource": "Mimir",
+        "groupBy": [],
+        "groupMode": "default",
+        "maxItems": 100,
+        "sortOrder": 1,
+        "stateFilter": {
+          "error": true,
+          "firing": true,
+          "noData": false,
+          "normal": false,
+          "pending": true
+        },
+        "viewMode": "stat"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Linux Alerts",
+      "type": "alertlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 2,
+        "x": 14,
         "y": 0
       },
       "id": 121,
@@ -254,7 +338,7 @@
         "alertInstanceLabelFilter": "",
         "alertName": "mimir",
         "dashboardAlerts": false,
-        "datasource": "-- Grafana --",
+        "datasource": "Mimir",
         "groupBy": [],
         "groupMode": "default",
         "maxItems": 100,
@@ -278,6 +362,48 @@
         }
       ],
       "title": "Mimir Alerts",
+      "type": "alertlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 2,
+        "x": 16,
+        "y": 0
+      },
+      "id": 143,
+      "options": {
+        "alertInstanceLabelFilter": "",
+        "alertName": "Windows",
+        "dashboardAlerts": false,
+        "datasource": "Mimir",
+        "groupBy": [],
+        "groupMode": "default",
+        "maxItems": 100,
+        "sortOrder": 3,
+        "stateFilter": {
+          "error": true,
+          "firing": true,
+          "noData": false,
+          "normal": false,
+          "pending": true
+        },
+        "viewMode": "stat"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "Windows Alerts",
       "type": "alertlist"
     },
     {
@@ -321,7 +447,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "gridPos": {
-            "h": 9,
+            "h": 8,
             "w": 8,
             "x": 0,
             "y": 9
@@ -331,7 +457,7 @@
             "alertInstanceLabelFilter": "",
             "alertName": "Node",
             "dashboardAlerts": false,
-            "datasource": "-- Grafana --",
+            "datasource": "Mimir",
             "groupBy": [],
             "groupMode": "default",
             "maxItems": 100,
@@ -363,101 +489,17 @@
             "uid": "grafana"
           },
           "gridPos": {
-            "h": 9,
+            "h": 8,
             "w": 8,
             "x": 8,
             "y": 9
-          },
-          "id": 82,
-          "options": {
-            "alertInstanceLabelFilter": "",
-            "alertName": "CockroachDB",
-            "dashboardAlerts": false,
-            "datasource": "-- Grafana --",
-            "groupBy": [],
-            "groupMode": "default",
-            "maxItems": 100,
-            "sortOrder": 3,
-            "stateFilter": {
-              "error": true,
-              "firing": true,
-              "noData": false,
-              "normal": false,
-              "pending": true
-            },
-            "viewMode": "list"
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "datasource",
-                "uid": "grafana"
-              },
-              "refId": "A"
-            }
-          ],
-          "title": "CockroachDB Alerts",
-          "type": "alertlist"
-        },
-        {
-          "datasource": {
-            "type": "datasource",
-            "uid": "grafana"
-          },
-          "gridPos": {
-            "h": 9,
-            "w": 8,
-            "x": 16,
-            "y": 9
-          },
-          "id": 86,
-          "options": {
-            "alertInstanceLabelFilter": "",
-            "alertName": "Couchbase",
-            "dashboardAlerts": false,
-            "datasource": "-- Grafana --",
-            "groupBy": [],
-            "groupMode": "default",
-            "maxItems": 100,
-            "sortOrder": 3,
-            "stateFilter": {
-              "error": true,
-              "firing": true,
-              "noData": false,
-              "normal": false,
-              "pending": true
-            },
-            "viewMode": "list"
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "datasource",
-                "uid": "grafana"
-              },
-              "refId": "A"
-            }
-          ],
-          "title": "Couchbase Alerts",
-          "type": "alertlist"
-        },
-        {
-          "datasource": {
-            "type": "datasource",
-            "uid": "grafana"
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 8,
-            "x": 0,
-            "y": 18
           },
           "id": 84,
           "options": {
             "alertInstanceLabelFilter": "",
             "alertName": "Postgres",
             "dashboardAlerts": false,
-            "datasource": "-- Grafana --",
+            "datasource": "Mimir",
             "groupBy": [],
             "groupMode": "default",
             "maxItems": 100,
@@ -491,57 +533,15 @@
           "gridPos": {
             "h": 8,
             "w": 8,
-            "x": 8,
-            "y": 18
-          },
-          "id": 88,
-          "options": {
-            "alertInstanceLabelFilter": "",
-            "alertName": "Kafka",
-            "dashboardAlerts": false,
-            "datasource": "-- Grafana --",
-            "groupBy": [],
-            "groupMode": "default",
-            "maxItems": 100,
-            "sortOrder": 3,
-            "stateFilter": {
-              "error": true,
-              "firing": true,
-              "noData": false,
-              "normal": false,
-              "pending": true
-            },
-            "viewMode": "list"
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "datasource",
-                "uid": "grafana"
-              },
-              "refId": "A"
-            }
-          ],
-          "title": "Kafka Alerts",
-          "type": "alertlist"
-        },
-        {
-          "datasource": {
-            "type": "datasource",
-            "uid": "grafana"
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 8,
             "x": 16,
-            "y": 18
+            "y": 9
           },
           "id": 122,
           "options": {
             "alertInstanceLabelFilter": "",
             "alertName": "mimir",
             "dashboardAlerts": false,
-            "datasource": "-- Grafana --",
+            "datasource": "Mimir",
             "groupBy": [],
             "groupMode": "default",
             "maxItems": 100,
@@ -565,6 +565,258 @@
             }
           ],
           "title": "Mimir Alerts",
+          "type": "alertlist"
+        },
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 0,
+            "y": 17
+          },
+          "id": 86,
+          "options": {
+            "alertInstanceLabelFilter": "",
+            "alertName": "Couchbase",
+            "dashboardAlerts": false,
+            "datasource": "Mimir",
+            "groupBy": [],
+            "groupMode": "default",
+            "maxItems": 100,
+            "sortOrder": 3,
+            "stateFilter": {
+              "error": true,
+              "firing": true,
+              "noData": false,
+              "normal": false,
+              "pending": true
+            },
+            "viewMode": "list"
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "datasource",
+                "uid": "grafana"
+              },
+              "refId": "A"
+            }
+          ],
+          "title": "Couchbase Alerts",
+          "type": "alertlist"
+        },
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 8,
+            "y": 17
+          },
+          "id": 82,
+          "options": {
+            "alertInstanceLabelFilter": "",
+            "alertName": "CockroachDB",
+            "dashboardAlerts": false,
+            "datasource": "Mimir",
+            "groupBy": [],
+            "groupMode": "default",
+            "maxItems": 100,
+            "sortOrder": 3,
+            "stateFilter": {
+              "error": true,
+              "firing": true,
+              "noData": false,
+              "normal": false,
+              "pending": true
+            },
+            "viewMode": "list"
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "datasource",
+                "uid": "grafana"
+              },
+              "refId": "A"
+            }
+          ],
+          "title": "CockroachDB Alerts",
+          "type": "alertlist"
+        },
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 16,
+            "y": 17
+          },
+          "id": 142,
+          "options": {
+            "alertInstanceLabelFilter": "",
+            "alertName": "ServiceInsight",
+            "dashboardAlerts": false,
+            "datasource": "Mimir",
+            "groupBy": [],
+            "groupMode": "default",
+            "maxItems": 100,
+            "sortOrder": 3,
+            "stateFilter": {
+              "error": true,
+              "firing": true,
+              "noData": false,
+              "normal": false,
+              "pending": true
+            },
+            "viewMode": "list"
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "datasource",
+                "uid": "grafana"
+              },
+              "refId": "A"
+            }
+          ],
+          "title": "ServiceInsight Alerts",
+          "type": "alertlist"
+        },
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 0,
+            "y": 25
+          },
+          "id": 141,
+          "options": {
+            "alertInstanceLabelFilter": "",
+            "alertName": "MSSQL",
+            "dashboardAlerts": false,
+            "datasource": "Mimir",
+            "groupBy": [],
+            "groupMode": "default",
+            "maxItems": 100,
+            "sortOrder": 3,
+            "stateFilter": {
+              "error": true,
+              "firing": true,
+              "noData": false,
+              "normal": false,
+              "pending": true
+            },
+            "viewMode": "list"
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "datasource",
+                "uid": "grafana"
+              },
+              "refId": "A"
+            }
+          ],
+          "title": "MSSQL Alerts",
+          "type": "alertlist"
+        },
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 8,
+            "y": 25
+          },
+          "id": 144,
+          "options": {
+            "alertInstanceLabelFilter": "",
+            "alertName": "Windows",
+            "dashboardAlerts": false,
+            "datasource": "Mimir",
+            "groupBy": [],
+            "groupMode": "default",
+            "maxItems": 100,
+            "sortOrder": 3,
+            "stateFilter": {
+              "error": true,
+              "firing": true,
+              "noData": false,
+              "normal": false,
+              "pending": true
+            },
+            "viewMode": "list"
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "datasource",
+                "uid": "grafana"
+              },
+              "refId": "A"
+            }
+          ],
+          "title": "Windows Alerts",
+          "type": "alertlist"
+        },
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 8,
+            "x": 16,
+            "y": 25
+          },
+          "id": 88,
+          "options": {
+            "alertInstanceLabelFilter": "",
+            "alertName": "Kafka",
+            "dashboardAlerts": false,
+            "datasource": "Mimir",
+            "groupBy": [],
+            "groupMode": "default",
+            "maxItems": 100,
+            "sortOrder": 3,
+            "stateFilter": {
+              "error": true,
+              "firing": true,
+              "noData": false,
+              "normal": false,
+              "pending": true
+            },
+            "viewMode": "list"
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "datasource",
+                "uid": "grafana"
+              },
+              "refId": "A"
+            }
+          ],
+          "title": "Kafka Alerts",
           "type": "alertlist"
         }
       ],
@@ -4092,7 +4344,7 @@
         "x": 2,
         "y": 87
       },
-      "id": 110,
+      "id": 112,
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -4113,13 +4365,13 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "count(node_network_up{device=\"eth0\",instance=~\"gb4.+\"})",
+          "expr": "count(node_network_up{device=\"eth0\",instance!~\"(de1|gb1|gb4).+\"})",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Node Count GB4",
+      "title": "Node Count - Other",
       "type": "stat"
     },
     {
@@ -4210,7 +4462,7 @@
         "x": 2,
         "y": 90
       },
-      "id": 112,
+      "id": 110,
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -4231,13 +4483,13 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "count(node_network_up{device=\"eth0\",instance!~\"(de1|gb1|gb4).+\"})",
+          "expr": "count(node_network_up{device=\"eth0\",instance=~\"gb4.+\"})",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Node Count - Other",
+      "title": "Node Count GB4",
       "type": "stat"
     },
     {
@@ -5098,7 +5350,7 @@
         "x": 2,
         "y": 105
       },
-      "id": 126,
+      "id": 128,
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -5119,13 +5371,13 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "count(windows_cs_logical_processors{instance=~\"gb4.+\"})",
+          "expr": "count(windows_cs_logical_processors{instance=~\"de1.+\"})",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Node Count GB4",
+      "title": "Node Count DE1",
       "type": "stat"
     },
     {
@@ -5216,7 +5468,7 @@
         "x": 2,
         "y": 108
       },
-      "id": 128,
+      "id": 129,
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -5237,13 +5489,13 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "count(windows_cs_logical_processors{instance=~\"de1.+\"})",
+          "expr": "count(windows_cs_logical_processors{instance!~\"(de1|gb1|gb4|gb5|gb6).+\"})",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Node Count DE1",
+      "title": "Node Count - Other",
       "type": "stat"
     },
     {
@@ -5616,7 +5868,7 @@
         "x": 2,
         "y": 111
       },
-      "id": 129,
+      "id": 126,
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -5637,13 +5889,13 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "count(windows_cs_logical_processors{instance!~\"(de1|gb1|gb4|gb5|gb6).+\"})",
+          "expr": "count(windows_cs_logical_processors{instance=~\"gb4.+\"})",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Node Count - Other",
+      "title": "Node Count GB4",
       "type": "stat"
     },
     {
@@ -7285,6 +7537,6 @@
   "timezone": "",
   "title": "THG - Central",
   "uid": "thg-central",
-  "version": 1,
+  "version": 8,
   "weekStart": ""
 }
