@@ -110,7 +110,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(mssql_replication_latency{cluster=~\"$cluster\"}) by (cluster)",
+          "expr": "avg(mssql_replication_latency{cluster=~\"$cluster\"}) by (cluster, server_name)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
