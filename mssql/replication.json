@@ -202,7 +202,7 @@
           },
           "editorMode": "code",
           "expr": "mssql_replication_latency{cluster=~\"$cluster\",source_table=~\"$source_table\"}",
-          "legendFormat": "{{cluster}}-{{source_table}}",
+          "legendFormat": "{{cluster}}-{{source_table}}-{{server_name}}",
           "range": true,
           "refId": "A"
         }
