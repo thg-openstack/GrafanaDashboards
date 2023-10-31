@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 54,
+  "id": 5,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -83,7 +83,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -91,7 +91,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "max(gin_request_uv_total{job=\"serviceinsight\",instance=~\"$instance\"})",
+          "expr": "max(gin_request_uv_total{job=\"Service Insight\",instance=~\"$instance\"})",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -143,7 +143,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -151,7 +151,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(gin_uri_request_total{job=\"serviceinsight\",code=~\"2.+\",instance=~\"$instance\"})",
+          "expr": "sum(gin_uri_request_total{job=\"Service Insight\",code=~\"2.+\",instance=~\"$instance\"})",
           "legendFormat": "{{code}}",
           "range": true,
           "refId": "A"
@@ -203,7 +203,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -211,7 +211,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(gin_uri_request_total{job=\"serviceinsight\",code=~\"3.+\",instance=~\"$instance\"})",
+          "expr": "sum(gin_uri_request_total{job=\"Service Insight\",code=~\"3.+\",instance=~\"$instance\"})",
           "legendFormat": "{{code}}",
           "range": true,
           "refId": "A"
@@ -263,7 +263,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -271,7 +271,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(gin_uri_request_total{job=\"serviceinsight\",code=~\"4.+\",instance=~\"$instance\"})",
+          "expr": "sum(gin_uri_request_total{job=\"Service Insight\",code=~\"4.+\",instance=~\"$instance\"})",
           "legendFormat": "{{code}}",
           "range": true,
           "refId": "A"
@@ -323,7 +323,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.2",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -331,7 +331,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(gin_uri_request_total{job=\"serviceinsight\",code=~\"5.+\",instance=~\"$instance\"})",
+          "expr": "sum(gin_uri_request_total{job=\"Service Insight\",code=~\"5.+\",instance=~\"$instance\"})",
           "legendFormat": "{{code}}",
           "range": true,
           "refId": "A"
@@ -424,7 +424,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(gin_uri_request_total{job=\"serviceinsight\",code=\"200\",instance=~\"$instance\"}[15m])) by (uri)",
+          "expr": "sum(rate(gin_uri_request_total{job=\"Service Insight\",code=\"200\",instance=~\"$instance\"}[15m])) by (uri)",
           "legendFormat": "{{uri}}",
           "range": true,
           "refId": "A"
@@ -516,7 +516,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(gin_uri_request_total{job=\"serviceinsight\",code!=\"200\",instance=~\"$instance\"}[15m])) by (uri,code)",
+          "expr": "sum(rate(gin_uri_request_total{job=\"Service Insight\",code!=\"200\",instance=~\"$instance\"}[15m])) by (uri,code)",
           "hide": false,
           "instant": false,
           "key": "Q-9c975f59-e7d0-45ae-87ed-35f55dc5a004-1",
@@ -612,7 +612,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(gin_request_body_total{job=\"serviceinsight\",instance=~\"$instance\"}[15m])",
+          "expr": "rate(gin_request_body_total{job=\"Service Insight\",instance=~\"$instance\"}[15m])",
           "legendFormat": "{{instance}}",
           "range": true,
           "refId": "A"
@@ -705,7 +705,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(gin_response_body_total{job=\"serviceinsight\",instance=~\"$instance\"}[15m])",
+          "expr": "rate(gin_response_body_total{job=\"Service Insight\",instance=~\"$instance\"}[15m])",
           "legendFormat": "{{instance}}",
           "range": true,
           "refId": "A"
@@ -798,7 +798,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(rate(gin_request_duration_sum{job=\"serviceinsight\",instance=~\"$instance\"}[15m])) by (uri)",
+          "expr": "avg(rate(gin_request_duration_sum{job=\"Service Insight\",instance=~\"$instance\"}[15m])) by (uri)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -907,7 +907,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "go_memstats_alloc_bytes{job=\"serviceinsight\",instance=~\"$instance\"}",
+          "expr": "go_memstats_alloc_bytes{job=\"Service Insight\",instance=~\"$instance\"}",
           "legendFormat": "{{instance}}",
           "range": true,
           "refId": "A"
@@ -961,8 +961,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -999,7 +998,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "process_open_fds{job=\"serviceinsight\",instance=~\"$instance\"}",
+          "expr": "process_open_fds{job=\"Service Insight\",instance=~\"$instance\"}",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -1091,7 +1090,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "go_goroutines{job=\"serviceinsight\",instance=~\"$instance\"}",
+          "expr": "go_goroutines{job=\"Service Insight\",instance=~\"$instance\"}",
           "legendFormat": "{{instance}}",
           "range": true,
           "refId": "A"
@@ -1183,7 +1182,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "go_gc_duration_seconds{job=\"serviceinsight\",quantile=\"1\",instance=~\"$instance\"}",
+          "expr": "go_gc_duration_seconds{job=\"Service Insight\",quantile=\"1\",instance=~\"$instance\"}",
           "legendFormat": "{{instance}}",
           "range": true,
           "refId": "A"
@@ -1275,7 +1274,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "go_threads{job=\"serviceinsight\",instance=~\"$instance\"}",
+          "expr": "go_threads{job=\"Service Insight\",instance=~\"$instance\"}",
           "legendFormat": "{{instance}}",
           "range": true,
           "refId": "A"
@@ -1367,7 +1366,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "go_gc_duration_seconds{job=\"serviceinsight\",quantile=\"0.75\",instance=~\"$instance\"}",
+          "expr": "go_gc_duration_seconds{job=\"Service Insight\",quantile=\"0.75\",instance=~\"$instance\"}",
           "legendFormat": "{{instance}}",
           "range": true,
           "refId": "A"
@@ -1459,7 +1458,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "rate(process_cpu_seconds_total{job=\"serviceinsight\",instance=~\"$instance\"}[15m])",
+          "expr": "rate(process_cpu_seconds_total{job=\"Service Insight\",instance=~\"$instance\"}[15m])",
           "legendFormat": "{{instance}}",
           "range": true,
           "refId": "A"
@@ -1551,7 +1550,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "go_gc_duration_seconds{job=\"serviceinsight\",quantile=\"0.5\",instance=~\"$instance\"}",
+          "expr": "go_gc_duration_seconds{job=\"Service Insight\",quantile=\"0.5\",instance=~\"$instance\"}",
           "legendFormat": "{{instance}}",
           "range": true,
           "refId": "A"
@@ -1577,14 +1576,14 @@
           "type": "prometheus",
           "uid": "PAE45454D0EDB9216"
         },
-        "definition": "label_values(gin_request_body_total{job=\"serviceinsight\"},instance)",
+        "definition": "label_values(gin_request_body_total{job=\"Service Insight\"},instance)",
         "hide": 0,
         "includeAll": true,
         "multi": true,
         "name": "instance",
         "options": [],
         "query": {
-          "query": "label_values(gin_request_body_total{job=\"serviceinsight\"},instance)",
+          "query": "label_values(gin_request_body_total{job=\"Service Insight\"},instance)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -1596,13 +1595,13 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Retail - Service Insight: Central",
   "uid": "retail-service-insight-central",
-  "version": 2,
+  "version": 1,
   "weekStart": ""
 }
