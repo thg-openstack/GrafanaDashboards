@@ -1829,7 +1829,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "count(pg_up{})",
+          "expr": "count(pg_up{job=\"postgresql\"})",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -2222,7 +2222,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "count(count(pg_up{}) by (cluster))",
+          "expr": "count(count(pg_up{job=\"postgresql\"}) by (cluster))",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -7537,6 +7537,6 @@
   "timezone": "",
   "title": "THG - Central",
   "uid": "thg-central",
-  "version": 8,
+  "version": 17,
   "weekStart": ""
 }
