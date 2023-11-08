@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 50,
+  "id": 41,
   "links": [
     {
       "asDropdown": true,
@@ -184,7 +184,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "decimals": 2,
@@ -215,14 +217,16 @@
       "id": 17,
       "links": [],
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": ["sum"],
           "show": false
         },
         "showHeader": true
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -357,7 +361,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "decimals": 2,
@@ -388,14 +394,16 @@
       "id": 23,
       "links": [],
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": ["sum"],
           "show": false
         },
         "showHeader": true
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -542,7 +550,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "decimals": 2,
@@ -573,14 +583,16 @@
       "id": 12,
       "links": [],
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": ["sum"],
           "show": false
         },
         "showHeader": true
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -715,7 +727,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "decimals": 2,
@@ -762,14 +776,16 @@
       "id": 14,
       "links": [],
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": ["sum"],
           "show": false
         },
         "showHeader": true
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -904,7 +920,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "decimals": 2,
@@ -951,14 +969,16 @@
       "id": 19,
       "links": [],
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": ["sum"],
           "show": false
         },
         "showHeader": true
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -1093,7 +1113,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "decimals": 2,
@@ -1124,14 +1146,16 @@
       "id": 21,
       "links": [],
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": ["sum"],
           "show": false
         },
         "showHeader": true
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -1245,7 +1269,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(avg(raft_rocksdb_read_amplification{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}) by (instance))",
+          "expr": "avg(avg(rocksdb_read_amplification{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}) by (instance))",
           "legendFormat": "Raft Engine Read Amplification",
           "range": true,
           "refId": "A"
@@ -1300,7 +1324,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1395,7 +1420,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1435,7 +1461,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(sum(raft_rocksdb_num_sstables{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}) by (instance))",
+          "expr": "sum(sum(rocksdb_num_sstables{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"}) by (instance))",
           "legendFormat": "SSTables",
           "range": true,
           "refId": "A"
@@ -1490,7 +1516,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1585,7 +1612,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1625,7 +1653,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "raft_rocksdb_block_cache_hits{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"} / (raft_rocksdb_block_cache_hits{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"} + raft_rocksdb_block_cache_misses{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"})",
+          "expr": "rocksdb_block_cache_hits{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"} / (rocksdb_block_cache_hits{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"} + rocksdb_block_cache_misses{job=\"cockroachdb\",cluster=\"$cluster\",instance=~\"$node\"})",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -1680,7 +1708,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1744,7 +1773,7 @@
   ],
   "refresh": "",
   "revision": 1,
-  "schemaVersion": 37,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": ["CockroachDB", "Retail"],
   "templating": {
@@ -1900,6 +1929,6 @@
   "timezone": "utc",
   "title": "Retail - CockroachDB: Storage",
   "uid": "retail-cockroachdb-storage",
-  "version": 4,
+  "version": 1,
   "weekStart": ""
 }

@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 46,
+  "id": 35,
   "links": [
     {
       "asDropdown": true,
@@ -136,7 +136,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "multi",
@@ -152,7 +152,7 @@
           },
           "editorMode": "code",
           "expr": "sum(sum(ranges{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}) by (instance))",
-          "legendFormat": "__auto",
+          "legendFormat": "Total Ranges",
           "range": true,
           "refId": "A"
         },
@@ -164,7 +164,7 @@
           "editorMode": "code",
           "expr": "sum(sum(replicas_leaders{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}) by (instance))",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "Total Replicas",
           "range": true,
           "refId": "B"
         },
@@ -176,7 +176,7 @@
           "editorMode": "code",
           "expr": "sum(sum(replicas_leaders_not_leaseholders{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}) by (instance))",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "Total Replicas (Not Leaseholders)",
           "range": true,
           "refId": "C"
         },
@@ -188,7 +188,7 @@
           "editorMode": "code",
           "expr": "sum(sum(ranges_unavailable{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}) by (instance))",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "Ranges Unavailable",
           "range": true,
           "refId": "D"
         },
@@ -200,7 +200,7 @@
           "editorMode": "code",
           "expr": "sum(sum(ranges_underreplicated{cluster=\"$cluster\",job=\"cockroachdb\",instance=~\"$node\"}) by (instance))",
           "hide": false,
-          "legendFormat": "__auto",
+          "legendFormat": "Ranges Under Replicated",
           "range": true,
           "refId": "E"
         }
@@ -220,7 +220,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "decimals": 2,
@@ -264,7 +266,9 @@
       "id": 17,
       "links": [],
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": ["sum"],
           "show": false
@@ -272,7 +276,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -443,7 +447,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "decimals": 2,
@@ -474,14 +480,16 @@
       "id": 43,
       "links": [],
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": ["sum"],
           "show": false
         },
         "showHeader": true
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -639,7 +647,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "decimals": 2,
@@ -686,14 +696,16 @@
       "id": 31,
       "links": [],
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": ["sum"],
           "show": false
         },
         "showHeader": true
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -792,7 +804,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "multi",
@@ -828,7 +840,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "decimals": 2,
@@ -859,14 +873,16 @@
       "id": 40,
       "links": [],
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": ["sum"],
           "show": false
         },
         "showHeader": true
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -965,7 +981,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "multi",
@@ -1001,7 +1017,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "decimals": 2,
@@ -1032,14 +1050,16 @@
       "id": 29,
       "links": [],
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": ["sum"],
           "show": false
         },
         "showHeader": true
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -1138,7 +1158,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "multi",
@@ -1174,7 +1194,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "decimals": 2,
@@ -1205,14 +1227,16 @@
       "id": 45,
       "links": [],
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": ["sum"],
           "show": false
         },
         "showHeader": true
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -1311,7 +1335,7 @@
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "multi",
@@ -1347,7 +1371,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "decimals": 2,
@@ -1378,14 +1404,16 @@
       "id": 47,
       "links": [],
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": ["sum"],
           "show": false
         },
         "showHeader": true
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -1458,7 +1486,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1542,7 +1571,10 @@
             "mode": "thresholds"
           },
           "custom": {
-            "displayMode": "auto",
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "decimals": 2,
@@ -1551,7 +1583,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1588,14 +1621,16 @@
       "id": 14,
       "links": [],
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": ["sum"],
           "show": false
         },
         "showHeader": true
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -1668,7 +1703,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1809,7 +1845,10 @@
             "mode": "thresholds"
           },
           "custom": {
-            "displayMode": "auto",
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "decimals": 2,
@@ -1818,7 +1857,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1840,14 +1880,16 @@
       "id": 13,
       "links": [],
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": ["sum"],
           "show": false
         },
         "showHeader": true
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "10.0.3",
       "targets": [
         {
           "datasource": {
@@ -1888,7 +1930,7 @@
   ],
   "refresh": "10s",
   "revision": 1,
-  "schemaVersion": 37,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": ["CockroachDB", "Retail"],
   "templating": {
@@ -2043,6 +2085,6 @@
   "timezone": "browser",
   "title": "Retail - CockroachDB: Replication",
   "uid": "retail-cockroachdb-replication",
-  "version": 5,
+  "version": 1,
   "weekStart": ""
 }
