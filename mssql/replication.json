@@ -14,7 +14,9 @@
         "target": {
           "limit": 100,
           "matchAny": false,
-          "tags": ["cluster=$cluster"],
+          "tags": [
+            "cluster=$cluster"
+          ],
           "type": "tags"
         },
         "type": "dashboard"
@@ -24,7 +26,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 54,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -92,7 +93,11 @@
       "links": [],
       "options": {
         "legend": {
-          "calcs": ["mean", "lastNotNull", "max"],
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max"
+          ],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true
@@ -110,8 +115,8 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(mssql_replication_latency{cluster=~\"$cluster\"}) by (cluster, server_name)",
-          "legendFormat": "__auto",
+          "expr": "avg(mssql_replication_latency{cluster=~\"$cluster\",owner=~\"$owner\"}) by (cluster, server_name)",
+          "legendFormat": "{{ cluster }}.{{ server_name }}",
           "range": true,
           "refId": "A"
         }
@@ -183,7 +188,11 @@
       "links": [],
       "options": {
         "legend": {
-          "calcs": ["mean", "lastNotNull", "max"],
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max"
+          ],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true
@@ -201,8 +210,8 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "mssql_replication_latency{cluster=~\"$cluster\",source_table=~\"$source_table\"}",
-          "legendFormat": "{{cluster}}-{{source_table}}-{{server_name}}",
+          "expr": "mssql_replication_latency{cluster=~\"$cluster\",source_table=~\"$source_table\",owner=~\"$owner\"}",
+          "legendFormat": "{{cluster}}.{{server_name}}.{{source_table}}",
           "range": true,
           "refId": "A"
         }
@@ -211,18 +220,25 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "",
+  "refresh": "30s",
   "revision": 1,
-  "schemaVersion": 37,
+  "schemaVersion": 38,
   "style": "dark",
-  "tags": ["MSSQL", "Retail"],
+  "tags": [
+    "MSSQL",
+    "Retail"
+  ],
   "templating": {
     "list": [
       {
         "current": {
-          "selected": true,
-          "text": ["All"],
-          "value": ["$__all"]
+          "selected": false,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": {
           "type": "prometheus",
@@ -247,9 +263,13 @@
       },
       {
         "current": {
-          "selected": true,
-          "text": ["All"],
-          "value": ["$__all"]
+          "selected": false,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
         },
         "datasource": {
           "type": "prometheus",
@@ -265,6 +285,37 @@
         "query": {
           "query": "label_values(mssql_replication_latency{cluster=~\"$cluster\"}, source_table)",
           "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PAE45454D0EDB9216"
+        },
+        "definition": "label_values(mssql_replication_latency,owner)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Owner",
+        "multi": true,
+        "name": "owner",
+        "options": [],
+        "query": {
+          "query": "label_values(mssql_replication_latency,owner)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
         "regex": "",
@@ -291,11 +342,21 @@
       "2h",
       "1d"
     ],
-    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
   },
   "timezone": "browser",
   "title": "Retail - MSSQL: Replication Latency",
   "uid": "retail-mssql-replication-latency",
-  "version": 8,
+  "version": 15,
   "weekStart": ""
 }
