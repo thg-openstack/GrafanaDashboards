@@ -512,7 +512,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": "",
+  "refresh": "30s",
   "revision": 1,
   "schemaVersion": 38,
   "style": "dark",
@@ -619,6 +619,6 @@
   "timezone": "",
   "title": "Retail - PostgreSQL: Cluster Summary",
   "uid": "retail-postgresql-cluster-summary",
-  "version": 12,
+  "version": 24,
   "weekStart": ""
 }
