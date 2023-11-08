@@ -536,7 +536,7 @@
           "type": "prometheus",
           "uid": "PAE45454D0EDB9216"
         },
-        "definition": "label_values(patroni_primary{service_type=\"Patroni\"}==1,cluster_name)",
+        "definition": "label_values(patroni_primary{service_type=\"Patroni\"},cluster_name)",
         "hide": 0,
         "includeAll": true,
         "label": "Cluster",
@@ -544,7 +544,7 @@
         "name": "cluster",
         "options": [],
         "query": {
-          "query": "label_values(patroni_primary{service_type=\"Patroni\"}==1,cluster_name)",
+          "query": "label_values(patroni_primary{service_type=\"Patroni\"},cluster_name)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
@@ -570,7 +570,7 @@
           "type": "prometheus",
           "uid": "PAE45454D0EDB9216"
         },
-        "definition": "label_values(patroni_primary{service_type=\"Patroni\"}==1,datacentre)",
+        "definition": "label_values(patroni_primary{service_type=\"Patroni\"},datacentre)",
         "hide": 0,
         "includeAll": true,
         "label": "Datacentre",
@@ -578,7 +578,7 @@
         "name": "datacentre",
         "options": [],
         "query": {
-          "query": "label_values(patroni_primary{service_type=\"Patroni\"}==1,datacentre)",
+          "query": "label_values(patroni_primary{service_type=\"Patroni\"},datacentre)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
@@ -619,6 +619,6 @@
   "timezone": "",
   "title": "Retail - PostgreSQL: Cluster Summary",
   "uid": "retail-postgresql-cluster-summary",
-  "version": 2,
+  "version": 12,
   "weekStart": ""
 }
