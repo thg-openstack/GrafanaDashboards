@@ -144,9 +144,9 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(label_replace(irate(pg_stat_database_xact_commit{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]) !=0, \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster, datacentre)",
+          "expr": "max(label_replace(irate(pg_stat_database_xact_commit{cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}[5m]) !=0, \"node\", \"$1\", \"instance\", \"(.*?):.*\")) by (cluster_name) and (max by(cluster_name) (patroni_primary{cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}==1))",
           "interval": "",
-          "legendFormat": "{{datacentre}}-{{cluster}}",
+          "legendFormat": "{{cluster_name}}",
           "range": true,
           "refId": "A"
         },
@@ -157,7 +157,7 @@
           },
           "editorMode": "code",
           "expr": "label_replace(irate(pg_stat_database_xact_rollback{cluster=\"$cluster\", datname=~\"$datname\"}[5m]) !=0, \"node\", \"$1\", \"instance\", \"(.*?):.*\")",
-          "hide": false,
+          "hide": true,
           "legendFormat": "{{node}} {{datname}} rollbacks",
           "range": true,
           "refId": "B"
@@ -263,11 +263,24 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "label_replace(patroni_master{job=\"postgresql\"}==1, \"node_name\", \"$1\", \"instance\", \"^([^:]+):.*$\") * on (node_name) group_left() label_replace((sum by(instance) (irate(node_cpu_seconds_total{mode!=\"idle\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total[$__rate_interval])))), \"node_name\", \"$1\", \"instance\", \"^([^:]+):.*$\")",
+          "expr": "max by(cluster_name) (sum by(instance,cluster_name) (irate(node_cpu_seconds_total{service_type=\"Node Exporter\", mode!=\"idle\",cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{service_type=\"Node Exporter\",cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}[$__rate_interval])))) and (max by(cluster_name) (patroni_primary{service_type=\"Patroni\",cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}==1))",
+          "hide": false,
           "interval": "",
           "legendFormat": "{{cluster}}",
           "range": true,
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": " and (max by(cluster_name) (patroni_primary{service_type=\"Patroni\",cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}))",
+          "hide": true,
+          "instant": false,
+          "range": true,
+          "refId": "B"
         }
       ],
       "title": "CPU Usage",
@@ -369,14 +382,28 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(label_replace(label_replace(rate(process_resident_memory_bytes{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]), \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\") + label_replace(label_replace(rate(process_virtual_memory_bytes{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}[5m]), \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster,datacentre)",
+          "expr": "max(label_replace(rate(process_resident_memory_bytes{cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}[5m]), \"node\", \"$1\", \"instance\", \"(.*?):.*\") + label_replace(rate(process_virtual_memory_bytes{cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}[5m]), \"node\", \"$1\", \"instance\", \"(.*?):.*\")) by (cluster_name)",
+          "hide": true,
           "interval": "",
-          "legendFormat": "{{datacentre}}-{{cluster}}",
+          "legendFormat": "{{cluster_name}}",
           "range": true,
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "max by(cluster_name) (node_memory_MemTotal_bytes{service_type=\"Node Exporter\",cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"} - node_memory_MemFree_bytes{service_type=\"Node Exporter\",cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"} - (node_memory_Cached_bytes{service_type=\"Node Exporter\",cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"} + node_memory_Buffers_bytes{service_type=\"Node Exporter\",cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"} + node_memory_SReclaimable_bytes{service_type=\"Node Exporter\",cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}))",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "{{cluster_name}}",
+          "range": true,
+          "refId": "B"
         }
       ],
-      "title": "Average Memory Usage",
+      "title": "Memory Usage",
       "type": "timeseries"
     },
     {
@@ -509,7 +536,7 @@
           "type": "prometheus",
           "uid": "PAE45454D0EDB9216"
         },
-        "definition": "label_values(up{job=\"postgresql\"},cluster)",
+        "definition": "label_values(patroni_primary{service_type=\"Patroni\"}==1,cluster_name)",
         "hide": 0,
         "includeAll": true,
         "label": "Cluster",
@@ -517,8 +544,8 @@
         "name": "cluster",
         "options": [],
         "query": {
-          "query": "label_values(up{job=\"postgresql\"},cluster)",
-          "refId": "StandardVariableQuery"
+          "query": "label_values(patroni_primary{service_type=\"Patroni\"}==1,cluster_name)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
         "regex": "",
@@ -543,7 +570,7 @@
           "type": "prometheus",
           "uid": "PAE45454D0EDB9216"
         },
-        "definition": "label_values(up{job=\"postgresql\"},instance)",
+        "definition": "label_values(patroni_primary{service_type=\"Patroni\"}==1,datacentre)",
         "hide": 0,
         "includeAll": true,
         "label": "Datacentre",
@@ -551,11 +578,11 @@
         "name": "datacentre",
         "options": [],
         "query": {
-          "query": "label_values(up{job=\"postgresql\"},instance)",
-          "refId": "StandardVariableQuery"
+          "query": "label_values(patroni_primary{service_type=\"Patroni\"}==1,datacentre)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
-        "regex": "^([^-]+)-.*$",
+        "regex": "",
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
