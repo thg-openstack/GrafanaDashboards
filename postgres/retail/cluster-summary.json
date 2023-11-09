@@ -144,7 +144,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "max(label_replace(irate(pg_stat_database_xact_commit{cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}[5m]) !=0, \"node\", \"$1\", \"instance\", \"(.*?):.*\")) by (cluster_name) and (max by(cluster_name) (patroni_primary{cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}==1))",
+          "expr": "max by(cluster_name) (max by (cluster_name,instance) (irate(pg_stat_database_xact_commit{cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}[5m]) !=0) and (max by(cluster_name, instance) (patroni_primary{cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}==1)))",
           "interval": "",
           "legendFormat": "{{cluster_name}}",
           "range": true,
@@ -247,7 +247,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "sortBy": "Max",
+          "sortBy": "Last *",
           "sortDesc": true
         },
         "tooltip": {
@@ -263,24 +263,12 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "max by(cluster_name) (sum by(instance,cluster_name) (irate(node_cpu_seconds_total{service_type=\"Node Exporter\", mode!=\"idle\",cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{service_type=\"Node Exporter\",cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}[$__rate_interval])))) and (max by(cluster_name) (patroni_primary{service_type=\"Patroni\",cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}==1))",
+          "expr": "(sum by(instance,cluster_name) (irate(node_cpu_seconds_total{service_type=\"Node Exporter\", mode!=\"idle\",cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{service_type=\"Node Exporter\",cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}[$__rate_interval]))))  and (max by(instance,cluster_name) (patroni_primary{service_type=\"Patroni\",cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}==1))",
           "hide": false,
           "interval": "",
-          "legendFormat": "{{cluster}}",
+          "legendFormat": "{{cluster_name}}",
           "range": true,
           "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
-          },
-          "editorMode": "code",
-          "expr": " and (max by(cluster_name) (patroni_primary{service_type=\"Patroni\",cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}))",
-          "hide": true,
-          "instant": false,
-          "range": true,
-          "refId": "B"
         }
       ],
       "title": "CPU Usage",
@@ -382,7 +370,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "max(label_replace(rate(process_resident_memory_bytes{cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}[5m]), \"node\", \"$1\", \"instance\", \"(.*?):.*\") + label_replace(rate(process_virtual_memory_bytes{cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}[5m]), \"node\", \"$1\", \"instance\", \"(.*?):.*\")) by (cluster_name)",
+          "expr": "max by (cluster_name,instance) (rate(process_resident_memory_bytes{cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}[5m]) + rate(process_virtual_memory_bytes{cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}[5m]))",
           "hide": true,
           "interval": "",
           "legendFormat": "{{cluster_name}}",
@@ -395,7 +383,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "max by(cluster_name) (node_memory_MemTotal_bytes{service_type=\"Node Exporter\",cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"} - node_memory_MemFree_bytes{service_type=\"Node Exporter\",cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"} - (node_memory_Cached_bytes{service_type=\"Node Exporter\",cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"} + node_memory_Buffers_bytes{service_type=\"Node Exporter\",cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"} + node_memory_SReclaimable_bytes{service_type=\"Node Exporter\",cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}))",
+          "expr": "max by(cluster_name,instance) (node_memory_MemTotal_bytes{service_type=\"Node Exporter\",cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"} - node_memory_MemFree_bytes{service_type=\"Node Exporter\",cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"} - (node_memory_Cached_bytes{service_type=\"Node Exporter\",cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"} + node_memory_Buffers_bytes{service_type=\"Node Exporter\",cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"} + node_memory_SReclaimable_bytes{service_type=\"Node Exporter\",cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"})) and (max by(cluster_name,instance) (patroni_primary{cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}==1))",
           "hide": false,
           "instant": false,
           "legendFormat": "{{cluster_name}}",
@@ -411,7 +399,114 @@
         "type": "prometheus",
         "uid": "PAE45454D0EDB9216"
       },
-      "description": "",
+      "description": "how far behind in bytes replicas are",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 4,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 18
+      },
+      "id": 71,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "pluginVersion": "9.2.5",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "max by(cluster_name) (((patroni_xlog_replayed_location and (patroni_replica == 1))  - on(cluster_name) group_left max by(cluster_name) (patroni_xlog_location)) * -1) > 0",
+          "interval": "",
+          "legendFormat": "{{ cluster_name }}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Replication WAL Latency (bytes)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PAE45454D0EDB9216"
+      },
+      "description": "max time that slowest replica is behind the primary",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -449,6 +544,7 @@
           },
           "links": [],
           "mappings": [],
+          "noValue": "0",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -467,12 +563,12 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 9,
         "w": 24,
         "x": 0,
-        "y": 18
+        "y": 27
       },
-      "id": 71,
+      "id": 72,
       "links": [],
       "options": {
         "legend": {
@@ -501,14 +597,14 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "max(label_replace(label_replace(pg_replication_lag{cluster=~\"$cluster\",instance=~\"$datacentre-.*$\"}, \"node\", \"$1\", \"instance\", \"(.*?):.*\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (cluster,datacentre)",
+          "expr": "max by (cluster_name) (pg_replication_lag{cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}) and (max by(cluster_name) (((patroni_xlog_replayed_location offset 1m and (patroni_replica offset 1m == 1))  - on(cluster_name) group_left max by(cluster_name) (patroni_xlog_location offset 1m)) * -1) > 0)",
           "interval": "",
-          "legendFormat": "{{datacentre}}-{{cluster}}",
+          "legendFormat": "{{ cluster_name }}",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Replication WAL Latency",
+      "title": "Replication WAL Latency (time)",
       "type": "timeseries"
     }
   ],
@@ -590,7 +686,7 @@
     ]
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
@@ -619,6 +715,6 @@
   "timezone": "",
   "title": "Retail - PostgreSQL: Cluster Summary",
   "uid": "retail-postgresql-cluster-summary",
-  "version": 24,
+  "version": 53,
   "weekStart": ""
 }
