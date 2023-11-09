@@ -24,7 +24,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 6,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -424,13 +423,13 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(gin_uri_request_total{job=\"Service Whisper\",code=\"200\",instance=~\"$instance\"}[15m])) by (uri)",
-          "legendFormat": "{{uri}}",
+          "expr": "sum(rate(gin_uri_request_total{job=\"Service Whisper\",code=~\"2.*\",instance=~\"$instance\"}[$__range])) by (uri, code)",
+          "legendFormat": "{{code}} -> {{uri}}",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "OK requests",
+      "title": "2## request count",
       "type": "timeseries"
     },
     {
@@ -516,11 +515,11 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(gin_uri_request_total{job=\"Service Whisper\",code!=\"200\",instance=~\"$instance\"}[15m])) by (uri,code) != 0",
+          "expr": "sum(rate(gin_uri_request_total{job=\"Service Whisper\",code!~\"2.*\",instance=~\"$instance\"}[$__range])) by (uri,code) != 0",
           "hide": false,
           "instant": false,
           "key": "Q-9c975f59-e7d0-45ae-87ed-35f55dc5a004-1",
-          "legendFormat": "{{uri}}-{{code}}",
+          "legendFormat": "{{code}} -> {{uri}}",
           "range": true,
           "refId": "B"
         }
@@ -612,7 +611,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(gin_request_body_total{job=\"Service Whisper\",instance=~\"$instance\"}[15m]))",
+          "expr": "sum(rate(gin_request_body_total{job=\"Service Whisper\",instance=~\"$instance\"}[$__range]))",
           "legendFormat": "rx",
           "range": true,
           "refId": "A"
@@ -705,7 +704,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "sum(rate(gin_response_body_total{job=\"Service Whisper\",instance=~\"$instance\"}[15m]))",
+          "expr": "sum(rate(gin_response_body_total{job=\"Service Whisper\",instance=~\"$instance\"}[$__range]))",
           "legendFormat": "tx",
           "range": true,
           "refId": "A"
@@ -798,7 +797,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(rate(gin_request_duration_sum{job=\"Service Whisper\",instance=~\"$instance\", uri=~\"/.+\"}[15m])) by (uri)",
+          "expr": "avg(rate(gin_request_duration_sum{job=\"Service Whisper\",instance=~\"$instance\", uri=~\"/.+\"}[$__range])) by (uri)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -961,7 +960,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1052,7 +1052,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1144,7 +1145,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1602,6 +1604,6 @@
   "timezone": "",
   "title": "Retail - Service Whisper: Central",
   "uid": "retail-service-whisper-central",
-  "version": 1,
+  "version": 10,
   "weekStart": ""
 }
