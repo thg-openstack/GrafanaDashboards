@@ -491,7 +491,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "max by(cluster_name) (((patroni_xlog_replayed_location and (patroni_replica == 1))  - on(cluster_name) group_left max by(cluster_name) (patroni_xlog_location)) * -1) > 0",
+          "expr": "max by(cluster_name) (((patroni_xlog_replayed_location{cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"} and (patroni_replica{cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"} == 1))  - on(cluster_name) group_left max by(cluster_name) (patroni_xlog_location{cluster_name=~\"$cluster\"})) * -1) >= 0",
           "interval": "",
           "legendFormat": "{{ cluster_name }}",
           "range": true,
@@ -597,7 +597,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "max by (cluster_name) (pg_replication_lag{cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}) and (max by(cluster_name) (((patroni_xlog_replayed_location offset 1m and (patroni_replica offset 1m == 1))  - on(cluster_name) group_left max by(cluster_name) (patroni_xlog_location offset 1m)) * -1) > 0)",
+          "expr": "max by(cluster_name) ((max by (cluster_name, instance) (label_replace(pg_replication_lag{cluster_name!=\"\"}, \"instance\", \"$1\", \"instance\", \"(.*?):.*\"))) and (max by(cluster_name, instance) (label_replace(pg_stat_replication_pg_wal_lsn_diff{cluster_name!=\"\"} offset 1m > 0, \"instance\", \"$1\", \"application_name\", \"(.*?)\"))))",
           "interval": "",
           "legendFormat": "{{ cluster_name }}",
           "range": true,
@@ -686,7 +686,7 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {
