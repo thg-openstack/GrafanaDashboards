@@ -24,7 +24,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 7,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -45,7 +44,9 @@
         "alertName": "CockroachDB",
         "dashboardAlerts": false,
         "datasource": "Mimir",
-        "groupBy": ["instance"],
+        "groupBy": [
+          "instance"
+        ],
         "groupMode": "custom",
         "maxItems": 100,
         "sortOrder": 3,
@@ -129,7 +130,9 @@
         "alertName": "MSSQL",
         "dashboardAlerts": false,
         "datasource": "Mimir",
-        "groupBy": ["instance"],
+        "groupBy": [
+          "instance"
+        ],
         "groupMode": "custom",
         "maxItems": 100,
         "sortOrder": 3,
@@ -255,7 +258,9 @@
         "alertName": "ServiceInsight",
         "dashboardAlerts": false,
         "datasource": "Mimir",
-        "groupBy": ["instance"],
+        "groupBy": [
+          "instance"
+        ],
         "groupMode": "custom",
         "maxItems": 100,
         "sortOrder": 3,
@@ -897,7 +902,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -1332,7 +1339,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -1377,7 +1386,10 @@
         "showRecentlyViewed": false,
         "showSearch": true,
         "showStarred": false,
-        "tags": ["CockroachDB", "Retail"]
+        "tags": [
+          "CockroachDB",
+          "Retail"
+        ]
       },
       "pluginVersion": "10.0.3",
       "title": "CockroachDB Dashboards",
@@ -1815,7 +1827,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -1908,7 +1922,11 @@
       "links": [],
       "options": {
         "legend": {
-          "calcs": ["mean", "lastNotNull", "max"],
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max"
+          ],
           "displayMode": "list",
           "placement": "bottom",
           "showLegend": false
@@ -2161,7 +2179,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "max(label_replace(label_replace(patroni_master{job=\"postgresql\"}==1, \"node_name\", \"$1\", \"instance\", \"^([^:]+):.*$\") * on (node_name) group_left() label_replace((sum by(instance) (irate(node_cpu_seconds_total{mode!=\"idle\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total[$__rate_interval])))), \"node_name\", \"$1\", \"instance\", \"^([^:]+):.*$\"), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
+          "expr": "max by(datacentre) (((sum by(instance,cluster_name,datacentre) (irate(node_cpu_seconds_total{ mode!=\"idle\",service_type=\"Node Exporter\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{service_type=\"Node Exporter\"}[$__rate_interval]))))) and (max by(instance,cluster_name,datacentre) (patroni_primary{service_type=\"Patroni\"}==1)))",
           "hide": false,
           "interval": "",
           "legendFormat": "{{datacentre}} max",
@@ -2208,7 +2226,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -2253,7 +2273,10 @@
         "showRecentlyViewed": false,
         "showSearch": true,
         "showStarred": false,
-        "tags": ["Retail", "Postgres"]
+        "tags": [
+          "Retail",
+          "Postgres"
+        ]
       },
       "pluginVersion": "10.0.3",
       "title": "Postgres Dashboards",
@@ -2329,7 +2352,11 @@
       "links": [],
       "options": {
         "legend": {
-          "calcs": ["mean", "lastNotNull", "max"],
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max"
+          ],
           "displayMode": "list",
           "placement": "bottom",
           "showLegend": false
@@ -2430,7 +2457,12 @@
       "links": [],
       "options": {
         "legend": {
-          "calcs": ["mean", "lastNotNull", "max", "min"],
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max",
+            "min"
+          ],
           "displayMode": "table",
           "placement": "bottom",
           "showLegend": false,
@@ -2451,7 +2483,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "max(avg(label_replace(pg_replication_lag{job='postgresql',instance=~\"(de1|gb1|gb4|gb5).+\",instance!~\".*li-orbitwppsql.*\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre)",
+          "expr": "max by(datacentre) ((max by (cluster_name, instance,datacentre) (label_replace(pg_replication_lag{cluster_name!=\"\",service_type=\"Postgres Exporter\"}, \"instance\", \"$1\", \"instance\", \"(.*?):.*\"))) and (max by(cluster_name, instance,datacentre) (label_replace(pg_stat_replication_pg_wal_lsn_diff{cluster_name!=\"\",service_type=\"Postgres Exporter\"} offset 1m > 0, \"instance\", \"$1\", \"application_name\", \"(.*?)\"))))",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -2523,7 +2555,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -2773,7 +2807,7 @@
             }
           },
           "mappings": [],
-          "max": 100,
+          "max": 1,
           "min": 0,
           "thresholds": {
             "mode": "absolute",
@@ -2788,7 +2822,7 @@
               }
             ]
           },
-          "unit": "percent"
+          "unit": "percentunit"
         },
         "overrides": [
           {
@@ -2863,7 +2897,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "max(avg(label_replace(couchbase_bucket_stats_cpu_utilization_rate{instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre)",
+          "expr": "avg by(datacentre) (avg by(datacentre,cluster_name) (((sum by(instance,cluster_name,datacentre) (irate(node_cpu_seconds_total{ mode!=\"idle\",service_type=\"Node Exporter\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{service_type=\"Node Exporter\"}[$__rate_interval]))))) and (max by(instance,cluster_name,datacentre) (couchbase_node_up{service_type=\"Couchbase Exporter\"}==1))))",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -2874,7 +2908,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "max(avg(label_replace(couchbase_bucket_stats_cpu_utilization_rate{instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre) + stddev(avg(label_replace(couchbase_bucket_stats_cpu_utilization_rate{instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre)",
+          "expr": "max by(datacentre) (avg by(datacentre,cluster_name) (((sum by(instance,cluster_name,datacentre) (irate(node_cpu_seconds_total{ mode!=\"idle\",service_type=\"Node Exporter\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{service_type=\"Node Exporter\"}[$__rate_interval]))))) and (max by(instance,cluster_name,datacentre) (couchbase_node_up{service_type=\"Couchbase Exporter\"}==1))))",
           "hide": false,
           "interval": "",
           "legendFormat": "{{datacentre}}_max",
@@ -2887,7 +2921,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "max(avg(label_replace(couchbase_bucket_stats_cpu_utilization_rate{instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre) - stddev(avg(label_replace(couchbase_bucket_stats_cpu_utilization_rate{instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre)",
+          "expr": "min by(datacentre) (avg by(datacentre,cluster_name) (((sum by(instance,cluster_name,datacentre) (irate(node_cpu_seconds_total{ mode!=\"idle\",service_type=\"Node Exporter\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{service_type=\"Node Exporter\"}[$__rate_interval]))))) and (max by(instance,cluster_name,datacentre) (couchbase_node_up{service_type=\"Couchbase Exporter\"}==1))))",
           "hide": false,
           "interval": "",
           "legendFormat": "{{datacentre}}_min",
@@ -2934,7 +2968,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -2979,7 +3015,10 @@
         "showRecentlyViewed": false,
         "showSearch": true,
         "showStarred": false,
-        "tags": ["Retail", "Couchbase"]
+        "tags": [
+          "Retail",
+          "Couchbase"
+        ]
       },
       "pluginVersion": "10.0.3",
       "title": "Couchbase Dashboards",
@@ -3133,7 +3172,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -3218,7 +3259,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -3559,7 +3602,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -3605,7 +3650,10 @@
         "showRecentlyViewed": false,
         "showSearch": true,
         "showStarred": false,
-        "tags": ["MSSQL", "Retail"]
+        "tags": [
+          "MSSQL",
+          "Retail"
+        ]
       },
       "pluginVersion": "10.0.3",
       "title": "MSSQL Dashboards",
@@ -3858,7 +3906,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -4292,7 +4342,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -4351,7 +4403,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -4410,7 +4464,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -4469,7 +4525,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -4890,7 +4948,10 @@
         "showRecentlyViewed": false,
         "showSearch": true,
         "showStarred": false,
-        "tags": ["Retail", "Linux"]
+        "tags": [
+          "Retail",
+          "Linux"
+        ]
       },
       "pluginVersion": "10.0.3",
       "title": "Linux Dashboards",
@@ -4957,7 +5018,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -5298,7 +5361,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -5357,7 +5422,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -5416,7 +5483,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -5475,7 +5544,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -5816,7 +5887,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -5875,7 +5948,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -5920,7 +5995,10 @@
         "showRecentlyViewed": false,
         "showSearch": true,
         "showStarred": false,
-        "tags": ["Retail", "Windows"]
+        "tags": [
+          "Retail",
+          "Windows"
+        ]
       },
       "pluginVersion": "10.0.3",
       "title": "Windows Dashboards",
@@ -6000,7 +6078,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -6431,7 +6511,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -6476,7 +6558,10 @@
         "showRecentlyViewed": false,
         "showSearch": true,
         "showStarred": false,
-        "tags": ["CockroachDB", "Kubernetes"]
+        "tags": [
+          "CockroachDB",
+          "Kubernetes"
+        ]
       },
       "pluginVersion": "10.0.3",
       "title": "CockroachDB Dashboards",
@@ -6902,8 +6987,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               }
             ]
           }
@@ -6923,7 +7007,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -7002,8 +7088,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               }
             ]
           }
@@ -7091,8 +7176,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -7184,8 +7268,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -7257,8 +7340,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               }
             ]
           }
@@ -7278,7 +7360,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -7323,7 +7407,10 @@
         "showRecentlyViewed": false,
         "showSearch": true,
         "showStarred": false,
-        "tags": ["Kubernetes", "Postgres"]
+        "tags": [
+          "Kubernetes",
+          "Postgres"
+        ]
       },
       "pluginVersion": "10.0.3",
       "title": "Postgres Dashboards",
@@ -7374,8 +7461,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -7466,8 +7552,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -7537,6 +7622,6 @@
   "timezone": "",
   "title": "THG - Central",
   "uid": "thg-central",
-  "version": 17,
+  "version": 22,
   "weekStart": ""
 }

@@ -706,7 +706,7 @@
           },
           "links": [],
           "mappings": [],
-          "max": 100,
+          "max": 1,
           "min": 0,
           "thresholds": {
             "mode": "absolute",
@@ -721,7 +721,7 @@
               }
             ]
           },
-          "unit": "percent"
+          "unit": "percentunit"
         },
         "overrides": []
       },
@@ -757,10 +757,13 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg(couchbase_bucket_stats_cpu_utilization_rate{instance=~\"$cluster-...:9420\"})",
+          "expr": "avg ((sum by(instance) (irate(node_cpu_seconds_total{cluster_name=\"$cluster\", mode!=\"idle\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{cluster_name=\"$cluster\"}[$__rate_interval])))))",
+          "hide": false,
+          "instant": false,
+          "interval": "",
           "legendFormat": "50th",
           "range": true,
-          "refId": "A"
+          "refId": "C"
         },
         {
           "datasource": {
@@ -768,11 +771,13 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "max(couchbase_bucket_stats_cpu_utilization_rate{instance=~\"$cluster-...:9420\"})",
+          "expr": "max ((sum by(instance) (irate(node_cpu_seconds_total{cluster_name=\"$cluster\", mode!=\"idle\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{cluster_name=\"$cluster\"}[$__rate_interval])))))",
           "hide": false,
+          "instant": false,
+          "interval": "",
           "legendFormat": "Peak",
           "range": true,
-          "refId": "B"
+          "refId": "D"
         }
       ],
       "title": "Cluster average CPU usage",
@@ -826,7 +831,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -922,13 +928,14 @@
           },
           "links": [],
           "mappings": [],
-          "max": 100,
+          "max": 1,
           "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -936,7 +943,7 @@
               }
             ]
           },
-          "unit": "percent"
+          "unit": "percentunit"
         },
         "overrides": []
       },
@@ -972,10 +979,12 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "max by (instance) (couchbase_bucket_stats_cpu_utilization_rate{instance=~\"$cluster-...:9420\"})",
-          "legendFormat": "__auto",
+          "expr": "(sum by(instance) (irate(node_cpu_seconds_total{cluster_name=\"$cluster\", mode!=\"idle\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{cluster_name=\"$cluster\"}[$__rate_interval]))))",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "{{instance}}",
           "range": true,
-          "refId": "A"
+          "refId": "B"
         }
       ],
       "title": "Cluster average CPU usage",
@@ -1054,7 +1063,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1176,7 +1186,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1272,7 +1283,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2793,8 +2805,8 @@
       {
         "current": {
           "selected": true,
-          "text": "gb1-li-milkywaycbs",
-          "value": "gb1-li-milkywaycbs"
+          "text": "gb4-li-ecrmcb",
+          "value": "gb4-li-ecrmcb"
         },
         "datasource": {
           "type": "prometheus",
@@ -2888,6 +2900,6 @@
   "timezone": "browser",
   "title": "Retail - Couchbase: Central",
   "uid": "retail-couchbase-central",
-  "version": 2,
+  "version": 11,
   "weekStart": ""
 }
