@@ -144,23 +144,11 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "max by(cluster_name) (max by (cluster_name,instance) (irate(pg_stat_database_xact_commit{cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}[5m]) !=0) and (max by(cluster_name, instance) (patroni_primary{cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}==1)))",
+          "expr": "max by(cluster_name) (max by (cluster_name,instance) ((irate(pg_stat_database_xact_commit{cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}[5m])) + (irate(pg_stat_database_xact_rollback{cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}[5m]))) and (max by(cluster_name, instance) (patroni_primary{cluster_name=~\"$cluster\",datacentre=~\"$datacentre\"}==1)))",
           "interval": "",
           "legendFormat": "{{cluster_name}}",
           "range": true,
           "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
-          },
-          "editorMode": "code",
-          "expr": "label_replace(irate(pg_stat_database_xact_rollback{cluster=\"$cluster\", datname=~\"$datname\"}[5m]) !=0, \"node\", \"$1\", \"instance\", \"(.*?):.*\")",
-          "hide": true,
-          "legendFormat": "{{node}} {{datname}} rollbacks",
-          "range": true,
-          "refId": "B"
         }
       ],
       "title": "Transactions",
@@ -597,7 +585,113 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "max by(cluster_name) ((max by (cluster_name, instance) (label_replace(pg_replication_lag{cluster_name!=\"\"}, \"instance\", \"$1\", \"instance\", \"(.*?):.*\"))) and (max by(cluster_name, instance) (label_replace(pg_stat_replication_pg_wal_lsn_diff{cluster_name!=\"\"} offset 1m > 0, \"instance\", \"$1\", \"application_name\", \"(.*?)\"))))",
+          "expr": "max by(cluster_name) ((max by (cluster_name, instance) (label_replace(pg_replication_lag{cluster_name=~\"$cluster\",service_type=\"Postgres Exporter\"}, \"instance\", \"$1\", \"instance\", \"(.*?):.*\"))) and (max by(cluster_name, instance) (label_replace(pg_stat_replication_pg_wal_lsn_diff{cluster_name=~\"$cluster\",service_type=\"Postgres Exporter\"} offset 1m > 0, \"instance\", \"$1\", \"application_name\", \"(.*?)\"))))",
+          "interval": "",
+          "legendFormat": "{{ cluster_name }}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Replication WAL Latency (time) - includes backup affected",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PAE45454D0EDB9216"
+      },
+      "description": "max time that slowest replica is behind the primary",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 4,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "links": [],
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 36
+      },
+      "id": 73,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "pluginVersion": "9.2.5",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "max by(cluster_name) ((max by (cluster_name, instance) (pg_replication_lag{cluster_name=~\"$cluster\",service_type=\"Postgres Exporter\"})) \nand (max by(cluster_name, instance) \n    (label_replace(pg_stat_replication_pg_wal_lsn_diff{cluster_name=~\"$cluster\",service_type=\"Postgres Exporter\"} offset 1m > 0, \"instance\", \"$1\", \"application_name\", \"(.*?)\"))) \nand (max by(cluster_name,instance) (label_replace(patroni_xlog_paused{} offset 30m == 0, \"instance\", \"$1\", \"instance\", \"(.*?):.*\"))) \nand (max by(cluster_name,instance) (label_replace(patroni_xlog_paused{} == 0, \"instance\", \"$1\", \"instance\", \"(.*?):.*\"))))",
           "interval": "",
           "legendFormat": "{{ cluster_name }}",
           "range": true,
@@ -715,6 +809,6 @@
   "timezone": "",
   "title": "Retail - PostgreSQL: Cluster Summary",
   "uid": "retail-postgresql-cluster-summary",
-  "version": 53,
+  "version": 73,
   "weekStart": ""
 }
