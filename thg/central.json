@@ -2961,7 +2961,7 @@
                 "id": "custom.hideFrom",
                 "value": {
                   "legend": true,
-                  "tooltip": true,
+                  "tooltip": false,
                   "viz": false
                 }
               }
@@ -2981,7 +2981,7 @@
                 "id": "custom.hideFrom",
                 "value": {
                   "legend": true,
-                  "tooltip": true,
+                  "tooltip": false,
                   "viz": false
                 }
               }
@@ -3015,7 +3015,8 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg by(datacentre) (topk by(datacentre) (5,(avg by(datacentre,cluster_name) (((sum by(instance,cluster_name,datacentre) (irate(node_cpu_seconds_total{ mode!=\"idle\",service_type=\"Node Exporter\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{service_type=\"Node Exporter\"}[$__rate_interval]))))) and (max by(instance,cluster_name,datacentre) (couchbase_node_up{service_type=\"Couchbase Exporter\"}==1))))))",
+          "expr": "avg by(datacentre) (topk by(datacentre) (5,(avg by(datacentre,cluster_name) (((sum by(instance,cluster_name,datacentre) (irate(node_cpu_seconds_total{ mode!=\"idle\",service_type=\"Node Exporter\",cluster_tech=\"Couchbase\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{service_type=\"Node Exporter\",cluster_tech=\"Couchbase\"}[$__rate_interval])))))))))",
+          "hide": false,
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -3026,7 +3027,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "max (avg by(datacentre,cluster_name) (((sum by(instance,cluster_name,datacentre) (irate(node_cpu_seconds_total{ mode!=\"idle\",service_type=\"Node Exporter\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{service_type=\"Node Exporter\"}[$__rate_interval]))))) and (max by(instance,cluster_name,datacentre) (couchbase_node_up{service_type=\"Couchbase Exporter\"}==1))))",
+          "expr": "max (avg by(datacentre,cluster_name) (((sum by(instance,cluster_name,datacentre) (irate(node_cpu_seconds_total{ mode!=\"idle\",service_type=\"Node Exporter\",cluster_tech=\"Couchbase\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{service_type=\"Node Exporter\",cluster_tech=\"Couchbase\"}[$__rate_interval])))))))",
           "hide": false,
           "interval": "",
           "legendFormat": "max",
@@ -3039,7 +3040,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "min (avg by(datacentre,cluster_name) (((sum by(instance,cluster_name,datacentre) (irate(node_cpu_seconds_total{ mode!=\"idle\",service_type=\"Node Exporter\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{service_type=\"Node Exporter\"}[$__rate_interval]))))) and (max by(instance,cluster_name,datacentre) (couchbase_node_up{service_type=\"Couchbase Exporter\"}==1))))",
+          "expr": "min (avg by(datacentre,cluster_name) (((sum by(instance,cluster_name,datacentre) (irate(node_cpu_seconds_total{ mode!=\"idle\",service_type=\"Node Exporter\",cluster_tech=\"Couchbase\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{service_type=\"Node Exporter\",cluster_tech=\"Couchbase\"}[$__rate_interval])))))))",
           "hide": false,
           "interval": "",
           "legendFormat": "min",
