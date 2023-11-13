@@ -1231,7 +1231,7 @@
               "viz": false
             },
             "lineInterpolation": "linear",
-            "lineWidth": 1,
+            "lineWidth": 2,
             "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
@@ -1264,7 +1264,56 @@
           },
           "unit": "percentunit"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "max"
+            },
+            "properties": [
+              {
+                "id": "custom.fillBelowTo",
+                "value": "min"
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 0
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 0
+              },
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": true,
+                  "tooltip": false,
+                  "viz": false
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "min"
+            },
+            "properties": [
+              {
+                "id": "custom.lineWidth",
+                "value": 0
+              },
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": true,
+                  "tooltip": false,
+                  "viz": false
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 8,
@@ -1292,10 +1341,50 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "max(avg(label_replace(sys_cpu_combined_percent_normalized{job='cockroachdb',instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre)",
+          "expr": "max by (datacentre) (avg by(datacentre, cluster_name) (sys_cpu_combined_percent_normalized{cluster_tech=\"Cockroach\",service_type=\"Cockroach\"}))",
+          "hide": false,
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "max by(datacentre) (avg by(cluster_name,datacentre) (sum by(instance,cluster_name,datacentre) (irate(node_cpu_seconds_total{ mode!=\"idle\",service_type=\"Node Exporter\",cluster_tech=\"Cockroach\"}[$__rate_interval])) / on(instance) group_left sum by (instance)(irate(node_cpu_seconds_total{service_type=\"Node Exporter\",cluster_tech=\"Cockroach\"}[$__rate_interval]))))",
+          "hide": true,
+          "instant": false,
+          "legendFormat": "{{datacentre}}",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "max (sys_cpu_combined_percent_normalized{cluster_tech=\"Cockroach\",service_type=\"Cockroach\"})",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "max",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PAE45454D0EDB9216"
+          },
+          "editorMode": "code",
+          "expr": "min (sys_cpu_combined_percent_normalized{cluster_tech=\"Cockroach\",service_type=\"Cockroach\"})",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "min",
+          "range": true,
+          "refId": "D"
         }
       ],
       "title": "CPU Usage",
@@ -2128,7 +2217,7 @@
                 "id": "custom.hideFrom",
                 "value": {
                   "legend": true,
-                  "tooltip": true,
+                  "tooltip": false,
                   "viz": false
                 }
               }
@@ -2148,7 +2237,7 @@
                 "id": "custom.hideFrom",
                 "value": {
                   "legend": true,
-                  "tooltip": true,
+                  "tooltip": false,
                   "viz": false
                 }
               }
@@ -2182,7 +2271,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "avg by(datacentre) (topk by(datacentre) (10,(((sum by(instance,cluster_name,datacentre) (irate(node_cpu_seconds_total{ mode!=\"idle\",service_type=\"Node Exporter\",instance=~\".*psql.*\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{service_type=\"Node Exporter\",instance=~\".*psql.*\"}[$__rate_interval]))))) and (max by(instance,cluster_name,datacentre) (patroni_primary{service_type=\"Patroni\"}==1)))))",
+          "expr": "avg by(datacentre) (topk by(datacentre) (10,(((sum by(instance,cluster_name,datacentre) (irate(node_cpu_seconds_total{ mode!=\"idle\",service_type=\"Node Exporter\",cluster_tech=\"Postgres\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{service_type=\"Node Exporter\",cluster_tech=\"Postgres\"}[$__rate_interval]))))) and (max by(instance,cluster_name,datacentre) (patroni_primary{service_type=\"Patroni\",cluster_tech=\"Postgres\"}==1)))))",
           "hide": false,
           "interval": "",
           "legendFormat": "{{datacentre}}",
@@ -2195,7 +2284,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "max (((sum by(instance,cluster_name,datacentre) (irate(node_cpu_seconds_total{ mode!=\"idle\",service_type=\"Node Exporter\",instance=~\".*psql.*\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{service_type=\"Node Exporter\",instance=~\".*psql.*\"}[$__rate_interval]))))) and (max by(instance,cluster_name,datacentre) (patroni_primary{service_type=\"Patroni\"}==1)))",
+          "expr": "max (((sum by(instance,cluster_name,datacentre) (irate(node_cpu_seconds_total{ mode!=\"idle\",service_type=\"Node Exporter\",cluster_tech=\"Postgres\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{service_type=\"Node Exporter\",cluster_tech=\"Postgres\"}[$__rate_interval]))))) and (max by(instance,cluster_name,datacentre) (patroni_primary{service_type=\"Patroni\",cluster_tech=\"Postgres\"}==1)))",
           "hide": false,
           "instant": false,
           "legendFormat": "max",
@@ -2208,7 +2297,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "min (((sum by(instance,cluster_name,datacentre) (irate(node_cpu_seconds_total{ mode!=\"idle\",service_type=\"Node Exporter\",instance=~\".*psql.*\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{service_type=\"Node Exporter\",instance=~\".*psql.*\"}[$__rate_interval]))))) and (max by(instance,cluster_name,datacentre) (patroni_primary{service_type=\"Patroni\"}==1)))",
+          "expr": "min (((sum by(instance,cluster_name,datacentre) (irate(node_cpu_seconds_total{ mode!=\"idle\",service_type=\"Node Exporter\",cluster_tech=\"Postgres\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{service_type=\"Node Exporter\",cluster_tech=\"Postgres\"}[$__rate_interval]))))) and (max by(instance,cluster_name,datacentre) (patroni_primary{service_type=\"Patroni\",cluster_tech=\"Postgres\"}==1)))",
           "hide": false,
           "instant": false,
           "legendFormat": "min",
@@ -3733,7 +3822,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3825,7 +3915,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3912,7 +4003,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           }
@@ -4002,7 +4094,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4095,7 +4188,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4187,7 +4281,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4280,7 +4375,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4343,7 +4439,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           }
@@ -4403,7 +4500,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           }
@@ -4463,7 +4561,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           }
@@ -4523,7 +4622,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               }
             ]
           }
@@ -4613,7 +4713,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4706,7 +4807,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4799,7 +4901,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -4892,7 +4995,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -7613,6 +7717,6 @@
   "timezone": "",
   "title": "THG - Central",
   "uid": "thg-central",
-  "version": 40,
+  "version": 47,
   "weekStart": ""
 }
