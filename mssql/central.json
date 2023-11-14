@@ -381,7 +381,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "max by(cluster) (100 - (avg by (instance,cluster) (irate(windows_cpu_time_total{cluster=\"gfc-li-tabdb001\", mode=\"idle\"}[2m])) * 100))",
+          "expr": "max by(cluster) (100 - (avg by (instance,cluster) (irate(windows_cpu_time_total{cluster=\"$cluster\", mode=\"idle\"}[2m])) * 100))",
           "hide": false,
           "legendFormat": "{{cluster}} now",
           "range": true,
@@ -393,7 +393,7 @@
             "uid": "PAE45454D0EDB9216"
           },
           "editorMode": "code",
-          "expr": "max by(cluster) (100 - (avg by (instance,cluster) (irate(windows_cpu_time_total{cluster=\"gfc-li-tabdb001\", mode=\"idle\"}[2m] offset $offset)) * 100))",
+          "expr": "max by(cluster) (100 - (avg by (instance,cluster) (irate(windows_cpu_time_total{cluster=\"$cluster\", mode=\"idle\"}[2m] offset $offset)) * 100))",
           "hide": false,
           "legendFormat": "{{cluster}} -$offset",
           "range": true,
@@ -1057,8 +1057,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1168,8 +1167,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1306,8 +1304,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1417,8 +1414,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1555,8 +1551,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1667,8 +1662,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1778,8 +1772,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1857,8 +1850,8 @@
       {
         "current": {
           "selected": false,
-          "text": "gfc-li-tabdb001",
-          "value": "gfc-li-tabdb001"
+          "text": "gb1-li-eann001",
+          "value": "gb1-li-eann001"
         },
         "datasource": {
           "type": "prometheus",
@@ -1886,7 +1879,7 @@
         "auto_count": 30,
         "auto_min": "10s",
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "7d",
           "value": "7d"
         },
@@ -2019,6 +2012,6 @@
   "timezone": "browser",
   "title": "Retail - MSSQL: Central",
   "uid": "retail-mssql-central",
-  "version": 15,
+  "version": 22,
   "weekStart": ""
 }
