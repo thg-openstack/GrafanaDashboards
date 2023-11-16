@@ -24,7 +24,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 5,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -35,9 +34,337 @@
       },
       "gridPos": {
         "h": 2,
-        "w": 3,
-        "x": 11,
+        "w": 9,
+        "x": 4,
         "y": 0
+      },
+      "id": 14,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "# Active Alerts",
+        "mode": "markdown"
+      },
+      "pluginVersion": "10.0.3",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 16,
+        "y": 0
+      },
+      "id": 15,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "# Dashboards",
+        "mode": "markdown"
+      },
+      "pluginVersion": "10.0.3",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 3,
+        "x": 20,
+        "y": 0
+      },
+      "id": 17,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "# ",
+        "mode": "markdown"
+      },
+      "pluginVersion": "10.0.3",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 18,
+        "w": 12,
+        "x": 0,
+        "y": 2
+      },
+      "id": 1,
+      "options": {
+        "alertInstanceLabelFilter": "",
+        "alertName": "",
+        "dashboardAlerts": false,
+        "folder": {
+          "title": "DBA",
+          "uid": "fe40bbb4-2377-469d-9e2d-ee614c3b2da4"
+        },
+        "groupBy": [],
+        "groupMode": "default",
+        "maxItems": 50,
+        "sortOrder": 1,
+        "stateFilter": {
+          "error": true,
+          "firing": true,
+          "noData": false,
+          "normal": false,
+          "pending": true
+        },
+        "viewMode": "list"
+      },
+      "title": "Alerts",
+      "type": "alertlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "description": "",
+      "gridPos": {
+        "h": 10,
+        "w": 3,
+        "x": 12,
+        "y": 2
+      },
+      "id": 10,
+      "options": {
+        "includeVars": false,
+        "keepTime": false,
+        "maxItems": 10,
+        "query": "",
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": false,
+        "showStarred": true,
+        "tags": []
+      },
+      "pluginVersion": "10.0.3",
+      "title": "Starred Dashboards",
+      "type": "dashlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 3,
+        "x": 15,
+        "y": 2
+      },
+      "id": 3,
+      "options": {
+        "includeVars": false,
+        "keepTime": false,
+        "maxItems": 20,
+        "query": "",
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": true,
+        "showStarred": false,
+        "tags": ["CockroachDB"]
+      },
+      "pluginVersion": "10.0.3",
+      "title": "CockroachDB Dashboards",
+      "type": "dashlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 3,
+        "x": 18,
+        "y": 2
+      },
+      "id": 9,
+      "options": {
+        "includeVars": false,
+        "keepTime": false,
+        "maxItems": 20,
+        "query": "",
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": true,
+        "showStarred": false,
+        "tags": ["mimir"]
+      },
+      "pluginVersion": "10.0.3",
+      "title": "Mimir Dashboards",
+      "type": "dashlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 3,
+        "x": 21,
+        "y": 2
+      },
+      "id": 8,
+      "options": {
+        "includeVars": false,
+        "keepTime": false,
+        "maxItems": 20,
+        "query": "",
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": true,
+        "showStarred": false,
+        "tags": ["MSSQL"]
+      },
+      "pluginVersion": "10.0.3",
+      "title": "MSSQL Dashboards",
+      "type": "dashlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 3,
+        "x": 12,
+        "y": 12
+      },
+      "id": 6,
+      "options": {
+        "includeVars": false,
+        "keepTime": false,
+        "maxItems": 20,
+        "query": "",
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": true,
+        "showStarred": false,
+        "tags": ["Windows"]
+      },
+      "pluginVersion": "10.0.3",
+      "title": "Windows Dashboards",
+      "type": "dashlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 3,
+        "x": 15,
+        "y": 12
+      },
+      "id": 5,
+      "options": {
+        "includeVars": false,
+        "keepTime": false,
+        "maxItems": 20,
+        "query": "",
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": true,
+        "showStarred": false,
+        "tags": ["Linux"]
+      },
+      "pluginVersion": "10.0.3",
+      "title": "Linux Dashboards",
+      "type": "dashlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 3,
+        "x": 18,
+        "y": 12
+      },
+      "id": 4,
+      "options": {
+        "includeVars": false,
+        "keepTime": false,
+        "maxItems": 20,
+        "query": "",
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": true,
+        "showStarred": false,
+        "tags": ["Couchbase"]
+      },
+      "pluginVersion": "10.0.3",
+      "title": "Couchbase Dashboards",
+      "type": "dashlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 3,
+        "x": 21,
+        "y": 12
+      },
+      "id": 7,
+      "options": {
+        "includeVars": false,
+        "keepTime": false,
+        "maxItems": 20,
+        "query": "",
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": true,
+        "showStarred": false,
+        "tags": ["Postgres"]
+      },
+      "pluginVersion": "10.0.3",
+      "title": "Postgres Dashboards",
+      "type": "dashlist"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 7,
+        "x": 11,
+        "y": 20
       },
       "id": 13,
       "options": {
@@ -81,10 +408,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 17,
+        "h": 16,
         "w": 24,
         "x": 0,
-        "y": 2
+        "y": 22
       },
       "id": 2,
       "options": {
@@ -94,363 +421,16 @@
         "autoScroll": true,
         "calendarType": "legacy",
         "colors": "frame",
+        "defaultView": "month",
         "displayTime": true,
-        "quickLinks": false
+        "quickLinks": false,
+        "scrollToTime": {
+          "hours": 0,
+          "minutes": 0
+        },
+        "views": ["day", "week", "month"]
       },
       "type": "marcusolsson-calendar-panel"
-    },
-    {
-      "datasource": {
-        "type": "datasource",
-        "uid": "grafana"
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 3,
-        "x": 4,
-        "y": 19
-      },
-      "id": 14,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "# Active Alerts",
-        "mode": "markdown"
-      },
-      "pluginVersion": "10.0.3",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "datasource": {
-        "type": "datasource",
-        "uid": "grafana"
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 3,
-        "x": 13,
-        "y": 19
-      },
-      "id": 16,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "# ",
-        "mode": "markdown"
-      },
-      "pluginVersion": "10.0.3",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "datasource": {
-        "type": "datasource",
-        "uid": "grafana"
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 3,
-        "x": 17,
-        "y": 19
-      },
-      "id": 15,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "# Dashboards",
-        "mode": "markdown"
-      },
-      "pluginVersion": "10.0.3",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "datasource": {
-        "type": "datasource",
-        "uid": "grafana"
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 3,
-        "x": 20,
-        "y": 19
-      },
-      "id": 17,
-      "options": {
-        "code": {
-          "language": "plaintext",
-          "showLineNumbers": false,
-          "showMiniMap": false
-        },
-        "content": "# ",
-        "mode": "markdown"
-      },
-      "pluginVersion": "10.0.3",
-      "transparent": true,
-      "type": "text"
-    },
-    {
-      "datasource": {
-        "type": "datasource",
-        "uid": "grafana"
-      },
-      "gridPos": {
-        "h": 18,
-        "w": 12,
-        "x": 0,
-        "y": 21
-      },
-      "id": 1,
-      "options": {
-        "alertInstanceLabelFilter": "",
-        "alertName": "",
-        "dashboardAlerts": false,
-        "folder": {
-          "title": "DBA",
-          "uid": "fe40bbb4-2377-469d-9e2d-ee614c3b2da4"
-        },
-        "groupBy": [],
-        "groupMode": "default",
-        "maxItems": 50,
-        "sortOrder": 1,
-        "stateFilter": {
-          "error": true,
-          "firing": true,
-          "noData": false,
-          "normal": false,
-          "pending": true
-        },
-        "viewMode": "list"
-      },
-      "title": "Alerts",
-      "type": "alertlist"
-    },
-    {
-      "datasource": {
-        "type": "datasource",
-        "uid": "grafana"
-      },
-      "description": "",
-      "gridPos": {
-        "h": 10,
-        "w": 3,
-        "x": 12,
-        "y": 21
-      },
-      "id": 10,
-      "options": {
-        "includeVars": false,
-        "keepTime": false,
-        "maxItems": 10,
-        "query": "",
-        "showHeadings": false,
-        "showRecentlyViewed": false,
-        "showSearch": false,
-        "showStarred": true,
-        "tags": []
-      },
-      "pluginVersion": "10.0.3",
-      "title": "Starred Dashboards",
-      "type": "dashlist"
-    },
-    {
-      "datasource": {
-        "type": "datasource",
-        "uid": "grafana"
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 3,
-        "x": 15,
-        "y": 21
-      },
-      "id": 3,
-      "options": {
-        "includeVars": false,
-        "keepTime": false,
-        "maxItems": 20,
-        "query": "",
-        "showHeadings": false,
-        "showRecentlyViewed": false,
-        "showSearch": true,
-        "showStarred": false,
-        "tags": ["CockroachDB"]
-      },
-      "pluginVersion": "10.0.3",
-      "title": "CockroachDB Dashboards",
-      "type": "dashlist"
-    },
-    {
-      "datasource": {
-        "type": "datasource",
-        "uid": "grafana"
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 3,
-        "x": 18,
-        "y": 21
-      },
-      "id": 9,
-      "options": {
-        "includeVars": false,
-        "keepTime": false,
-        "maxItems": 20,
-        "query": "",
-        "showHeadings": false,
-        "showRecentlyViewed": false,
-        "showSearch": true,
-        "showStarred": false,
-        "tags": ["mimir"]
-      },
-      "pluginVersion": "10.0.3",
-      "title": "Mimir Dashboards",
-      "type": "dashlist"
-    },
-    {
-      "datasource": {
-        "type": "datasource",
-        "uid": "grafana"
-      },
-      "gridPos": {
-        "h": 10,
-        "w": 3,
-        "x": 21,
-        "y": 21
-      },
-      "id": 8,
-      "options": {
-        "includeVars": false,
-        "keepTime": false,
-        "maxItems": 20,
-        "query": "",
-        "showHeadings": false,
-        "showRecentlyViewed": false,
-        "showSearch": true,
-        "showStarred": false,
-        "tags": ["MSSQL"]
-      },
-      "pluginVersion": "10.0.3",
-      "title": "MSSQL Dashboards",
-      "type": "dashlist"
-    },
-    {
-      "datasource": {
-        "type": "datasource",
-        "uid": "grafana"
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 3,
-        "x": 12,
-        "y": 31
-      },
-      "id": 6,
-      "options": {
-        "includeVars": false,
-        "keepTime": false,
-        "maxItems": 20,
-        "query": "",
-        "showHeadings": false,
-        "showRecentlyViewed": false,
-        "showSearch": true,
-        "showStarred": false,
-        "tags": ["Windows"]
-      },
-      "pluginVersion": "10.0.3",
-      "title": "Windows Dashboards",
-      "type": "dashlist"
-    },
-    {
-      "datasource": {
-        "type": "datasource",
-        "uid": "grafana"
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 3,
-        "x": 15,
-        "y": 31
-      },
-      "id": 5,
-      "options": {
-        "includeVars": false,
-        "keepTime": false,
-        "maxItems": 20,
-        "query": "",
-        "showHeadings": false,
-        "showRecentlyViewed": false,
-        "showSearch": true,
-        "showStarred": false,
-        "tags": ["Linux"]
-      },
-      "pluginVersion": "10.0.3",
-      "title": "Linux Dashboards",
-      "type": "dashlist"
-    },
-    {
-      "datasource": {
-        "type": "datasource",
-        "uid": "grafana"
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 3,
-        "x": 18,
-        "y": 31
-      },
-      "id": 4,
-      "options": {
-        "includeVars": false,
-        "keepTime": false,
-        "maxItems": 20,
-        "query": "",
-        "showHeadings": false,
-        "showRecentlyViewed": false,
-        "showSearch": true,
-        "showStarred": false,
-        "tags": ["Couchbase"]
-      },
-      "pluginVersion": "10.0.3",
-      "title": "Couchbase Dashboards",
-      "type": "dashlist"
-    },
-    {
-      "datasource": {
-        "type": "datasource",
-        "uid": "grafana"
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 3,
-        "x": 21,
-        "y": 31
-      },
-      "id": 7,
-      "options": {
-        "includeVars": false,
-        "keepTime": false,
-        "maxItems": 20,
-        "query": "",
-        "showHeadings": false,
-        "showRecentlyViewed": false,
-        "showSearch": true,
-        "showStarred": false,
-        "tags": ["Postgres"]
-      },
-      "pluginVersion": "10.0.3",
-      "title": "Postgres Dashboards",
-      "type": "dashlist"
     }
   ],
   "refresh": "",
@@ -487,6 +467,6 @@
   "timezone": "",
   "title": "DBA: Home",
   "uid": "dba-home",
-  "version": 6,
+  "version": 12,
   "weekStart": ""
 }
