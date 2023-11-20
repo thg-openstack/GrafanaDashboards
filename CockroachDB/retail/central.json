@@ -14,7 +14,9 @@
         "target": {
           "limit": 100,
           "matchAny": false,
-          "tags": ["cluster=$cluster"],
+          "tags": [
+            "cluster=$cluster"
+          ],
           "type": "tags"
         },
         "type": "dashboard"
@@ -24,14 +26,16 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 23,
   "links": [
     {
       "asDropdown": true,
       "icon": "external link",
       "includeVars": true,
       "keepTime": true,
-      "tags": ["Retail", "CockroachDB"],
+      "tags": [
+        "Retail",
+        "CockroachDB"
+      ],
       "targetBlank": true,
       "title": "Dashboards",
       "type": "dashboards"
@@ -325,7 +329,12 @@
       "id": 71,
       "options": {
         "legend": {
-          "calcs": ["min", "max", "mean", "lastNotNull"],
+          "calcs": [
+            "min",
+            "max",
+            "mean",
+            "lastNotNull"
+          ],
           "displayMode": "table",
           "placement": "bottom",
           "showLegend": false
@@ -668,7 +677,9 @@
         "justifyMode": "center",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["mean"],
+          "calcs": [
+            "mean"
+          ],
           "fields": "",
           "values": false
         },
@@ -759,7 +770,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "values": false
         },
@@ -1019,7 +1032,10 @@
       "id": 75,
       "options": {
         "legend": {
-          "calcs": ["max", "mean"],
+          "calcs": [
+            "max",
+            "mean"
+          ],
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
@@ -1218,45 +1234,7 @@
           },
           "unit": "ns"
         },
-        "overrides": [
-          {
-            "__systemRef": "hideSeriesFrom",
-            "matcher": {
-              "id": "byNames",
-              "options": {
-                "mode": "exclude",
-                "names": [
-                  "de1-li-accountsckrdb-001:8080",
-                  "de1-li-accountsckrdb-002:8080",
-                  "de1-li-accountsckrdb-003:8080",
-                  "de1-li-accountsckrdb-004:8080",
-                  "de1-li-accountsckrdb-005:8080",
-                  "gb1-li-accountsckrdb-001:8080",
-                  "gb1-li-accountsckrdb-002:8080",
-                  "gb1-li-accountsckrdb-003:8080",
-                  "gb1-li-accountsckrdb-004:8080",
-                  "gb1-li-accountsckrdb-005:8080",
-                  "gb4-li-accountsckrdb-001:8080",
-                  "gb4-li-accountsckrdb-002:8080",
-                  "gb4-li-accountsckrdb-003:8080",
-                  "gb4-li-accountsckrdb-004:8080"
-                ],
-                "prefix": "All except:",
-                "readOnly": true
-              }
-            },
-            "properties": [
-              {
-                "id": "custom.hideFrom",
-                "value": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": true
-                }
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
       "gridPos": {
         "h": 7,
@@ -1836,8 +1814,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1948,8 +1925,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2040,8 +2016,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2147,8 +2122,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2247,8 +2221,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2422,8 +2395,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2566,8 +2538,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2662,8 +2633,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2738,8 +2708,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2840,7 +2809,9 @@
         "footer": {
           "countRows": false,
           "fields": "",
-          "reducer": ["sum"],
+          "reducer": [
+            "sum"
+          ],
           "show": false
         },
         "showHeader": true,
@@ -2875,7 +2846,12 @@
           "id": "reduce",
           "options": {
             "includeTimeField": false,
-            "reducers": ["last", "mean", "min", "max"]
+            "reducers": [
+              "last",
+              "mean",
+              "min",
+              "max"
+            ]
           }
         }
       ],
@@ -2905,8 +2881,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -3007,7 +2982,9 @@
         "footer": {
           "countRows": false,
           "fields": "",
-          "reducer": ["sum"],
+          "reducer": [
+            "sum"
+          ],
           "show": false
         },
         "showHeader": true,
@@ -3042,7 +3019,12 @@
           "id": "reduce",
           "options": {
             "includeTimeField": false,
-            "reducers": ["last", "mean", "min", "max"]
+            "reducers": [
+              "last",
+              "mean",
+              "min",
+              "max"
+            ]
           }
         }
       ],
@@ -3072,8 +3054,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -3174,7 +3155,9 @@
         "footer": {
           "countRows": false,
           "fields": "",
-          "reducer": ["sum"],
+          "reducer": [
+            "sum"
+          ],
           "show": false
         },
         "showHeader": true,
@@ -3261,7 +3244,12 @@
           "id": "reduce",
           "options": {
             "includeTimeField": false,
-            "reducers": ["last", "mean", "min", "max"]
+            "reducers": [
+              "last",
+              "mean",
+              "min",
+              "max"
+            ]
           }
         }
       ],
@@ -3291,8 +3279,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -3393,7 +3380,9 @@
         "footer": {
           "countRows": false,
           "fields": "",
-          "reducer": ["sum"],
+          "reducer": [
+            "sum"
+          ],
           "show": false
         },
         "showHeader": true,
@@ -3468,7 +3457,12 @@
           "id": "reduce",
           "options": {
             "includeTimeField": false,
-            "reducers": ["last", "mean", "min", "max"]
+            "reducers": [
+              "last",
+              "mean",
+              "min",
+              "max"
+            ]
           }
         }
       ],
@@ -3479,14 +3473,17 @@
   "revision": 1,
   "schemaVersion": 38,
   "style": "dark",
-  "tags": ["CockroachDB", "Retail"],
+  "tags": [
+    "CockroachDB",
+    "Retail"
+  ],
   "templating": {
     "list": [
       {
         "current": {
-          "selected": false,
-          "text": "AccountsCockroach",
-          "value": "AccountsCockroach"
+          "selected": true,
+          "text": "Tycheckrdb",
+          "value": "Tycheckrdb"
         },
         "datasource": {
           "type": "prometheus",
@@ -3585,11 +3582,21 @@
       "2h",
       "1d"
     ],
-    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
   },
   "timezone": "",
   "title": "Retail - CockroachDB: Central",
   "uid": "retail-cockroachdb-central",
-  "version": 1,
+  "version": 7,
   "weekStart": ""
 }
