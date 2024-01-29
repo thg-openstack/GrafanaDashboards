@@ -1,4 +1,14 @@
 {
+  "__inputs": [
+    {
+      "name": "DS_PROMETHEUS",
+      "label": "Prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
   "annotations": {
     "list": [
       {
@@ -288,7 +298,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "gridPos": {
         "h": 6,
@@ -319,7 +329,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "refId": "A"
         }
@@ -452,7 +462,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "gridPos": {
         "h": 8,
@@ -483,7 +493,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "refId": "A"
         }
@@ -868,7 +878,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -914,7 +924,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(sys_uptime{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"})",
@@ -929,7 +939,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "",
       "fieldConfig": {
@@ -1008,7 +1018,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum (label_replace(replicas{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
@@ -1023,7 +1033,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1101,7 +1111,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(label_replace(replicas_leaseholders{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
@@ -1116,7 +1126,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1194,7 +1204,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(label_replace(sys_rss{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
@@ -1209,7 +1219,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "Shaded area is the max to min of ALL Cockroach nodes\nThe lines are the heaviest clusters in each DC (by average of all their nodes)\nIf Shaded area is significantly higher, review to see if a cluster is suffering from hotspotting",
       "fieldConfig": {
@@ -1339,7 +1349,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "max by (datacentre) (avg by(datacentre, cluster_name) (sys_cpu_combined_percent_normalized{cluster_tech=\"Cockroach\",service_type=\"Cockroach\"}))",
@@ -1351,7 +1361,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "max by(datacentre) (avg by(cluster_name,datacentre) (sum by(instance,cluster_name,datacentre) (irate(node_cpu_seconds_total{ mode!=\"idle\",service_type=\"Node Exporter\",cluster_tech=\"Cockroach\"}[$__rate_interval])) / on(instance) group_left sum by (instance)(irate(node_cpu_seconds_total{service_type=\"Node Exporter\",cluster_tech=\"Cockroach\"}[$__rate_interval]))))",
@@ -1364,7 +1374,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "max (sys_cpu_combined_percent_normalized{cluster_tech=\"Cockroach\",service_type=\"Cockroach\"})",
@@ -1377,7 +1387,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "min (sys_cpu_combined_percent_normalized{cluster_tech=\"Cockroach\",service_type=\"Cockroach\"})",
@@ -1394,7 +1404,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "",
       "fieldConfig": {
@@ -1441,7 +1451,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(count(sys_uptime{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}) by (cluster))",
@@ -1487,7 +1497,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1565,7 +1575,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg(label_replace(round_trip_latency:rate1m:quantile_99{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
@@ -1580,7 +1590,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1658,7 +1668,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "max(avg(label_replace(clock_offset_meannanos{job='cockroachdb',instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre)",
@@ -1673,7 +1683,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1750,7 +1760,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(label_replace(rate(sql_conns{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
@@ -1765,7 +1775,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1843,7 +1853,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(label_replace(rate(sql_select_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre) + \nsum(label_replace(rate(sql_insert_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre) + \nsum(label_replace(rate(sql_update_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre) + \nsum(label_replace(rate(sql_delete_count{job=\"cockroachdb\",instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
@@ -1883,7 +1893,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1929,7 +1939,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(pg_up{job=\"postgresql\"})",
@@ -1944,7 +1954,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2030,7 +2040,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(label_replace(pg_stat_activity_count{job='postgresql',instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
@@ -2046,7 +2056,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2124,7 +2134,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(label_replace(process_resident_memory_bytes{job='postgresql',instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
@@ -2140,7 +2150,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2269,7 +2279,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg by(datacentre) (topk by(datacentre) (10,(((sum by(instance,cluster_name,datacentre) (irate(node_cpu_seconds_total{ mode!=\"idle\",service_type=\"Node Exporter\",cluster_tech=\"Postgres\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{service_type=\"Node Exporter\",cluster_tech=\"Postgres\"}[$__rate_interval]))))) and (max by(instance,cluster_name,datacentre) (patroni_primary{service_type=\"Patroni\",cluster_tech=\"Postgres\"}==1)))))",
@@ -2282,7 +2292,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "max (((sum by(instance,cluster_name,datacentre) (irate(node_cpu_seconds_total{ mode!=\"idle\",service_type=\"Node Exporter\",cluster_tech=\"Postgres\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{service_type=\"Node Exporter\",cluster_tech=\"Postgres\"}[$__rate_interval]))))) and (max by(instance,cluster_name,datacentre) (patroni_primary{service_type=\"Patroni\",cluster_tech=\"Postgres\"}==1)))",
@@ -2295,7 +2305,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "min (((sum by(instance,cluster_name,datacentre) (irate(node_cpu_seconds_total{ mode!=\"idle\",service_type=\"Node Exporter\",cluster_tech=\"Postgres\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{service_type=\"Node Exporter\",cluster_tech=\"Postgres\"}[$__rate_interval]))))) and (max by(instance,cluster_name,datacentre) (patroni_primary{service_type=\"Patroni\",cluster_tech=\"Postgres\"}==1)))",
@@ -2312,7 +2322,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2358,7 +2368,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(count(pg_up{job=\"postgresql\"}) by (cluster))",
@@ -2404,7 +2414,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2490,7 +2500,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(label_replace(irate(pg_stat_database_xact_commit{job='postgresql',instance=~\"(de1|gb1|gb4|gb5).+\"}[5m]) !=0, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
@@ -2506,7 +2516,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "",
       "fieldConfig": {
@@ -2598,7 +2608,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2641,7 +2651,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2687,7 +2697,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(couchbase::node_count)",
@@ -2702,7 +2712,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2780,7 +2790,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(label_replace(couchbase_bucket_stats_misses{instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
@@ -2795,7 +2805,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2873,7 +2883,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(label_replace(couchbase_bucket_stats_mem_actual_used_bytes{instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
@@ -2888,7 +2898,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3013,7 +3023,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg by(datacentre) (topk by(datacentre) (5,(avg by(datacentre,cluster_name) (((sum by(instance,cluster_name,datacentre) (irate(node_cpu_seconds_total{ mode!=\"idle\",service_type=\"Node Exporter\",cluster_tech=\"Couchbase\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{service_type=\"Node Exporter\",cluster_tech=\"Couchbase\"}[$__rate_interval])))))))))",
@@ -3025,7 +3035,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "max (avg by(datacentre,cluster_name) (((sum by(instance,cluster_name,datacentre) (irate(node_cpu_seconds_total{ mode!=\"idle\",service_type=\"Node Exporter\",cluster_tech=\"Couchbase\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{service_type=\"Node Exporter\",cluster_tech=\"Couchbase\"}[$__rate_interval])))))))",
@@ -3038,7 +3048,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "min (avg by(datacentre,cluster_name) (((sum by(instance,cluster_name,datacentre) (irate(node_cpu_seconds_total{ mode!=\"idle\",service_type=\"Node Exporter\",cluster_tech=\"Couchbase\"}[$__rate_interval])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{service_type=\"Node Exporter\",cluster_tech=\"Couchbase\"}[$__rate_interval])))))))",
@@ -3055,7 +3065,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3101,7 +3111,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(count(couchbase_cluster_up{}) by (cluster))",
@@ -3147,7 +3157,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3241,7 +3251,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(label_replace(couchbase_bucket_basicstats_opspersec{instance=~\"(de1|gb1|gb4|gb5).+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
@@ -3258,7 +3268,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3305,7 +3315,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(max by (cluster,bucket) (couchbase_bucket_basicstats_itemcount))",
@@ -3346,7 +3356,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3392,7 +3402,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(windows_mssql_collector_success{collector=\"databases\"})",
@@ -3407,7 +3417,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3485,7 +3495,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg(max(label_replace(rate(windows_logical_disk_read_latency_seconds_total{instance=~\".+-.+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre)",
@@ -3501,7 +3511,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3579,7 +3589,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(label_replace(windows_memory_committed_bytes{instance=~\".+-.+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
@@ -3595,7 +3605,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3673,7 +3683,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg(max(label_replace(100 - (irate(windows_cpu_time_total{mode=\"idle\",instance=~\".+-.+\"}[2m])) * 100, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre, cluster)) by (datacentre)",
@@ -3689,7 +3699,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3735,7 +3745,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(group (windows_mssql_collector_success) by (cluster))",
@@ -3782,7 +3792,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3860,7 +3870,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(label_replace(windows_mssql_genstats_user_connections{instance=~\".+-.+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
@@ -3875,7 +3885,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3953,7 +3963,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(label_replace(rate(windows_mssql_sqlstats_batch_requests{instance=~\".+-.+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
@@ -3993,7 +4003,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4039,7 +4049,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(node_network_up{device=\"eth0\"})",
@@ -4054,7 +4064,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4132,7 +4142,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg((avg(label_replace(irate(node_cpu_seconds_total{mode!=\"idle\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by(datacentre) / avg(label_replace(irate(node_cpu_seconds_total{}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by(datacentre)) * 100) by (datacentre)",
@@ -4148,7 +4158,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4226,7 +4236,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg(100 - ((label_replace(node_memory_MemAvailable_bytes{}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\") * 100) / label_replace(node_memory_MemTotal_bytes{}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\"))) by (datacentre)",
@@ -4241,7 +4251,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4319,7 +4329,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(label_replace(irate(node_network_transmit_bytes_total{}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\") ) by (datacentre) * 8",
@@ -4335,7 +4345,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4413,7 +4423,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(label_replace(irate(node_disk_read_bytes_total{}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
@@ -4429,7 +4439,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4475,7 +4485,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(node_network_up{device=\"eth0\",instance=~\"gb1.+\"})",
@@ -4490,7 +4500,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4536,7 +4546,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(node_network_up{device=\"eth0\",instance!~\"(de1|gb1|gb4).+\"})",
@@ -4551,7 +4561,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4597,7 +4607,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(node_network_up{device=\"eth0\",instance=~\"de1.+\"})",
@@ -4612,7 +4622,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4658,7 +4668,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(node_network_up{device=\"eth0\",instance=~\"gb4.+\"})",
@@ -4673,7 +4683,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4751,7 +4761,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(label_replace(node_netstat_Tcp_CurrEstab{}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
@@ -4767,7 +4777,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4845,7 +4855,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "max(((label_replace(node_memory_SwapTotal_bytes{}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\") - label_replace(node_memory_SwapFree_bytes{}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) / (label_replace(node_memory_SwapTotal_bytes{}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\") )) * 100) by (datacentre)",
@@ -4861,7 +4871,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -4939,7 +4949,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(label_replace(irate(node_network_receive_bytes_total{}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\") ) by (datacentre) * 8",
@@ -4955,7 +4965,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5033,7 +5043,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(label_replace(irate(node_disk_written_bytes_total{}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre)",
@@ -5080,7 +5090,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5158,7 +5168,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg((avg(irate(node_cpu_seconds_total{mode!=\"idle\",service_type=\"Node Exporter\"}[5m])) by(datacentre,cluster_tech) / avg(irate(node_cpu_seconds_total{}[5m])) by(datacentre,cluster_tech)) * 100) by (datacentre,cluster_tech)",
@@ -5174,7 +5184,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5252,7 +5262,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(irate(node_disk_read_bytes_total{}[5m])) by (datacentre,cluster_tech)",
@@ -5293,7 +5303,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5339,7 +5349,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(windows_cs_logical_processors{})",
@@ -5354,7 +5364,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5432,7 +5442,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg(100 - label_replace(irate(windows_cpu_time_total{mode=\"idle\",instance=~\".+-.+\"}[5m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\") * 100) by(datacentre)",
@@ -5448,7 +5458,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5526,7 +5536,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(label_replace(irate(windows_net_bytes_sent_total{nic!~'isatap.*|VPN.*',instance=~\".+-.+\"}[2m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre) * 8 ",
@@ -5542,7 +5552,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5620,7 +5630,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(label_replace(irate(windows_logical_disk_read_bytes_total{instance=~\".+-.+\"}[2m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre) * 8 ",
@@ -5636,7 +5646,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5682,7 +5692,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(windows_cs_logical_processors{instance=~\"gb1.+\"})",
@@ -5697,7 +5707,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5743,7 +5753,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(windows_cs_logical_processors{instance=~\"de1.+\"})",
@@ -5758,7 +5768,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5804,7 +5814,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(windows_cs_logical_processors{instance=~\"gb5.+\"})",
@@ -5819,7 +5829,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5865,7 +5875,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(windows_cs_logical_processors{instance!~\"(de1|gb1|gb4|gb5|gb6).+\"})",
@@ -5880,7 +5890,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -5958,7 +5968,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg( 100 - (label_replace(windows_os_physical_memory_free_bytes{instance=~\".+-.+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\") / label_replace(windows_cs_physical_memory_bytes{instance=~\".+-.+\"}, \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) * 100) by (datacentre) ",
@@ -5974,7 +5984,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6052,7 +6062,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(label_replace(irate(windows_net_bytes_received_total{nic!~'isatap.*|VPN.*',instance=~\".+-.+\"}[2m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre) * 8 ",
@@ -6068,7 +6078,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6146,7 +6156,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(label_replace(irate(windows_logical_disk_write_bytes_total{instance=~\".+-.+\"}[2m]), \"datacentre\", \"$1\", \"instance\", \"^([^-]+)-.*$\")) by (datacentre) * 8 ",
@@ -6162,7 +6172,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6208,7 +6218,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(windows_cs_logical_processors{instance=~\"gb6.+\"})",
@@ -6223,7 +6233,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6269,7 +6279,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(windows_cs_logical_processors{instance=~\"gb4.+\"})",
@@ -6353,7 +6363,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6398,7 +6408,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(sys_uptime{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"})",
@@ -6413,7 +6423,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "",
       "fieldConfig": {
@@ -6491,7 +6501,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(replicas{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"}) by (region)",
@@ -6506,7 +6516,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6582,7 +6592,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(sys_uptime{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"}) by (region)",
@@ -6597,7 +6607,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6674,7 +6684,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(sys_rss{job='cockroachdb',instance!~\"(de1|gb1|gb4|gb5).+\"}) by (region)",
@@ -6689,7 +6699,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6766,7 +6776,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg(sys_cpu_combined_percent_normalized{job='cockroachdb',instance!~\"(de1|gb1|gb4|gb5).+\"}) by (region)",
@@ -6781,7 +6791,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6826,7 +6836,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(count(sys_uptime{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"}) by (cluster))",
@@ -6872,7 +6882,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -6948,7 +6958,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(replicas_leaseholders{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"}) by (region)",
@@ -6963,7 +6973,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -7039,7 +7049,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(rate(sql_conns{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"}[5m])) by (region)",
@@ -7054,7 +7064,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -7130,7 +7140,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(rate(sql_select_count{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"}[5m])) by (region) + \nsum(rate(sql_insert_count{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"}[5m])) by (region) + \nsum(rate(sql_update_count{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"}[5m])) by (region) + \nsum(rate(sql_delete_count{job=\"cockroachdb\",instance!~\"(de1|gb1|gb4|gb5).+\"}[5m])) by (region)",
@@ -7145,7 +7155,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -7222,7 +7232,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg(clock_offset_meannanos{job='cockroachdb',instance!~\"(de1|gb1|gb4|gb5).+\"}) by (region)",
@@ -7262,7 +7272,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -7318,7 +7328,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(cnpg_collector_up{})",
@@ -7333,7 +7343,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -7417,7 +7427,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(cnpg_backends_total{}) by (region)",
@@ -7432,7 +7442,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -7509,7 +7519,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(container_memory_working_set_bytes{pod=~\".*postgres.*\"}) by (region)",
@@ -7524,7 +7534,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -7600,7 +7610,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "avg(rate(container_cpu_usage_seconds_total{pod=~\".*postgres.*\"}[5m]))",
@@ -7615,7 +7625,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -7671,7 +7681,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(count(cnpg_collector_up{}) by (cluster))",
@@ -7717,7 +7727,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -7793,7 +7803,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(rate(cnpg_pg_stat_database_xact_commit{}[5m])) by (region)",
@@ -7808,7 +7818,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "PAE45454D0EDB9216"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -7884,7 +7894,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "PAE45454D0EDB9216"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(rate(cnpg_pg_replication_lag{}[5m])) by (region)",
@@ -7910,7 +7920,27 @@
     "Windows"
   ],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "Prometheus",
+          "value": "Prometheus"
+        },
+        "hide": 2,
+        "includeAll": false,
+        "label": "datasource",
+        "multi": false,
+        "name": "DS_PROMETHEUS",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      }
+    ]
   },
   "time": {
     "from": "now-1h",
