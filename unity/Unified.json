@@ -1,0 +1,2313 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_ECRM_REDIS GB4",
+      "label": "ECRM Redis GB4",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "redis-datasource",
+      "pluginName": "Redis"
+    },
+    {
+      "name": "DS_GB4_LIVE BEUNITY DEVOPS PROMETHEUS",
+      "label": "GB4 Live BEUnity Devops Prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    },
+    {
+      "name": "DS_GB1_LIVE BEUNITY DEVOPS PROMETHEUS",
+      "label": "GB1 Live BEUnity Devops Prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    },
+    {
+      "name": "DS_GB4_LIVE FEUNITY DEVOPS PROMETHEUS",
+      "label": "GB4 Live FEUnity Devops Prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    },
+    {
+      "name": "DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS",
+      "label": "GB1 Live FEUnity Devops Prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "11.0.0-preview"
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "datasource",
+      "id": "redis-datasource",
+      "name": "Redis",
+      "version": "2.2.0"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "text",
+      "name": "Text",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "redis-datasource",
+        "uid": "${DS_ECRM_REDIS GB4}"
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 47,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<<!DOCTYPE html>\n<html>\n<style>\ntable, th, td {\n  border:1px solid black;\n}\n</style>\n<body>\n\n<h4 align=\"center\">Quick Links to Dashboards</h2>\n\n<table style=\"width:100%\">\n  <tr>\n    <th>K8s in-depth</th>\n    <th>ETCD</th>\n    <th>API Server</th>\n    <th>Core DNS</th>\n    <th>CPU Throttling</th>\n    <th>Kibana</th>\n    <th>Prometheus</th>\n    <th>HA Proxy</th>\n    <th>Tenant Resource Usage</th>  \n  </tr>\n\n\n  <tr>\n    <td> \n      <a href= \"https://grafana.io.thehut.local/d/4XuMd2Iiz/sre-kubernetes-cluster?orgId=1&refresh=30s&from=now-1h&to=now&var-datasource=GB4%20Live%20BEUnity%20Devops%20Prometheus&var-Cluster=gb4-li-beunityv2&var-namespace=All&var-deployment=All&var-server=gb4-li-beunityv2build-001\" target=\"_blank\">GB4-BE</a>&nbsp&nbsp\n      <a href=\"https://grafana.io.thehut.local/d/4XuMd2Iiz/sre-kubernetes-cluster?orgId=1&refresh=30s&from=now-1h&to=now&var-datasource=GB4%20Live%20FEUnity%20Devops%20Prometheus&var-Cluster=gb4-li-feunityv2&var-namespace=All&var-deployment=All&var-server=gb4-li-feunityv2build-001\" target=\"_blank\">GB4-FE</a><br>\n       <a href=\"https://grafana.io.thehut.local/d/4XuMd2Iiz/sre-kubernetes-cluster?orgId=1&refresh=30s&from=now-1h&to=now&var-datasource=GB1%20Live%20BEUnity%20Devops%20Prometheus&var-Cluster=gb1-li-beunityv2&var-namespace=All&var-deployment=All&var-server=gb1-li-beunityv2build-001\" target=\"_blank\">GB1-BE</a>&nbsp&nbsp\n       <a href=\"https://grafana.io.thehut.local/d/4XuMd2Iiz/sre-kubernetes-cluster?orgId=1&refresh=30s&from=now-1h&to=now&var-datasource=GB1%20Live%20FEUnity%20Devops%20Prometheus&var-Cluster=gb1-li-feunityv2&var-namespace=All&var-deployment=All&var-server=gb1-li-feunityv2build-001\" target=\"_blank\">GB1-FE</a>\n      \n    </td>\n  \n    <td>\n      <a href=\"https://grafana.io.thehut.local/d/u5reMx7iz/devops-etcd?orgId=1&refresh=30s&from=now-1h&to=now&var-cluster=gb4-li-beunityv2etcd&var-datasource=GB4%20Live%20BEUnity%20Devops%20Prometheus\" target=\"_blank\">GB4-BE</a>&nbsp&nbsp\n      <a href=\"https://grafana.io.thehut.local/d/u5reMx7iz/devops-etcd?orgId=1&refresh=30s&from=now-1h&to=now&var-cluster=gb4-li-feunityv2etcd&var-datasource=GB4%20Live%20FEUnity%20Devops%20Prometheus\" target=\"_blank\" >GB4-FE</a><br>\n      <a href=\"https://grafana.io.thehut.local/d/u5reMx7iz/devops-etcd?orgId=1&refresh=30s&from=now-1h&to=now&var-cluster=gb1-li-beunityv2etcd&var-datasource=GB1%20Live%20BEUnity%20Devops%20Prometheus\" target=\"_blank\" >GB1-BE</a>&nbsp&nbsp\n      <a href=\"https://grafana.io.thehut.local/d/u5reMx7iz/devops-etcd?orgId=1&refresh=30s&from=now-1h&to=now&var-cluster=gb1-li-feunityv2etcd&var-datasource=GB1%20Live%20FEUnity%20Devops%20Prometheus\" target=\"_blank\" >GB1-FE</a>\n    </td>\n\n    <td>\n      <a href=\"https://gb1.grafana.io.thehut.local/goto/a2_AXm4Sg?orgId=1\" target=\"_blank\">GB4-BE</a>&nbsp&nbsp\n      <a href=\"https://grafana.io.thehut.local/d/09ec8aa1e996d6ffcd6817bbaff4db1b/kubernetes-api-server?orgId=1&refresh=10s&var-datasource=GB4%20Live%20FEUnity%20Devops%20Prometheus&var-cluster=gb4-li-feunityv2&var-instance=All\" target=\"_blank\">GB4-FE</a><br>\n      <a href=\"https://grafana.io.thehut.local/d/09ec8aa1e996d6ffcd6817bbaff4db1b/kubernetes-api-server?orgId=1&refresh=10s&var-datasource=GB1%20Live%20BEUnity%20Devops%20Prometheus&var-cluster=gb1-li-beunityv2&var-instance=All\" target=\"_blank\">GB1-BE</a>&nbsp&nbsp\n      <a href=\"https://grafana.io.thehut.local/d/09ec8aa1e996d6ffcd6817bbaff4db1b/kubernetes-api-server?orgId=1&refresh=10s&var-datasource=GB1%20Live%20FEUnity%20Devops%20Prometheus&var-cluster=gb1-li-feunityv2&var-instance=All\" target=\"_blank\">GB1-FE</a>\n    </td>\n\n    <td>\n      <a href=\"https://grafana.io.thehut.local/d/Yr1oUjuZz/coredns?orgId=1&var-datasource=GB4%20Live%20BEUnity%20Devops%20Prometheus&var-application=kube-dns&var-kubernetes_cluster=gb4-li-beunityv2\" target=\"_blank\">GB4-BE</a>&nbsp&nbsp\n      <a href=\"https://grafana.io.thehut.local/d/Yr1oUjuZz/coredns?orgId=1&var-datasource=GB4%20Live%20FEUnity%20Devops%20Prometheus&var-application=kube-dns&var-kubernetes_cluster=gb4-li-feunityv2\" target=\"_blank\">GB4-FE</a><br>\n      <a href=\"https://grafana.io.thehut.local/d/Yr1oUjuZz/coredns?orgId=1&var-datasource=GB1%20Live%20BEUnity%20Devops%20Prometheus&var-application=kube-dns&var-kubernetes_cluster=gb1-li-beunityv2\" target=\"_blank\">GB1-BE</a>&nbsp&nbsp\n      <a href=\"https://grafana.io.thehut.local/d/Yr1oUjuZz/coredns?orgId=1&var-datasource=GB1%20Live%20FEUnity%20Devops%20Prometheus&var-application=kube-dns&var-kubernetes_cluster=gb1-li-feunityv2\" target=\"_blank\">GB1-FE</a>\n    </td>\n\n    <td>\n      <a href=\"https://grafana.io.thehut.local/d/5nq9N3Bik/sre-throttling-monitoring?orgId=1&var-datasource=GB4%20Live%20BEUnity%20Devops%20Prometheus&var-Cluster=gb4-li-beunityv2&var-namespace=All&var-deployment=All&var-server=All&var-pod=All\" target=\"_blank\">GB4-BE</a>&nbsp&nbsp\n      <a href=\"https://grafana.io.thehut.local/d/5nq9N3Bik/sre-throttling-monitoring?orgId=1&var-datasource=GB4%20Live%20FEUnity%20Devops%20Prometheus&var-Cluster=gb4-li-feunityv2&var-namespace=All&var-deployment=All&var-server=All&var-pod=All\" target=\"_blank\">GB4-FE</a><br>\n      <a href=\"https://grafana.io.thehut.local/d/5nq9N3Bik/sre-throttling-monitoring?orgId=1&var-datasource=GB1%20Live%20BEUnity%20Devops%20Prometheus&var-Cluster=gb1-li-beunityv2&var-namespace=All&var-deployment=All&var-server=All&var-pod=All\" target=\"_blank\">GB1-BE</a>&nbsp&nbsp\n      <a href=\"https://grafana.io.thehut.local/d/5nq9N3Bik/sre-throttling-monitoring?orgId=1&var-datasource=GB1%20Live%20FEUnity%20Devops%20Prometheus&var-Cluster=gb1-li-feunityv2&var-namespace=All&var-deployment=All&var-server=All&var-pod=All\" target=\"_blank\">GB1-FE</a>\n    </td>\n\n    <td>\n      <a href=\"https://gb4.manifest.io.thehut.local/app/kibana#/discover\" target=\"_blank\">GB4</a>&nbsp&nbsp\n      <a href=\"https://gb1.manifest.io.thehut.local/app/kibana#/discover\" target=\"_blank\">GB1</a>\n    </td>\n\n    <td> \n      <a href=\"http://gb4-li-devopsprometheus-001.io.thehut.local/alerts\" target=\"_blank\">GB4-DevOps</a>&nbsp&nbsp\n      <a href=\"http://gb4-li-beunity-prometheus.io.thehut.local/alerts\" target=\"_blank\">GB4-BE</a>&nbsp&nbsp\n      <a href=\"http://gb4-li-feunity-prometheus.io.thehut.local/alerts\" target=\"_blank\">GB4-FE</a>&nbsp&nbsp\n      <a href=\"http://gb4-li-feunity-nginxprometheus.io.thehut.local/alerts\" target=\"_blank\">GB4-Nginx</a><br>\n      <a href=\"http://gb1-li-devopsprometheus-001.io.thehut.local/alerts\" target=\"_blank\">GB1-DevOps</a>&nbsp&nbsp\n      <a href=\"http://gb1-li-beunity-prometheus.io.thehut.local/alerts\" target=\"_blank\">GB1-BE</a>&nbsp&nbsp\n      <a href=\"http://gb1-li-feunity-prometheus.io.thehut.local/alerts\" target=\"_blank\">GB1-FE</a>&nbsp&nbsp\n      <a href=\"http://gb1-li-feunity-nginxprometheus.io.thehut.local/alerts\" target=\"_blank\">GB1-Nginx</a>\n    </td>\n    <td>\n      <a href=\"https://grafana.io.thehut.local/d/CFIoAK-Wz/haproxy?orgId=1&refresh=30s&var-dc=GB4%20Live%20BEUnity%20Devops%20Prometheus&var-host=gb4-li-beunityv2haproxy-001.io.thehut.local&var-port=9101&var-backend=All&var-frontend=All&var-server=All&var-code=All&var-interval=30s\" target=\"_blank\">GB4-BE</a>&nbsp&nbsp\n      <a href=\"https://grafana.io.thehut.local/d/CFIoAK-Wz/haproxy?orgId=1&refresh=30s&var-dc=GB4%20Live%20FEUnity%20Devops%20Prometheus&var-host=gb4-li-feunityv2haproxy-001.io.thehut.local&var-port=9101&var-backend=All&var-frontend=All&var-server=All&var-code=All&var-interval=30s\" target=\"_blank\">GB4-FE</a><br>\n      <a href=\"https://grafana.io.thehut.local/d/CFIoAK-Wz/haproxy?orgId=1&refresh=30s&var-dc=GB1%20Live%20BEUnity%20Devops%20Prometheus&var-host=gb1-li-beunityv2haproxy-001.io.thehut.local&var-port=9101&var-backend=All&var-frontend=All&var-server=All&var-code=All&var-interval=30s\" target=\"_blank\">GB1-BE</a>&nbsp&nbsp\n      <a href=\"https://grafana.io.thehut.local/d/CFIoAK-Wz/haproxy?orgId=1&refresh=30s&var-dc=GB1%20Live%20FEUnity%20Devops%20Prometheus&var-host=gb1-li-feunityv2haproxy-001.io.thehut.local&var-port=9101&var-backend=All&var-frontend=All&var-server=All&var-code=All&var-interval=30s\" target=\"_blank\">GB1-FE</a>   \n    </td>\n    <td>\n      <a href=\"https://grafana.io.thehut.local/d/bed0666e-4342-4d04-b3b9-1945085dc080/unity-cluster-resource-usage?orgId=1&var-Cluster=gb1-li-beunityv2&from=now-6h&to=now\" target=\"_blank\">Unity Resource Usage</a>\n    </td>\n  </tr>\n</table>\n</body>\n</html>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "11.0.0-preview",
+      "targets": [
+        {
+          "datasource": {
+            "type": "redis-datasource",
+            "uid": "${DS_ECRM_REDIS GB4}"
+          },
+          "refId": "A"
+        }
+      ],
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 0,
+        "y": 6
+      },
+      "id": 61,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.0.0-preview",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "count(haproxy_server_up{job=~\"${cluster}haproxy\"}) - sum(haproxy_server_up{job=~\"${cluster}haproxy\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{ server }}",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "haproxy_server_up{job=~\"${cluster}haproxy\"} != 1",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{ source }}",
+          "range": true,
+          "refId": "g"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "count(haproxy_server_up{job=~\"${cluster}haproxy\"}) - sum(haproxy_server_up{job=~\"${cluster}haproxy\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{ server }}",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "haproxy_server_up{job=~\"${cluster}haproxy\"} != 1",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{ source }}",
+          "range": true,
+          "refId": "D"
+        }
+      ],
+      "title": "Masters Down (Backend)",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 6,
+        "y": 6
+      },
+      "id": 40,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.0.0-preview",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "count(kube_node_status_condition{kubernetes_cluster=~\"$cluster\", condition=\"Ready\", status=\"false\"} == 1)",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "count(kube_node_status_condition{kubernetes_cluster=~\"$cluster\", condition=\"Ready\", status=\"false\"} == 1)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Nodes Not Ready (Backend)",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 12,
+        "y": 6
+      },
+      "id": 29,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.0.0-preview",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "count(haproxy_server_up{job=~\"${cluster}haproxy\"}) - sum(haproxy_server_up{job=~\"${cluster}haproxy\"})",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{ server }}",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "haproxy_server_up{job=~\"${cluster}haproxy\"} != 1",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{ source }}",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "\r\ncount(haproxy_server_up{job=~\"${cluster}haproxy\"}) - sum(haproxy_server_up{job=~\"${cluster}haproxy\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{ server }}",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "haproxy_server_up{job=~\"${cluster}haproxy\"} != 1",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{ source }}",
+          "range": true,
+          "refId": "D"
+        }
+      ],
+      "title": "Masters Down (Front End)",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 6,
+        "x": 18,
+        "y": 6
+      },
+      "id": 42,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {},
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.0.0-preview",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "count(kube_node_status_condition{kubernetes_cluster=~\"${cluster}\", condition=\"Ready\", status=\"false\"} == 1)",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "count(kube_node_status_condition{kubernetes_cluster=~\"$cluster\", condition=\"Ready\", status=\"false\"} == 1)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Nodes Not Ready (Frontend)",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-text"
+            },
+            "filterable": false,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 80
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "node"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "auto"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 9
+      },
+      "id": 44,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "frameIndex": 0,
+        "showHeader": true
+      },
+      "pluginVersion": "11.0.0-preview",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "topk(5, sum(rate(container_cpu_usage_seconds_total{kubernetes_cluster=~\"$cluster\", image!=\"\"}[1m])) by (node) / on (node) kube_node_status_allocatable{resource=\"cpu\", kubernetes_cluster=~\"$cluster\"} * 100) ",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{ node }}",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "topk(5, sum(rate(container_cpu_usage_seconds_total{kubernetes_cluster=~\"$cluster\", image!=\"\"}[1m])) by (node) / on (node) kube_node_status_allocatable{resource=\"cpu\", kubernetes_cluster=~\"$cluster\"} * 100) ",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{ node }}",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "topk(5, sum(rate(container_cpu_usage_seconds_total{kubernetes_cluster=~\"$cluster\", image!=\"\"}[1m])) by (node) / on (node) kube_node_status_allocatable{resource=\"cpu\", kubernetes_cluster=~\"$cluster\"} * 100) ",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{ node }}",
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "topk(5, sum(rate(container_cpu_usage_seconds_total{kubernetes_cluster=~\"$cluster\", image!=\"\"}[1m])) by (node) / on (node) kube_node_status_allocatable{resource=\"cpu\", kubernetes_cluster=~\"$cluster\"} * 100) ",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{ node }}",
+          "refId": "D"
+        }
+      ],
+      "title": "CPU Usage",
+      "transformations": [
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": [
+                "Value",
+                "node"
+              ]
+            }
+          }
+        },
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Value": "CPU Usage"
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "desc": true,
+                "field": "CPU Usage"
+              }
+            ]
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-text"
+            },
+            "filterable": false,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 80
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "node"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "auto"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 9
+      },
+      "id": 58,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "frameIndex": 0,
+        "showHeader": true
+      },
+      "pluginVersion": "11.0.0-preview",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "topk(5, sum(container_memory_working_set_bytes{kubernetes_cluster=~\"$cluster\", image!=\"\"}) by (node) / on (node) kube_node_status_allocatable{resource=\"memory\", kubernetes_cluster=~\"$cluster\"} * 100) ",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{ node }}",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "topk(5, sum(container_memory_working_set_bytes{kubernetes_cluster=~\"$cluster\", image!=\"\"}) by (node) / on (node) kube_node_status_allocatable{resource=\"memory\", kubernetes_cluster=~\"$cluster\"} * 100) ",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{ node }}",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "topk(5, sum(container_memory_working_set_bytes{kubernetes_cluster=~\"$cluster\", image!=\"\"}) by (node) / on (node) kube_node_status_allocatable{resource=\"memory\", kubernetes_cluster=~\"$cluster\"} * 100) ",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{ node }}",
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "topk(5, sum(container_memory_working_set_bytes{kubernetes_cluster=~\"$cluster\", image!=\"\"}) by (node) / on (node) kube_node_status_allocatable{resource=\"memory\", kubernetes_cluster=~\"$cluster\"} * 100) ",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{ node }}",
+          "refId": "D"
+        }
+      ],
+      "title": "Memory Usage",
+      "transformations": [
+        {
+          "id": "filterFieldsByName",
+          "options": {
+            "include": {
+              "names": [
+                "Value",
+                "node"
+              ]
+            }
+          }
+        },
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Value": "Memory Usage"
+            }
+          }
+        },
+        {
+          "id": "sortBy",
+          "options": {
+            "fields": {},
+            "sort": [
+              {
+                "desc": true,
+                "field": "Memory Usage"
+              }
+            ]
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "vCPU",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "cores"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/Allocatable/"
+            },
+            "properties": [
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "dash": [
+                    4,
+                    10
+                  ],
+                  "fill": "dash"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
+      "id": 18,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "maxHeight": 600,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum (rate (container_cpu_usage_seconds_total{image!=\"\", node!~\".*(master|build).*\", kubernetes_cluster=~\"$cluster\"}[1m])) by (kubernetes_cluster)",
+          "interval": "",
+          "legendFormat": "Used - {{kubernetes_cluster}}",
+          "range": true,
+          "refId": "A",
+          "target": ""
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(kube_node_status_allocatable{kubernetes_cluster=~\"$cluster\", node!~\".*(master|build).*\", resource=\"cpu\"}) by (kubernetes_cluster)",
+          "interval": "",
+          "legendFormat": "Allocatable - {{kubernetes_cluster}}",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum (rate (container_cpu_usage_seconds_total{image!=\"\", node!~\".*(master|build).*\", kubernetes_cluster=~\"$cluster\"}[1m])) by (kubernetes_cluster)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Used - {{kubernetes_cluster}}",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(kube_node_status_allocatable{kubernetes_cluster=~\"$cluster\", node!~\".*(master|build).*\", resource=\"cpu\"}) by (kubernetes_cluster)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Allocatable - {{kubernetes_cluster}}",
+          "range": true,
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum (rate (container_cpu_usage_seconds_total{image!=\"\", node!~\".*(master|build).*\", kubernetes_cluster=~\"$cluster\"}[1m])) by (kubernetes_cluster)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Used - {{kubernetes_cluster}}",
+          "range": true,
+          "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(kube_node_status_allocatable{kubernetes_cluster=~\"$cluster\", node!~\".*(master|build).*\", resource=\"cpu\"}) by (kubernetes_cluster)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Allocatable - {{kubernetes_cluster}}",
+          "range": true,
+          "refId": "F"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum (rate (container_cpu_usage_seconds_total{image!=\"\", node!~\".*(master|build).*\", kubernetes_cluster=~\"$cluster\"}[1m])) by (kubernetes_cluster)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Used - {{kubernetes_cluster}}",
+          "range": true,
+          "refId": "G"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(kube_node_status_allocatable{kubernetes_cluster=~\"$cluster\", node!~\".*(master|build).*\", resource=\"cpu\"}) by (kubernetes_cluster)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Allocatable - {{kubernetes_cluster}}",
+          "range": true,
+          "refId": "H"
+        }
+      ],
+      "title": "Worker CPU usage",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Memory",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": "/Allocatable/"
+            },
+            "properties": [
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "dash": [
+                    4,
+                    10
+                  ],
+                  "fill": "dash"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 16
+      },
+      "id": 52,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "maxHeight": 600,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(container_memory_working_set_bytes{image!=\"\", node!~\".*(master|build).*\", kubernetes_cluster=~\"$cluster\"}) by (kubernetes_cluster)",
+          "interval": "",
+          "legendFormat": "Used - {{kubernetes_cluster}}",
+          "range": true,
+          "refId": "A",
+          "target": ""
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(kube_node_status_allocatable{kubernetes_cluster=~\"$cluster\", node!~\".*(master|build).*\", resource=\"memory\"}) by (kubernetes_cluster)",
+          "interval": "",
+          "legendFormat": "Allocatable - {{kubernetes_cluster}}",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(container_memory_working_set_bytes{image!=\"\", node!~\".*(master|build).*\", kubernetes_cluster=~\"$cluster\"}) by (kubernetes_cluster)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Used - {{kubernetes_cluster}}",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(kube_node_status_allocatable{kubernetes_cluster=~\"$cluster\", node!~\".*(master|build).*\", resource=\"memory\"}) by (kubernetes_cluster)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Allocatable - {{kubernetes_cluster}}",
+          "range": true,
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(container_memory_working_set_bytes{image!=\"\", node!~\".*(master|build).*\", kubernetes_cluster=~\"$cluster\"}) by (kubernetes_cluster)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Used - {{kubernetes_cluster}}",
+          "range": true,
+          "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(kube_node_status_allocatable{kubernetes_cluster=~\"$cluster\", node!~\".*(master|build).*\", resource=\"memory\"}) by (kubernetes_cluster)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Allocatable - {{kubernetes_cluster}}",
+          "range": true,
+          "refId": "F"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(container_memory_working_set_bytes{image!=\"\",name=~\"^k8s_.*\", node!~\".*(master|build).*\", kubernetes_cluster=~\"$cluster\"}) by (kubernetes_cluster)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Used - {{kubernetes_cluster}}",
+          "range": true,
+          "refId": "G"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(kube_node_status_allocatable{kubernetes_cluster=~\"$cluster\", node!~\".*(master|build).*\", resource=\"memory\"}) by (kubernetes_cluster)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Allocatable - {{kubernetes_cluster}}",
+          "range": true,
+          "refId": "H"
+        }
+      ],
+      "title": "Worker Memory usage",
+      "type": "timeseries"
+    },
+    {
+      "aliasColors": {},
+      "autoMigrateFrom": "graph",
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fill": 0,
+      "fillGradient": 1,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 24
+      },
+      "hiddenSeries": false,
+      "id": 62,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "10.0.0",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "$$hashKey": "object:1122",
+          "alias": "/Allocatable/",
+          "dashLength": 4,
+          "dashes": true
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "topk(5, sum(rate(container_cpu_usage_seconds_total{image!=\"\", node!~\".*(master|build).*\", kubernetes_cluster=~\"$cluster\"}[1m])) by (namespace, kubernetes_cluster)) by (kubernetes_cluster)",
+          "interval": "",
+          "legendFormat": "{{kubernetes_cluster}}-{{namespace}}",
+          "range": true,
+          "refId": "A",
+          "target": ""
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "topk(5, sum(rate(container_cpu_usage_seconds_total{image!=\"\", node!~\".*(master|build).*\", kubernetes_cluster=~\"$cluster\"}[1m])) by (namespace, kubernetes_cluster)) by (kubernetes_cluster)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{kubernetes_cluster}}-{{namespace}}",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "topk(5, sum(rate(container_cpu_usage_seconds_total{image!=\"\", node!~\".*(master|build).*\", kubernetes_cluster=~\"$cluster\"}[1m])) by (namespace, kubernetes_cluster)) by (kubernetes_cluster)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{kubernetes_cluster}}-{{namespace}}",
+          "range": true,
+          "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "topk(5, sum(rate(container_cpu_usage_seconds_total{image!=\"\", node!~\".*(master|build).*\", kubernetes_cluster=~\"$cluster\"}[1m])) by (namespace, kubernetes_cluster)) by (kubernetes_cluster)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{kubernetes_cluster}}-{{namespace}}",
+          "range": true,
+          "refId": "G"
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "Worker CPU usage by namespace",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "timeseries",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:849",
+          "format": "cores",
+          "label": "vCPU",
+          "logBase": 1,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:850",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "aliasColors": {},
+      "autoMigrateFrom": "graph",
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fill": 0,
+      "fillGradient": 1,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 24
+      },
+      "hiddenSeries": false,
+      "id": 63,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "10.0.0",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "$$hashKey": "object:1003",
+          "alias": "/Allocatable/",
+          "dashLength": 4,
+          "dashes": true
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "topk(5, sum(container_memory_working_set_bytes{image!=\"\", node!~\".*(master|build).*\", kubernetes_cluster=~\"$cluster\"}) by (namespace, kubernetes_cluster)) by (kubernetes_cluster)",
+          "interval": "",
+          "legendFormat": "{{kubernetes_cluster}}-{{namespace}}",
+          "range": true,
+          "refId": "A",
+          "target": ""
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "topk(5, sum(container_memory_working_set_bytes{image!=\"\", node!~\".*(master|build).*\", kubernetes_cluster=~\"$cluster\"}) by (namespace, kubernetes_cluster)) by (kubernetes_cluster)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{kubernetes_cluster}}-{{namespace}}",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "topk(5, sum(container_memory_working_set_bytes{image!=\"\", node!~\".*(master|build).*\", kubernetes_cluster=~\"$cluster\"}) by (namespace, kubernetes_cluster)) by (kubernetes_cluster)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{kubernetes_cluster}}-{{namespace}}",
+          "range": true,
+          "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "topk(5, sum(container_memory_working_set_bytes{image!=\"\", node!~\".*(master|build).*\", kubernetes_cluster=~\"$cluster\"}) by (namespace, kubernetes_cluster)) by (kubernetes_cluster)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{kubernetes_cluster}}-{{namespace}}",
+          "range": true,
+          "refId": "G"
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "Worker Memory usage by namespace",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "timeseries",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:849",
+          "format": "bytes",
+          "label": "Memory",
+          "logBase": 1,
+          "min": "0",
+          "show": true
+        },
+        {
+          "$$hashKey": "object:850",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "aliasColors": {},
+      "autoMigrateFrom": "graph",
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fill": 0,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 32
+      },
+      "hiddenSeries": false,
+      "id": 10,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "10.0.0",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "histogram_quantile(0.99, sum(rate(etcd_network_peer_round_trip_time_seconds_bucket{job=~\"${cluster}etcd\"}[5m])) by (source, le))",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{ source }}",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "histogram_quantile(0.99, sum(rate(etcd_network_peer_round_trip_time_seconds_bucket{job=~\"${cluster}etcd\"}[5m])) by (source, le))",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{ source }}",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "histogram_quantile(0.99, sum(rate(etcd_network_peer_round_trip_time_seconds_bucket{job=~\"${cluster}etcd\"}[5m])) by (source, le))",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{ source }}",
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "histogram_quantile(0.99, sum(rate(etcd_network_peer_round_trip_time_seconds_bucket{job=~\"${cluster}etcd\"}[5m])) by (source, le))",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{ source }}",
+          "refId": "D"
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "ETCD Peer roundtrip time",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "timeseries",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:317",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:318",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "aliasColors": {},
+      "autoMigrateFrom": "graph",
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "description": "",
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 32
+      },
+      "hiddenSeries": false,
+      "id": 59,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "10.0.0",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "irate(etcd_server_leader_changes_seen_total{job=~\"${cluster}etcd\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{ source }}",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "irate(etcd_server_leader_changes_seen_total{job=~\"${cluster}etcd\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{ source }}",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "irate(etcd_server_leader_changes_seen_total{job=~\"${cluster}etcd\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{ source }}",
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "irate(etcd_server_leader_changes_seen_total{job=~\"${cluster}etcd\"}[1m])",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{ source }}",
+          "refId": "D"
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "ETCD Leader Elections",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "timeseries",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:317",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:318",
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "aliasColors": {},
+      "autoMigrateFrom": "graph",
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "editable": true,
+      "error": false,
+      "fill": 0,
+      "fillGradient": 0,
+      "grid": {},
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 0,
+        "y": 38
+      },
+      "hiddenSeries": false,
+      "id": 60,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 2,
+      "nullPointMode": "connected",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "10.0.0",
+      "pointradius": 1,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": true,
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "histogram_quantile(0.99, sum(rate(etcd_disk_backend_commit_duration_seconds_bucket{job=~\"${cluster}etcd\"}[5m])) by (source, le))",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "{{source}} DB fsync",
+          "metric": "etcd_disk_backend_commit_duration_seconds_bucket",
+          "refId": "A",
+          "step": 4
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "histogram_quantile(0.99, sum(rate(etcd_disk_wal_fsync_duration_seconds_bucket{job=~\"${cluster}etcd\"}[5m])) by (source, le))",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{source}} WAL fsync",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "histogram_quantile(0.99, sum(rate(etcd_disk_backend_commit_duration_seconds_bucket{job=~\"${cluster}etcd\"}[5m])) by (source, le))",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{ source }} DB fsync",
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "histogram_quantile(0.99, sum(rate(etcd_disk_wal_fsync_duration_seconds_bucket{job=~\"${cluster}etcd\"}[5m])) by (source, le))",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{source}} WAL fsync",
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "histogram_quantile(0.99, sum(rate(etcd_disk_backend_commit_duration_seconds_bucket{job=~\"${cluster}etcd\"}[5m])) by (source, le))",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{source}} DB fsync",
+          "refId": "E"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "histogram_quantile(0.99, sum(rate(etcd_disk_wal_fsync_duration_seconds_bucket{job=~\"${cluster}etcd\"}[5m])) by (source, le))",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{source}} WAL fsync",
+          "refId": "F"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "histogram_quantile(0.99, sum(rate(etcd_disk_backend_commit_duration_seconds_bucket{job=~\"${cluster}etcd\"}[5m])) by (source, le))",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{source}} DB fsync",
+          "refId": "G"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "histogram_quantile(0.99, sum(rate(etcd_disk_wal_fsync_duration_seconds_bucket{job=~\"${cluster}etcd\"}[5m])) by (source, le))",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{source}} WAL fsync",
+          "refId": "H"
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "ETCD Disk Sync Duration ",
+      "tooltip": {
+        "msResolution": false,
+        "shared": true,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "type": "timeseries",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:177",
+          "format": "s",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:178",
+          "format": "short",
+          "logBase": 1,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Mixed --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 12,
+        "x": 12,
+        "y": 38
+      },
+      "id": 51,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "max by (kubernetes_cluster) (cluster:apiserver_request_duration_seconds:quantile{kubernetes_cluster=~\"$cluster\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{ kubernetes_cluster }}",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB4_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "max by (kubernetes_cluster) (cluster:apiserver_request_duration_seconds:quantile{kubernetes_cluster=~\"$cluster\"})",
+          "format": "time_series",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "{{ kubernetes_cluster }}",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE BEUNITY DEVOPS PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "max by (kubernetes_cluster) (cluster:apiserver_request_duration_seconds:quantile{kubernetes_cluster=~\"$cluster\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{ kubernetes_cluster }}",
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          },
+          "exemplar": true,
+          "expr": "max by (kubernetes_cluster) (cluster:apiserver_request_duration_seconds:quantile{kubernetes_cluster=~\"$cluster\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{ kubernetes_cluster }}",
+          "refId": "D"
+        }
+      ],
+      "title": "APIServer Request Duration",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 39,
+  "tags": [
+    "SRE BF"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": ".+(v3|v2|fp|hz).*",
+          "value": ".+(v3|v2|fp|hz).*"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "cluster",
+        "options": [
+          {
+            "selected": true,
+            "text": ".+(v3|v2|fp|hz).*",
+            "value": ".+(v3|v2|fp|hz).*"
+          },
+          {
+            "selected": false,
+            "text": ".+v2.*",
+            "value": ".+v2.*"
+          },
+          {
+            "selected": false,
+            "text": ".+(v3|fp|hz).*",
+            "value": ".+(v3|fp|hz).*"
+          },
+          {
+            "selected": false,
+            "text": "gb1-li-beunityv2",
+            "value": "gb1-li-beunityv2"
+          },
+          {
+            "selected": false,
+            "text": "gb1-li-feunityv2",
+            "value": "gb1-li-feunityv2"
+          },
+          {
+            "selected": false,
+            "text": "gb4-li-beunityv2",
+            "value": "gb4-li-beunityv2"
+          },
+          {
+            "selected": false,
+            "text": "gb4-li-feunityv2",
+            "value": "gb4-li-feunityv2"
+          },
+          {
+            "selected": false,
+            "text": "gb1-li-feunityv3",
+            "value": "gb1-li-feunityv3"
+          },
+          {
+            "selected": false,
+            "text": "gb1-li-beunityv3",
+            "value": "gb1-li-beunityv3"
+          },
+          {
+            "selected": false,
+            "text": "gb4-li-feunityv3",
+            "value": "gb4-li-feunityv3"
+          },
+          {
+            "selected": false,
+            "text": "gb4-li-beunityv3",
+            "value": "gb4-li-beunityv3"
+          },
+          {
+            "selected": false,
+            "text": "gb1-li-feunityhz",
+            "value": "gb1-li-feunityhz"
+          },
+          {
+            "selected": false,
+            "text": "gb1-li-feunityfp",
+            "value": "gb1-li-feunityfp"
+          },
+          {
+            "selected": false,
+            "text": "gb4-li-feunityhz",
+            "value": "gb4-li-feunityhz"
+          },
+          {
+            "selected": false,
+            "text": "gb4-li-feunityfp",
+            "value": "gb4-li-feunityfp"
+          }
+        ],
+        "query": ".+(v3|v2|fp|hz).*, .+v2.*, .+(v3|fp|hz).*, gb1-li-beunityv2, gb1-li-feunityv2, gb4-li-beunityv2, gb4-li-feunityv2, gb1-li-feunityv3, gb1-li-beunityv3, gb4-li-feunityv3, gb4-li-beunityv3, gb1-li-feunityhz, gb1-li-feunityfp, gb4-li-feunityhz, gb4-li-feunityfp",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timeRangeUpdatedDuringEditOrView": false,
+  "timepicker": {},
+  "timezone": "",
+  "title": "Unified Dashboard",
+  "uid": "ItTgtPv4z",
+  "version": 110,
+  "weekStart": ""
+}
