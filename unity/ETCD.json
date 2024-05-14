@@ -1,7 +1,7 @@
 {
   "__inputs": [
     {
-      "name": "DS_GB1_LIVE BEUNITY DEVOPS PROMETHEUS",
+      "name": "datasource",
       "label": "GB1 Live BEUnity Devops Prometheus",
       "description": "",
       "type": "datasource",
@@ -1287,7 +1287,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_GB1_LIVE BEUNITY DEVOPS PROMETHEUS}"
+        "uid": "${datasource}"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -1327,7 +1327,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_GB1_LIVE BEUNITY DEVOPS PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "histogram_quantile(0.99, sum(rate(etcd_network_peer_round_trip_time_seconds_bucket{job=\"$cluster\"}[5m])) by (source, le))",
@@ -1400,11 +1400,6 @@
         "useTags": false
       },
       {
-        "current": {
-          "selected": false,
-          "text": "GB1 Live BEUnity Devops Prometheus",
-          "value": "L5ZPxSS7k"
-        },
         "hide": 0,
         "includeAll": false,
         "multi": false,
@@ -1413,7 +1408,7 @@
         "query": "prometheus",
         "queryValue": "",
         "refresh": 1,
-        "regex": "/^.*Devops.*$/",
+        "regex": "/SRE-*/",
         "skipUrlSync": false,
         "type": "datasource"
       }
