@@ -1771,11 +1771,6 @@
   "templating": {
     "list": [
       {
-        "current": {
-          "selected": false,
-          "text": "GB1 Live FEUnity Devops Prometheus",
-          "value": "ddxcySI7z"
-        },
         "hide": 0,
         "includeAll": false,
         "multi": false,
@@ -1784,7 +1779,7 @@
         "query": "prometheus",
         "queryValue": "",
         "refresh": 1,
-        "regex": "/.*Unity|GB5 (UAT )?Devops.*|Devops/",
+        "regex": "/SRE-*/",
         "skipUrlSync": false,
         "type": "datasource"
       },
