@@ -1,7 +1,7 @@
 {
   "__inputs": [
     {
-      "name": "DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS",
+      "name": "datasource",
       "label": "GB1 Live FEUnity Devops Prometheus",
       "description": "",
       "type": "datasource",
@@ -724,7 +724,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -830,7 +830,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -843,7 +843,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -861,7 +861,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -943,7 +943,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(apiserver_longrunning_gauge{job=\"$cluster-apiserver\", kubernetes_cluster=\"$cluster\", instance=~\"$instance\"}) by (instance)",
@@ -954,7 +954,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -977,7 +977,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+        "uid": "${datasource}"
       },
       "description": "",
       "fill": 1,
@@ -1018,7 +1018,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "apiserver_current_inflight_requests{job=\"$cluster-apiserver\", kubernetes_cluster=\"$cluster\", instance=~\"$instance\"}",
@@ -1068,7 +1068,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+        "uid": "${datasource}"
       },
       "description": "Rate of requests which apiserver terminated in self-defense.",
       "fill": 1,
@@ -1109,7 +1109,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "sum(rate(apiserver_request_terminations_total{job=\"$cluster-apiserver\", kubernetes_cluster=\"$cluster\", instance=~\"$instance\"}[1m])) by (instance)",
@@ -1494,7 +1494,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+        "uid": "${datasource}"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -1534,7 +1534,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "rate(apiserver_audit_event_total{job=\"$cluster-apiserver\", kubernetes_cluster=\"$cluster\", instance=~\"$instance\"}[5m])",
@@ -1583,7 +1583,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+        "uid": "${datasource}"
       },
       "description": "audit events that failed to be audited properly",
       "fill": 1,
@@ -1624,7 +1624,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "rate(apiserver_audit_error_total{job=\"$cluster-apiserver\", kubernetes_cluster=\"$cluster\", instance=~\"$instance\"}[5m])",
@@ -1673,7 +1673,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+        "uid": "${datasource}"
       },
       "description": "apiserver requests rejected due to an error in the audit logging backend",
       "fieldConfig": {
@@ -1720,7 +1720,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "rate(apiserver_audit_requests_rejected_total{job=\"$cluster-apiserver\", kubernetes_cluster=\"$cluster\", instance=~\"$instance\"}[5m])",
@@ -1787,7 +1787,7 @@
         "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_GB1_LIVE FEUNITY DEVOPS PROMETHEUS}"
+          "uid": "${datasource}"
         },
         "definition": "label_values(apiserver_current_inflight_requests, kubernetes_cluster)",
         "hide": 0,
